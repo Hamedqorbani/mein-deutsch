@@ -1,0 +1,12 @@
+{
+ "name":"Mein Deutsch — آلمانی من",
+ "short_name":"Mein Deutsch",
+ "lang":"fa",
+ "dir":"rtl",
+ "start_url":"./",
+ "scope":"./",
+ "display":"standalone",
+ "background_color":"#101715",
+ "theme_color":"#17211f",
+ "description":"یادگیری زبان آلمانی از A1 تا C2"
+}
