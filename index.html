@@ -30,7 +30,7 @@ header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 9
 </nav></aside>
 <main class="main">
 <section id="page-home" class="page"><div class="welcome"><div class="muted tiny">WILLKOMMEN · خوش آمدی</div><h1>آلمانی رو قدم‌به‌قدم یاد بگیر.</h1><p>تمرین کوتاه، معنی روشن و پیشرفت ماندگار.</p><div class="stats"><div class="stat"><b id="knownCount">۰</b><span>واژه‌های بلدشده</span></div><div class="stat"><b id="totalCount">۰</b><span>واژه در مجموعه</span></div><div class="stat"><b id="streakCount">۰</b><span>تمرین‌های امروز</span></div></div></div><div class="panel"><h2 class="section-title">از کجا شروع کنیم؟</h2><div class="grid2"><button class="result" data-go="cards"><strong>▣ فلش‌کارت A1</strong><small>لغت، آرتیکل و مثال</small></button><button class="result" data-go="dictionary"><strong>⌕ جستجوی واژه</strong><small>معنی و تلفظ</small></button><button class="result" data-go="verbs"><strong>↔ صرف فعل</strong><small>شش ضمیر آلمانی</small></button><button class="result" data-go="chat"><strong>✦ تمرین با معلم</strong><small>گفت‌وگوی آموزشی</small></button></div></div><div class="panel"><h2 class="section-title">نکته امروز</h2><div class="word">Wie geht's?</div><p class="muted">یعنی «حالت چطوره؟» پاسخ ساده: <b dir="ltr">Es geht mir gut.</b> — حالم خوبه.</p></div></section>
-<section id="page-cards" class="page hidden"><div class="panel"><div class="row between"><div><h2 class="section-title">فلش‌کارت‌های آلمانی</h2><div class="muted tiny">آرتیکل‌ها رنگی هستند: der آبی، die قرمز، das سبز، جمع زرد</div></div><span class="chip" id="cardCounter">۱ / ۱</span></div><div class="row"><select id="levelFilter" style="max-width:130px"><option value="A1">سطح A1</option><option value="A2">سطح A2</option><option value="all">همه سطوح</option></select><select id="categoryFilter" style="max-width:160px"><option value="all">همه دسته‌ها</option><option>خانه</option><option>غذا</option><option>اشخاص</option><option>زمان</option><option>افعال</option><option>مکالمه</option></select></div><div class="cardword"><div><div id="cardArticle" class="article der"></div><div id="cardWord" class="word">das Buch</div><div id="cardPron" class="muted">بوخ</div><div id="cardMeaning" class="meaning hidden">کتاب</div><div id="cardExample" class="example hidden">Das ist ein Buch.</div><div id="cardExampleMeaning" class="muted tiny hidden">این یک کتاب است.</div></div></div><div class="row between"><button class="btn" id="prevCard">قبلی</button><button class="btn primary" id="revealCard">نمایش معنی</button><button class="btn" id="nextCard">بعدی</button></div><div class="row" style="justify-content:center;margin-top:12px"><button class="btn" id="unknownCard">هنوز بلد نیستم</button><button class="btn primary" id="knownCard">بلدم ✓</button><button class="btn" id="speakCard">🔊 شنیدن</button></div></div><div class="panel"><h3 class="section-title">افزودن فلش‌کارت شخصی</h3><div class="grid2"><div class="field"><label>واژه آلمانی</label><input id="newWord" placeholder="مثلاً der Apfel" dir="auto"></div><div class="field"><label>معنی</label><input id="newMeaning" placeholder="سیب"></div><div class="field"><label>تلفظ فارسی</label><input id="newPron" placeholder="آپفِل"></div><div class="field"><label>آرتیکل</label><select id="newArticle"><option>der</option><option>die</option><option>das</option><option>جمع</option><option>—</option></select></div></div><button class="btn primary" id="addCard" style="margin-top:12px">افزودن کارت</button></div></section>
+<section id="page-cards" class="page hidden"><div class="panel"><div class="row between"><div><h2 class="section-title">فلش‌کارت‌های آلمانی</h2><div class="muted tiny">آرتیکل‌ها رنگی هستند: der آبی، die قرمز، das سبز، جمع زرد</div></div><span class="chip" id="cardCounter">۱ / ۱</span></div><div class="row"><select id="levelFilter" style="max-width:130px"><option value="A1">سطح A1 · فعال</option><option value="A2">سطح A2 · به‌زودی</option><option value="B1">سطح B1 · به‌زودی</option><option value="B2">سطح B2 · به‌زودی</option><option value="C1">سطح C1 · به‌زودی</option><option value="C2">سطح C2 · به‌زودی</option></select><select id="categoryFilter" style="max-width:160px"><option value="all">همه دسته‌ها</option><option>خانه</option><option>غذا</option><option>اشخاص</option><option>زمان</option><option>افعال</option><option>مکالمه</option></select></div><div class="cardword"><div><div id="cardArticle" class="article der"></div><div id="cardWord" class="word">das Buch</div><div id="cardPron" class="muted">بوخ</div><div id="cardMeaning" class="meaning hidden">کتاب</div><div id="cardExample" class="example hidden">Das ist ein Buch.</div><div id="cardExampleMeaning" class="muted tiny hidden">این یک کتاب است.</div></div></div><div class="row between"><button class="btn" id="prevCard">قبلی</button><button class="btn primary" id="revealCard">نمایش معنی</button><button class="btn" id="nextCard">بعدی</button></div><div class="row" style="justify-content:center;margin-top:12px"><button class="btn" id="unknownCard">هنوز بلد نیستم</button><button class="btn primary" id="knownCard">بلدم ✓</button><button class="btn" id="speakCard">🔊 شنیدن</button></div></div><div class="panel"><h3 class="section-title">افزودن فلش‌کارت شخصی</h3><div class="grid2"><div class="field"><label>واژه آلمانی</label><input id="newWord" placeholder="مثلاً der Apfel" dir="auto"></div><div class="field"><label>معنی</label><input id="newMeaning" placeholder="سیب"></div><div class="field"><label>تلفظ فارسی</label><input id="newPron" placeholder="آپفِل"></div><div class="field"><label>آرتیکل</label><select id="newArticle"><option>der</option><option>die</option><option>das</option><option>جمع</option><option>—</option></select></div></div><button class="btn primary" id="addCard" style="margin-top:12px">افزودن کارت</button></div></section>
 <section id="page-dictionary" class="page hidden"><div class="panel"><h2 class="section-title">دیکشنری و جستجوی سراسری</h2><div class="row"><div class="field search" style="flex:1"><label>واژه آلمانی یا معنی را جستجو کن</label><input id="dictSearch" placeholder="مثلاً Haus یا خانه"></div><div class="field"><label>ترجمه به</label><select id="languageSelect"><option value="fa">فارسی</option><option value="en">English</option></select></div></div><div id="dictResults" style="margin-top:14px"></div></div></section>
 <section id="page-verbs" class="page hidden"><div class="panel"><h2 class="section-title">صرف فعل آلمانی</h2><p class="muted tiny">فعل را به شکل مصدر وارد کن؛ مثل machen یا sein.</p><div class="grid2"><div class="field"><label>فعل آلمانی</label><input id="verbInput" placeholder="machen" dir="ltr"></div><div class="field"><label>معنی فارسی یا انگلیسی</label><input id="verbMeaning" placeholder="انجام دادن"></div></div><button class="btn primary" id="conjugate" style="margin-top:12px">صرف فعل</button><div id="verbOutput" style="margin-top:16px"></div></div></section>
 <section id="page-chat" class="page hidden"><div class="panel"><div class="row between"><div><h2 class="section-title">معلم هوشمند آلمانی</h2><div class="muted tiny">فقط آموزش زبان آلمانی · پاسخ کوتاه و ساده</div></div><div class="field"><label>سطح گفتگو</label><select id="chatLevel"><option>A1</option><option>A2</option><option>B1</option><option>B2</option><option>C1</option><option>C2</option></select></div></div><div class="field" style="margin:12px 0"><label>زبان توضیحات</label><select id="chatLanguage"><option value="fa">فارسی</option><option value="en">English</option></select></div><div class="chatlog" id="chatLog"><div class="bubble bot">Hallo! 👋 من معلم تمرینی آلمانی تو هستم. می‌تونیم واژه، گرامر، ترجمه یا مکالمه آلمانی تمرین کنیم. سطح رو انتخاب کن و شروع کن.</div></div><div class="chatbar"><input id="chatInput" placeholder="سؤال آلمانی خودت را بنویس…" autocomplete="off"><button class="btn primary" id="sendChat">ارسال</button></div><p class="muted tiny" id="chatNotice">نسخه فعلی پاسخ‌های آموزشی پایه را به‌صورت محلی ارائه می‌کند. برای گفت‌وگوی واقعی با مدل هوش مصنوعی باید بعداً سرویس امنی به برنامه متصل شود؛ کلید محرمانه نباید داخل مرورگر قرار بگیرد.</p></div></section>
@@ -74,6 +74,102 @@ const base=[
 ['Wie geht es dir?','حالت چطور است؟','How are you?','وی گِیت اِس دیر','—','مکالمه','A1','Danke, gut.','ممنون، خوبم.'],
 ['Es geht mir gut.','حالم خوب است.','I am fine.','اِس گِیت میر گوت','—','مکالمه','A1','Es geht mir gut, danke.','خوبم، ممنون.'],
 ['Auf Wiedersehen','خداحافظ (رسمی)','goodbye','آوف ویدِرزِین','—','مکالمه','A1','Auf Wiedersehen, Herr Müller.','خداحافظ آقای مولر.'],
+
+['die Mutter','مادر','mother','موتِر','die','اشخاص','A1','Meine Mutter ist nett.','مادر من مهربان است.'],
+['der Vater','پدر','father','فاتِر','der','اشخاص','A1','Mein Vater arbeitet.','پدر من کار می‌کند.'],
+['der Bruder','برادر','brother','برودِر','der','اشخاص','A1','Mein Bruder ist hier.','برادرم اینجاست.'],
+['die Schwester','خواهر','sister','شْوِستِر','die','اشخاص','A1','Meine Schwester lernt Deutsch.','خواهرم آلمانی یاد می‌گیرد.'],
+['die Eltern','والدین','parents','اِلتِرن','جمع','اشخاص','A1','Meine Eltern wohnen hier.','والدینم اینجا زندگی می‌کنند.'],
+['das Wasser','آب','water','واسِر','das','غذا','A1','Ich trinke Wasser.','من آب می‌نوشم.'],
+['der Saft','آبمیوه','juice','زَفت','der','غذا','A1','Ich möchte einen Saft.','من یک آبمیوه می‌خواهم.'],
+['der Käse','پنیر','cheese','کِیزه','der','غذا','A1','Der Käse ist lecker.','پنیر خوشمزه است.'],
+['das Ei','تخم‌مرغ','egg','آی','das','غذا','A1','Ich esse ein Ei.','من یک تخم‌مرغ می‌خورم.'],
+['die Banane','موز','banana','بانانه','die','غذا','A1','Die Banane ist gelb.','موز زرد است.'],
+['die Kartoffel','سیب‌زمینی','potato','کارتوفِل','die','غذا','A1','Ich kaufe Kartoffeln.','من سیب‌زمینی می‌خرم.'],
+['das Gemüse','سبزیجات','vegetables','گِموزه','das','غذا','A1','Gemüse ist gesund.','سبزیجات سالم هستند.'],
+['das Fleisch','گوشت','meat','فلایش','das','غذا','A1','Ich esse kein Fleisch.','من گوشت نمی‌خورم.'],
+['der Fisch','ماهی','fish','فیش','der','غذا','A1','Der Fisch ist frisch.','ماهی تازه است.'],
+['der Morgen','صبح','morning','مورگِن','der','زمان','A1','Am Morgen trinke ich Tee.','صبح چای می‌نوشم.'],
+['der Abend','عصر','evening','آبِنت','der','زمان','A1','Am Abend bin ich zu Hause.','عصر در خانه هستم.'],
+['die Woche','هفته','week','وُخه','die','زمان','A1','Eine Woche hat sieben Tage.','یک هفته هفت روز دارد.'],
+['der Monat','ماه','month','مونات','der','زمان','A1','Der Monat hat vier Wochen.','ماه چهار هفته دارد.'],
+['das Jahr','سال','year','یار','das','زمان','A1','Ein Jahr hat zwölf Monate.','یک سال دوازده ماه دارد.'],
+['Montag','دوشنبه','Monday','مونتاگ','—','زمان','A1','Am Montag arbeite ich.','دوشنبه کار می‌کنم.'],
+['Dienstag','سه‌شنبه','Tuesday','دینستاگ','—','زمان','A1','Heute ist Dienstag.','امروز سه‌شنبه است.'],
+['Mittwoch','چهارشنبه','Wednesday','میت‌وُخ','—','زمان','A1','Am Mittwoch lerne ich.','چهارشنبه درس می‌خوانم.'],
+['Donnerstag','پنجشنبه','Thursday','دونِرستاگ','—','زمان','A1','Am Donnerstag komme ich.','پنجشنبه می‌آیم.'],
+['Freitag','جمعه','Friday','فرایتاگ','—','زمان','A1','Am Freitag habe ich Zeit.','جمعه وقت دارم.'],
+['Samstag','شنبه','Saturday','زامستاگ','—','زمان','A1','Am Samstag schlafe ich lange.','شنبه زیاد می‌خوابم.'],
+['Sonntag','یکشنبه','Sunday','زونتاگ','—','زمان','A1','Am Sonntag bin ich frei.','یکشنبه آزادم.'],
+['eins','یک','one','آینس','—','اعداد','A1','Ich habe ein Buch.','من یک کتاب دارم.'],
+['zwei','دو','two','تسوای','—','اعداد','A1','Zwei Kinder spielen.','دو کودک بازی می‌کنند.'],
+['drei','سه','three','درای','—','اعداد','A1','Drei Frauen kommen.','سه زن می‌آیند.'],
+['vier','چهار','four','فیر','—','اعداد','A1','Es ist vier Uhr.','ساعت چهار است.'],
+['fünf','پنج','five','فونف','—','اعداد','A1','Ich habe fünf Euro.','من پنج یورو دارم.'],
+['groß','بزرگ','big','گروس','—','صفت‌ها','A1','Das Haus ist groß.','خانه بزرگ است.'],
+['klein','کوچک','small','کلاین','—','صفت‌ها','A1','Das Kind ist klein.','کودک کوچک است.'],
+['gut','خوب','good','گوت','—','صفت‌ها','A1','Das ist gut.','این خوب است.'],
+['schlecht','بد','bad','شلِشت','—','صفت‌ها','A1','Das Wetter ist schlecht.','هوا بد است.'],
+['neu','جدید','new','نوی','—','صفت‌ها','A1','Mein Handy ist neu.','گوشی من جدید است.'],
+['alt','قدیمی / پیر','old','آلت','—','صفت‌ها','A1','Das Auto ist alt.','ماشین قدیمی است.'],
+['schön','زیبا','beautiful','شون','—','صفت‌ها','A1','Die Stadt ist schön.','شهر زیباست.'],
+['teuer','گران','expensive','تویِر','—','خرید','A1','Das ist zu teuer.','این خیلی گران است.'],
+['billig','ارزان','cheap','بیلیش','—','خرید','A1','Das Brot ist billig.','نان ارزان است.'],
+['kaufen','خریدن','to buy','کاوفِن','—','افعال','A1','Ich kaufe ein Buch.','من یک کتاب می‌خرم.'],
+['bezahlen','پرداخت کردن','to pay','بِتسالِن','—','افعال','A1','Ich bezahle bar.','من نقدی پرداخت می‌کنم.'],
+['arbeiten','کار کردن','to work','آربایتِن','—','افعال','A1','Ich arbeite heute.','من امروز کار می‌کنم.'],
+['wohnen','ساکن بودن','to live','وونِن','—','افعال','A1','Ich wohne in Berlin.','من در برلین زندگی می‌کنم.'],
+['essen','غذا خوردن','to eat','اِسِن','—','افعال','A1','Wir essen zusammen.','ما با هم غذا می‌خوریم.'],
+['trinken','نوشیدن','to drink','ترینکِن','—','افعال','A1','Du trinkst Wasser.','تو آب می‌نوشی.'],
+['schlafen','خوابیدن','to sleep','شلافِن','—','افعال','A1','Das Kind schläft.','کودک می‌خوابد.'],
+['fragen','پرسیدن','to ask','فراگِن','—','افعال','A1','Ich frage den Lehrer.','از معلم می‌پرسم.'],
+['antworten','پاسخ دادن','to answer','آنت‌وُرتِن','—','افعال','A1','Bitte antworte!','لطفاً جواب بده!'],
+['hören','شنیدن','to hear','هورِن','—','افعال','A1','Ich höre Musik.','من موسیقی گوش می‌دهم.'],
+['sehen','دیدن','to see','زِیِن','—','افعال','A1','Ich sehe einen Hund.','من یک سگ می‌بینم.'],
+['schreiben','نوشتن','to write','شرایبِن','—','افعال','A1','Ich schreibe eine E-Mail.','من یک ایمیل می‌نویسم.'],
+['lesen','خواندن','to read','لیزِن','—','افعال','A1','Ich lese ein Buch.','من کتاب می‌خوانم.'],
+['spielen','بازی کردن','to play','اشپیلِن','—','افعال','A1','Die Kinder spielen.','بچه‌ها بازی می‌کنند.'],
+['suchen','جستجو کردن','to search','زوخِن','—','افعال','A1','Ich suche meinen Schlüssel.','دنبال کلیدم می‌گردم.'],
+['finden','پیدا کردن','to find','فیندِن','—','افعال','A1','Ich finde das gut.','به نظرم این خوب است.'],
+['helfen','کمک کردن','to help','هِلفِن','—','افعال','A1','Kannst du mir helfen?','می‌توانی به من کمک کنی؟'],
+['bleiben','ماندن','to stay','بلایبِن','—','افعال','A1','Ich bleibe zu Hause.','من در خانه می‌مانم.'],
+['das Auto','ماشین','car','آوتو','das','رفت‌وآمد','A1','Das Auto ist schnell.','ماشین سریع است.'],
+['der Bus','اتوبوس','bus','بوس','der','رفت‌وآمد','A1','Der Bus kommt gleich.','اتوبوس الان می‌آید.'],
+['der Zug','قطار','train','تسوگ','der','رفت‌وآمد','A1','Der Zug ist pünktlich.','قطار سر وقت است.'],
+['die Straße','خیابان','street','اشتراسه','die','مکان','A1','Die Straße ist lang.','خیابان طولانی است.'],
+['die Stadt','شهر','city','شتات','die','مکان','A1','Die Stadt ist schön.','شهر زیباست.'],
+['das Land','کشور','country','لانت','das','مکان','A1','Deutschland ist ein Land.','آلمان یک کشور است.'],
+['hier','اینجا','here','هیر','—','مکان','A1','Ich bin hier.','من اینجا هستم.'],
+['dort','آنجا','there','دورت','—','مکان','A1','Das Auto steht dort.','ماشین آنجاست.'],
+['links','چپ','left','لینکس','—','مکان','A1','Die Bank ist links.','بانک سمت چپ است.'],
+['rechts','راست','right','رِشتس','—','مکان','A1','Der Bahnhof ist rechts.','ایستگاه قطار سمت راست است.'],
+['Hallo','سلام','hello','هالو','—','مکالمه','A1','Hallo, wie geht es dir?','سلام، حالت چطور است؟'],
+['Danke','متشکرم','thank you','دانکه','—','مکالمه','A1','Danke für deine Hilfe.','برای کمکت ممنونم.'],
+['Bitte','لطفاً / خواهش می‌کنم','please / you are welcome','بیته','—','مکالمه','A1','Ein Wasser, bitte.','یک آب لطفاً.'],
+['Entschuldigung','ببخشید','excuse me','اِنت‌شولدیگونگ','—','مکالمه','A1','Entschuldigung, wo ist der Bahnhof?','ببخشید، ایستگاه قطار کجاست؟'],
+['Ja','بله','yes','یا','—','مکالمه','A1','Ja, ich verstehe.','بله، متوجه می‌شوم.'],
+['Nein','نه','no','ناین','—','مکالمه','A1','Nein, danke.','نه، ممنون.'],
+['vielleicht','شاید','maybe','فی‌لایشت','—','مکالمه','A1','Vielleicht komme ich morgen.','شاید فردا بیایم.'],
+['wer','چه کسی','who','وِر','—','پرسشی','A1','Wer bist du?','تو چه کسی هستی؟'],
+['was','چه چیزی','what','واس','—','پرسشی','A1','Was ist das?','این چیست؟'],
+['wo','کجا','where','وو','—','پرسشی','A1','Wo wohnst du?','کجا زندگی می‌کنی؟'],
+['wie','چگونه','how','وی','—','پرسشی','A1','Wie heißt du?','اسمت چیست؟'],
+['wann','چه زمانی','when','وان','—','پرسشی','A1','Wann kommst du?','کی می‌آیی؟'],
+['warum','چرا','why','واروم','—','پرسشی','A1','Warum lernst du Deutsch?','چرا آلمانی یاد می‌گیری؟'],
+['woher','از کجا','where from','ووهِر','—','پرسشی','A1','Woher kommst du?','اهل کجا هستی؟'],
+['die Zeit','زمان / وقت','time','تسایت','die','زمان','A1','Ich habe keine Zeit.','من وقت ندارم.'],
+['die Uhr','ساعت','clock / watch','اوِر','die','زمان','A1','Wie spät ist es?','ساعت چند است؟'],
+['der Name','نام','name','نامه','der','اشخاص','A1','Wie ist dein Name?','نامت چیست؟'],
+['die Nummer','شماره','number','نومِر','die','روزمره','A1','Wie ist deine Telefonnummer?','شماره تلفنت چیست؟'],
+['das Handy','تلفن همراه','mobile phone','هِندی','das','روزمره','A1','Mein Handy ist neu.','گوشی من جدید است.'],
+['der Schlüssel','کلید','key','شلوسِل','der','خانه','A1','Wo ist mein Schlüssel?','کلید من کجاست؟'],
+['das Geld','پول','money','گِلت','das','خرید','A1','Ich habe kein Geld.','من پول ندارم.'],
+['der Euro','یورو','euro','اویرو','der','خرید','A1','Das kostet fünf Euro.','این پنج یورو قیمت دارد.'],
+['der Arzt','پزشک مرد','doctor','آرتست','der','سلامتی','A1','Ich brauche einen Arzt.','من به پزشک نیاز دارم.'],
+['die Ärztin','پزشک زن','doctor','اِرتستین','die','سلامتی','A1','Die Ärztin ist freundlich.','پزشک مهربان است.'],
+['krank','بیمار','ill','کرانک','—','سلامتی','A1','Ich bin krank.','من بیمار هستم.'],
+['müde','خسته','tired','موده','—','سلامتی','A1','Ich bin müde.','من خسته‌ام.']
+
 ['die Schule','مدرسه','school','شوله','die','مکان','A2','Die Schule beginnt um acht.','مدرسه ساعت هشت شروع می‌شود.'],
 ['die Arbeit','کار','work','آربایت','die','مکان','A2','Ich gehe zur Arbeit.','من به محل کار می‌روم.'],
 ['der Bahnhof','ایستگاه قطار','train station','بانهوف','der','مکان','A2','Der Bahnhof ist hier.','ایستگاه قطار اینجاست.'],
@@ -87,12 +183,12 @@ let prefs=JSON.parse(localStorage.getItem('md_prefs')||'{}');let lang=prefs.lang
 function save(){localStorage.setItem('md_known',JSON.stringify([...known]));localStorage.setItem('md_prefs',JSON.stringify(prefs));}
 function setTheme(v){prefs.theme=v;document.documentElement.dataset.theme=v==='system'?(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'):v; if($('themeSelect'))$('themeSelect').value=v;save()}
 function page(p){document.querySelectorAll('.page').forEach(x=>x.classList.add('hidden'));$('page-'+p).classList.remove('hidden');document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x.dataset.page===p));$('sidebar').classList.remove('open');if(p==='cards')renderCard();if(p==='dictionary')searchDict()}
-function counts(){$('knownCount').textContent=fa(known.size);$('totalCount').textContent=fa(words.length);$('streakCount').textContent=fa(Number(localStorage.getItem('md_sessions')||0))}
-function selectedWords(){let lev=$('levelFilter').value,cat=$('categoryFilter').value;return words.filter(w=>(lev==='all'||w[6]===lev)&&(cat==='all'||w[5]===cat))}
-function renderCard(){filtered=selectedWords();if(!filtered.length){$('cardWord').textContent='کارتی پیدا نشد';return}idx=Math.min(idx,filtered.length-1);let w=filtered[idx];$('cardArticle').textContent=w[4]==='—'?'':w[4];$('cardArticle').className='article '+({der:'der',die:'die',das:'das','جمع':'plural'}[w[4]]||'');$('cardWord').textContent=w[0];$('cardPron').textContent='تلفظ: '+w[3];$('cardMeaning').textContent=lang==='fa'?w[1]:w[2];$('cardExample').textContent=w[7];$('cardExampleMeaning').textContent=w[8];['cardMeaning','cardExample','cardExampleMeaning'].forEach(id=>$(id).classList.add('hidden'));$('revealCard').textContent='نمایش معنی';$('cardCounter').textContent=fa(idx+1)+' / '+fa(filtered.length)}
+function counts(){$('knownCount').textContent=fa(known.size);$('totalCount').textContent=fa(words.filter(w=>w[6]==='A1').length);$('streakCount').textContent=fa(Number(localStorage.getItem('md_sessions')||0))}
+function selectedWords(){let lev=$('levelFilter').value,cat=$('categoryFilter').value;if(lev!=='A1')return [];return words.filter(w=>w[6]==='A1'&&(cat==='all'||w[5]===cat))}
+function renderCard(){filtered=selectedWords();if(!filtered.length){$('cardArticle').textContent='';$('cardWord').textContent='این سطح به‌زودی فعال می‌شود';$('cardPron').textContent='فعلاً محتوای سطح A1 در دسترس است.';$('cardMeaning').classList.add('hidden');$('cardExample').classList.add('hidden');$('cardExampleMeaning').classList.add('hidden');$('cardCounter').textContent='به‌زودی';return}idx=Math.min(idx,filtered.length-1);let w=filtered[idx];$('cardArticle').textContent=w[4]==='—'?'':w[4];$('cardArticle').className='article '+({der:'der',die:'die',das:'das','جمع':'plural'}[w[4]]||'');$('cardWord').textContent=w[0];$('cardPron').textContent='تلفظ: '+w[3];$('cardMeaning').textContent=lang==='fa'?w[1]:w[2];$('cardExample').textContent=w[7];$('cardExampleMeaning').textContent=w[8];['cardMeaning','cardExample','cardExampleMeaning'].forEach(id=>$(id).classList.add('hidden'));$('revealCard').textContent='نمایش معنی';$('cardCounter').textContent=fa(idx+1)+' / '+fa(filtered.length)}
 function reveal(){['cardMeaning','cardExample','cardExampleMeaning'].forEach(id=>$(id).classList.toggle('hidden'));$('revealCard').textContent=$('cardMeaning').classList.contains('hidden')?'نمایش معنی':'پنهان کردن معنی'}
 function dictEntry(w){let meaning=lang==='fa'?w[1]:w[2];return '<div class="result"><div class="row between"><strong>'+esc(w[0])+'</strong><button class="btn small" data-speak="'+esc(w[0])+'">🔊</button></div><div>'+esc(meaning)+'</div><small>تلفظ: '+esc(w[3])+' · '+esc(w[4])+' · '+esc(w[6])+'</small><div class="muted tiny" dir="ltr">'+esc(w[7])+' — '+esc(w[8])+'</div><button class="btn small" data-add="'+words.indexOf(w)+'" style="margin-top:7px">افزودن به کارت‌ها</button></div>'}
-function searchDict(){let q=($('dictSearch')?.value||'').trim().toLowerCase();let res=words.filter(w=>!q||w.slice(0,3).join(' ').toLowerCase().includes(q)||w[3].includes(q));$('dictResults').innerHTML=res.length?'<div class="grid2">'+res.slice(0,50).map(dictEntry).join('')+'</div>':'<div class="empty">واژه‌ای پیدا نشد.</div>'}
+function searchDict(){let q=($('dictSearch')?.value||'').trim().toLowerCase();let res=words.filter(w=>w[6]==='A1'&&(!q||w.slice(0,3).join(' ').toLowerCase().includes(q)||w[3].includes(q)));$('dictResults').innerHTML=res.length?'<div class="grid2">'+res.slice(0,50).map(dictEntry).join('')+'</div>':'<div class="empty">واژه‌ای پیدا نشد.</div>'}
 function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 const pronouns=['ich','du','er / sie / es','wir','ihr','Sie / sie'];
 const irregular={sein:['bin','bist','ist','sind','seid','sind'],haben:['habe','hast','hat','haben','habt','haben'],werden:['werde','wirst','wird','werden','werdet','werden'],fahren:['fahre','fährst','fährt','fahren','fahrt','fahren'],lesen:['lese','liest','liest','lesen','lest','lesen'],sprechen:['spreche','sprichst','spricht','sprechen','sprecht','sprechen'],essen:['esse','isst','isst','essen','esst','essen'],nehmen:['nehme','nimmst','nimmt','nehmen','nehmt','nehmen'],geben:['gebe','gibst','gibt','geben','gebt','geben'],sehen:['sehe','siehst','sieht','sehen','seht','sehen'],gehen:['gehe','gehst','geht','gehen','geht','gehen'],kommen:['komme','kommst','kommt','kommen','kommt','kommen'],heißen:['heiße','heißt','heißt','heißen','heißt','heißen'],möchten:['möchte','möchtest','möchte','möchten','möchtet','möchten'],können:['kann','kannst','kann','können','könnt','können'],müssen:['muss','musst','muss','müssen','müsst','müssen'],wollen:['will','willst','will','wollen','wollt','wollen']};
