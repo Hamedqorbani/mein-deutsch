@@ -1123,6 +1123,29 @@ base.push(
   ["Hilfe!","کمک!","Help!","هیلفه","—","مکالمه","A1","Hilfe!","کمک!"],
   ["Rufen Sie bitte einen Krankenwagen!","لطفاً آمبولانس خبر کنید","Please call an ambulance!","روفِن زی بیته آینِن کرانکِن‌واگِن","—","مکالمه","A1","Rufen Sie bitte einen Krankenwagen!","لطفاً آمبولانس خبر کنید!"]
 );
+
+// Ergänzende A1-Wortschatzthemen
+base.push(
+  ["die Erde","زمین","earth; soil","اِرده","die","طبیعت","A1","Die Erde ist nass.","زمین خیس است."],
+  ["die Treppe","پله","stairs","ترِپه","die","خانه","A1","Die Treppe ist lang.","پله‌ها طولانی هستند."],
+  ["der Aufzug","آسانسور","elevator","آوف‌تسوگ","der","خانه","A1","Der Aufzug ist hier.","آسانسور اینجاست."],
+  ["die Decke","سقف","ceiling","دِکه","die","خانه","A1","Die Decke ist hoch.","سقف بلند است."],
+  ["das Regal","قفسه","shelf","رِگال","das","خانه","A1","Das Buch steht im Regal.","کتاب در قفسه است."],
+  ["der Spiegel","آینه","mirror","اشپیگِل","der","خانه","A1","Der Spiegel ist groß.","آینه بزرگ است."],
+  ["die Dusche","دوش","shower","دوشه","die","خانه","A1","Die Dusche ist warm.","دوش گرم است."],
+  ["der Kamm","شانه","comb","کام","der","روزمره","A1","Wo ist mein Kamm?","شانه من کجاست؟"],
+  ["die Bürste","برس","brush","بورسته","die","روزمره","A1","Die Bürste ist klein.","برس کوچک است."],
+  ["das Rezept","نسخه پزشکی","prescription","رِتسِپت","das","سلامتی","A1","Ich habe ein Rezept.","من نسخه دارم."],
+  ["der Schmerz","درد","pain","شمِرتس","der","سلامتی","A1","Ich habe Schmerzen.","من درد دارم."],
+  ["die Aufgabe","تمرین؛ تکلیف","task; exercise","آوف‌گابه","die","تحصیل","A1","Die Aufgabe ist leicht.","تمرین آسان است."],
+  ["das Wörterbuch","فرهنگ لغت","dictionary","وُرتِربوخ","das","تحصیل","A1","Das Wörterbuch ist neu.","فرهنگ لغت نو است."],
+  ["der Bleistift","مداد","pencil","بلای‌شتيفت","der","تحصیل","A1","Ich brauche einen Bleistift.","من به یک مداد نیاز دارم."],
+  ["der Kugelschreiber","خودکار","pen","کوگِل‌شْرایبِر","der","تحصیل","A1","Der Kugelschreiber ist blau.","خودکار آبی است."],
+  ["das Papier","کاغذ","paper","پاپیر","das","تحصیل","A1","Das Papier ist weiß.","کاغذ سفید است."],
+  ["die Steckdose","پریز برق","socket","شتِک‌دوزِه","die","خانه","A1","Die Steckdose ist dort.","پریز آنجاست."],
+  ["kostenlos","رایگان","free of charge","کوستِن‌لوس","—","صفت‌ها","A1","Der Eintritt ist kostenlos.","ورود رایگان است."],
+  ["dann","سپس","then","دان","—","قیدها","A1","Ich esse und dann gehe ich.","غذا می‌خورم و بعد می‌روم."]
+);
 const extra=JSON.parse(localStorage.getItem('md_custom')||'[]');let words=[...base,...extra].filter(w=>Array.isArray(w)&&w.length===9);
 let known=new Set(JSON.parse(localStorage.getItem('md_known')||'[]'));let idx=0,filtered=[];
 const $=id=>document.getElementById(id),fa=n=>String(n).replace(/\d/g,d=>'۰۱۲۳۴۵۶۷۸۹'[d]);
