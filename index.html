@@ -185,7 +185,7 @@ const base=[
 ['die Arbeit','کار','work','آربایت','die','مکان','A2','Ich gehe zur Arbeit.','من به محل کار می‌روم.'],
 ['der Bahnhof','ایستگاه قطار','train station','بانهوف','der','مکان','A2','Der Bahnhof ist hier.','ایستگاه قطار اینجاست.'],
 ['einkaufen','خرید کردن','to shop','آین‌کاوفِن','—','افعال','A2','Wir kaufen heute ein.','امروز خرید می‌کنیم.'],
-['brauchen','نیاز داشتن','to need','براوخِن','—','افعال','A2','Ich brauche Hilfe.','من به کمک نیاز دارم.']
+['brauchen','نیاز داشتن','to need','براوخِن','—','افعال','A2','Ich brauche Hilfe.','من به کمک نیاز دارم.'],
 ["gestern","دیروز","yesterday","گِسترن","—","زمان","A1","Gestern war ich zu Hause.","دیروز خانه بودم."],
 ["jetzt","اکنون","now","یِتست","—","قیدها","A1","Ich habe jetzt Zeit.","الان وقت دارم."],
 ["immer","همیشه","always","ایمِر","—","قیدها","A1","Er ist immer freundlich.","او همیشه مهربان است."],
@@ -213,7 +213,7 @@ const base=[
 ["die Küche","آشپزخانه","kitchen","کویخه","die","خانه","A1","Die Küche ist sauber.","آشپزخانه تمیز است."],
 ["das Bad","حمام","bathroom","بات","das","خانه","A1","Das Bad ist links.","حمام سمت چپ است."],
 ["der Supermarkt","سوپرمارکت","supermarket","زوپِرمارکت","der","خرید","A1","Der Supermarkt ist hier.","سوپرمارکت اینجاست."],
-["die Rechnung","صورت‌حساب","bill; invoice","رِشنونگ","die","خرید","A1","Die Rechnung, bitte.","صورت‌حساب لطفاً."]
+["die Rechnung","صورت‌حساب","bill; invoice","رِشنونگ","die","خرید","A1","Die Rechnung, bitte.","صورت‌حساب لطفاً."],
 ["die Farbe","رنگ","colour","فاربه","die","رنگ‌ها","A1","Blau ist meine Lieblingsfarbe.","آبی رنگ مورد علاقه من است."],
 ["rot","قرمز","red","روت","—","رنگ‌ها","A1","Das Auto ist rot.","ماشین قرمز است."],
 ["blau","آبی","blue","بلاو","—","رنگ‌ها","A1","Der Himmel ist blau.","آسمان آبی است."],
@@ -1123,7 +1123,7 @@ base.push(
   ["Hilfe!","کمک!","Help!","هیلفه","—","مکالمه","A1","Hilfe!","کمک!"],
   ["Rufen Sie bitte einen Krankenwagen!","لطفاً آمبولانس خبر کنید","Please call an ambulance!","روفِن زی بیته آینِن کرانکِن‌واگِن","—","مکالمه","A1","Rufen Sie bitte einen Krankenwagen!","لطفاً آمبولانس خبر کنید!"]
 );
-const extra=JSON.parse(localStorage.getItem('md_custom')||'[]');let words=[...base,...extra];
+const extra=JSON.parse(localStorage.getItem('md_custom')||'[]');let words=[...base,...extra].filter(w=>Array.isArray(w)&&w.length===9);
 let known=new Set(JSON.parse(localStorage.getItem('md_known')||'[]'));let idx=0,filtered=[];
 const $=id=>document.getElementById(id),fa=n=>String(n).replace(/\d/g,d=>'۰۱۲۳۴۵۶۷۸۹'[d]);
 let prefs=JSON.parse(localStorage.getItem('md_prefs')||'{}');let lang=prefs.lang||'fa';
