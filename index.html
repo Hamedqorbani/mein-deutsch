@@ -1218,10 +1218,38 @@ $('menuBtn').onclick=()=>$('sidebar').classList.toggle('open');$('themeBtn').onc
 $('levelFilter').onchange=()=>{idx=0;renderCard()};$('categoryFilter').onchange=()=>{idx=0;renderCard()};$('prevCard').onclick=()=>{if(!filtered.length)return;idx=(idx-1+filtered.length)%filtered.length;renderCard()};$('nextCard').onclick=()=>{if(!filtered.length)return;idx=(idx+1)%filtered.length;renderCard()};$('revealCard').onclick=reveal;$('knownCard').onclick=()=>{if(!filtered.length)return;known.add(filtered[idx][0]);save();counts();idx=(idx+1)%filtered.length;renderCard()};$('unknownCard').onclick=()=>{if(!filtered.length)return;idx=(idx+1)%filtered.length;renderCard()};$('speakCard').onclick=()=>{if(filtered.length)say(filtered[idx][0])};
 setupWordSuggestions();$('dictSearch').oninput=searchDict;$('languageSelect').onchange=e=>{lang=e.target.value;prefs.lang=lang;save();searchDict();renderCard();$('settingsLanguage').value=lang};
 $('dictResults').addEventListener('click',e=>{let s=e.target.closest('[data-speak]');if(s)say(s.dataset.speak);let a=e.target.closest('[data-add]');if(a){idx=Number(a.dataset.add);page('cards');renderCard()}});
-function findVocabularyMatch(q){let n=normalizeWord(q);if(!n)return null;let clean=x=>normalizeWord(x).replace(/^(der|die|das)\s+/,'');let german=w=>[w[0],clean(w[0])].some(v=>normalizeWord(v)===n);let meaning=w=>[w[1],w[2]].some(v=>normalizeWord(v)===n);let exact=words.find(w=>german(w)||meaning(w));if(exact)return exact;let partial=words.filter(w=>[w[1],w[2]].some(v=>{let m=normalizeWord(v);return m.length>=2&&(m.includes(n)||n.includes(m))}));return partial.length===1?partial[0]:null}
-function suggestCustomCard(source){let q=$(source).value.trim(),hit=findVocabularyMatch(q);if(!hit){$('newCardHint').textContent=q?'در بانک فعلی تطبیق دقیق یا یکتایی پیدا نشد؛ معنی‌های مشابه را در دیکشنری جستجو کن.':'هنگام نوشتن، واژه‌های شناخته‌شده شناسایی می‌شوند.';return}if(source==='newWord'){$('newMeaning').value=hit[1];$('newPron').value=hit[3];$('newArticle').value=hit[4]}else{$('newWord').value=hit[0];$('newPron').value=hit[3];$('newArticle').value=hit[4]}$('newCardHint').textContent='✓ پیدا شد: '+hit[0]+' · '+hit[1]+' · '+(hit[4]==='—'?'بدون آرتیکل':hit[4]);}
+function findVocabularyMatches(q){
+ let n=normalizeWord(q);if(!n)return [];
+ const bare=n.replace(/^(der|die|das)\\s+/,'');
+ const germanKey=w=>normalizeWord(w[0]).replace(/^(der|die|das)\\s+/,'');
+ const unique=list=>[...new Map(list.map(w=>[germanKey(w),w])).values()];
+ let exactGerman=unique(words.filter(w=>germanKey(w)===bare));
+ if(exactGerman.length)return exactGerman;
+ let exactMeaning=unique(words.filter(w=>[w[1],w[2]].some(v=>normalizeWord(v)===n)));
+ if(exactMeaning.length)return exactMeaning;
+ let partial=unique(words.filter(w=>[w[1],w[2]].some(v=>{let m=normalizeWord(v);return n.length>=3&&m.length>=3&&(m.includes(n)||n.includes(m))})));
+ return partial.length===1?partial:[];
+}
+function findVocabularyMatch(q){let hits=findVocabularyMatches(q);return hits.length===1?hits[0]:null}
+function suggestCustomCard(source){
+ let q=$(source).value.trim(),hits=findVocabularyMatches(q),hit=hits.length===1?hits[0]:null;
+ if(!hit){$('newCardHint').textContent=!q?'فقط واژه آلمانی یا معنی فارسی/انگلیسی را وارد کن؛ آرتیکل و ترجمه خودکار پیدا می‌شود.':hits.length>1?'چند نتیجه مشابه پیدا شد؛ واژه دقیق‌تری بنویس تا مورد اشتباه انتخاب نشود.':'در بانک A1 پیدا نشد؛ می‌توانی کارت را دستی کامل کنی.';return}
+ if(source==='newWord'){$('newMeaning').value=hit[1];$('newPron').value=hit[3];$('newArticle').value=hit[4]}
+ else{$('newWord').value=hit[0];$('newPron').value=hit[3];$('newArticle').value=hit[4]}
+ $('newCardHint').textContent='✓ شناسایی شد: '+hit[0]+' · '+hit[1]+' · '+(hit[4]==='—'?'بدون آرتیکل':hit[4]);
+}
 $('newWord').addEventListener('input',()=>suggestCustomCard('newWord'));$('newMeaning').addEventListener('input',()=>suggestCustomCard('newMeaning'));
-$('addCard').onclick=()=>{let w=$('newWord').value.trim(),m=$('newMeaning').value.trim(),hit=findVocabularyMatch(w)||findVocabularyMatch(m);if(hit){w=hit[0];m=m||hit[1];$('newArticle').value=hit[4];$('newPron').value=hit[3]}if(!w&&m){alert('این معنی در بانک پیدا نشد. برای واژه جدید، واژه آلمانی را هم وارد کن تا آرتیکل اشتباه حدس زده نشود.');return}if(!w||!m){alert('واژه آلمانی و معنی لازم است.');return}let ar=$('newArticle').value;let item=[w,m,m,$('newPron').value||'—',ar,'شخصی','A1',w+'.',m];extra.push(item);localStorage.setItem('md_custom',JSON.stringify(extra));words=[...base,...extra];$('newWord').value=$('newMeaning').value=$('newPron').value='';$('newCardHint').textContent='کارت با موفقیت اضافه شد.';counts();alert('فلش‌کارت اضافه شد.')};
+$('addCard').onclick=()=>{
+ let w=$('newWord').value.trim(),m=$('newMeaning').value.trim();
+ let hit=findVocabularyMatch(w)||findVocabularyMatch(m);
+ if(hit){w=hit[0];m=hit[1];$('newArticle').value=hit[4];$('newPron').value=hit[3]}
+ if(!w||!m){alert('واژه آلمانی و معنی لازم است.');return}
+ let ar=$('newArticle').value;
+ let item=[w,m,m,$('newPron').value||'—',ar,'شخصی','A1',w+'.',m];
+ extra.push(item);localStorage.setItem('md_custom',JSON.stringify(extra));words=[...base,...extra];
+ $('newWord').value=$('newMeaning').value=$('newPron').value='';
+ $('newCardHint').textContent='کارت با موفقیت اضافه شد.';counts();alert('فلش‌کارت اضافه شد.');
+}
 $('conjugate').onclick=conj;$('verbInput').addEventListener('keydown',e=>{if(e.key==='Enter')conj()});$('sendChat').onclick=send;$('chatInput').addEventListener('keydown',e=>{if(e.key==='Enter')send()});
 $('settingsLanguage').onchange=e=>{$('languageSelect').value=e.target.value;$('languageSelect').dispatchEvent(new Event('change'))};$('resetProgress').onclick=()=>{if(confirm('پیشرفت و تنظیمات ذخیره‌شده این دستگاه پاک شود؟')){localStorage.removeItem('md_known');known.clear();counts();alert('پیشرفت پاک شد.')}};
 $('settingsLevel').onchange=e=>{$('chatLevel').value=e.target.value};
