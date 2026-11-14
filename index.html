@@ -1259,7 +1259,7 @@ $('addCard').onclick=()=>{
  if(!w||!m){alert('واژه آلمانی و معنی لازم است.');return}
  let ar=$('newArticle').value;
  let item=[w,m,m,$('newPron').value||'—',ar,'شخصی','A1',w+'.',m];
- extra.push(item);localStorage.setItem('md_custom',JSON.stringify(extra));words=[...base,...extra];
+ extra.push(item);localStorage.setItem('md_custom',JSON.stringify(extra));words=uniqueCards([...base,...extra]);setupCardCategories();idx=0;renderCard();
  $('newWord').value=$('newMeaning').value=$('newPron').value='';
  $('newCardHint').textContent='کارت با موفقیت اضافه شد.';counts();alert('فلش‌کارت اضافه شد.');
 }
