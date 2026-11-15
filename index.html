@@ -90,7 +90,11 @@ header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 9
 <section id="page-home" class="page"><div class="welcome"><div class="muted tiny">WILLKOMMEN · خوش آمدی</div><h1>آلمانی رو قدم‌به‌قدم یاد بگیر.</h1><p>تمرین کوتاه، معنی روشن و پیشرفت ماندگار.</p><div class="stats"><div class="stat"><b id="knownCount">۰</b><span>واژه‌های بلدشده</span></div><div class="stat"><b id="totalCount">۰</b><span>واژه‌های A1 و کارت‌های شخصی</span></div><div class="stat"><b id="streakCount">۰</b><span>تمرین‌های امروز</span></div></div></div><div class="panel"><h2 class="section-title">از کجا شروع کنیم؟</h2><div class="grid2"><button class="result" data-go="cards"><strong>▣ فلش‌کارت A1</strong><small>لغت، آرتیکل و مثال</small></button><button class="result" data-go="dictionary"><strong>⌕ جستجوی واژه</strong><small>معنی و تلفظ</small></button><button class="result" data-go="verbs"><strong>↔ صرف فعل</strong><small>شش ضمیر آلمانی</small></button>
 <button class="result" data-go="grammar"><strong>文 گرامر A1</strong><small>درس کوتاه و آزمون</small></button><button class="result" data-go="chat"><strong>✦ تمرین با معلم</strong><small>گفت‌وگوی آموزشی</small></button></div></div><div class="panel"><h2 class="section-title">نکته امروز</h2><div class="word">Wie geht's?</div><p class="muted">یعنی «حالت چطوره؟» پاسخ ساده: <b dir="ltr">Es geht mir gut.</b> — حالم خوبه.</p></div></section>
 <section id="page-cards" class="page hidden"><div class="panel"><div class="row between"><div><h2 class="section-title">فلش‌کارت‌های آلمانی</h2><div class="muted tiny">آرتیکل‌ها رنگی هستند: der آبی، die قرمز، das سبز، جمع زرد</div></div><span class="chip" id="cardCounter">۱ / ۱</span></div><div class="field" style="margin:10px 0"><label for="cardSearch">جستجو در فلش‌کارت‌ها</label><input id="cardSearch" placeholder="واژه آلمانی، معنی فارسی یا انگلیسی..." autocomplete="off"></div><div class="row"><select id="levelFilter" style="max-width:130px"><option value="A1">سطح A1 · فعال</option><option value="A2">سطح A2 · به‌زودی</option><option value="B1">سطح B1 · به‌زودی</option><option value="B2">سطح B2 · به‌زودی</option><option value="C1">سطح C1 · به‌زودی</option><option value="C2">سطح C2 · به‌زودی</option></select><select id="categoryFilter" style="max-width:180px"><option value="all">همه دسته‌ها</option></select></div><div class="cardword"><div><div id="cardLessonTag" class="lesson-tag">درس ۱ · Super!</div><div id="cardArticle" class="article der"></div><div id="cardWord" class="word">das Buch</div><div id="cardPron" class="muted">بوخ</div><div id="cardMeaning" class="meaning hidden">کتاب</div><div id="cardExample" class="example hidden">Das ist ein Buch.</div><div id="cardExampleMeaning" class="muted tiny hidden">این یک کتاب است.</div></div></div><div class="flash-nav"><button class="btn" id="prevCard">← قبلی</button><button class="btn primary" id="revealCard">نمایش معنی</button><button class="btn" id="nextCard">بعدی →</button></div><div class="flash-actions"><button class="btn" id="unknownCard">هنوز بلد نیستم</button><button class="btn primary" id="knownCard">✓ بلدم</button><button class="btn" id="speakCard">🔊 شنیدن</button></div></div><div class="panel add-card-panel"><h3 class="section-title">＋ افزودن فلش‌کارت شخصی</h3><p class="muted tiny">فقط واژه یا معنی را بنویس؛ اگر در واژگان برنامه باشد، ترجمه و آرتیکل خودکار تکمیل می‌شوند.</p><div class="field"><label>واژه آلمانی (اختیاری)</label><input id="newWord" placeholder="مثلاً Apfel یا der Apfel" dir="auto" autocomplete="off"></div><div class="field"><label>معنی فارسی یا انگلیسی (اختیاری)</label><input id="newMeaning" placeholder="مثلاً سیب یا apple" autocomplete="off"></div><div class="grid2"><div class="field"><label>تلفظ فارسی</label><input id="newPron" placeholder="خودکار یا دستی"></div><div class="field"><label>آرتیکل</label><select id="newArticle"><option>der</option><option>die</option><option>das</option><option>جمع</option><option>—</option></select></div></div><div id="newCardHint" class="muted tiny" aria-live="polite">هنگام نوشتن، واژه‌های شناخته‌شده شناسایی می‌شوند.</div><button class="btn primary" id="addCard" style="margin-top:12px;width:100%">افزودن فلش‌کارت</button></div></section>
-<section id="page-dictionary" class="page hidden"><div class="panel"><h2 class="section-title">دیکشنری و جستجوی سراسری</h2><div class="row"><div class="field search" style="flex:1"><label>واژه آلمانی یا معنی را جستجو کن</label><input id="dictSearch" placeholder="مثلاً Haus یا خانه"></div><div class="field"><label>ترجمه به</label><select id="languageSelect"><option value="fa">فارسی</option><option value="en">English</option></select></div></div><div id="dictResults" style="margin-top:14px"></div></div></section>
+<section id="page-dictionary" class="page hidden">
+<div class="panel"><h2 class="section-title">دیکشنری و جستجوی سراسری</h2><div class="row"><div class="field search" style="flex:1"><label>واژه آلمانی یا معنی را جستجو کن</label><input id="dictSearch" placeholder="مثلاً Haus یا خانه"></div><div class="field"><label>ترجمه به</label><select id="languageSelect"><option value="fa">فارسی</option><option value="en">English</option><option value="de">Deutsch</option></select></div></div><div id="dictResults" style="margin-top:14px"></div></div>
+<div class="panel"><h2 class="section-title">ترجمه جمله</h2><p class="muted tiny">جمله یا عبارت کامل را وارد کن؛ ترجمه آنلاین انجام می‌شود.</p><textarea id="sentenceInput" rows="3" placeholder="مثلاً: Ich möchte Deutsch lernen." dir="auto"></textarea><div class="row" style="margin-top:9px;flex-wrap:wrap"><div class="field"><label>زبان متن</label><select id="sentenceSource"><option value="de">آلمانی</option><option value="auto">تشخیص خودکار</option><option value="fa">فارسی</option><option value="en">انگلیسی</option></select></div><div class="field"><label>ترجمه به</label><select id="sentenceTarget"><option value="fa">فارسی</option><option value="de">آلمانی</option><option value="en">انگلیسی</option></select></div><button class="btn primary" id="translateSentence" type="button">ترجمه جمله</button></div><div id="sentenceOutput" class="result" style="margin-top:12px" aria-live="polite">ترجمه جمله اینجا نمایش داده می‌شود.</div></div>
+<div class="panel"><h2 class="section-title">ترجمه متن داخل عکس</h2><p class="muted tiny">عکس را بارگذاری کن؛ متن آن شناسایی و ترجمه می‌شود. برای تشخیص دقیق‌تر، عکس واضح و مستقیم باشد.</p><label class="btn" for="imageTranslateFile" style="display:inline-flex;align-items:center;gap:8px">▧ انتخاب عکس</label><input id="imageTranslateFile" type="file" accept="image/*" capture="environment" hidden><div id="imageTranslatePreview" style="margin-top:12px"></div><div class="row" style="margin-top:10px;flex-wrap:wrap"><div class="field"><label>زبان متن عکس</label><select id="imageSource"><option value="deu">آلمانی</option><option value="eng">انگلیسی</option><option value="fas">فارسی</option></select></div><div class="field"><label>ترجمه به</label><select id="imageTarget"><option value="fa">فارسی</option><option value="de">آلمانی</option><option value="en">انگلیسی</option></select></div><button class="btn primary" id="translateImage" type="button" disabled>شناسایی و ترجمه عکس</button></div><div id="imageTranslateOutput" class="result" style="margin-top:12px" aria-live="polite">پس از انتخاب عکس، متن شناسایی‌شده و ترجمه آن نمایش داده می‌شود.</div></div>
+</section>
 <section id="page-verbs" class="page hidden"><div class="panel"><h2 class="section-title">صرف فعل آلمانی</h2><p class="muted tiny">فعل را به شکل مصدر وارد کن؛ مثل machen یا sein.</p><div class="grid2"><div class="field"><label>فعل آلمانی</label><input id="verbInput" placeholder="machen" dir="ltr"></div><div class="field"><label>معنی فارسی یا انگلیسی</label><input id="verbMeaning" placeholder="انجام دادن"></div></div><button class="btn primary" id="conjugate" style="margin-top:12px">صرف فعل</button><div id="verbOutput" style="margin-top:16px"></div></div></section>
 <section id="page-grammar" class="page hidden"><div class="panel"><h2 class="section-title">گرامر آلمانی · سطح A1</h2><p class="muted tiny">درس‌ها کوتاه و مرحله‌ای هستند. بعد از هر درس یک سؤال تمرین کن.</p><div class="field"><label>انتخاب درس</label><select id="grammarSelect"></select></div><div id="grammarContent" class="result" style="margin-top:14px"></div></div><div class="panel"><div class="row between"><h3 class="section-title">تمرین همین درس</h3><span class="chip" id="quizProgress">سؤال ۱</span></div><div id="quizQuestion" style="font-weight:700;margin:12px 0"></div><div id="quizOptions" class="grid2"></div><div id="quizFeedback" class="muted tiny" style="margin-top:12px"></div><button class="btn" id="nextQuiz" style="margin-top:12px">سؤال بعدی</button></div></section>
 <section id="page-book-exercises" class="page hidden">
@@ -2354,6 +2358,58 @@ function reveal(){['cardMeaning','cardExample','cardExampleMeaning'].forEach(id=
 function dictEntry(w){let meaning=lang==='fa'?w[1]:lang==='de'?w[7]:w[2];let meaningLabel=lang==='de'?'Beispielsatz (Deutsch)': 'معنی';return '<div class="result"><div class="row between"><strong>'+esc(w[0])+'</strong><button class="btn small" data-speak="'+esc(w[0])+'">🔊</button></div><div><small class="muted">'+meaningLabel+'</small><div dir="'+(lang==='de'?'ltr':'auto')+'">'+esc(meaning)+'</div></div><small>تلفظ: '+esc(w[3])+' · '+esc(w[4]==='جمع'?'die (جمع)':w[4])+' · '+esc(w[6])+'</small><div class="lesson-tag">'+esc(lessonForWord(w))+' · Starten wir! A1</div><div class="muted tiny" dir="ltr">'+esc(w[7])+' — '+esc(w[8])+'</div><button class="btn small" data-add="'+words.indexOf(w)+'" style="margin-top:7px">افزودن به کارت‌ها</button></div>'}
 function normalizeWord(s){return String(s||'').toLocaleLowerCase('de-DE').normalize('NFKC').replace(/[\u064B-\u065F\u0670]/g,'').replace(/[\u200c\u200f\u202a-\u202e]/g,'').replace(/[يى]/g,'ی').replace(/ك/g,'ک').replace(/[\s\u00a0]+/g,' ').replace(/^[\s،,.!?؛:]+|[\s،,.!?؛:]+$/g,'').trim()}
 function searchMatches(w,q){let n=normalizeWord(q);return [w[0],w[1],w[2],w[3],w[7],w[8]].some(v=>normalizeWord(v).includes(n))}
+
+async function translateOnline(textValue,source,target){
+ const params=new URLSearchParams({q:textValue,langpair:source+'|'+target});
+ const response=await fetch('https://api.mymemory.translated.net/get?'+params.toString());
+ if(!response.ok)throw new Error('سرویس ترجمه پاسخ نداد.');
+ const data=await response.json();
+ if(!data.responseData||!data.responseData.translatedText)throw new Error('ترجمه‌ای دریافت نشد.');
+ if(Number(data.responseStatus)>=400)throw new Error(data.responseDetails||'خطا در ترجمه.');
+ return data.responseData.translatedText;
+}
+async function runSentenceTranslation(){
+ const input=$('sentenceInput').value.trim(),out=$('sentenceOutput');
+ if(!input){out.textContent='ابتدا جمله را وارد کن.';return}
+ const source=$('sentenceSource').value,target=$('sentenceTarget').value;
+ out.textContent='در حال ترجمه…';
+ try{const result=await translateOnline(input,source,target);out.innerHTML='<b>ترجمه:</b><p dir="auto">'+esc(result)+'</p>'}
+ catch(error){out.textContent='ترجمه انجام نشد: '+error.message+' اتصال اینترنت را بررسی کن.'}
+}
+let imageTranslationUrl='';
+$('imageTranslateFile').addEventListener('change',e=>{
+ const file=e.target.files&&e.target.files[0],preview=$('imageTranslatePreview'),button=$('translateImage');
+ if(imageTranslationUrl)URL.revokeObjectURL(imageTranslationUrl);
+ imageTranslationUrl='';
+ if(!file){preview.textContent='';button.disabled=true;return}
+ if(!file.type.startsWith('image/')){preview.textContent='لطفاً یک فایل تصویری انتخاب کن.';button.disabled=true;return}
+ imageTranslationUrl=URL.createObjectURL(file);
+ preview.innerHTML='<img src="'+imageTranslationUrl+'" alt="پیش‌نمایش عکس انتخاب‌شده" style="display:block;max-width:100%;max-height:320px;object-fit:contain;border-radius:14px;border:1px solid var(--line)">';
+ button.disabled=false;
+});
+async function loadOCR(){
+ if(window.Tesseract)return window.Tesseract;
+ await new Promise((resolve,reject)=>{
+  const script=document.createElement('script');script.src='https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js';script.onload=resolve;script.onerror=()=>reject(new Error('بارگذاری موتور تشخیص متن ناموفق بود.'));document.head.appendChild(script);
+ });
+ return window.Tesseract;
+}
+async function runImageTranslation(){
+ const file=$('imageTranslateFile').files&&$('imageTranslateFile').files[0],out=$('imageTranslateOutput');
+ if(!file){out.textContent='ابتدا عکس را انتخاب کن.';return}
+ const button=$('translateImage');button.disabled=true;out.textContent='در حال آماده‌سازی تشخیص متن…';
+ try{
+  const engine=await loadOCR();
+  const result=await engine.recognize(file,$('imageSource').value,{logger:m=>{if(m.status==='recognizing text')out.textContent='در حال خواندن متن عکس… '+Math.round((m.progress||0)*100)+'٪'}});
+  const extracted=(result.data.text||'').trim();
+  if(!extracted)throw new Error('متنی در عکس پیدا نشد؛ عکس واضح‌تری انتخاب کن.');
+  out.innerHTML='<b>متن شناسایی‌شده:</b><p dir="auto">'+esc(extracted)+'</p><div class="muted tiny">در حال ترجمه متن…</div>';
+  const translated=await translateOnline(extracted,$('imageSource').value==='deu'?'de':$('imageSource').value==='fas'?'fa':'en',$('imageTarget').value);
+  out.innerHTML='<b>متن شناسایی‌شده:</b><p dir="auto">'+esc(extracted)+'</p><hr style="border-color:var(--line)"><b>ترجمه:</b><p dir="auto">'+esc(translated)+'</p>';
+ }catch(error){out.textContent='عملیات کامل نشد: '+error.message+' برای ترجمه آنلاین اتصال اینترنت لازم است.'}
+ finally{button.disabled=false}
+}
+
 function searchDict(){let q=($('dictSearch')?.value||'').trim();let res=words.filter(w=>w[6]==='A1'&&(!q||searchMatches(w,q)));$('dictResults').innerHTML=res.length?'<div class="grid2">'+res.slice(0,50).map(dictEntry).join('')+'</div>':'<div class="empty">واژه‌ای پیدا نشد.</div>'}
 function setupWordSuggestions(){
  let dl=document.getElementById('wordSuggestions');
@@ -2492,7 +2548,7 @@ function send(){let q=$('chatInput').value.trim();if(!q)return;let log=$('chatLo
 document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>page(b.dataset.page)));document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>page(b.dataset.go)));
 $('menuBtn').onclick=()=>$('sidebar').classList.toggle('open');$('themeBtn').onclick=()=>setTheme(prefs.theme==='light'?'dark':'light');$('themeSelect').onchange=e=>setTheme(e.target.value);
 $('levelFilter').onchange=()=>{idx=0;renderCard()};$('categoryFilter').onchange=()=>{idx=0;renderCard()};$('cardSearch').oninput=()=>{idx=0;renderCard()};$('prevCard').onclick=()=>{if(!filtered.length)return;idx=(idx-1+filtered.length)%filtered.length;renderCard()};$('nextCard').onclick=()=>{if(!filtered.length)return;idx=(idx+1)%filtered.length;renderCard()};$('revealCard').onclick=reveal;$('knownCard').onclick=()=>{if(!filtered.length)return;known.add(filtered[idx][0]);save();counts();idx=(idx+1)%filtered.length;renderCard()};$('unknownCard').onclick=()=>{if(!filtered.length)return;idx=(idx+1)%filtered.length;renderCard()};$('speakCard').onclick=()=>{if(filtered.length)say(filtered[idx][0])};
-setupWordSuggestions();$('dictSearch').oninput=searchDict;$('languageSelect').onchange=e=>{lang=e.target.value;prefs.lang=lang;save();searchDict();renderCard();$('settingsLanguage').value=lang};
+setupWordSuggestions();$('dictSearch').oninput=searchDict;$('translateSentence').onclick=runSentenceTranslation;$('translateImage').onclick=runImageTranslation;$('languageSelect').onchange=e=>{lang=e.target.value;prefs.lang=lang;save();searchDict();renderCard();$('settingsLanguage').value=lang};
 $('dictResults').addEventListener('click',e=>{let s=e.target.closest('[data-speak]');if(s)say(s.dataset.speak);let a=e.target.closest('[data-add]');if(a){idx=Number(a.dataset.add);page('cards');renderCard()}});
 function findVocabularyMatches(q){
  let n=normalizeWord(q);if(!n)return [];
