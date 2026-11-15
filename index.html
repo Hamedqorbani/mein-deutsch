@@ -88,7 +88,7 @@ header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 9
 #meinSplash .splash-rule{width:46px;height:4px;border-radius:9px;background:linear-gradient(90deg,#e6a98e,#b7a8d9,#80c8b4);margin-top:3px}
 @keyframes splashIn{from{opacity:0;transform:translateY(12px) scale(.96)}to{opacity:1;transform:translateY(-3vh) scale(1)}}
 @media(prefers-reduced-motion:reduce){#meinSplash .splash-inner{animation:none}#meinSplash{transition:none}}
-</style>
+\n/* Searchable verb library */\n.verb-library{margin-top:22px;padding-top:16px;border-top:1px solid var(--line)}.verb-library h3{margin:0;font-size:17px}.verb-library-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:12px;max-height:430px;overflow:auto;padding:2px;scrollbar-width:thin}.verb-entry{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;padding:10px 11px;text-align:right;background:var(--bg);border:1px solid var(--line);border-radius:12px;color:var(--text)}.verb-entry:active,.verb-entry:hover{border-color:var(--accent);background:var(--panel2)}.verb-entry strong{direction:ltr;font-size:15px}.verb-entry small{display:block;color:var(--muted);font-size:11px}.verb-entry em{font-style:normal;font-size:10px;color:var(--accent);white-space:nowrap}.verb-empty{grid-column:1/-1;padding:18px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:12px}@media(max-width:420px){.verb-library-list{grid-template-columns:1fr}}\n</style>
 </head>
 <body>
 <div id="meinSplash" role="status" aria-label="Mein Deutsch">
@@ -138,7 +138,7 @@ header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 9
 <div class="panel translate-tool" id="sentenceTranslatePanel"><h2 class="section-title">💬 متن</h2><p class="muted tiny">جمله را بنویس و ترجمه کن.</p><textarea id="sentenceInput" rows="3" placeholder="مثلاً: Ich möchte Deutsch lernen." dir="auto"></textarea><div class="row" style="margin-top:9px;flex-wrap:wrap"><div class="field"><label>زبان متن</label><select id="sentenceSource"><option value="de">آلمانی</option><option value="auto">تشخیص خودکار</option><option value="fa">فارسی</option><option value="en">انگلیسی</option></select></div><div class="field"><label>ترجمه به</label><select id="sentenceTarget"><option value="fa">فارسی</option><option value="de">آلمانی</option><option value="en">انگلیسی</option></select></div><button class="btn primary" id="translateSentence" type="button">ترجمه جمله</button></div><div id="sentenceOutput" class="result" style="margin-top:12px" aria-live="polite">ترجمه جمله اینجا نمایش داده می‌شود.</div></div>
 <div class="panel translate-tool hidden" id="imageTranslatePanel"><h2 class="section-title">📷 عکس</h2><p class="muted tiny">عکس را انتخاب کن تا متن آن خوانده و ترجمه شود.</p><label class="btn" for="imageTranslateFile" style="display:inline-flex;align-items:center;gap:8px">▧ انتخاب عکس</label><input id="imageTranslateFile" type="file" accept="image/*" capture="environment" hidden><div id="imageTranslatePreview" style="margin-top:12px"></div><div class="row" style="margin-top:10px;flex-wrap:wrap"><div class="field"><label>زبان متن عکس</label><select id="imageSource"><option value="deu">آلمانی</option><option value="eng">انگلیسی</option><option value="fas">فارسی</option></select></div><div class="field"><label>ترجمه به</label><select id="imageTarget"><option value="fa">فارسی</option><option value="de">آلمانی</option><option value="en">انگلیسی</option></select></div><button class="btn primary" id="translateImage" type="button" disabled>شناسایی و ترجمه عکس</button></div><div id="imageTranslateOutput" class="result" style="margin-top:12px" aria-live="polite">پس از انتخاب عکس، متن شناسایی‌شده و ترجمه آن نمایش داده می‌شود.</div></div>
 </section>
-<section id="page-verbs" class="page hidden"><div class="panel"><h2 class="section-title">صرف فعل آلمانی</h2><p class="muted tiny">فعل را به شکل مصدر وارد کن؛ مثل machen یا sein.</p><div class="grid2"><div class="field"><label>فعل آلمانی</label><input id="verbInput" placeholder="machen" dir="ltr"></div><div class="field"><label>معنی فارسی یا انگلیسی</label><input id="verbMeaning" placeholder="انجام دادن"></div></div><button class="btn primary" id="conjugate" style="margin-top:12px">صرف فعل</button><div id="verbOutput" style="margin-top:16px"></div></div></section>
+<section id="page-verbs" class="page hidden"><div class="panel"><h2 class="section-title">صرف فعل آلمانی</h2><p class="muted tiny">فعل را به شکل مصدر وارد کن؛ مثل machen یا sein.</p><div class="grid2"><div class="field"><label>فعل آلمانی</label><input id="verbInput" placeholder="machen" dir="ltr"></div><div class="field"><label>معنی فارسی یا انگلیسی</label><input id="verbMeaning" placeholder="انجام دادن"></div></div><button class="btn primary" id="conjugate" style="margin-top:12px">صرف فعل</button><div id="verbOutput" style="margin-top:16px"></div><div class="verb-library"><div class="row between"><h3>کتابخانه فعل‌ها</h3><span class="chip" id="verbLibraryCount">— فعل</span></div><p class="muted tiny">فعل را جست‌وجو کن یا از فهرست انتخاب کن؛ با انتخاب هر فعل، صرف آن نمایش داده می‌شود.</p><div class="grid2"><input id="verbLibrarySearch" type="search" placeholder="جست‌وجوی فعل یا معنی…" autocomplete="off"><select id="verbLibraryFilter" aria-label="دسته‌بندی فعل‌ها"><option value="all">همه فعل‌ها</option><option value="vowel">تغییر مصوت در حال</option><option value="modal">افعال مُدال</option><option value="separable">افعال جداشدنی</option><option value="special">افعال ویژه</option><option value="strong">قوی؛ بدون تغییر ریشه در حال</option></select></div><div id="verbLibraryList" class="verb-library-list" aria-live="polite"></div></div></div></section>
 <section id="page-grammar" class="page hidden"><div class="panel"><h2 class="section-title">گرامر آلمانی · سطح A1</h2><p class="muted tiny">درس‌ها کوتاه و مرحله‌ای هستند. بعد از هر درس یک سؤال تمرین کن.</p><div class="field"><label>انتخاب درس</label><select id="grammarSelect"></select></div><div id="grammarContent" class="result" style="margin-top:14px"></div></div><div class="panel"><div class="row between"><h3 class="section-title">تمرین همین درس</h3><span class="chip" id="quizProgress">سؤال ۱</span></div><div id="quizQuestion" style="font-weight:700;margin:12px 0"></div><div id="quizOptions" class="grid2"></div><div id="quizFeedback" class="muted tiny" style="margin-top:12px"></div><button class="btn" id="nextQuiz" style="margin-top:12px">سؤال بعدی</button></div></section>
 <section id="page-book-exercises" class="page hidden">
 <div class="welcome"><div class="muted tiny">A1 · ÜBUNGEN</div><h1>تمرین‌های کتابی</h1><p>تمرین آرتیکل‌ها با رنگ، میوه و سبزیجات، دسته‌بندی خوراکی‌ها و اعداد آلمانی.</p><div class="chips" style="margin-top:12px"><span class="chip"><span class="der">●</span> der آبی</span><span class="chip"><span class="die">●</span> die قرمز</span><span class="chip"><span class="das">●</span> das سبز</span></div></div>
@@ -2647,7 +2647,58 @@ setupCardCategories();idx=0;renderCard();
  $('newWord').value=$('newMeaning').value=$('newPron').value='';
  $('newCardHint').textContent='کارت با موفقیت اضافه شد.';counts();alert('فلش‌کارت اضافه شد.');
 }
-$('conjugate').onclick=conj;$('verbInput').addEventListener('keydown',e=>{if(e.key==='Enter')conj()});$('sendChat').onclick=send;$('chatInput').addEventListener('keydown',e=>{if(e.key==='Enter')send()});
+
+const verbMeanings={
+ sein:'بودن',haben:'داشتن',werden:'شدن',gehen:'رفتن',kommen:'آمدن',fahren:'رفتن با وسیله / رانندگی کردن',
+ sprechen:'صحبت کردن',lesen:'خواندن',sehen:'دیدن',essen:'خوردن',nehmen:'گرفتن',geben:'دادن',
+ schlafen:'خوابیدن',laufen:'دویدن / راه رفتن',tragen:'حمل کردن / پوشیدن',waschen:'شستن',helfen:'کمک کردن',
+ treffen:'ملاقات کردن',vergessen:'فراموش کردن',empfehlen:'توصیه کردن',gefallen:'پسند بودن',fallen:'افتادن',
+ halten:'نگه داشتن',lassen:'گذاشتن / اجازه دادن',fangen:'گرفتن',werfen:'پرتاب کردن',brechen:'شکستن',
+ stehlen:'دزدیدن',sterben:'مردن',wachsen:'رشد کردن',raten:'حدس زدن / توصیه کردن',laden:'بارگیری کردن',
+ stoßen:'هل دادن / برخورد کردن',treten:'قدم گذاشتن / لگد زدن',bitten:'درخواست کردن',sitzen:'نشستن',
+ liegen:'قرار داشتن / دراز کشیدن',stehen:'ایستادن',tun:'انجام دادن',wissen:'دانستن',heißen:'نام داشتن',
+ können:'توانستن',müssen:'مجبور بودن',wollen:'خواستن',dürfen:'اجازه داشتن',sollen:'باید',mögen:'دوست داشتن',
+ möchten:'مایل بودن',bleiben:'ماندن',denken:'فکر کردن',kennen:'شناختن',rennen:'دویدن',singen:'آواز خواندن',
+ springen:'پریدن',schwimmen:'شنا کردن',rufen:'صدا زدن',verlieren:'گم کردن / باختن',gewinnen:'برنده شدن',
+ anfangen:'شروع کردن',aufgeben:'تسلیم شدن / واگذار کردن',anrufen:'تلفن زدن',einladen:'دعوت کردن',
+ mitnehmen:'همراه بردن',teilnehmen:'شرکت کردن',einschlafen:'به خواب رفتن',aussehen:'به نظر رسیدن',
+ fernsehen:'تلویزیون تماشا کردن',verstehen:'فهمیدن',schreiben:'نوشتن',trinken:'نوشیدن',finden:'پیدا کردن',
+ ziehen:'کشیدن / نقل مکان کردن',anziehen:'پوشیدن',ausziehen:'درآوردن لباس / نقل مکان کردن',
+ einsteigen:'سوار شدن',umsteigen:'خط عوض کردن',schneiden:'بریدن',schließen:'بستن',fliegen:'پرواز کردن'
+};
+const modalVerbs=new Set(['können','müssen','wollen','dürfen','sollen','mögen','möchten']);
+const specialVerbs=new Set(['sein','haben','werden','wissen','tun','heißen']);
+const separableVerbs=new Set(Object.keys(irregular).filter(k=>irregular[k].some(x=>String(x).includes(' '))));
+function verbCategory(v){
+ if(modalVerbs.has(v))return 'modal';
+ if(specialVerbs.has(v))return 'special';
+ if(separableVerbs.has(v))return 'separable';
+ const f=irregular[v]||[];
+ const stem=x=>String(x||'').split(' ')[0].replace(/(est|st|et|t|e)$/,'');
+ const base=v.replace(/^(zurück|vor|nach|weg|mit|teil|ein|aus|an|auf|ab|um|fern|zu)/,'').replace(/en$/,'');
+ if(f.length===6&&(stem(f[1])!==base||stem(f[2])!==base))return 'vowel';
+ return 'strong';
+}
+const verbCategoryLabels={modal:'مُدال',special:'ویژه',separable:'جداشدنی',vowel:'تغییر مصوت',strong:'قوی در گذشته'};
+function renderVerbLibrary(){
+ const host=$('verbLibraryList');if(!host)return;
+ const query=($('verbLibrarySearch').value||'').trim().toLowerCase();
+ const filter=$('verbLibraryFilter').value;
+ const entries=Object.keys(irregular).sort((a,b)=>a.localeCompare(b,'de'));
+ const visible=entries.filter(v=>{
+  const category=verbCategory(v),meaning=verbMeanings[v]||'';
+  return (filter==='all'||category===filter)&&(!query||v.toLowerCase().includes(query)||meaning.toLowerCase().includes(query));
+ });
+ $('verbLibraryCount').textContent=visible.length+' / '+entries.length+' فعل';
+ host.innerHTML=visible.length?visible.map(v=>'<button type="button" class="verb-entry" data-verb="'+esc(v)+'"><span><strong>'+esc(v)+'</strong><small>'+esc(verbMeanings[v]||'معنی در حال تکمیل')+'</small></span><em>'+verbCategoryLabels[verbCategory(v)]+'</em></button>').join(''):'<div class="verb-empty">فعلی پیدا نشد. املای آلمانی یا معنی فارسی را بررسی کن.</div>';
+ host.querySelectorAll('[data-verb]').forEach(btn=>btn.addEventListener('click',()=>{
+  $('verbInput').value=btn.dataset.verb;$('verbMeaning').value=verbMeanings[btn.dataset.verb]||'';
+  conj();$('verbOutput').scrollIntoView({behavior:'smooth',block:'nearest'});
+ }));
+}
+$('verbLibrarySearch').addEventListener('input',renderVerbLibrary);
+$('verbLibraryFilter').addEventListener('change',renderVerbLibrary);
+\n$('conjugate').onclick=conj;\nrenderVerbLibrary();$('verbInput').addEventListener('keydown',e=>{if(e.key==='Enter')conj()});$('sendChat').onclick=send;$('chatInput').addEventListener('keydown',e=>{if(e.key==='Enter')send()});
 $('interfaceLanguage').value=uiLang;$('interfaceLanguage').onchange=e=>{uiLang=e.target.value;prefs.uiLang=uiLang;save();applyInterfaceLanguage()};$('settingsLanguage').onchange=e=>{$('languageSelect').value=e.target.value;$('languageSelect').dispatchEvent(new Event('change'))};$('resetProgress').onclick=()=>{if(confirm('پیشرفت و تنظیمات ذخیره‌شده این دستگاه پاک شود؟')){localStorage.removeItem('md_known');known.clear();counts();alert('پیشرفت پاک شد.')}};
 $('settingsLevel').onchange=e=>{$('chatLevel').value=e.target.value};
 function makeBackup(){
