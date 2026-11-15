@@ -90,12 +90,15 @@ header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 9
 <body>
 <div id="meinSplash" role="status" aria-label="Mein Deutsch">
   <div class="splash-inner">
-    <svg class="splash-mark" viewBox="0 0 120 120" role="img" aria-label="نشان Mein Deutsch">
-      <defs><linearGradient id="mdMark" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8ce0cb"/><stop offset="1" stop-color="#42ad9f"/></linearGradient></defs>
-      <rect x="5" y="5" width="110" height="110" rx="31" fill="#20394b" stroke="#527181" stroke-width="1.5"/>
-      <path d="M27 79V39q0-5 5-5h7q4 0 6 4l15 24 15-24q2-4 6-4h7q5 0 5 5v40H77V55L64 75q-2 3-5 3t-5-3L41 55v24z" fill="url(#mdMark)"/>
-      <path d="M82 88h17l9 8V79" fill="none" stroke="#e7c98b" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-      <circle cx="89" cy="47" r="3" fill="#e7c98b"/><circle cx="99" cy="47" r="3" fill="#e7c98b"/>
+    <svg class="splash-mark" viewBox="0 0 120 120" role="img" aria-label="نشان مینیمال حرف M برای Mein Deutsch">
+      <defs>
+        <linearGradient id="mdTile" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#263f50"/><stop offset="1" stop-color="#172a39"/></linearGradient>
+        <linearGradient id="mdStroke" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a2ead7"/><stop offset="1" stop-color="#56bba9"/></linearGradient>
+      </defs>
+      <rect x="4" y="4" width="112" height="112" rx="34" fill="url(#mdTile)" stroke="#526c78" stroke-width="1.4"/>
+      <path d="M25 82V43c0-7 5-11 11-11 5 0 8 3 11 8l13 21 13-21c3-5 6-8 11-8 6 0 11 4 11 11v39" fill="none" stroke="url(#mdStroke)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M79 91h17" fill="none" stroke="#e5c88e" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="99" cy="27" r="4" fill="#e5c88e"/>
     </svg>
     <div class="splash-name">Mein Deutsch</div>
     <div class="splash-tag">DEIN WEG ZUM DEUTSCH</div>
@@ -103,7 +106,7 @@ header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 9
   </div>
 </div>
 
-<header><button class="iconbtn" id="menuBtn" aria-label="باز کردن منو">☰</button><div class="brand"><div class="logo">م</div><div><strong>Mein Deutsch</strong><small>آلمانی من · یادگیری ساده و پیوسته</small></div></div><button class="iconbtn" id="themeBtn" title="تغییر تم">◐</button></header>
+<header><button class="iconbtn" id="menuBtn" aria-label="باز کردن منو">☰</button><div class="brand"><div class="logo"><svg viewBox="0 0 120 120" width="30" height="30" aria-hidden="true"><path d="M25 82V43c0-7 5-11 11-11 5 0 8 3 11 8l13 21 13-21c3-5 6-8 11-8 6 0 11 4 11 11v39" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><circle cx="99" cy="27" r="5" fill="#d5a95d"/></svg></div><div><strong>Mein Deutsch</strong><small>آلمانی من · یادگیری ساده و پیوسته</small></div></div><button class="iconbtn" id="themeBtn" title="تغییر تم">◐</button></header>
 <div class="shell">
 <aside class="sidebar" id="sidebar" aria-label="منوی اصلی"><div class="sidebar-head"><div class="sidebar-brand-mark">DE</div><div class="sidebar-brand-copy"><span class="sidebar-kicker">MEIN DEUTSCH</span><span class="sidebar-caption">مسیر یادگیری آلمانی</span></div></div><div class="sidebar-level-card"><div class="sidebar-level-top"><span class="sidebar-level-label">سطح فعلی</span><span class="sidebar-level-status">در حال یادگیری</span></div><div class="sidebar-level-main"><strong>A1</strong><div><b>مبتدی</b><small>پایه‌سازی قدم‌به‌قدم</small></div><span class="sidebar-level-mark">✓</span></div><div class="sidebar-level-track"><i></i></div></div><nav class="nav" id="nav">
 <div class="nav-group"><div class="nav-heading"><span>شروع</span><span class="nav-heading-line"></span></div>
