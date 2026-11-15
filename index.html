@@ -2384,7 +2384,7 @@ $('imageTranslateFile').addEventListener('change',e=>{
  if(!file){preview.textContent='';button.disabled=true;return}
  if(!file.type.startsWith('image/')){preview.textContent='لطفاً یک فایل تصویری انتخاب کن.';button.disabled=true;return}
  imageTranslationUrl=URL.createObjectURL(file);
- preview.innerHTML='<img src="'+imageTranslationUrl+'" alt="پیش‌نمایش عکس انتخاب‌شده" style="display:block;max-width:100%;max-height:320px;object-fit:contain;border-radius:14px;border:1px solid var(--line)">';
+ preview.innerHTML='<div style="position:relative;display:inline-block;max-width:100%"><img src="'+imageTranslationUrl+'" alt="پیش‌نمایش عکس انتخاب‌شده" style="display:block;max-width:100%;max-height:320px;object-fit:contain;border-radius:14px;border:1px solid var(--line)"><div id="imageTranslationOverlay" class="hidden" style="position:absolute;left:8px;right:8px;bottom:8px;max-height:48%;overflow:auto;padding:10px 12px;border-radius:10px;background:#17211fee;color:#f1f5f2;border:1px solid #8bd3ad88;backdrop-filter:blur(8px);font-size:13px;line-height:1.6;white-space:pre-wrap"></div></div>';
  button.disabled=false;
 });
 async function loadOCR(){
@@ -2405,7 +2405,7 @@ async function runImageTranslation(){
   if(!extracted)throw new Error('متنی در عکس پیدا نشد؛ عکس واضح‌تری انتخاب کن.');
   out.innerHTML='<b>متن شناسایی‌شده:</b><p dir="auto">'+esc(extracted)+'</p><div class="muted tiny">در حال ترجمه متن…</div>';
   const translated=await translateOnline(extracted,$('imageSource').value==='deu'?'de':$('imageSource').value==='fas'?'fa':'en',$('imageTarget').value);
-  out.innerHTML='<b>متن شناسایی‌شده:</b><p dir="auto">'+esc(extracted)+'</p><hr style="border-color:var(--line)"><b>ترجمه:</b><p dir="auto">'+esc(translated)+'</p>';
+  out.innerHTML='<b>متن شناسایی‌شده:</b><p dir="auto">'+esc(extracted)+'</p><hr style="border-color:var(--line)"><b>ترجمه:</b><p dir="auto">'+esc(translated)+'</p>';const overlay=$('imageTranslationOverlay');if(overlay){overlay.textContent=translated;overlay.classList.remove('hidden')}
  }catch(error){out.textContent='عملیات کامل نشد: '+error.message+' برای ترجمه آنلاین اتصال اینترنت لازم است.'}
  finally{button.disabled=false}
 }
