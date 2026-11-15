@@ -16,6 +16,7 @@ header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 9
 .chatlog{height:min(48vh,440px);overflow:auto;display:flex;flex-direction:column;gap:10px;padding:10px;background:var(--bg);border:1px solid var(--line);border-radius:14px}.bubble{max-width:88%;padding:10px 13px;border-radius:14px;background:var(--panel2);white-space:pre-wrap}.bubble.me{align-self:flex-start;background:var(--accent2)}.bubble.bot{align-self:flex-end}.chatbar{display:flex;gap:8px;margin-top:10px}.chatbar input{flex:1}.hidden{display:none!important}.empty{padding:22px;text-align:center;color:var(--muted)}footer{text-align:center;color:var(--muted);font-size:12px;padding:16px}
 @media(max-width:760px){.shell{display:block;padding:14px 12px 40px}.sidebar{display:none;position:fixed;z-index:20;top:66px;right:12px;left:12px;box-shadow:var(--shadow)}.sidebar.open{display:block}.nav{grid-template-columns:repeat(2,1fr)}.stats{gap:7px}.stat{padding:8px}.panel{padding:14px}.grid2{grid-template-columns:1fr}.welcome{padding:18px}}
 
+.exercise-item{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:9px;padding:10px;background:var(--bg);border:1px solid var(--line);border-radius:12px}.exercise-dot{font-size:16px}.exercise-item .word-label{direction:ltr;text-align:left;font-weight:700}.exercise-item select,.exercise-item input{max-width:150px}.exercise-feedback{padding:10px;margin-top:8px;border-radius:10px;background:var(--panel2)}.food-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;align-items:center;padding:8px;border-bottom:1px solid var(--line)}.number-row{display:grid;grid-template-columns:48px 1fr;gap:8px;align-items:center;padding:5px}.number-row b{direction:ltr;text-align:left;color:var(--accent)}@media(max-width:420px){.exercise-item{grid-template-columns:auto 1fr}.exercise-item select{grid-column:2;max-width:none}.food-row{grid-template-columns:1fr}.number-row{grid-template-columns:38px 1fr}}
 /* Flashcard controls: clear, spacious and thumb-friendly */
 .flash-nav{display:grid;grid-template-columns:1fr 1.25fr 1fr;gap:9px;margin-top:12px}
 .flash-actions{display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px;margin-top:9px}
@@ -35,6 +36,7 @@ header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 9
 <button data-page="dictionary"><span class="ico">⌕</span> دیکشنری و جستجو</button>
 <button data-page="verbs"><span class="ico">↔</span> صرف فعل</button>
 <button data-page="grammar"><span class="ico">文</span> گرامر و تمرین</button>
+<button data-page="book-exercises"><span class="ico">✎</span> تمرین‌های کتابی</button>
 <button data-page="chat"><span class="ico">✦</span> معلم هوشمند</button>
 <button data-page="settings"><span class="ico">⚙</span> تنظیمات</button>
 </nav></aside>
@@ -45,6 +47,38 @@ header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 9
 <section id="page-dictionary" class="page hidden"><div class="panel"><h2 class="section-title">دیکشنری و جستجوی سراسری</h2><div class="row"><div class="field search" style="flex:1"><label>واژه آلمانی یا معنی را جستجو کن</label><input id="dictSearch" placeholder="مثلاً Haus یا خانه"></div><div class="field"><label>ترجمه به</label><select id="languageSelect"><option value="fa">فارسی</option><option value="en">English</option></select></div></div><div id="dictResults" style="margin-top:14px"></div></div></section>
 <section id="page-verbs" class="page hidden"><div class="panel"><h2 class="section-title">صرف فعل آلمانی</h2><p class="muted tiny">فعل را به شکل مصدر وارد کن؛ مثل machen یا sein.</p><div class="grid2"><div class="field"><label>فعل آلمانی</label><input id="verbInput" placeholder="machen" dir="ltr"></div><div class="field"><label>معنی فارسی یا انگلیسی</label><input id="verbMeaning" placeholder="انجام دادن"></div></div><button class="btn primary" id="conjugate" style="margin-top:12px">صرف فعل</button><div id="verbOutput" style="margin-top:16px"></div></div></section>
 <section id="page-grammar" class="page hidden"><div class="panel"><h2 class="section-title">گرامر آلمانی · سطح A1</h2><p class="muted tiny">درس‌ها کوتاه و مرحله‌ای هستند. بعد از هر درس یک سؤال تمرین کن.</p><div class="field"><label>انتخاب درس</label><select id="grammarSelect"></select></div><div id="grammarContent" class="result" style="margin-top:14px"></div></div><div class="panel"><div class="row between"><h3 class="section-title">تمرین همین درس</h3><span class="chip" id="quizProgress">سؤال ۱</span></div><div id="quizQuestion" style="font-weight:700;margin:12px 0"></div><div id="quizOptions" class="grid2"></div><div id="quizFeedback" class="muted tiny" style="margin-top:12px"></div><button class="btn" id="nextQuiz" style="margin-top:12px">سؤال بعدی</button></div></section>
+<section id="page-book-exercises" class="page hidden">
+<div class="welcome"><div class="muted tiny">A1 · ÜBUNGEN</div><h1>تمرین‌های کتابی</h1><p>تمرین آرتیکل‌ها با رنگ، میوه و سبزیجات، دسته‌بندی خوراکی‌ها و اعداد آلمانی.</p><div class="chips" style="margin-top:12px"><span class="chip"><span class="der">●</span> der آبی</span><span class="chip"><span class="die">●</span> die قرمز</span><span class="chip"><span class="das">●</span> das سبز</span></div></div>
+<div class="panel">
+<div class="row between"><h2 class="section-title">۱. آرتیکل درست را کامل کن</h2><span class="chip">Ergänzen Sie den Artikel</span></div>
+<p class="muted tiny">رنگ نقطه راهنماست؛ آرتیکل مناسب را انتخاب کن.</p>
+<div id="articleExercise" class="grid2"></div>
+<button class="btn primary" id="checkArticles" style="margin-top:12px">بررسی پاسخ‌ها</button><div id="articleFeedback" class="muted tiny" aria-live="polite"></div>
+</div>
+<div class="panel">
+<div class="row between"><h2 class="section-title">۲. خوراکی‌ها را دسته‌بندی کن</h2><span class="chip">Ordnen Sie zu</span></div>
+<p class="muted tiny">هر واژه را در گروه درست قرار بده.</p>
+<div id="foodExercise" class="grid2"></div>
+<button class="btn primary" id="checkFoods" style="margin-top:12px">بررسی دسته‌بندی</button><div id="foodFeedback" class="muted tiny" aria-live="polite"></div>
+</div>
+<div class="panel">
+<div class="row between"><h2 class="section-title">۳. اعداد یک تا ده</h2><span class="chip">Zahlen 1–10</span></div>
+<div id="numbersOneTen" class="grid2"></div>
+<button class="btn primary" id="checkOneTen" style="margin-top:12px">بررسی اعداد</button><div id="oneTenFeedback" class="muted tiny" aria-live="polite"></div>
+</div>
+<div class="panel">
+<div class="row between"><h2 class="section-title">۴. ده‌تا ده‌تا تا صد</h2><span class="chip">Zahlen 10–100</span></div>
+<p class="muted tiny">عدد آلمانی را بنویس؛ به املای ä و ß دقت کن.</p>
+<div id="numbersTens" class="grid2"></div>
+<button class="btn primary" id="checkTens" style="margin-top:12px">بررسی اعداد</button><div id="tensFeedback" class="muted tiny" aria-live="polite"></div>
+</div>
+<div class="panel">
+<div class="row between"><h2 class="section-title">۵. جمله را کامل کن</h2><span class="chip">Ergänzen Sie</span></div>
+<div id="sentenceExercise"></div>
+<button class="btn primary" id="checkSentences" style="margin-top:12px">بررسی جمله‌ها</button><div id="sentenceFeedback" class="muted tiny" aria-live="polite"></div>
+</div>
+<div class="panel"><h2 class="section-title">راهنمای رنگ آرتیکل‌ها</h2><div class="grid2"><div class="result"><b class="der">● der</b><div class="muted tiny">مذکر — مثل der Apfel</div></div><div class="result"><b class="die">● die</b><div class="muted tiny">مؤنث — مثل die Banane</div></div><div class="result"><b class="das">● das</b><div class="muted tiny">خنثی — مثل das Wasser</div></div><div class="result"><b class="plural">● die (جمع)</b><div class="muted tiny">برای اسم‌های جمع</div></div></div></div>
+</section>
 <section id="page-chat" class="page hidden"><div class="panel"><div class="row between"><div><h2 class="section-title">معلم هوشمند آلمانی</h2><div class="muted tiny">فقط آموزش زبان آلمانی · پاسخ کوتاه و ساده</div></div><div class="field"><label>سطح گفتگو</label><select id="chatLevel"><option>A1</option><option>A2</option><option>B1</option><option>B2</option><option>C1</option><option>C2</option></select></div></div><div class="field" style="margin:12px 0"><label>زبان توضیحات</label><select id="chatLanguage"><option value="fa">فارسی</option><option value="en">English</option></select></div><div class="chatlog" id="chatLog"><div class="bubble bot">Hallo! 👋 من معلم تمرینی آلمانی تو هستم. می‌تونیم واژه، گرامر، ترجمه یا مکالمه آلمانی تمرین کنیم. سطح رو انتخاب کن و شروع کن.</div></div><div class="chatbar"><input id="chatInput" placeholder="سؤال آلمانی خودت را بنویس…" autocomplete="off"><button class="btn primary" id="sendChat">ارسال</button></div><p class="muted tiny" id="chatNotice">نسخه فعلی پاسخ‌های آموزشی پایه را به‌صورت محلی ارائه می‌کند. برای گفت‌وگوی واقعی با مدل هوش مصنوعی باید بعداً سرویس امنی به برنامه متصل شود؛ کلید محرمانه نباید داخل مرورگر قرار بگیرد.</p></div></section>
 <section id="page-settings" class="page hidden"><div class="panel"><h2 class="section-title">تنظیمات برنامه</h2><div class="field"><label>زبان ترجمه واژه‌ها</label><select id="settingsLanguage"><option value="fa">آلمانی به فارسی</option><option value="en">آلمانی به انگلیسی</option></select></div><div class="field" style="margin-top:14px"><label>ظاهر برنامه</label><select id="themeSelect"><option value="dark">تیره</option><option value="light">روشن</option><option value="system">مطابق دستگاه</option></select></div><div class="field" style="margin-top:14px"><label>سطح فعلی یادگیری</label><select id="settingsLevel"><option>A1</option><option>A2</option><option>B1</option><option>B2</option><option>C1</option><option>C2</option></select></div><p class="muted tiny">تنظیمات و پیشرفت روی همین دستگاه ذخیره می‌شوند. برای انتقال به گوشی دیگر، از پشتیبان‌گیری استفاده کن.</p><div class="grid2" style="margin:12px 0"><button class="btn primary" id="exportBackup">⬇️ دریافت نسخه پشتیبان</button><button class="btn" id="importBackup">⬆️ بازیابی نسخه پشتیبان</button></div><input id="backupFile" type="file" accept="application/json,.json" class="hidden"><p id="backupStatus" class="muted tiny" aria-live="polite"></p><button class="btn" id="resetProgress">پاک کردن پیشرفت این دستگاه</button></div></section>
 <footer>Mein Deutsch · نسخه آغازین · ساخته‌شده برای یادگیری ساده آلمانی</footer>
@@ -1377,6 +1411,43 @@ function restoreBackup(file){
 $('exportBackup').onclick=makeBackup;
 $('importBackup').onclick=()=>$('backupFile').click();
 $('backupFile').onchange=e=>{const file=e.target.files&&e.target.files[0];if(file)restoreBackup(file);e.target.value=''};
+
+
+// Book-style A1 exercises: articles, food groups and numbers.
+const articleTasks=[
+ ['Apfel','der'],['Banane','die'],['Orange','die'],['Tomate','die'],['Kartoffel','die'],['Milch','die'],
+ ['Wasser','das'],['Käse','der'],['Brot','das'],['Reis','der'],['Möhre','die'],['Fleisch','das'],
+ ['Ei','das'],['Öl','das'],['Butter','die'],['Wein','der'],['Joghurt','der'],['Gurke','die']
+];
+const foodTasks=[
+ ['Banane','Obst'],['Tomate','Gemüse'],['Öl','Andere'],['Reis','Andere'],['Fleisch','Andere'],['Käse','Milchprodukte'],
+ ['Kartoffel','Gemüse'],['Fisch','Andere'],['Milch','Milchprodukte'],['Möhre','Gemüse'],['Apfel','Obst'],['Joghurt','Milchprodukte'],['Brot','Andere'],['Orange','Obst'],['Gurke','Gemüse']
+];
+const oneTen=['eins','zwei','drei','vier','fünf','sechs','sieben','acht','neun','zehn'];
+const tens=['zehn','zwanzig','dreißig','vierzig','fünfzig','sechzig','siebzig','achtzig','neunzig','hundert'];
+const sentenceTasks=[
+ ['Ich habe ___ Äpfel.','drei'],['Ich habe ___ Bananen.','sieben'],['Ich kaufe ___ Orangen.','zehn'],
+ ['Wir essen ___ Kartoffeln.','fünf'],['Sie trinkt ___ Wasser.','zwei']
+];
+function buildBookExercises(){
+ $('articleExercise').innerHTML=articleTasks.map((x,i)=>'<div class="exercise-item"><span class="exercise-dot '+x[1]+'">●</span><span class="word-label">'+(i+1)+'. '+esc(x[0])+'</span><select id="articleAnswer'+i+'" aria-label="آرتیکل '+esc(x[0])+'"><option value="">انتخاب</option><option>der</option><option>die</option><option>das</option></select></div>').join('');
+ $('foodExercise').innerHTML=foodTasks.map((x,i)=>'<div class="food-row"><b dir="ltr">'+esc(x[0])+'</b><select id="foodAnswer'+i+'" aria-label="گروه '+esc(x[0])+'"><option value="">انتخاب گروه</option><option>Obst</option><option>Gemüse</option><option>Milchprodukte</option><option>Andere</option></select></div>').join('');
+ $('numbersOneTen').innerHTML=oneTen.map((x,i)=>'<div class="number-row"><b>'+(i+1)+'</b><input id="oneTen'+i+'" value="'+(i%2===0?'':'')+'" placeholder="آلمانی را بنویس" autocomplete="off" dir="ltr" aria-label="عدد '+(i+1)+'"></div>').join('');
+ $('numbersTens').innerHTML=tens.map((x,i)=>'<div class="number-row"><b>'+((i+1)*10)+'</b><input id="tens'+i+'" placeholder="آلمانی را بنویس" autocomplete="off" dir="ltr" aria-label="عدد '+((i+1)*10)+'"></div>').join('');
+ $('sentenceExercise').innerHTML=sentenceTasks.map((x,i)=>'<div class="food-row"><span dir="ltr">'+esc(x[0].replace('___','_____'))+'</span><input id="sentence'+i+'" placeholder="کلمه عددی را بنویس" dir="ltr" autocomplete="off"></div>').join('');
+}
+function checkExercise(ids,answers,feedbackId,label){
+ let correct=0,empty=0;
+ ids.forEach((id,i)=>{let el=$(id),v=normalizeWord(el.value);if(!v)empty++;if(v===normalizeWord(answers[i])){correct++;el.style.borderColor='var(--accent)'}else el.style.borderColor='var(--danger)'});
+ $(feedbackId).textContent='نتیجه: '+fa(correct)+' از '+fa(ids.length)+' درست است.'+(empty?' '+fa(empty)+' پاسخ خالی مانده.':'')+' پاسخ‌های نادرست با کادر قرمز مشخص شده‌اند.';
+ $(feedbackId).className='exercise-feedback';
+}
+$('checkArticles').onclick=()=>checkExercise(articleTasks.map((_,i)=>'articleAnswer'+i),articleTasks.map(x=>x[1]),'articleFeedback','آرتیکل');
+$('checkFoods').onclick=()=>checkExercise(foodTasks.map((_,i)=>'foodAnswer'+i),foodTasks.map(x=>x[1]),'foodFeedback','دسته‌بندی');
+$('checkOneTen').onclick=()=>checkExercise(oneTen.map((_,i)=>'oneTen'+i),oneTen,'oneTenFeedback','اعداد');
+$('checkTens').onclick=()=>checkExercise(tens.map((_,i)=>'tens'+i),tens,'tensFeedback','ده‌تایی‌ها');
+$('checkSentences').onclick=()=>checkExercise(sentenceTasks.map((_,i)=>'sentence'+i),sentenceTasks.map(x=>x[1]),'sentenceFeedback','جمله‌ها');
+buildBookExercises();
 
 setupCardCategories();if(prefs.theme)setTheme(prefs.theme);else setTheme('dark');$('languageSelect').value=lang;$('settingsLanguage').value=lang;counts();renderCard();renderGrammar();
 if('serviceWorker'in navigator && location.protocol.startsWith('http'))window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
