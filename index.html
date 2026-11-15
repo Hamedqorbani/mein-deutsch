@@ -1214,6 +1214,17 @@ base.push(
 ['anfangen','شروع کردن','begin','آن‌فانگِن','—','فعل','A1','Der Kurs fängt um neun an.','کلاس ساعت نه شروع می‌شود.'],
 ['aufhören','تمام کردن / متوقف شدن','stop','آوف‌هورِن','—','فعل','A1','Der Film hört um zehn auf.','فیلم ساعت ده تمام می‌شود.']
 );
+
+// Zusätzlicher geprüfter A1-Wortschatz: Alltag, Stadt, Gesundheit, Orientierung und Verben.
+base.push(
+["die Kasse","صندوق فروشگاه","checkout","کاسه","die","خرید","A1","Die Kasse ist dort.","صندوق آنجاست."],
+["das Angebot","پیشنهاد؛ تخفیف","offer","آن‌گِبوت","das","خرید","A1","Das ist ein gutes Angebot.","این پیشنهاد خوبی است."],
+["umtauschen","تعویض کردن","to exchange","اوم‌تاوشِن","—","خرید","A1","Kann ich das umtauschen?","می‌توانم این را تعویض کنم؟"],
+["die Gesundheit","سلامتی","health","گِزونتهایت","die","سلامتی","A1","Gesundheit ist wichtig.","سلامتی مهم است."],
+["die Ecke","گوشه؛ تقاطع","corner","اِکه","die","شهر","A1","Die Bank ist an der Ecke.","بانک سرِ تقاطع است."],
+["bringen","آوردن","to bring","برینگِن","—","افعال","A1","Ich bringe Wasser.","آب می‌آورم."],
+["wie viele","چند تا","how many","وی فیله","—","پرسشی","A1","Wie viele Bücher hast du?","چند کتاب داری؟"]
+);
 const extra=JSON.parse(localStorage.getItem('md_custom')||'[]');
 // Keep one canonical card per German headword; avoid duplicate flashcards and inflated lists.
 const uniqueCards=list=>[...new Map(list.filter(w=>Array.isArray(w)&&w.length===9).map(w=>[String(w[0]).toLocaleLowerCase('de-DE').trim(),w])).values()];
