@@ -76,13 +76,16 @@ header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 9
 @media(max-width:760px){.translate-tabs{top:62px}}
 
 /* Mein Deutsch branded launch screen */
-#meinSplash{position:fixed;inset:0;z-index:99999;display:grid;place-items:center;background:radial-gradient(circle at 50% 38%,#243d50 0,#142636 48%,#101b28 100%);color:#f5f7f8;opacity:1;visibility:visible;transition:opacity .42s ease,visibility .42s ease}
+#meinSplash{position:fixed;inset:0;z-index:99999;display:grid;place-items:center;overflow:hidden;background:radial-gradient(ellipse at 18% 18%,#f9d9c8 0,transparent 38%),radial-gradient(ellipse at 82% 20%,#d9d5f3 0,transparent 40%),radial-gradient(ellipse at 72% 88%,#ccebe1 0,transparent 42%),linear-gradient(135deg,#fff7e9 0%,#f4edf4 52%,#eaf5f1 100%);color:#35465a;opacity:1;visibility:visible;transition:opacity .42s ease,visibility .42s ease}
+#meinSplash:before,#meinSplash:after{content:"";position:absolute;border-radius:50%;filter:blur(2px);pointer-events:none}
+#meinSplash:before{width:210px;height:210px;left:-85px;bottom:8%;background:#f4cbb8aa}
+#meinSplash:after{width:190px;height:190px;right:-65px;top:9%;background:#c9c4eaaa}
 #meinSplash.is-leaving{opacity:0;visibility:hidden;pointer-events:none}
 #meinSplash .splash-inner{display:flex;flex-direction:column;align-items:center;gap:17px;transform:translateY(-3vh);animation:splashIn .65s cubic-bezier(.2,.8,.2,1) both}
-#meinSplash .splash-mark{width:112px;height:112px;filter:drop-shadow(0 12px 24px #07131c88)}
+#meinSplash .splash-mark{width:120px;height:120px;filter:drop-shadow(0 12px 22px #7d819044)}
 #meinSplash .splash-name{font-size:27px;font-weight:850;letter-spacing:.4px}
-#meinSplash .splash-tag{font-size:12px;letter-spacing:2.4px;color:#a9c3c8;font-weight:650}
-#meinSplash .splash-rule{width:34px;height:3px;border-radius:9px;background:#63c6b3;margin-top:3px}
+#meinSplash .splash-tag{font-size:12px;letter-spacing:2.4px;color:#788a91;font-weight:700}
+#meinSplash .splash-rule{width:46px;height:4px;border-radius:9px;background:linear-gradient(90deg,#e6a98e,#b7a8d9,#80c8b4);margin-top:3px}
 @keyframes splashIn{from{opacity:0;transform:translateY(12px) scale(.96)}to{opacity:1;transform:translateY(-3vh) scale(1)}}
 @media(prefers-reduced-motion:reduce){#meinSplash .splash-inner{animation:none}#meinSplash{transition:none}}
 </style>
@@ -92,13 +95,13 @@ header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 9
   <div class="splash-inner">
     <svg class="splash-mark" viewBox="0 0 120 120" role="img" aria-label="نشان مینیمال حرف M برای Mein Deutsch">
       <defs>
-        <linearGradient id="mdTile" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#263f50"/><stop offset="1" stop-color="#172a39"/></linearGradient>
-        <linearGradient id="mdStroke" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a2ead7"/><stop offset="1" stop-color="#56bba9"/></linearGradient>
+        <linearGradient id="mdTile" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fffdf8"/><stop offset=".52" stop-color="#f2e8f5"/><stop offset="1" stop-color="#dff1e9"/></linearGradient>
+        <linearGradient id="mdStroke" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#79bfb0"/><stop offset=".52" stop-color="#9d91c9"/><stop offset="1" stop-color="#e2a68e"/></linearGradient>
       </defs>
-      <rect x="4" y="4" width="112" height="112" rx="34" fill="url(#mdTile)" stroke="#526c78" stroke-width="1.4"/>
+      <rect x="4" y="4" width="112" height="112" rx="34" fill="url(#mdTile)" stroke="#ffffff" stroke-width="2"/>
       <path d="M25 82V43c0-7 5-11 11-11 5 0 8 3 11 8l13 21 13-21c3-5 6-8 11-8 6 0 11 4 11 11v39" fill="none" stroke="url(#mdStroke)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M79 91h17" fill="none" stroke="#e5c88e" stroke-width="4" stroke-linecap="round"/>
-      <circle cx="99" cy="27" r="4" fill="#e5c88e"/>
+      <path d="M79 91h17" fill="none" stroke="#d99d78" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="99" cy="27" r="4.5" fill="#d99d78"/>
     </svg>
     <div class="splash-name">Mein Deutsch</div>
     <div class="splash-tag">DEIN WEG ZUM DEUTSCH</div>
