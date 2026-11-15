@@ -77,6 +77,13 @@ header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 9
 <div id="sentenceExercise"></div>
 <button class="btn primary" id="checkSentences" style="margin-top:12px">بررسی جمله‌ها</button><div id="sentenceFeedback" class="muted tiny" aria-live="polite"></div>
 </div>
+<div class="panel">
+<div class="row between"><h2 class="section-title">۶. کدام کلمه متفاوت است؟</h2><span class="chip">Was passt nicht?</span></div>
+<p class="muted tiny">در هر ردیف، کلمه‌ای را انتخاب کن که به گروه بقیه تعلق ندارد.</p>
+<div id="oddOneOutExercise"></div>
+<div class="row" style="gap:8px;margin-top:12px"><button class="btn primary" id="checkOddOneOut">بررسی پاسخ‌ها</button><button class="btn" id="resetOddOneOut">تمرین دوباره</button></div>
+<div id="oddOneOutFeedback" class="muted tiny" aria-live="polite"></div>
+</div>
 <div class="panel"><h2 class="section-title">راهنمای رنگ آرتیکل‌ها</h2><div class="grid2"><div class="result"><b class="der">● der</b><div class="muted tiny">مذکر — مثل der Apfel</div></div><div class="result"><b class="die">● die</b><div class="muted tiny">مؤنث — مثل die Banane</div></div><div class="result"><b class="das">● das</b><div class="muted tiny">خنثی — مثل das Wasser</div></div><div class="result"><b class="plural">● die (جمع)</b><div class="muted tiny">برای اسم‌های جمع</div></div></div></div>
 </section>
 <section id="page-chat" class="page hidden"><div class="panel"><div class="row between"><div><h2 class="section-title">معلم هوشمند آلمانی</h2><div class="muted tiny">فقط آموزش زبان آلمانی · پاسخ کوتاه و ساده</div></div><div class="field"><label>سطح گفتگو</label><select id="chatLevel"><option>A1</option><option>A2</option><option>B1</option><option>B2</option><option>C1</option><option>C2</option></select></div></div><div class="field" style="margin:12px 0"><label>زبان توضیحات</label><select id="chatLanguage"><option value="fa">فارسی</option><option value="en">English</option></select></div><div class="chatlog" id="chatLog"><div class="bubble bot">Hallo! 👋 من معلم تمرینی آلمانی تو هستم. می‌تونیم واژه، گرامر، ترجمه یا مکالمه آلمانی تمرین کنیم. سطح رو انتخاب کن و شروع کن.</div></div><div class="chatbar"><input id="chatInput" placeholder="سؤال آلمانی خودت را بنویس…" autocomplete="off"><button class="btn primary" id="sendChat">ارسال</button></div><p class="muted tiny" id="chatNotice">نسخه فعلی پاسخ‌های آموزشی پایه را به‌صورت محلی ارائه می‌کند. برای گفت‌وگوی واقعی با مدل هوش مصنوعی باید بعداً سرویس امنی به برنامه متصل شود؛ کلید محرمانه نباید داخل مرورگر قرار بگیرد.</p></div></section>
@@ -1429,17 +1436,29 @@ const sentenceTasks=[
  ['Ich habe ___ Äpfel.','drei'],['Ich habe ___ Bananen.','sieben'],['Ich kaufe ___ Orangen.','zehn'],
  ['Wir essen ___ Kartoffeln.','fünf'],['Sie trinkt ___ Wasser.','zwei']
 ];
+const oddTasks=[
+ {words:['Apfel','Banane','Orange','Kartoffel'],answer:'Kartoffel'},
+ {words:['Tomate','Gurke','Möhre','Käse'],answer:'Käse'},
+ {words:['Wasser','Tee','Saft','Brot'],answer:'Brot'},
+ {words:['Milch','Joghurt','Käse','Zwiebel'],answer:'Zwiebel'},
+ {words:['Kartoffel','Zwiebel','Paprika','Apfel'],answer:'Apfel'},
+ {words:['Birne','Pfirsich','Traube','Spinat'],answer:'Spinat'},
+ {words:['Kaffee','Wasser','Limonade','Butter'],answer:'Butter'},
+ {words:['Brot','Reis','Nudeln','Orange'],answer:'Orange'}
+];
 function buildBookExercises(){
  $('articleExercise').innerHTML=articleTasks.map((x,i)=>'<div class="exercise-item"><span class="exercise-dot '+x[1]+'">●</span><span class="word-label">'+(i+1)+'. '+esc(x[0])+'</span><select id="articleAnswer'+i+'" aria-label="آرتیکل '+esc(x[0])+'"><option value="">انتخاب</option><option>der</option><option>die</option><option>das</option></select></div>').join('');
  $('foodExercise').innerHTML=foodTasks.map((x,i)=>'<div class="food-row"><b dir="ltr">'+esc(x[0])+'</b><select id="foodAnswer'+i+'" aria-label="گروه '+esc(x[0])+'"><option value="">انتخاب گروه</option><option>Obst</option><option>Gemüse</option><option>Getränke</option><option>Milchprodukte</option><option>Andere</option></select></div>').join('');
  $('numbersOneTen').innerHTML=oneTen.map((x,i)=>'<div class="number-row"><b>'+(i+1)+'</b><input id="oneTen'+i+'" value="'+(i%2===0?'':'')+'" placeholder="آلمانی را بنویس" autocomplete="off" dir="ltr" aria-label="عدد '+(i+1)+'"></div>').join('');
  $('numbersTens').innerHTML=tens.map((x,i)=>'<div class="number-row"><b>'+((i+1)*10)+'</b><input id="tens'+i+'" placeholder="آلمانی را بنویس" autocomplete="off" dir="ltr" aria-label="عدد '+((i+1)*10)+'"></div>').join('');
  $('sentenceExercise').innerHTML=sentenceTasks.map((x,i)=>'<div class="food-row"><span dir="ltr">'+esc(x[0].replace('___','_____'))+'</span><input id="sentence'+i+'" placeholder="کلمه عددی را بنویس" dir="ltr" autocomplete="off"></div>').join('');
+ $('oddOneOutExercise').innerHTML=oddTasks.map((x,i)=>'<div class="food-row"><b>'+fa(i+1)+'.</b><div dir="ltr" style="display:flex;gap:6px;flex-wrap:wrap">'+x.words.map(w=>'<span class="chip">'+esc(w)+'</span>').join('')+'</div><select id="oddAnswer'+i+'" aria-label="کلمه متفاوت ردیف '+(i+1)+'"><option value="">کلمه متفاوت را انتخاب کن</option>'+x.words.map(w=>'<option>'+esc(w)+'</option>').join('')+'</select></div>').join('');
 }
 function checkExercise(ids,answers,feedbackId,label){
- let correct=0,empty=0;
- ids.forEach((id,i)=>{let el=$(id),v=normalizeWord(el.value);if(!v)empty++;if(v===normalizeWord(answers[i])){correct++;el.style.borderColor='var(--accent)'}else el.style.borderColor='var(--danger)'});
- $(feedbackId).textContent='نتیجه: '+fa(correct)+' از '+fa(ids.length)+' درست است.'+(empty?' '+fa(empty)+' پاسخ خالی مانده.':'')+' پاسخ‌های نادرست با کادر قرمز مشخص شده‌اند.';
+ let correct=0,empty=0,wrong=[];
+ ids.forEach((id,i)=>{let el=$(id),v=normalizeWord(el.value);if(!v)empty++;if(v===normalizeWord(answers[i])){correct++;el.style.borderColor='var(--accent)';el.title='درست'}else{el.style.borderColor='var(--danger)';el.title='پاسخ صحیح: '+answers[i];wrong.push((i+1)+'. '+answers[i])}});
+ const percent=Math.round(correct/ids.length*100);
+ $(feedbackId).textContent='نتیجه '+label+': '+fa(correct)+' از '+fa(ids.length)+' ('+fa(percent)+'٪). '+(empty?'پاسخ خالی: '+fa(empty)+'. ':'')+(wrong.length?'پاسخ صحیح موارد اشتباه: '+wrong.join('، '):'آفرین! همه پاسخ‌ها درست است.');
  $(feedbackId).className='exercise-feedback';
 }
 $('checkArticles').onclick=()=>checkExercise(articleTasks.map((_,i)=>'articleAnswer'+i),articleTasks.map(x=>x[1]),'articleFeedback','آرتیکل');
@@ -1447,6 +1466,8 @@ $('checkFoods').onclick=()=>checkExercise(foodTasks.map((_,i)=>'foodAnswer'+i),f
 $('checkOneTen').onclick=()=>checkExercise(oneTen.map((_,i)=>'oneTen'+i),oneTen,'oneTenFeedback','اعداد');
 $('checkTens').onclick=()=>checkExercise(tens.map((_,i)=>'tens'+i),tens,'tensFeedback','ده‌تایی‌ها');
 $('checkSentences').onclick=()=>checkExercise(sentenceTasks.map((_,i)=>'sentence'+i),sentenceTasks.map(x=>x[1]),'sentenceFeedback','جمله‌ها');
+$('checkOddOneOut').onclick=()=>checkExercise(oddTasks.map((_,i)=>'oddAnswer'+i),oddTasks.map(x=>x.answer),'oddOneOutFeedback','کلمه متفاوت');
+$('resetOddOneOut').onclick=()=>{oddTasks.forEach((_,i)=>{const el=$('oddAnswer'+i);el.value='';el.style.borderColor='';el.title=''});$('oddOneOutFeedback').textContent='تمرین دوباره آماده است.';};
 buildBookExercises();
 
 setupCardCategories();if(prefs.theme)setTheme(prefs.theme);else setTheme('dark');$('languageSelect').value=lang;$('settingsLanguage').value=lang;counts();renderCard();renderGrammar();
