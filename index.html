@@ -46,7 +46,7 @@ header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 9
 <section id="page-verbs" class="page hidden"><div class="panel"><h2 class="section-title">صرف فعل آلمانی</h2><p class="muted tiny">فعل را به شکل مصدر وارد کن؛ مثل machen یا sein.</p><div class="grid2"><div class="field"><label>فعل آلمانی</label><input id="verbInput" placeholder="machen" dir="ltr"></div><div class="field"><label>معنی فارسی یا انگلیسی</label><input id="verbMeaning" placeholder="انجام دادن"></div></div><button class="btn primary" id="conjugate" style="margin-top:12px">صرف فعل</button><div id="verbOutput" style="margin-top:16px"></div></div></section>
 <section id="page-grammar" class="page hidden"><div class="panel"><h2 class="section-title">گرامر آلمانی · سطح A1</h2><p class="muted tiny">درس‌ها کوتاه و مرحله‌ای هستند. بعد از هر درس یک سؤال تمرین کن.</p><div class="field"><label>انتخاب درس</label><select id="grammarSelect"></select></div><div id="grammarContent" class="result" style="margin-top:14px"></div></div><div class="panel"><div class="row between"><h3 class="section-title">تمرین همین درس</h3><span class="chip" id="quizProgress">سؤال ۱</span></div><div id="quizQuestion" style="font-weight:700;margin:12px 0"></div><div id="quizOptions" class="grid2"></div><div id="quizFeedback" class="muted tiny" style="margin-top:12px"></div><button class="btn" id="nextQuiz" style="margin-top:12px">سؤال بعدی</button></div></section>
 <section id="page-chat" class="page hidden"><div class="panel"><div class="row between"><div><h2 class="section-title">معلم هوشمند آلمانی</h2><div class="muted tiny">فقط آموزش زبان آلمانی · پاسخ کوتاه و ساده</div></div><div class="field"><label>سطح گفتگو</label><select id="chatLevel"><option>A1</option><option>A2</option><option>B1</option><option>B2</option><option>C1</option><option>C2</option></select></div></div><div class="field" style="margin:12px 0"><label>زبان توضیحات</label><select id="chatLanguage"><option value="fa">فارسی</option><option value="en">English</option></select></div><div class="chatlog" id="chatLog"><div class="bubble bot">Hallo! 👋 من معلم تمرینی آلمانی تو هستم. می‌تونیم واژه، گرامر، ترجمه یا مکالمه آلمانی تمرین کنیم. سطح رو انتخاب کن و شروع کن.</div></div><div class="chatbar"><input id="chatInput" placeholder="سؤال آلمانی خودت را بنویس…" autocomplete="off"><button class="btn primary" id="sendChat">ارسال</button></div><p class="muted tiny" id="chatNotice">نسخه فعلی پاسخ‌های آموزشی پایه را به‌صورت محلی ارائه می‌کند. برای گفت‌وگوی واقعی با مدل هوش مصنوعی باید بعداً سرویس امنی به برنامه متصل شود؛ کلید محرمانه نباید داخل مرورگر قرار بگیرد.</p></div></section>
-<section id="page-settings" class="page hidden"><div class="panel"><h2 class="section-title">تنظیمات برنامه</h2><div class="field"><label>زبان ترجمه واژه‌ها</label><select id="settingsLanguage"><option value="fa">آلمانی به فارسی</option><option value="en">آلمانی به انگلیسی</option></select></div><div class="field" style="margin-top:14px"><label>ظاهر برنامه</label><select id="themeSelect"><option value="dark">تیره</option><option value="light">روشن</option><option value="system">مطابق دستگاه</option></select></div><div class="field" style="margin-top:14px"><label>سطح فعلی یادگیری</label><select id="settingsLevel"><option>A1</option><option>A2</option><option>B1</option><option>B2</option><option>C1</option><option>C2</option></select></div><p class="muted tiny">تنظیمات و پیشرفت روی همین دستگاه ذخیره می‌شوند.</p><button class="btn" id="resetProgress">پاک کردن پیشرفت این دستگاه</button></div></section>
+<section id="page-settings" class="page hidden"><div class="panel"><h2 class="section-title">تنظیمات برنامه</h2><div class="field"><label>زبان ترجمه واژه‌ها</label><select id="settingsLanguage"><option value="fa">آلمانی به فارسی</option><option value="en">آلمانی به انگلیسی</option></select></div><div class="field" style="margin-top:14px"><label>ظاهر برنامه</label><select id="themeSelect"><option value="dark">تیره</option><option value="light">روشن</option><option value="system">مطابق دستگاه</option></select></div><div class="field" style="margin-top:14px"><label>سطح فعلی یادگیری</label><select id="settingsLevel"><option>A1</option><option>A2</option><option>B1</option><option>B2</option><option>C1</option><option>C2</option></select></div><p class="muted tiny">تنظیمات و پیشرفت روی همین دستگاه ذخیره می‌شوند. برای انتقال به گوشی دیگر، از پشتیبان‌گیری استفاده کن.</p><div class="grid2" style="margin:12px 0"><button class="btn primary" id="exportBackup">⬇️ دریافت نسخه پشتیبان</button><button class="btn" id="importBackup">⬆️ بازیابی نسخه پشتیبان</button></div><input id="backupFile" type="file" accept="application/json,.json" class="hidden"><p id="backupStatus" class="muted tiny" aria-live="polite"></p><button class="btn" id="resetProgress">پاک کردن پیشرفت این دستگاه</button></div></section>
 <footer>Mein Deutsch · نسخه آغازین · ساخته‌شده برای یادگیری ساده آلمانی</footer>
 </main></div>
 <script>
@@ -1334,6 +1334,36 @@ $('addCard').onclick=()=>{
 $('conjugate').onclick=conj;$('verbInput').addEventListener('keydown',e=>{if(e.key==='Enter')conj()});$('sendChat').onclick=send;$('chatInput').addEventListener('keydown',e=>{if(e.key==='Enter')send()});
 $('settingsLanguage').onchange=e=>{$('languageSelect').value=e.target.value;$('languageSelect').dispatchEvent(new Event('change'))};$('resetProgress').onclick=()=>{if(confirm('پیشرفت و تنظیمات ذخیره‌شده این دستگاه پاک شود؟')){localStorage.removeItem('md_known');known.clear();counts();alert('پیشرفت پاک شد.')}};
 $('settingsLevel').onchange=e=>{$('chatLevel').value=e.target.value};
+function makeBackup(){
+ const payload={app:'Mein Deutsch',schema:1,createdAt:new Date().toISOString(),customCards:JSON.parse(localStorage.getItem('md_custom')||'[]'),knownWords:[...known],preferences:prefs,sessions:Number(localStorage.getItem('md_sessions')||0)};
+ const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});
+ const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='mein-deutsch-backup-'+new Date().toISOString().slice(0,10)+'.json';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+ $('backupStatus').textContent='نسخه پشتیبان آماده شد. فایل را در جای امن نگه دار.';
+}
+function restoreBackup(file){
+ const reader=new FileReader();
+ reader.onload=()=>{
+  try{
+   const data=JSON.parse(String(reader.result||''));
+   if(!data||data.app!=='Mein Deutsch'||!Array.isArray(data.customCards)||!Array.isArray(data.knownWords))throw new Error('invalid');
+   const valid=data.customCards.filter(w=>Array.isArray(w)&&w.length===9&&String(w[0]||'').trim()&&String(w[1]||'').trim());
+   const merged=[...JSON.parse(localStorage.getItem('md_custom')||'[]'),...valid];
+   const unique=[...new Map(merged.map(w=>[normalizeWord(w[0]),w])).values()];
+   localStorage.setItem('md_custom',JSON.stringify(unique));
+   data.knownWords.forEach(w=>known.add(String(w)));save();
+   if(data.preferences&&typeof data.preferences==='object'){prefs={...prefs,...data.preferences};localStorage.setItem('md_prefs',JSON.stringify(prefs));}
+   if(Number.isFinite(Number(data.sessions)))localStorage.setItem('md_sessions',String(Math.max(Number(localStorage.getItem('md_sessions')||0),Number(data.sessions))));
+   words=uniqueCards([...base,...unique]);setupCardCategories();counts();renderCard();setTheme(prefs.theme||'dark');
+   $('backupStatus').textContent='بازیابی انجام شد؛ کارت‌ها و پیشرفت قبلی با اطلاعات این دستگاه ادغام شدند.';
+  }catch(e){$('backupStatus').textContent='فایل معتبر Mein Deutsch نیست یا ساختار آن پشتیبانی نمی‌شود.'}
+ };
+ reader.onerror=()=>$('backupStatus').textContent='خواندن فایل ناموفق بود.';
+ reader.readAsText(file);
+}
+$('exportBackup').onclick=makeBackup;
+$('importBackup').onclick=()=>$('backupFile').click();
+$('backupFile').onchange=e=>{const file=e.target.files&&e.target.files[0];if(file)restoreBackup(file);e.target.value=''};
+
 setupCardCategories();if(prefs.theme)setTheme(prefs.theme);else setTheme('dark');$('languageSelect').value=lang;$('settingsLanguage').value=lang;counts();renderCard();renderGrammar();
 if('serviceWorker'in navigator && location.protocol.startsWith('http'))window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
 </script>
