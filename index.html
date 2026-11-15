@@ -84,15 +84,21 @@ header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 9
 <div class="row" style="gap:8px;margin-top:12px"><button class="btn primary" id="checkOddOneOut">بررسی پاسخ‌ها</button><button class="btn" id="resetOddOneOut">تمرین دوباره</button></div>
 <div id="oddOneOutFeedback" class="muted tiny" aria-live="polite"></div>
 </div>
+<div class="panel" id="sentenceOrderPanel">
+<div class="row between"><h2 class="section-title">۷. کلمات را مرتب کن</h2><span class="chip">Satzbau</span></div>
+<p class="muted tiny">کلمات هر جمله را به ترتیب درست انتخاب کن.</p>
+<div id="sentenceOrderExercise"></div>
+<button class="btn primary" id="checkSentenceOrder" style="margin-top:12px">بررسی جمله‌ها</button><div id="sentenceOrderFeedback" class="muted tiny" aria-live="polite"></div>
+</div>
 <div class="panel" id="mixedChallengePanel">
-<div class="row between"><h2 class="section-title">۷. آزمون ترکیبی A1</h2><span class="chip">۱۰ سؤال · ۹۰ ثانیه</span></div>
+<div class="row between"><h2 class="section-title">۸. آزمون ترکیبی A1</h2><span class="chip">۱۰ سؤال · ۹۰ ثانیه</span></div>
 <p class="muted tiny">از آرتیکل، معنی واژه، دسته‌بندی و اعداد سؤال می‌آید. نتیجه و اشتباه‌ها روی همین دستگاه ذخیره می‌شوند.</p>
 <div class="row"><button class="btn primary" id="startMixedChallenge">شروع آزمون</button><span class="chip" id="mixedBestScore">بهترین نتیجه: —</span><span class="chip" id="mixedTimer">زمان: ۹۰</span></div>
 <div id="mixedQuestionArea" style="margin-top:14px"><div class="empty">برای شروع آزمون دکمه را بزن.</div></div>
 <div id="mixedResult" class="exercise-feedback hidden" aria-live="polite"></div>
 </div>
 <div class="panel" id="listeningPanel">
-<div class="row between"><h2 class="section-title">۸. تمرین شنیداری اعداد</h2><span class="chip">Hören</span></div>
+<div class="row between"><h2 class="section-title">۹. تمرین شنیداری اعداد</h2><span class="chip">Hören</span></div>
 <p class="muted tiny">روی پخش صدا بزن، عدد آلمانی را گوش کن و پاسخ را بنویس.</p>
 <div class="row"><button class="btn" id="playListeningNumber">🔊 پخش عدد</button><input id="listeningAnswer" placeholder="عدد را به آلمانی بنویس" dir="ltr" autocomplete="off" style="flex:1"></div>
 <div class="row" style="margin-top:10px"><button class="btn primary" id="checkListeningAnswer">بررسی پاسخ</button><button class="btn" id="nextListeningNumber">عدد بعدی</button><span class="chip" id="listeningProgress">۰ درست از ۰</span></div>
@@ -1445,10 +1451,20 @@ const foodTasks=[
  ['Kartoffel','Gemüse'],['Fisch','Andere'],['Milch','Milchprodukte'],['Wasser','Getränke'],['Tee','Getränke'],['Saft','Getränke'],['Möhre','Gemüse'],['Apfel','Obst'],['Joghurt','Milchprodukte'],['Brot','Andere'],['Orange','Obst'],['Gurke','Gemüse']
 ];
 const oneTen=['eins','zwei','drei','vier','fünf','sechs','sieben','acht','neun','zehn'];
+function germanNumber(n){
+ const u=['null','ein','zwei','drei','vier','fünf','sechs','sieben','acht','neun'];
+ const teens=['zehn','elf','zwölf','dreizehn','vierzehn','fünfzehn','sechzehn','siebzehn','achtzehn','neunzehn'];
+ const d=['','','zwanzig','dreißig','vierzig','fünfzig','sechzig','siebzig','achtzig','neunzig'];
+ if(n===100)return 'hundert';if(n<10)return n===1?'eins':u[n];if(n<20)return teens[n-10];
+ const unit=n%10,ten=Math.floor(n/10);return unit?u[unit]+'und'+d[ten]:d[ten];
+}
 const tens=['zehn','zwanzig','dreißig','vierzig','fünfzig','sechzig','siebzig','achtzig','neunzig','hundert'];
 const sentenceTasks=[
  ['Ich habe ___ Äpfel.','drei'],['Ich habe ___ Bananen.','sieben'],['Ich kaufe ___ Orangen.','zehn'],
- ['Wir essen ___ Kartoffeln.','fünf'],['Sie trinkt ___ Wasser.','zwei']
+ ['Wir essen ___ Kartoffeln.','fünf'],['Sie trinkt ___ Gläser Wasser.','zwei Gläser']
+];
+const sentenceOrderTasks=[
+ ['Ich','lerne','heute','Deutsch.'],['Heute','lerne','ich','Deutsch.'],['Meine','Mutter','spricht','Persisch.'],['Wir','kaufen','einen','Apfel.'],['Der','Mann','trinkt','Wasser.']
 ];
 const oddTasks=[
  {words:['Apfel','Banane','Orange','Kartoffel'],answer:'Kartoffel'},
@@ -1467,6 +1483,7 @@ function buildBookExercises(){
  $('numbersTens').innerHTML=tens.map((x,i)=>'<div class="number-row"><b>'+((i+1)*10)+'</b><input id="tens'+i+'" placeholder="آلمانی را بنویس" autocomplete="off" dir="ltr" aria-label="عدد '+((i+1)*10)+'"></div>').join('');
  $('sentenceExercise').innerHTML=sentenceTasks.map((x,i)=>'<div class="food-row"><span dir="ltr">'+esc(x[0].replace('___','_____'))+'</span><input id="sentence'+i+'" placeholder="کلمه عددی را بنویس" dir="ltr" autocomplete="off"></div>').join('');
  $('oddOneOutExercise').innerHTML=oddTasks.map((x,i)=>'<div class="food-row"><b>'+fa(i+1)+'.</b><div dir="ltr" style="display:flex;gap:6px;flex-wrap:wrap">'+x.words.map(w=>'<span class="chip">'+esc(w)+'</span>').join('')+'</div><select id="oddAnswer'+i+'" aria-label="کلمه متفاوت ردیف '+(i+1)+'"><option value="">کلمه متفاوت را انتخاب کن</option>'+x.words.map(w=>'<option>'+esc(w)+'</option>').join('')+'</select></div>').join('');
+ $('sentenceOrderExercise').innerHTML=sentenceOrderTasks.map((parts,i)=>'<div class="result" style="margin:8px 0"><b>جمله '+fa(i+1)+'</b><div class="grid2" style="margin-top:8px">'+parts.map((_,j)=>'<select id="orderAnswer'+i+'_'+j+'" aria-label="کلمه '+(j+1)+' جمله '+(i+1)+'"><option value="">جایگاه '+fa(j+1)+'</option>'+parts.map(p=>'<option>'+esc(p)+'</option>').join('')+'</select>').join('')+'</div></div>').join('');
 }
 function checkExercise(ids,answers,feedbackId,label){
  let correct=0,empty=0,wrong=[];
@@ -1482,14 +1499,18 @@ $('checkTens').onclick=()=>checkExercise(tens.map((_,i)=>'tens'+i),tens,'tensFee
 $('checkSentences').onclick=()=>checkExercise(sentenceTasks.map((_,i)=>'sentence'+i),sentenceTasks.map(x=>x[1]),'sentenceFeedback','جمله‌ها');
 $('checkOddOneOut').onclick=()=>checkExercise(oddTasks.map((_,i)=>'oddAnswer'+i),oddTasks.map(x=>x.answer),'oddOneOutFeedback','کلمه متفاوت');
 $('resetOddOneOut').onclick=()=>{oddTasks.forEach((_,i)=>{const el=$('oddAnswer'+i);el.value='';el.style.borderColor='';el.title=''});$('oddOneOutFeedback').textContent='تمرین دوباره آماده است.';};
+$('checkSentenceOrder').onclick=()=>{
+ let correct=0;sentenceOrderTasks.forEach((parts,i)=>{const values=parts.map((_,j)=>$('orderAnswer'+i+'_'+j).value);const ok=values.every((v,j)=>v===parts[j]);if(ok)correct++;parts.forEach((_,j)=>$('orderAnswer'+i+'_'+j).style.borderColor=ok?'var(--accent)':'var(--danger)');});
+ $('sentenceOrderFeedback').textContent='نتیجه: '+fa(correct)+' از '+fa(sentenceOrderTasks.length)+' جمله درست است.'+(correct===sentenceOrderTasks.length?' آفرین!':' کلمات قرمز را دوباره مرتب کن.');$('sentenceOrderFeedback').className='exercise-feedback';
+};
 buildBookExercises();
 
 
-// v27: timed mixed A1 challenge, persistent score and listening-number practice.
+// v28: sentence-order practice, corrected example, full 1–100 number coverage.
 const mixedBank=[
  ...articleTasks.map(x=>({q:'آرتیکل درست برای '+x[0]+' چیست؟',a:x[1],o:['der','die','das'],kind:'article'})),
  ...foodTasks.map(x=>({q:'گروه درست برای '+x[0]+' چیست؟',a:x[1],o:['Obst','Gemüse','Getränke','Milchprodukte','Andere'],kind:'food'})),
- ...oneTen.map((x,i)=>({q:'عدد '+(i+1)+' به آلمانی چیست؟',a:x,o:oneTen.filter(v=>v!==x).sort(()=>Math.random()-.5).slice(0,3).concat(x).sort(()=>Math.random()-.5),kind:'number'})),
+ ...Array.from({length:100},(_,i)=>{const x=germanNumber(i+1);return {q:'عدد '+(i+1)+' به آلمانی چیست؟',a:x,o:[x,...Array.from({length:99},(_,j)=>germanNumber(j+1)).filter(v=>v!==x).sort(()=>Math.random()-.5).slice(0,3)].sort(()=>Math.random()-.5),kind:'number'}}),
  ...words.slice(0,Math.min(words.length,80)).filter(w=>w[1]&&w[0]).map(w=>({q:'معنی «'+w[0]+'» چیست؟',a:w[1],o:[w[1],...words.filter(z=>z[1]!==w[1]).sort(()=>Math.random()-.5).slice(0,3).map(z=>z[1])].sort(()=>Math.random()-.5),kind:'meaning'}))
 ];
 let mixedRun=[],mixedAt=0,mixedCorrect=0,mixedWrong=[],mixedLeft=90,mixedClock=null,mixedLocked=false;
@@ -1530,7 +1551,7 @@ function startMixedChallenge(){
 $('startMixedChallenge').onclick=startMixedChallenge;
 mixedStats();
 // Listening drill with a random number from 1–100; answer is checked in German.
-const listeningNumbers=['eins','zwei','drei','vier','fünf','sechs','sieben','acht','neun','zehn','elf','zwölf','dreizehn','vierzehn','fünfzehn','sechzehn','siebzehn','achtzehn','neunzehn','zwanzig','einundzwanzig','zweiundzwanzig','dreiundzwanzig','vierundzwanzig','fünfundzwanzig','sechsundzwanzig','siebenundzwanzig','achtundzwanzig','neunundzwanzig','dreißig','vierzig','fünfzig','sechzig','siebzig','achtzig','neunzig','hundert'];
+const listeningNumbers=Array.from({length:100},(_,i)=>germanNumber(i+1));
 let listeningTarget='',listeningDone=0,listeningRight=0;
 function newListeningNumber(){listeningTarget=listeningNumbers[Math.floor(Math.random()*listeningNumbers.length)];$('listeningAnswer').value='';$('listeningFeedback').textContent='عدد جدید آماده است؛ پخش صدا را بزن.';}
 $('playListeningNumber').onclick=()=>say(listeningTarget);
