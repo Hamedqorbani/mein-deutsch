@@ -2394,6 +2394,14 @@ async function loadOCR(){
  });
  return window.Tesseract;
 }
+function showImageWord(raw){
+ const q=normalizeWord(raw),detail=$('imageWordDetails');if(!detail)return;
+ const found=words.find(w=>normalizeWord(w[0])===q)||words.find(w=>normalizeWord(w[0]).replace(/^(der|die|das)\\s+/,'')===q);
+ detail.classList.remove('hidden');
+ if(!found){detail.innerHTML='<b dir="auto">'+esc(raw)+'</b><p class="muted tiny">این واژه در واژه‌نامه A1 پیدا نشد. می‌توانی آن را در دیکشنری جستجو کنی.</p><button class="btn small" type="button" id="searchOcrWord">جستجو در دیکشنری</button>';const b=$('searchOcrWord');b.onclick=()=>{$('dictSearch').value=raw;showPage('dictionary');searchDict()};return}
+ detail.innerHTML='<div class="row between"><strong dir="ltr">'+esc(found[0])+'</strong><button class="btn small" type="button" id="speakOcrWord">🔊 تلفظ</button></div><b>'+esc(found[1])+'</b><p class="muted tiny">آرتیکل: '+esc(found[4]||'—')+' · تلفظ: '+esc(found[3]||'—')+'</p><p class="tiny" dir="ltr">'+esc(found[7]||'')+'</p><p class="tiny" dir="auto">'+esc(found[8]||'')+'</p><div class="lesson-tag">'+esc(lessonForWord(found))+' · Starten wir! A1</div>';
+ $('speakOcrWord').onclick=()=>say(found[0]);
+}
 async function runImageTranslation(){
  const file=$('imageTranslateFile').files&&$('imageTranslateFile').files[0],out=$('imageTranslateOutput');
  if(!file){out.textContent='ابتدا عکس را انتخاب کن.';return}
@@ -2405,7 +2413,11 @@ async function runImageTranslation(){
   if(!extracted)throw new Error('متنی در عکس پیدا نشد؛ عکس واضح‌تری انتخاب کن.');
   out.innerHTML='<b>متن شناسایی‌شده:</b><p dir="auto">'+esc(extracted)+'</p><div class="muted tiny">در حال ترجمه متن…</div>';
   const translated=await translateOnline(extracted,$('imageSource').value==='deu'?'de':$('imageSource').value==='fas'?'fa':'en',$('imageTarget').value);
-  out.innerHTML='<b>متن شناسایی‌شده:</b><p dir="auto">'+esc(extracted)+'</p><hr style="border-color:var(--line)"><b>ترجمه:</b><p dir="auto">'+esc(translated)+'</p>';const overlay=$('imageTranslationOverlay');if(overlay){overlay.textContent=translated;overlay.classList.remove('hidden')}
+  const tokens=extracted.split(/(\\s+)/).filter(Boolean);
+  const tokenHtml=tokens.map(token=>/^\\s+$/.test(token)?esc(token):'<button type="button" class="chip image-word-token" data-image-word="'+esc(token.replace(/^[^\\p{L}ÄÖÜäöüß]+|[^\\p{L}ÄÖÜäöüß]+$/gu,''))+'" style="margin:2px;cursor:pointer">'+esc(token)+'</button>').join('');
+  out.innerHTML='<b>متن شناسایی‌شده:</b><div id="imageOcrTokens" dir="auto" style="line-height:2.5;margin:6px 0">'+tokenHtml+'</div><div id="imageWordDetails" class="result hidden" style="margin:10px 0"></div><hr style="border-color:var(--line)"><b>ترجمه:</b><p dir="auto">'+esc(translated)+'</p><small class="muted">روی هر واژه آلمانی بزن تا معنی، آرتیکل و تلفظ آن را ببینی.</small>';
+  const tokenArea=$('imageOcrTokens');tokenArea.querySelectorAll('[data-image-word]').forEach(btn=>btn.addEventListener('click',()=>showImageWord(btn.dataset.imageWord)));
+  const overlay=$('imageTranslationOverlay');if(overlay){overlay.textContent=translated;overlay.classList.remove('hidden')}
  }catch(error){out.textContent='عملیات کامل نشد: '+error.message+' برای ترجمه آنلاین اتصال اینترنت لازم است.'}
  finally{button.disabled=false}
 }
