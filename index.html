@@ -2378,6 +2378,22 @@ brennen:['brenne','brennst','brennt','brennen','brennt','brennen'],denken:['denk
 rennen:['renne','rennst','rennt','rennen','rennt','rennen'],senden:['sende','sendest','sendet','senden','sendet','senden'],singen:['singe','singst','singt','singen','singt','singen'],
 springen:['springe','springst','springt','springen','springt','springen'],schwimmen:['schwimme','schwimmst','schwimmt','schwimmen','schwimmt','schwimmen'],rufen:['rufe','rufst','ruft','rufen','ruft','rufen'],
 ziehen:['ziehe','ziehst','zieht','ziehen','zieht','ziehen'],verlieren:['verliere','verlierst','verliert','verlieren','verliert','verlieren'],gewinnen:['gewinne','gewinnst','gewinnt','gewinnen','gewinnt','gewinnen'],
+anfangen:['fange an','fängst an','fängt an','fangen an','fangt an','fangen an'],aufgeben:['gebe auf','gibst auf','gibt auf','geben auf','gebt auf','geben auf'],
+anrufen:['rufe an','rufst an','ruft an','rufen an','ruft an','rufen an'],einladen:['lade ein','lädst ein','lädt ein','laden ein','ladet ein','laden ein'],
+mitnehmen:['nehme mit','nimmst mit','nimmt mit','nehmen mit','nehmt mit','nehmen mit'],teilnehmen:['nehme teil','nimmst teil','nimmt teil','nehmen teil','nehmt teil','nehmen teil'],
+einfallen:['falle ein','fällst ein','fällt ein','fallen ein','fallt ein','fallen ein'],einschlafen:['schlafe ein','schläfst ein','schläft ein','schlafen ein','schlaft ein','schlafen ein'],
+aussehen:['sehe aus','siehst aus','sieht aus','sehen aus','seht aus','sehen aus'],fernsehen:['sehe fern','siehst fern','sieht fern','sehen fern','seht fern','sehen fern'],
+verstehen:['verstehe','verstehst','versteht','verstehen','versteht','verstehen'],messen:['messe','misst','misst','messen','messt','messen'],
+gelten:['gelte','giltst','gilt','gelten','geltet','gelten'],stechen:['steche','stichst','sticht','stechen','stecht','stechen'],
+schlagen:['schlage','schlägst','schlägt','schlagen','schlagt','schlagen'],fangen:['fange','fängst','fängt','fangen','fangt','fangen'],
+empfangen:['empfange','empfängst','empfängt','empfangen','empfangt','empfangen'],befehlen:['befehle','befiehlst','befiehlt','befehlen','befehlt','befehlen'],
+schreien:['schreie','schreist','schreit','schreien','schreit','schreien'],schweigen:['schweige','schweigst','schweigt','schweigen','schweigt','schweigen'],
+leiden:['leide','leidest','leidet','leiden','leidet','leiden'],meiden:['meide','meidest','meidet','meiden','meidet','meiden'],
+scheinen:['scheine','scheinst','scheint','scheinen','scheint','scheinen'],steigen:['steige','steigst','steigt','steigen','steigt','steigen'],
+einsteigen:['steige ein','steigst ein','steigt ein','steigen ein','steigt ein','steigen ein'],umsteigen:['steige um','steigst um','steigt um','steigen um','steigt um','steigen um'],
+ziehen:['ziehe','ziehst','zieht','ziehen','zieht','ziehen'],anziehen:['ziehe an','ziehst an','zieht an','ziehen an','zieht an','ziehen an'],
+ausziehen:['ziehe aus','ziehst aus','zieht aus','ziehen aus','zieht aus','ziehen aus'],wegwerfen:['werfe weg','wirfst weg','wirft weg','werfen weg','werft weg','werfen weg'],
+
 };
 function conj(){let v=$('verbInput').value.trim().toLowerCase(),m=$('verbMeaning').value.trim();if(!v){$('verbOutput').textContent='لطفاً فعل را وارد کن.';return}let forms=irregular[v];if(!forms){const regular=['machen','lernen','wohnen','spielen','kaufen','fragen','arbeiten','kochen','hören','sagen','suchen','brauchen','kosten','öffnen','reisen','tanzen','lieben','leben','lachen','warten','reden','studieren'];if(!regular.includes(v)){$('verbOutput').innerHTML='<div class="result">این فعل هنوز در فهرست صرفِ بررسی‌شده نیست. برای جلوگیری از نمایش صرف اشتباه، فعلاً شکل‌ها را حدس نمی‌زنم.</div>';return}let stem=v.slice(0,-2);if(['arbeiten','öffnen','warten','reden'].includes(v)){forms=[stem+'e',stem+'est',stem+'et',stem+'en',stem+'et',stem+'en']}else forms=[stem+'e',stem+'st',stem+'t',stem+'en',stem+'t',stem+'en'];}
 let labels=['من','تو','او','ما','شما (جمع)','شما (رسمی) / آنها'];$('verbOutput').innerHTML='<h3>'+esc(v)+' — '+esc(m||'')+'</h3><div class="grid2">'+forms.map((f,i)=>'<div class="result"><strong>'+pronouns[i]+' → '+f+'</strong><small>'+labels[i]+'</small></div>').join('')+'</div><p class="muted tiny">صرف زمان حال (Präsens). برای فعل‌های بی‌قاعده‌ای که در فهرست نیستند، شکل‌ها ممکن است نیاز به بررسی داشته باشند.</p>'}
