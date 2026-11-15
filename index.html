@@ -36,12 +36,43 @@ header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 9
 .add-card-panel .section-title{margin-bottom:5px}
 #newCardHint{margin-top:10px;min-height:18px}
 @media(max-width:420px){.flash-nav,.flash-actions{gap:6px}.flash-nav .btn,.flash-actions .btn{padding:9px 6px;font-size:12px}}
+
+/* Sidebar refinement: restrained, professional dark-slate treatment */
+.sidebar{background:linear-gradient(155deg,color-mix(in srgb,var(--panel) 96%,var(--accent2)),var(--panel) 48%,var(--bg));border-color:color-mix(in srgb,var(--accent) 17%,var(--line));}
+.sidebar-head{display:flex;align-items:center;gap:11px;padding:12px 11px 15px;background:linear-gradient(120deg,var(--panel2),var(--panel));border-color:color-mix(in srgb,var(--accent) 18%,var(--line));}
+.sidebar-brand-mark{width:42px;height:42px;flex:0 0 42px;display:grid;place-items:center;border-radius:13px;background:linear-gradient(145deg,#263d37,#1b2926);border:1px solid #456557;color:#c3dfce;font-size:13px;font-weight:900;letter-spacing:1px;direction:ltr;box-shadow:inset 0 1px #ffffff12;}
+.sidebar-brand-copy{min-width:0}
+.sidebar-caption{color:var(--text);font-size:12px;opacity:.9}
+.sidebar-level-card{position:relative;overflow:hidden;margin:0 0 12px;padding:12px 13px;border:1px solid color-mix(in srgb,var(--accent) 34%,var(--line));border-radius:16px;background:linear-gradient(115deg,color-mix(in srgb,var(--accent2) 82%,var(--panel)),var(--panel2));}
+.sidebar-level-card:after{content:"A1";position:absolute;left:9px;bottom:-20px;font-size:68px;line-height:1;font-weight:900;letter-spacing:-5px;color:var(--accent);opacity:.07;direction:ltr;pointer-events:none}
+.sidebar-level-top,.sidebar-level-main{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.sidebar-level-label{font-size:10px;color:var(--muted);font-weight:700}
+.sidebar-level-status{font-size:10px;color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,transparent);border:1px solid color-mix(in srgb,var(--accent) 25%,var(--line));border-radius:99px;padding:2px 8px}
+.sidebar-level-main{justify-content:flex-start;margin-top:5px}
+.sidebar-level-main>strong{font-size:31px;line-height:1.2;color:var(--accent);direction:ltr;letter-spacing:-1px}
+.sidebar-level-main>div{display:grid;gap:0}
+.sidebar-level-main>div b{font-size:13px;color:var(--text)}
+.sidebar-level-main>div small{font-size:10px;color:var(--muted)}
+.sidebar-level-mark{margin-right:auto;width:25px;height:25px;display:grid;place-items:center;border-radius:50%;background:var(--accent);color:#102219;font-size:13px;font-weight:900}
+.sidebar-level-track{height:3px;margin-top:10px;border-radius:9px;background:color-mix(in srgb,var(--line) 75%,transparent);overflow:hidden}
+.sidebar-level-track i{display:block;width:24%;height:100%;border-radius:9px;background:var(--accent);opacity:.8}
+.nav{gap:9px}
+.nav-group{background:linear-gradient(145deg,color-mix(in srgb,var(--panel2) 42%,var(--bg)),var(--bg) 68%);border-color:color-mix(in srgb,var(--line) 82%,var(--accent) 8%);padding:10px}
+.nav-heading{letter-spacing:.1px}
+.nav button{min-height:44px}
+.nav button.active{background:linear-gradient(100deg,color-mix(in srgb,var(--accent2) 68%,var(--panel)),var(--panel2));border-color:color-mix(in srgb,var(--accent) 28%,var(--line));}
+.nav button.active .ico{box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--accent) 15%,transparent)}
+.course-group{background:linear-gradient(145deg,color-mix(in srgb,var(--accent2) 22%,var(--bg)),var(--bg) 78%);}
+.nav button.course-level.active-level{background:linear-gradient(145deg,color-mix(in srgb,var(--accent2) 82%,var(--panel)),var(--panel2));}
+.sidebar-foot{background:linear-gradient(120deg,var(--panel2),var(--bg));}
+@media(max-width:760px){.sidebar{border-radius:20px;padding:12px}.sidebar-level-card{margin-bottom:10px}.sidebar-head{padding:10px 11px 12px}}
+
 </style>
 </head>
 <body>
 <header><button class="iconbtn" id="menuBtn" aria-label="باز کردن منو">☰</button><div class="brand"><div class="logo">م</div><div><strong>Mein Deutsch</strong><small>آلمانی من · یادگیری ساده و پیوسته</small></div></div><button class="iconbtn" id="themeBtn" title="تغییر تم">◐</button></header>
 <div class="shell">
-<aside class="sidebar" id="sidebar" aria-label="منوی اصلی"><div class="sidebar-head"><span class="sidebar-kicker">MEIN DEUTSCH</span><span class="sidebar-caption">مسیر یادگیری</span></div><nav class="nav" id="nav">
+<aside class="sidebar" id="sidebar" aria-label="منوی اصلی"><div class="sidebar-head"><div class="sidebar-brand-mark">DE</div><div class="sidebar-brand-copy"><span class="sidebar-kicker">MEIN DEUTSCH</span><span class="sidebar-caption">مسیر یادگیری آلمانی</span></div></div><div class="sidebar-level-card"><div class="sidebar-level-top"><span class="sidebar-level-label">سطح فعلی</span><span class="sidebar-level-status">در حال یادگیری</span></div><div class="sidebar-level-main"><strong>A1</strong><div><b>مبتدی</b><small>پایه‌سازی قدم‌به‌قدم</small></div><span class="sidebar-level-mark">✓</span></div><div class="sidebar-level-track"><i></i></div></div><nav class="nav" id="nav">
 <div class="nav-group"><div class="nav-heading"><span>شروع</span><span class="nav-heading-line"></span></div>
 <button class="active" data-page="home"><span class="ico">⌂</span><span class="nav-label">خانه</span></button></div>
 <div class="nav-group"><div class="nav-heading"><span>آموزش‌ها</span><span class="nav-heading-line"></span></div>
