@@ -84,6 +84,20 @@ header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 9
 <div class="row" style="gap:8px;margin-top:12px"><button class="btn primary" id="checkOddOneOut">بررسی پاسخ‌ها</button><button class="btn" id="resetOddOneOut">تمرین دوباره</button></div>
 <div id="oddOneOutFeedback" class="muted tiny" aria-live="polite"></div>
 </div>
+<div class="panel" id="mixedChallengePanel">
+<div class="row between"><h2 class="section-title">۷. آزمون ترکیبی A1</h2><span class="chip">۱۰ سؤال · ۹۰ ثانیه</span></div>
+<p class="muted tiny">از آرتیکل، معنی واژه، دسته‌بندی و اعداد سؤال می‌آید. نتیجه و اشتباه‌ها روی همین دستگاه ذخیره می‌شوند.</p>
+<div class="row"><button class="btn primary" id="startMixedChallenge">شروع آزمون</button><span class="chip" id="mixedBestScore">بهترین نتیجه: —</span><span class="chip" id="mixedTimer">زمان: ۹۰</span></div>
+<div id="mixedQuestionArea" style="margin-top:14px"><div class="empty">برای شروع آزمون دکمه را بزن.</div></div>
+<div id="mixedResult" class="exercise-feedback hidden" aria-live="polite"></div>
+</div>
+<div class="panel" id="listeningPanel">
+<div class="row between"><h2 class="section-title">۸. تمرین شنیداری اعداد</h2><span class="chip">Hören</span></div>
+<p class="muted tiny">روی پخش صدا بزن، عدد آلمانی را گوش کن و پاسخ را بنویس.</p>
+<div class="row"><button class="btn" id="playListeningNumber">🔊 پخش عدد</button><input id="listeningAnswer" placeholder="عدد را به آلمانی بنویس" dir="ltr" autocomplete="off" style="flex:1"></div>
+<div class="row" style="margin-top:10px"><button class="btn primary" id="checkListeningAnswer">بررسی پاسخ</button><button class="btn" id="nextListeningNumber">عدد بعدی</button><span class="chip" id="listeningProgress">۰ درست از ۰</span></div>
+<div id="listeningFeedback" class="muted tiny" aria-live="polite" style="margin-top:8px"></div>
+</div>
 <div class="panel"><h2 class="section-title">راهنمای رنگ آرتیکل‌ها</h2><div class="grid2"><div class="result"><b class="der">● der</b><div class="muted tiny">مذکر — مثل der Apfel</div></div><div class="result"><b class="die">● die</b><div class="muted tiny">مؤنث — مثل die Banane</div></div><div class="result"><b class="das">● das</b><div class="muted tiny">خنثی — مثل das Wasser</div></div><div class="result"><b class="plural">● die (جمع)</b><div class="muted tiny">برای اسم‌های جمع</div></div></div></div>
 </section>
 <section id="page-chat" class="page hidden"><div class="panel"><div class="row between"><div><h2 class="section-title">معلم هوشمند آلمانی</h2><div class="muted tiny">فقط آموزش زبان آلمانی · پاسخ کوتاه و ساده</div></div><div class="field"><label>سطح گفتگو</label><select id="chatLevel"><option>A1</option><option>A2</option><option>B1</option><option>B2</option><option>C1</option><option>C2</option></select></div></div><div class="field" style="margin:12px 0"><label>زبان توضیحات</label><select id="chatLanguage"><option value="fa">فارسی</option><option value="en">English</option></select></div><div class="chatlog" id="chatLog"><div class="bubble bot">Hallo! 👋 من معلم تمرینی آلمانی تو هستم. می‌تونیم واژه، گرامر، ترجمه یا مکالمه آلمانی تمرین کنیم. سطح رو انتخاب کن و شروع کن.</div></div><div class="chatbar"><input id="chatInput" placeholder="سؤال آلمانی خودت را بنویس…" autocomplete="off"><button class="btn primary" id="sendChat">ارسال</button></div><p class="muted tiny" id="chatNotice">نسخه فعلی پاسخ‌های آموزشی پایه را به‌صورت محلی ارائه می‌کند. برای گفت‌وگوی واقعی با مدل هوش مصنوعی باید بعداً سرویس امنی به برنامه متصل شود؛ کلید محرمانه نباید داخل مرورگر قرار بگیرد.</p></div></section>
@@ -1469,6 +1483,61 @@ $('checkSentences').onclick=()=>checkExercise(sentenceTasks.map((_,i)=>'sentence
 $('checkOddOneOut').onclick=()=>checkExercise(oddTasks.map((_,i)=>'oddAnswer'+i),oddTasks.map(x=>x.answer),'oddOneOutFeedback','کلمه متفاوت');
 $('resetOddOneOut').onclick=()=>{oddTasks.forEach((_,i)=>{const el=$('oddAnswer'+i);el.value='';el.style.borderColor='';el.title=''});$('oddOneOutFeedback').textContent='تمرین دوباره آماده است.';};
 buildBookExercises();
+
+
+// v27: timed mixed A1 challenge, persistent score and listening-number practice.
+const mixedBank=[
+ ...articleTasks.map(x=>({q:'آرتیکل درست برای '+x[0]+' چیست؟',a:x[1],o:['der','die','das'],kind:'article'})),
+ ...foodTasks.map(x=>({q:'گروه درست برای '+x[0]+' چیست؟',a:x[1],o:['Obst','Gemüse','Getränke','Milchprodukte','Andere'],kind:'food'})),
+ ...oneTen.map((x,i)=>({q:'عدد '+(i+1)+' به آلمانی چیست؟',a:x,o:oneTen.filter(v=>v!==x).sort(()=>Math.random()-.5).slice(0,3).concat(x).sort(()=>Math.random()-.5),kind:'number'})),
+ ...words.slice(0,Math.min(words.length,80)).filter(w=>w[1]&&w[0]).map(w=>({q:'معنی «'+w[0]+'» چیست؟',a:w[1],o:[w[1],...words.filter(z=>z[1]!==w[1]).sort(()=>Math.random()-.5).slice(0,3).map(z=>z[1])].sort(()=>Math.random()-.5),kind:'meaning'}))
+];
+let mixedRun=[],mixedAt=0,mixedCorrect=0,mixedWrong=[],mixedLeft=90,mixedClock=null,mixedLocked=false;
+const mixedShuffle=a=>[...a].sort(()=>Math.random()-.5);
+function mixedStats(){let best=Number(localStorage.getItem('md_mixed_best')||0);$('mixedBestScore').textContent='بهترین نتیجه: '+fa(best)+' / ۱۰۰';}
+function renderMixedQuestion(){
+ const area=$('mixedQuestionArea');
+ if(mixedAt>=mixedRun.length){finishMixedChallenge();return}
+ const q=mixedRun[mixedAt];
+ area.innerHTML='<div class="row between"><b>سؤال '+fa(mixedAt+1)+' از ۱۰</b><span class="chip">'+fa(mixedCorrect*10)+' امتیاز</span></div><h3>'+esc(q.q)+'</h3><div class="grid2">'+q.o.map((v,i)=>'<button class="btn mixed-choice" data-choice="'+i+'">'+esc(v)+'</button>').join('')+'</div><div id="mixedOneFeedback" class="muted tiny" style="margin-top:10px"></div>';
+ area.querySelectorAll('[data-choice]').forEach(b=>b.onclick=()=>{
+  if(mixedLocked)return;mixedLocked=true;
+  const chosen=q.o[Number(b.dataset.choice)],ok=normalizeWord(chosen)===normalizeWord(q.a);
+  if(ok)mixedCorrect++;else mixedWrong.push({question:q.q,chosen,answer:q.a});
+  area.querySelectorAll('[data-choice]').forEach(btn=>{btn.disabled=true;if(normalizeWord(btn.textContent)===normalizeWord(q.a))btn.style.borderColor='var(--accent)';});
+  $('mixedOneFeedback').textContent=ok?'✓ درست است!':'✗ پاسخ درست: '+q.a;
+  const next=document.createElement('button');next.className='btn primary';next.style.marginTop='12px';next.textContent=mixedAt===9?'دیدن نتیجه':'سؤال بعدی';next.onclick=()=>{mixedAt++;mixedLocked=false;renderMixedQuestion()};area.append(next);
+ });
+}
+function finishMixedChallenge(){
+ if(mixedClock){clearInterval(mixedClock);mixedClock=null}
+ const score=mixedCorrect*10,best=Math.max(score,Number(localStorage.getItem('md_mixed_best')||0));
+ localStorage.setItem('md_mixed_best',String(best));
+ const history=JSON.parse(localStorage.getItem('md_mixed_history')||'[]');history.unshift({date:new Date().toISOString(),score,wrong:mixedWrong});localStorage.setItem('md_mixed_history',JSON.stringify(history.slice(0,30)));
+ $('mixedQuestionArea').innerHTML='<h3>آزمون تمام شد</h3><div class="word">'+fa(score)+' / ۱۰۰</div><p class="muted">پاسخ درست: '+fa(mixedCorrect)+' از ۱۰ · اشتباه: '+fa(mixedWrong.length)+'</p><button class="btn primary" id="retryMixed">آزمون دوباره با سؤال‌های تازه</button>';
+ $('retryMixed').onclick=startMixedChallenge;
+ $('mixedResult').classList.remove('hidden');
+ $('mixedResult').innerHTML='<b>مرور اشتباه‌ها</b>'+(mixedWrong.length?mixedWrong.map(x=>'<div class="result" style="margin-top:7px"><b>'+esc(x.question)+'</b><div class="muted tiny">پاسخ تو: '+esc(x.chosen)+' · پاسخ درست: '+esc(x.answer)+'</div></div>').join(''):'<p>عالی! هیچ اشتباهی نداشتی.</p>');
+ mixedStats();
+}
+function startMixedChallenge(){
+ if(mixedClock)clearInterval(mixedClock);
+ mixedRun=mixedShuffle(mixedBank).slice(0,10);mixedAt=0;mixedCorrect=0;mixedWrong=[];mixedLeft=90;mixedLocked=false;
+ $('mixedResult').classList.add('hidden');$('mixedTimer').textContent='زمان: ۹۰';
+ renderMixedQuestion();
+ mixedClock=setInterval(()=>{mixedLeft--;$('mixedTimer').textContent='زمان: '+fa(mixedLeft);if(mixedLeft<=0)finishMixedChallenge()},1000);
+}
+$('startMixedChallenge').onclick=startMixedChallenge;
+mixedStats();
+// Listening drill with a random number from 1–100; answer is checked in German.
+const listeningNumbers=['eins','zwei','drei','vier','fünf','sechs','sieben','acht','neun','zehn','elf','zwölf','dreizehn','vierzehn','fünfzehn','sechzehn','siebzehn','achtzehn','neunzehn','zwanzig','einundzwanzig','zweiundzwanzig','dreiundzwanzig','vierundzwanzig','fünfundzwanzig','sechsundzwanzig','siebenundzwanzig','achtundzwanzig','neunundzwanzig','dreißig','vierzig','fünfzig','sechzig','siebzig','achtzig','neunzig','hundert'];
+let listeningTarget='',listeningDone=0,listeningRight=0;
+function newListeningNumber(){listeningTarget=listeningNumbers[Math.floor(Math.random()*listeningNumbers.length)];$('listeningAnswer').value='';$('listeningFeedback').textContent='عدد جدید آماده است؛ پخش صدا را بزن.';}
+$('playListeningNumber').onclick=()=>say(listeningTarget);
+$('checkListeningAnswer').onclick=()=>{const ok=normalizeWord($('listeningAnswer').value)===normalizeWord(listeningTarget);listeningDone++;if(ok)listeningRight++;$('listeningProgress').textContent=fa(listeningRight)+' درست از '+fa(listeningDone);$('listeningFeedback').textContent=ok?'✓ درست گفتی!':'✗ پاسخ درست: '+listeningTarget;};
+$('nextListeningNumber').onclick=newListeningNumber;
+$('listeningAnswer').addEventListener('keydown',e=>{if(e.key==='Enter')$('checkListeningAnswer').click()});
+newListeningNumber();
 
 setupCardCategories();if(prefs.theme)setTheme(prefs.theme);else setTheme('dark');$('languageSelect').value=lang;$('settingsLanguage').value=lang;counts();renderCard();renderGrammar();
 if('serviceWorker'in navigator && location.protocol.startsWith('http'))window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
