@@ -1,5 +1,5 @@
-const CACHE='mein-deutsch-v49';
-const FILES=['./','./index.html','./manifest.json','./icon.svg'];
+const CACHE='mein-deutsch-v50';
+const FILES=['./','./index.html','./manifest.json','./icon.svg','./enhancements.js'];
 
 self.addEventListener('install',event=>{
   event.waitUntil(
