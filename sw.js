@@ -1,4 +1,4 @@
-const CACHE='mein-deutsch-v42';
+const CACHE='mein-deutsch-v43';
 const FILES=['./','./index.html','./manifest.json','./icon.svg'];
 
 self.addEventListener('install',event=>{
