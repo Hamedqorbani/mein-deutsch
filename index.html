@@ -1227,7 +1227,7 @@ base.push(
 );
 const extra=JSON.parse(localStorage.getItem('md_custom')||'[]');
 // Keep one canonical card per German headword; avoid duplicate flashcards and inflated lists.
-const uniqueCards=list=>{const map=new Map();for(const w of list.filter(w=>Array.isArray(w)&&w.length===9)){const key=String(w[0]).toLocaleLowerCase('de-DE').trim().replace(/^(der|die|das)\s+/,'');const old=map.get(key);if(!old||((old[4]==='—'||!old[4])&&w[4]&&w[4]!=='—'))map.set(key,w)}return [...map.values()]};
+const uniqueCards=list=>{const map=new Map();for(const w of list.filter(w=>Array.isArray(w)&&w.length===9)){const lemma=String(w[0]).toLocaleLowerCase('de-DE').trim().replace(/^(der|die|das)\s+/,'');const key=lemma+'|'+(w[4]||'—');if(!map.has(key))map.set(key,w)}return [...map.values()]};
 let words=uniqueCards([...base,...extra]);
 let known=new Set(JSON.parse(localStorage.getItem('md_known')||'[]'));let idx=0,filtered=[];
 const $=id=>document.getElementById(id),fa=n=>String(n).replace(/\d/g,d=>'۰۱۲۳۴۵۶۷۸۹'[d]);
@@ -1312,11 +1312,14 @@ setupWordSuggestions();$('dictSearch').oninput=searchDict;$('languageSelect').on
 $('dictResults').addEventListener('click',e=>{let s=e.target.closest('[data-speak]');if(s)say(s.dataset.speak);let a=e.target.closest('[data-add]');if(a){idx=Number(a.dataset.add);page('cards');renderCard()}});
 function findVocabularyMatches(q){
  let n=normalizeWord(q);if(!n)return [];
+ const articleMatch=n.match(/^(der|die|das)\s+/);
  const bare=n.replace(/^(der|die|das)\s+/,'');
  const germanKey=w=>normalizeWord(w[0]).replace(/^(der|die|das)\s+/,'');
- const unique=list=>[...new Map(list.map(w=>[germanKey(w),w])).values()];
+ const unique=list=>[...new Map(list.map(w=>[germanKey(w)+'|'+(w[4]||'—'),w])).values()];
  let exactGerman=unique(words.filter(w=>germanKey(w)===bare));
+ if(articleMatch)exactGerman=exactGerman.filter(w=>w[4]===articleMatch[1]);
  if(exactGerman.length)return exactGerman;
+ if(articleMatch)return [];
  let exactMeaning=unique(words.filter(w=>[w[1],w[2]].some(v=>normalizeWord(v)===n)));
  if(exactMeaning.length)return exactMeaning;
  let partial=unique(words.filter(w=>[w[1],w[2]].some(v=>{let m=normalizeWord(v);return n.length>=3&&m.length>=3&&(m.includes(n)||n.includes(m))})));
