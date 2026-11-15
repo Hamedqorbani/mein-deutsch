@@ -1300,13 +1300,936 @@ let known=new Set(JSON.parse(localStorage.getItem('md_known')||'[]'));let idx=0,
 const $=id=>document.getElementById(id),fa=n=>String(n).replace(/\d/g,d=>'۰۱۲۳۴۵۶۷۸۹'[d]);
 let prefs=JSON.parse(localStorage.getItem('md_prefs')||'{}');let lang=prefs.lang||'fa';let uiLang=prefs.uiLang||'fa';
 const uiText={
-'خانه':['Startseite','Home'],'فلش‌کارت‌ها':['Lernkarten','Flashcards'],'دیکشنری و جستجو':['Wörterbuch & Suche','Dictionary & Search'],'صرف فعل':['Konjugation','Verb conjugation'],'گرامر و تمرین':['Grammatik & Übungen','Grammar & Practice'],'تمرین‌های کتابی':['Buchübungen','Book exercises'],'معلم هوشمند':['Lernassistent','Learning assistant'],'تنظیمات':['Einstellungen','Settings'],
-'تنظیمات برنامه':['Programmeinstellungen','App settings'],'فارسی':['Persisch','Persian'],'Deutsch':['Deutsch','German'],'English':['Englisch','English'],'زبان کل برنامه':['App-Sprache','App language'],'زبان ترجمه واژه‌ها':['Übersetzungssprache','Vocabulary translation'],'ظاهر برنامه':['Darstellung','Appearance'],'سطح فعلی یادگیری':['Aktuelles Niveau','Current level'],
-'آلمانی رو قدم‌به‌قدم یاد بگیر.':['Lerne Schritt für Schritt Deutsch.','Learn German step by step.'],'تمرین کوتاه، معنی روشن و پیشرفت ماندگار.':['Kurze Übungen, klare Bedeutungen und stetiger Fortschritt.','Short practice, clear meanings and steady progress.'],'از کجا شروع کنیم؟':['Womit fangen wir an?','Where should we start?'],'واژه‌های بلدشده':['Bekannte Wörter','Words mastered'],'واژه‌های A1 و کارت‌های شخصی':['A1-Wörter und eigene Karten','A1 words and personal cards'],'تمرین‌های امروز':['Heutige Übungen','Today’s practice'],
-'فلش‌کارت‌های آلمانی':['Deutsche Lernkarten','German flashcards'],'جستجو در فلش‌کارت‌ها':['Lernkarten durchsuchen','Search flashcards'],'نمایش معنی':['Bedeutung zeigen','Show meaning'],'قبلی':['Zurück','Previous'],'بعدی':['Weiter','Next'],'هنوز بلد نیستم':['Noch nicht gelernt','Not known yet'],'بلدم':['Kann ich','I know this'],'شنیدن':['Anhören','Listen'],'افزودن فلش‌کارت شخصی':['Eigene Lernkarte hinzufügen','Add personal flashcard'],
-'دیکشنری و جستجوی سراسری':['Wörterbuch und Suche','Dictionary and search'],'واژه آلمانی یا معنی را جستجو کن':['Deutsches Wort oder Bedeutung suchen','Search German word or meaning'],'ترجمه به':['Übersetzen nach','Translate to'],'صرف فعل آلمانی':['Deutsche Verben konjugieren','German verb conjugation'],'گرامر آلمانی · سطح A1':['Deutsche Grammatik · Niveau A1','German grammar · A1 level'],'تمرین همین درس':['Übung zu dieser Lektion','Practice this lesson'],'سؤال بعدی':['Nächste Frage','Next question'],'تمرین‌های کتابی':['Lehrbuchübungen','Textbook exercises'],
-'بررسی پاسخ‌ها':['Antworten prüfen','Check answers'],'بررسی اعداد':['Zahlen prüfen','Check numbers'],'بررسی جمله‌ها':['Sätze prüfen','Check sentences'],'بررسی دسته‌بندی':['Zuordnung prüfen','Check categories'],'دریافت نسخه پشتیبان':['Sicherung herunterladen','Download backup'],'بازیابی نسخه پشتیبان':['Sicherung wiederherstellen','Restore backup'],'پاک کردن پیشرفت این دستگاه':['Fortschritt löschen','Clear this device progress']
+  "آلمانی من · یادگیری ساده و پیوسته": [
+    "Mein Deutsch · einfach und kontinuierlich lernen",
+    "My German · simple, steady learning"
+  ],
+  "خانه": [
+    "Startseite",
+    "Home"
+  ],
+  "فلش‌کارت‌ها": [
+    "Lernkarten",
+    "Flashcards"
+  ],
+  "دیکشنری و جستجو": [
+    "Wörterbuch & Suche",
+    "Dictionary & Search"
+  ],
+  "صرف فعل": [
+    "Verb konjugieren",
+    "Conjugate verb"
+  ],
+  "گرامر و تمرین": [
+    "Grammatik & Übungen",
+    "Grammar & Practice"
+  ],
+  "تمرین‌های کتابی": [
+    "Buchübungen",
+    "Workbook practice"
+  ],
+  "معلم هوشمند": [
+    "Lernassistent",
+    "Learning assistant"
+  ],
+  "تنظیمات": [
+    "Einstellungen",
+    "Settings"
+  ],
+  "WILLKOMMEN · خوش آمدی": [
+    "WILLKOMMEN",
+    "WELCOME"
+  ],
+  "آلمانی رو قدم‌به‌قدم یاد بگیر.": [
+    "Lerne Schritt für Schritt Deutsch.",
+    "Learn German step by step."
+  ],
+  "تمرین کوتاه، معنی روشن و پیشرفت ماندگار.": [
+    "Kurze Übungen, klare Bedeutungen und stetiger Fortschritt.",
+    "Short practice, clear meanings and steady progress."
+  ],
+  "واژه‌های بلدشده": [
+    "Bekannte Wörter",
+    "Words mastered"
+  ],
+  "واژه‌های A1 و کارت‌های شخصی": [
+    "A1-Wörter und eigene Karten",
+    "A1 words and personal cards"
+  ],
+  "تمرین‌های امروز": [
+    "Heutige Übungen",
+    "Today's practice"
+  ],
+  "از کجا شروع کنیم؟": [
+    "Womit fangen wir an?",
+    "Where should we start?"
+  ],
+  "▣ فلش‌کارت A1": [
+    "▣ A1-Lernkarten",
+    "▣ A1 flashcards"
+  ],
+  "لغت، آرتیکل و مثال": [
+    "Wörter, Artikel und Beispiele",
+    "Words, articles and examples"
+  ],
+  "⌕ جستجوی واژه": [
+    "⌕ Wortsuche",
+    "⌕ Word search"
+  ],
+  "معنی و تلفظ": [
+    "Bedeutung und Aussprache",
+    "Meaning and pronunciation"
+  ],
+  "↔ صرف فعل": [
+    "↔ Verbkonjugation",
+    "↔ Verb conjugation"
+  ],
+  "شش ضمیر آلمانی": [
+    "Sechs deutsche Pronomen",
+    "Six German pronouns"
+  ],
+  "文 گرامر A1": [
+    "文 A1-Grammatik",
+    "文 A1 grammar"
+  ],
+  "درس کوتاه و آزمون": [
+    "Kurze Lektion und Test",
+    "Short lesson and quiz"
+  ],
+  "✦ تمرین با معلم": [
+    "✦ Üben mit dem Lernassistenten",
+    "✦ Practice with tutor"
+  ],
+  "گفت‌وگوی آموزشی": [
+    "Lerngespräch",
+    "Learning conversation"
+  ],
+  "نکته امروز": [
+    "Tipp des Tages",
+    "Tip of the day"
+  ],
+  "یعنی «حالت چطوره؟» پاسخ ساده:": [
+    "Das bedeutet „Wie geht es dir?“. Eine einfache Antwort:",
+    "This means “How are you?”. A simple answer:"
+  ],
+  "— حالم خوبه.": [
+    "— Mir geht es gut.",
+    "— I'm fine."
+  ],
+  "فلش‌کارت‌های آلمانی": [
+    "Deutsche Lernkarten",
+    "German flashcards"
+  ],
+  "آرتیکل‌ها رنگی هستند: der آبی، die قرمز، das سبز، جمع زرد": [
+    "Die Artikel sind farbig: der blau, die rot, das grün, Plural gelb",
+    "Articles are color-coded: der blue, die red, das green, plural yellow"
+  ],
+  "جستجو در فلش‌کارت‌ها": [
+    "Lernkarten durchsuchen",
+    "Search flashcards"
+  ],
+  "سطح A1 · فعال": [
+    "Niveau A1 · aktiv",
+    "Level A1 · active"
+  ],
+  "سطح A2 · به‌زودی": [
+    "Niveau A2 · bald",
+    "Level A2 · coming soon"
+  ],
+  "سطح B1 · به‌زودی": [
+    "Niveau B1 · bald",
+    "Level B1 · coming soon"
+  ],
+  "سطح B2 · به‌زودی": [
+    "Niveau B2 · bald",
+    "Level B2 · coming soon"
+  ],
+  "سطح C1 · به‌زودی": [
+    "Niveau C1 · bald",
+    "Level C1 · coming soon"
+  ],
+  "سطح C2 · به‌زودی": [
+    "Niveau C2 · bald",
+    "Level C2 · coming soon"
+  ],
+  "همه دسته‌ها": [
+    "Alle Kategorien",
+    "All categories"
+  ],
+  "این سطح به‌زودی فعال می‌شود": [
+    "Dieses Niveau wird bald freigeschaltet",
+    "This level will be available soon"
+  ],
+  "فعلاً محتوای سطح A1 در دسترس است.": [
+    "Zurzeit sind Inhalte für A1 verfügbar.",
+    "A1 content is currently available."
+  ],
+  "به‌زودی": [
+    "Demnächst",
+    "Coming soon"
+  ],
+  "تلفظ:": [
+    "Aussprache:",
+    "Pronunciation:"
+  ],
+  "نمایش معنی": [
+    "Bedeutung zeigen",
+    "Show meaning"
+  ],
+  "پنهان کردن معنی": [
+    "Bedeutung verbergen",
+    "Hide meaning"
+  ],
+  "← قبلی": [
+    "← Zurück",
+    "← Previous"
+  ],
+  "بعدی →": [
+    "Weiter →",
+    "Next →"
+  ],
+  "هنوز بلد نیستم": [
+    "Noch nicht gelernt",
+    "Not yet learned"
+  ],
+  "✓ بلدم": [
+    "✓ Das kann ich",
+    "✓ I know this"
+  ],
+  "🔊 شنیدن": [
+    "🔊 Anhören",
+    "🔊 Listen"
+  ],
+  "＋ افزودن فلش‌کارت شخصی": [
+    "＋ Eigene Lernkarte hinzufügen",
+    "＋ Add personal flashcard"
+  ],
+  "فقط واژه یا معنی را بنویس؛ اگر در واژگان برنامه باشد، ترجمه و آرتیکل خودکار تکمیل می‌شوند.": [
+    "Gib nur das Wort oder seine Bedeutung ein. Bekannte Wörter werden automatisch ergänzt.",
+    "Enter only the word or its meaning. Known words are completed automatically."
+  ],
+  "واژه آلمانی (اختیاری)": [
+    "Deutsches Wort (optional)",
+    "German word (optional)"
+  ],
+  "معنی فارسی یا انگلیسی (اختیاری)": [
+    "Persische oder englische Bedeutung (optional)",
+    "Persian or English meaning (optional)"
+  ],
+  "تلفظ فارسی": [
+    "Persische Aussprache",
+    "Persian pronunciation"
+  ],
+  "آرتیکل": [
+    "Artikel",
+    "Article"
+  ],
+  "جمع": [
+    "Plural",
+    "Plural"
+  ],
+  "هنگام نوشتن، واژه‌های شناخته‌شده شناسایی می‌شوند.": [
+    "Bekannte Wörter werden während der Eingabe erkannt.",
+    "Known words are detected as you type."
+  ],
+  "افزودن فلش‌کارت": [
+    "Lernkarte hinzufügen",
+    "Add flashcard"
+  ],
+  "افزودن به کارت‌ها": [
+    "Zu Lernkarten hinzufügen",
+    "Add to flashcards"
+  ],
+  "کارت با موفقیت اضافه شد.": [
+    "Lernkarte erfolgreich hinzugefügt.",
+    "Flashcard added successfully."
+  ],
+  "فلش‌کارت اضافه شد.": [
+    "Lernkarte hinzugefügt.",
+    "Flashcard added."
+  ],
+  "دیکشنری و جستجوی سراسری": [
+    "Wörterbuch und Suche",
+    "Dictionary and search"
+  ],
+  "واژه آلمانی یا معنی را جستجو کن": [
+    "Suche ein deutsches Wort oder seine Bedeutung",
+    "Search for a German word or its meaning"
+  ],
+  "ترجمه به": [
+    "Übersetzen ins",
+    "Translate to"
+  ],
+  "فارسی": [
+    "Persisch",
+    "Persian"
+  ],
+  "Deutsch": [
+    "Deutsch",
+    "German"
+  ],
+  "English": [
+    "Englisch",
+    "English"
+  ],
+  "واژه‌ای پیدا نشد.": [
+    "Kein Wort gefunden.",
+    "No word found."
+  ],
+  "صرف فعل آلمانی": [
+    "Deutsche Verben konjugieren",
+    "German verb conjugation"
+  ],
+  "فعل را به شکل مصدر وارد کن؛ مثل machen یا sein.": [
+    "Gib den Infinitiv ein, zum Beispiel machen oder sein.",
+    "Enter the infinitive, for example machen or sein."
+  ],
+  "فعل آلمانی": [
+    "Deutsches Verb",
+    "German verb"
+  ],
+  "معنی فارسی یا انگلیسی": [
+    "Persische oder englische Bedeutung",
+    "Persian or English meaning"
+  ],
+  "لطفاً فعل را وارد کن.": [
+    "Bitte gib ein Verb ein.",
+    "Please enter a verb."
+  ],
+  "این فعل هنوز در فهرست صرفِ بررسی‌شده نیست. برای جلوگیری از نمایش صرف اشتباه، فعلاً شکل‌ها را حدس نمی‌زنم.": [
+    "Dieses Verb ist noch nicht in der geprüften Konjugationsliste. Um Fehler zu vermeiden, zeige ich keine geratenen Formen an.",
+    "This verb is not yet in the verified conjugation list. To avoid errors, I will not guess its forms."
+  ],
+  "صرف زمان حال (Präsens). برای فعل‌های بی‌قاعده‌ای که در فهرست نیستند، شکل‌ها ممکن است نیاز به بررسی داشته باشند.": [
+    "Präsens. Nicht aufgeführte unregelmäßige Verben müssen möglicherweise überprüft werden.",
+    "Present tense. Unlisted irregular verbs may need verification."
+  ],
+  "گرامر آلمانی · سطح A1": [
+    "Deutsche Grammatik · Niveau A1",
+    "German grammar · A1 level"
+  ],
+  "درس‌ها کوتاه و مرحله‌ای هستند. بعد از هر درس یک سؤال تمرین کن.": [
+    "Die Lektionen sind kurz und schrittweise. Übe nach jeder Lektion mit einer Frage.",
+    "Lessons are short and step-by-step. Practise one question after each lesson."
+  ],
+  "انتخاب درس": [
+    "Lektion auswählen",
+    "Choose a lesson"
+  ],
+  "تمرین همین درس": [
+    "Übung zu dieser Lektion",
+    "Practice this lesson"
+  ],
+  "سؤال ۱": [
+    "Frage 1",
+    "Question 1"
+  ],
+  "سؤال بعدی": [
+    "Nächste Frage",
+    "Next question"
+  ],
+  "تمرین آرتیکل‌ها با رنگ، میوه و سبزیجات، دسته‌بندی خوراکی‌ها و اعداد آلمانی.": [
+    "Übe Artikel mit Farben, Obst und Gemüse, Lebensmittelgruppen und deutschen Zahlen.",
+    "Practise articles, colors, fruit and vegetables, food groups, and German numbers."
+  ],
+  "der آبی": [
+    "der – blau",
+    "der – blue"
+  ],
+  "die قرمز": [
+    "die – rot",
+    "die – red"
+  ],
+  "das سبز": [
+    "das – grün",
+    "das – green"
+  ],
+  "۱. آرتیکل درست را کامل کن": [
+    "1. Ergänze den richtigen Artikel",
+    "1. Complete the correct article"
+  ],
+  "رنگ نقطه راهنماست؛ آرتیکل مناسب را انتخاب کن.": [
+    "Die Farbe des Punktes ist eine Hilfe. Wähle den passenden Artikel.",
+    "The dot color is a hint; choose the correct article."
+  ],
+  "بررسی پاسخ‌ها": [
+    "Antworten prüfen",
+    "Check answers"
+  ],
+  "۲. خوراکی‌ها را دسته‌بندی کن": [
+    "2. Ordne die Lebensmittel",
+    "2. Sort the food"
+  ],
+  "هر واژه را در گروه درست قرار بده.": [
+    "Ordne jedes Wort der richtigen Gruppe zu.",
+    "Put each word in the correct group."
+  ],
+  "بررسی دسته‌بندی": [
+    "Zuordnung prüfen",
+    "Check categories"
+  ],
+  "۳. اعداد یک تا ده": [
+    "3. Zahlen von eins bis zehn",
+    "3. Numbers one to ten"
+  ],
+  "بررسی اعداد": [
+    "Zahlen prüfen",
+    "Check numbers"
+  ],
+  "۴. ده‌تا ده‌تا تا صد": [
+    "4. In Zehnerschritten bis hundert",
+    "4. Count by tens to one hundred"
+  ],
+  "عدد آلمانی را بنویس؛ به املای ä و ß دقت کن.": [
+    "Schreibe die Zahl auf Deutsch. Achte auf ä und ß.",
+    "Write the number in German; pay attention to ä and ß."
+  ],
+  "۵. جمله را کامل کن": [
+    "5. Ergänze den Satz",
+    "5. Complete the sentence"
+  ],
+  "کلمه عددی را بنویس": [
+    "Schreibe das Zahlwort",
+    "Enter the number word"
+  ],
+  "۶. کدام کلمه متفاوت است؟": [
+    "6. Welches Wort passt nicht?",
+    "6. Which word is the odd one out?"
+  ],
+  "در هر ردیف، کلمه‌ای را انتخاب کن که به گروه بقیه تعلق ندارد.": [
+    "Wähle in jeder Reihe das Wort, das nicht zur Gruppe passt.",
+    "Choose the word in each row that does not belong."
+  ],
+  "تمرین دوباره": [
+    "Noch einmal üben",
+    "Practise again"
+  ],
+  "۷. کلمات را مرتب کن": [
+    "7. Ordne die Wörter",
+    "7. Put the words in order"
+  ],
+  "کلمات هر جمله را به ترتیب درست انتخاب کن.": [
+    "Wähle die Wörter jedes Satzes in der richtigen Reihenfolge.",
+    "Choose the words in each sentence in the correct order."
+  ],
+  "۸. آزمون ترکیبی A1": [
+    "8. A1-Mischtest",
+    "8. A1 mixed quiz"
+  ],
+  "۱۰ سؤال · ۹۰ ثانیه": [
+    "10 Fragen · 90 Sekunden",
+    "10 questions · 90 seconds"
+  ],
+  "شروع آزمون": [
+    "Test starten",
+    "Start quiz"
+  ],
+  "بهترین نتیجه: —": [
+    "Bestes Ergebnis: —",
+    "Best score: —"
+  ],
+  "زمان: ۹۰": [
+    "Zeit: 90",
+    "Time: 90"
+  ],
+  "برای شروع آزمون دکمه را بزن.": [
+    "Drücke zum Starten die Taste.",
+    "Press the button to start."
+  ],
+  "۹. تمرین شنیداری اعداد": [
+    "9. Hörübung: Zahlen",
+    "9. Number listening practice"
+  ],
+  "روی پخش صدا بزن، عدد آلمانی را گوش کن و پاسخ را بنویس.": [
+    "Spiele die Zahl ab, höre gut zu und schreibe die Zahl auf Deutsch.",
+    "Play the audio, listen to the German number, and type your answer."
+  ],
+  "🔊 پخش عدد": [
+    "🔊 Zahl abspielen",
+    "🔊 Play number"
+  ],
+  "بررسی پاسخ": [
+    "Antwort prüfen",
+    "Check answer"
+  ],
+  "عدد بعدی": [
+    "Nächste Zahl",
+    "Next number"
+  ],
+  "۰ درست از ۰": [
+    "0 richtig von 0",
+    "0 correct out of 0"
+  ],
+  "۱۰. صبحانه، ناهار و شام": [
+    "10. Frühstück, Mittagessen und Abendessen",
+    "10. Breakfast, lunch and dinner"
+  ],
+  "🍳 Frühstück · صبحانه": [
+    "🍳 Frühstück · breakfast",
+    "🍳 Frühstück · breakfast"
+  ],
+  "🍲 Mittagessen · ناهار": [
+    "🍲 Mittagessen · lunch",
+    "🍲 Mittagessen · lunch"
+  ],
+  "🌙 Abendessen · شام": [
+    "🌙 Abendessen · dinner",
+    "🌙 Abendessen · dinner"
+  ],
+  "عبارت‌های کاربردی": [
+    "Nützliche Ausdrücke",
+    "Useful phrases"
+  ],
+  "بررسی جای خالی‌ها": [
+    "Lückentext prüfen",
+    "Check the blanks"
+  ],
+  "۱۱. میوه‌ها و آرتیکل آن‌ها": [
+    "11. Obst und Artikel",
+    "11. Fruit and articles"
+  ],
+  "آرتیکل را همراه اسم حفظ کن؛ رنگ نقطه راهنمای جنس دستوری است.": [
+    "Lerne den Artikel zusammen mit dem Nomen. Die Punktfarbe zeigt das grammatische Geschlecht.",
+    "Learn the article with the noun; the dot color indicates grammatical gender."
+  ],
+  "بررسی آرتیکل میوه‌ها": [
+    "Obstartikel prüfen",
+    "Check fruit articles"
+  ],
+  "گرامر مفرد و جمع میوه‌ها": [
+    "Grammatik: Singular und Plural bei Obst",
+    "Fruit singular and plural grammar"
+  ],
+  "بررسی شکل جمع": [
+    "Pluralformen prüfen",
+    "Check plural forms"
+  ],
+  "۱۲. رنگ‌ها و گرامر آن‌ها": [
+    "12. Farben und ihre Grammatik",
+    "12. Colors and their grammar"
+  ],
+  "قرمز ·": [
+    "Rot ·",
+    "Red ·"
+  ],
+  "آبی ·": [
+    "Blau ·",
+    "Blue ·"
+  ],
+  "سبز ·": [
+    "Grün ·",
+    "Green ·"
+  ],
+  "زرد": [
+    "Gelb",
+    "Yellow"
+  ],
+  "schwarz مشکی · weiß سفید · braun قهوه‌ای · orange نارنجی · lila بنفش": [
+    "schwarz black · weiß white · braun brown · orange orange · lila purple",
+    "schwarz black · weiß white · braun brown · orange orange · lila purple"
+  ],
+  "قاعده:": [
+    "Regel:",
+    "Rule:"
+  ],
+  "وقتی رنگ بعد از فعل": [
+    "Wenn die Farbe nach dem Verb",
+    "When the color comes after the verb"
+  ],
+  "بیاید، تغییر نمی‌کند.": [
+    "steht, bleibt sie unverändert.",
+    "it does not change."
+  ],
+  "بررسی رنگ‌ها": [
+    "Farben prüfen",
+    "Check colors"
+  ],
+  "۱۳. چطور سؤال بپرسیم؟": [
+    "13. Wie stellt man Fragen?",
+    "13. How do we ask questions?"
+  ],
+  "چه کسی؟": [
+    "Wer?",
+    "Who?"
+  ],
+  "چه چیزی؟": [
+    "Was?",
+    "What?"
+  ],
+  "کجا؟": [
+    "Wo?",
+    "Where?"
+  ],
+  "اهل کجا؟ از کجا؟": [
+    "Woher?",
+    "Where from?"
+  ],
+  "چگونه؟": [
+    "Wie?",
+    "How?"
+  ],
+  "چند ساله؟": [
+    "Wie alt?",
+    "How old?"
+  ],
+  "چه زمانی؟": [
+    "Wann?",
+    "When?"
+  ],
+  "کدام؟": [
+    "Welche/r/s?",
+    "Which?"
+  ],
+  "چقدر؟": [
+    "Wie viel?",
+    "How much?"
+  ],
+  "چند تا؟": [
+    "Wie viele?",
+    "How many?"
+  ],
+  "ساختار:": [
+    "Struktur:",
+    "Structure:"
+  ],
+  "کلمه پرسشی + فعل + فاعل + ادامه جمله؟": [
+    "Fragewort + Verb + Subjekt + Satzergänzung?",
+    "Question word + verb + subject + rest of sentence?"
+  ],
+  "سؤال بله/خیر:": [
+    "Ja/Nein-Frage:",
+    "Yes/no question:"
+  ],
+  "فعل + فاعل + ادامه جمله؟": [
+    "Verb + Subjekt + Satzergänzung?",
+    "Verb + subject + rest of sentence?"
+  ],
+  "بررسی سؤال‌ها": [
+    "Fragen prüfen",
+    "Check questions"
+  ],
+  "۱۴. مرور درس‌های ۱ تا ۴ Starten wir! A1": [
+    "14. Wiederholung der Lektionen 1–4 · Starten wir! A1",
+    "14. Review of lessons 1–4 · Starten wir! A1"
+  ],
+  "سلام و معرفی، نام و کشور، زبان‌ها، الفبا و اعداد ۰ تا ۱۰، شماره تلفن و ایمیل.": [
+    "Begrüßung und Vorstellung, Name und Land, Sprachen, Alphabet, Zahlen 0–10, Telefonnummer und E-Mail.",
+    "Greetings and introductions, name and country, languages, alphabet, numbers 0–10, phone number and email."
+  ],
+  "درس ۲ · Menschen": [
+    "Lektion 2 · Menschen",
+    "Lesson 2 · Menschen"
+  ],
+  "احوال‌پرسی، خانواده و دوستان، سن، اعداد ۱۱ تا ۱۰۰، ein/kein و ضمایر ملکی.": [
+    "Begrüßung, Familie und Freunde, Alter, Zahlen 11–100, ein/kein und Possessivartikel.",
+    "Greetings, family and friends, age, numbers 11–100, ein/kein and possessives."
+  ],
+  "درس ۳ · Essen und Trinken": [
+    "Lektion 3 · Essen und Trinken",
+    "Lesson 3 · Essen und Trinken"
+  ],
+  "میوه و سبزی، غذا و نوشیدنی، رنگ‌ها، قیمت و مقدار، فعل‌های sein/haben و تغییرمصوت‌دار.": [
+    "Obst und Gemüse, Essen und Getränke, Farben, Preise und Mengen, sein/haben und Verben mit Vokalwechsel.",
+    "Fruit and vegetables, food and drinks, colors, prices and quantities, sein/haben and vowel-changing verbs."
+  ],
+  "درس ۴ · Mein Leben": [
+    "Lektion 4 · Mein Leben",
+    "Lesson 4 · Mein Leben"
+  ],
+  "زندگی روزمره، نیازها و خواسته‌ها، فعل‌های brauchen و nehmen و جمله‌سازی.": [
+    "Alltag, Bedürfnisse und Wünsche, die Verben brauchen und nehmen und Satzbau.",
+    "Daily life, needs and wants, brauchen and nehmen, and sentence building."
+  ],
+  "بررسی مرور درس‌ها": [
+    "Wiederholung prüfen",
+    "Check lesson review"
+  ],
+  "راهنمای رنگ آرتیکل‌ها": [
+    "Farblegende der Artikel",
+    "Article color guide"
+  ],
+  "مذکر — مثل der Apfel": [
+    "Maskulin – zum Beispiel der Apfel",
+    "Masculine – for example der Apfel"
+  ],
+  "مؤنث — مثل die Banane": [
+    "Feminin – zum Beispiel die Banane",
+    "Feminine – for example die Banane"
+  ],
+  "خنثی — مثل das Wasser": [
+    "Neutrum – zum Beispiel das Wasser",
+    "Neuter – for example das Wasser"
+  ],
+  "● die (جمع)": [
+    "● die (Plural)",
+    "● die (plural)"
+  ],
+  "برای اسم‌های جمع": [
+    "Für Nomen im Plural",
+    "For plural nouns"
+  ],
+  "معلم هوشمند آلمانی": [
+    "Intelligenter Deutsch-Lernassistent",
+    "Smart German tutor"
+  ],
+  "فقط آموزش زبان آلمانی · پاسخ کوتاه و ساده": [
+    "Nur Deutschlernen · kurze und einfache Antworten",
+    "German learning only · short, simple answers"
+  ],
+  "سطح گفتگو": [
+    "Gesprächsniveau",
+    "Conversation level"
+  ],
+  "زبان توضیحات": [
+    "Sprache der Erklärungen",
+    "Explanation language"
+  ],
+  "ارسال": [
+    "Senden",
+    "Send"
+  ],
+  "تنظیمات برنامه": [
+    "Programmeinstellungen",
+    "App settings"
+  ],
+  "زبان کل برنامه": [
+    "App-Sprache",
+    "App language"
+  ],
+  "زبان منوها، عنوان‌ها و دکمه‌ها را تغییر می‌دهد؛ متن آموزشی آلمانی حفظ می‌شود.": [
+    "Ändert Menüs, Titel und Schaltflächen. Deutsche Lerninhalte bleiben erhalten.",
+    "Changes menus, titles, and buttons. German learning content stays unchanged."
+  ],
+  "زبان ترجمه واژه‌ها": [
+    "Übersetzungssprache",
+    "Vocabulary translation language"
+  ],
+  "آلمانی به فارسی": [
+    "Deutsch → Persisch",
+    "German → Persian"
+  ],
+  "آلمانی به انگلیسی": [
+    "Deutsch → Englisch",
+    "German → English"
+  ],
+  "ظاهر برنامه": [
+    "Darstellung",
+    "Appearance"
+  ],
+  "تیره": [
+    "Dunkel",
+    "Dark"
+  ],
+  "روشن": [
+    "Hell",
+    "Light"
+  ],
+  "مطابق دستگاه": [
+    "Wie auf dem Gerät",
+    "System"
+  ],
+  "سطح فعلی یادگیری": [
+    "Aktuelles Lernniveau",
+    "Current learning level"
+  ],
+  "تنظیمات و پیشرفت روی همین دستگاه ذخیره می‌شوند. برای انتقال به گوشی دیگر، از پشتیبان‌گیری استفاده کن.": [
+    "Einstellungen und Fortschritt werden auf diesem Gerät gespeichert. Nutze ein Backup für ein anderes Gerät.",
+    "Settings and progress are saved on this device. Use a backup to move to another device."
+  ],
+  "⬇️ دریافت نسخه پشتیبان": [
+    "⬇️ Backup herunterladen",
+    "⬇️ Download backup"
+  ],
+  "⬆️ بازیابی نسخه پشتیبان": [
+    "⬆️ Backup wiederherstellen",
+    "⬆️ Restore backup"
+  ],
+  "پاک کردن پیشرفت این دستگاه": [
+    "Fortschritt auf diesem Gerät löschen",
+    "Clear this device's progress"
+  ],
+  "Mein Deutsch · نسخه آغازین · ساخته‌شده برای یادگیری ساده آلمانی": [
+    "Mein Deutsch · Startversion · zum einfachen Deutschlernen",
+    "Mein Deutsch · starter version · made for simple German learning"
+  ],
+  "باز کردن منو": [
+    "Menü öffnen",
+    "Open menu"
+  ],
+  "تغییر تم": [
+    "Design ändern",
+    "Change theme"
+  ],
+  "آفرین! پاسخ درست است.": [
+    "Sehr gut! Das ist richtig.",
+    "Great! Correct answer."
+  ],
+  "این پاسخ درست نیست.": [
+    "Diese Antwort ist leider falsch.",
+    "That answer is incorrect."
+  ],
+  "پاسخ درست:": [
+    "Richtige Antwort:",
+    "Correct answer:"
+  ],
+  "پاسخ تو:": [
+    "Deine Antwort:",
+    "Your answer:"
+  ],
+  "آزمون تمام شد": [
+    "Der Test ist beendet",
+    "Quiz complete"
+  ],
+  "مرور اشتباه‌ها": [
+    "Fehler wiederholen",
+    "Review mistakes"
+  ],
+  "عالی! هیچ اشتباهی نداشتی.": [
+    "Ausgezeichnet! Du hast keinen Fehler gemacht.",
+    "Excellent! You made no mistakes."
+  ],
+  "دیدن نتیجه": [
+    "Ergebnis ansehen",
+    "View results"
+  ],
+  "آزمون دوباره با سؤال‌های تازه": [
+    "Noch einmal mit neuen Fragen",
+    "Try again with new questions"
+  ],
+  "درست است!": [
+    "Richtig!",
+    "Correct!"
+  ],
+  "لطفاً پاسخ را وارد کن.": [
+    "Bitte gib eine Antwort ein.",
+    "Please enter an answer."
+  ],
+  "پاسخ ثبت شد.": [
+    "Antwort gespeichert.",
+    "Answer saved."
+  ],
+  "پاسخ‌ها بررسی شدند.": [
+    "Die Antworten wurden überprüft.",
+    "Answers checked."
+  ],
+  "پیشرفت و تنظیمات ذخیره‌شده این دستگاه پاک شود؟": [
+    "Möchtest du den gespeicherten Fortschritt und die Einstellungen auf diesem Gerät löschen?",
+    "Delete saved progress and settings on this device?"
+  ],
+  "پیشرفت پاک شد.": [
+    "Fortschritt gelöscht.",
+    "Progress cleared."
+  ],
+  "نسخه پشتیبان آماده شد. فایل را در جای امن نگه دار.": [
+    "Das Backup ist fertig. Bewahre die Datei sicher auf.",
+    "Backup is ready. Keep the file somewhere safe."
+  ],
+  "عدد را به آلمانی بنویس": [
+    "Schreibe die Zahl auf Deutsch",
+    "Write the number in German"
+  ],
+  "سؤال آلمانی خودت را بنویس…": [
+    "Schreibe deine Frage auf Deutsch …",
+    "Write your question in German…"
+  ],
+  "مثلاً Apfel یا der Apfel": [
+    "Zum Beispiel Apfel oder der Apfel",
+    "For example Apfel or der Apfel"
+  ],
+  "مثلاً سیب یا apple": [
+    "Zum Beispiel سیب oder apple",
+    "For example سیب or apple"
+  ],
+  "خودکار یا دستی": [
+    "Automatisch oder manuell",
+    "Automatic or manual"
+  ],
+  "مثلاً Haus یا خانه": [
+    "Zum Beispiel Haus oder خانه",
+    "For example Haus or خانه"
+  ],
+  "انجام دادن": [
+    "machen",
+    "to do"
+  ],
+  "واژه آلمانی، معنی فارسی یا انگلیسی...": [
+    "Deutsches Wort, persische oder englische Bedeutung …",
+    "German word, Persian or English meaning…"
+  ],
+  "آلمانی را بنویس": [
+    "Auf Deutsch schreiben",
+    "Write in German"
+  ],
+  "جمع را بنویس": [
+    "Schreibe den Plural",
+    "Enter the plural"
+  ],
+  "کلمه مناسب": [
+    "Passendes Wort",
+    "Suitable word"
+  ],
+  "رنگ را بنویس": [
+    "Schreibe die Farbe",
+    "Enter the color"
+  ],
+  "کلمه پرسشی": [
+    "Fragewort",
+    "Question word"
+  ],
+  "پاسخ": [
+    "Antwort",
+    "Answer"
+  ]
 };
+
+function translateUiText(raw,ix){
+ const value=String(raw||''),trim=value.trim();
+ if(!trim)return value;
+ let translated=uiText[trim]?uiText[trim][ix]:trim;
+ if(translated===trim){
+  let m=trim.match(/^درس\s*(\d+)\s*·\s*(.+)$/);
+  if(m)translated=(ix===0?'Lektion ':'Lesson ')+m[1]+' · '+m[2];
+  m=trim.match(/^درس\s*(\d+)\s*تا\s*(\d+)\s*·\s*مرور$/);
+  if(m)translated=ix===0?'Lektion '+m[1]+'–'+m[2]+' · Wiederholung':'Lessons '+m[1]+'–'+m[2]+' · Review';
+  m=trim.match(/^سؤال\s*(\d+)\s*از\s*(\d+)$/);
+  if(m)translated=ix===0?'Frage '+m[1]+' von '+m[2]:'Question '+m[1]+' of '+m[2];
+  m=trim.match(/^مبحث\s*(\d+)\s*از\s*(\d+)\s*·\s*(.+)$/);
+  if(m)translated=ix===0?'Thema '+m[1]+' von '+m[2]+' · '+m[3]:'Topic '+m[1]+' of '+m[2]+' · '+m[3];
+  m=trim.match(/^زمان:\s*(.+)$/);
+  if(m)translated=(ix===0?'Zeit: ':'Time: ')+m[1];
+  m=trim.match(/^پاسخ درست:\s*(.+)$/);
+  if(m)translated=(ix===0?'Richtige Antwort: ':'Correct answer: ')+m[1];
+  m=trim.match(/^واژگان تکمیلی A1 · بدون تطبیق قطعی با درس$/);
+  if(m)translated=ix===0?'Zusätzlicher A1-Wortschatz · keiner Lektion sicher zugeordnet':'Additional A1 vocabulary · no confirmed lesson match';
+ }
+ return value.replace(trim,translated);
+}
+function applyInterfaceLanguage(){
+ const ix=uiLang==='de'?0:uiLang==='en'?1:-1;
+ document.documentElement.lang=uiLang;
+ document.documentElement.dir=uiLang==='fa'?'rtl':'ltr';
+ document.body.dataset.uiLanguage=uiLang;
+ const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
+ let node;
+ while(node=walker.nextNode()){
+  if(!node.__faOriginal)node.__faOriginal=node.nodeValue;
+  const original=node.__faOriginal;
+  node.nodeValue=ix<0?original:translateUiText(original,ix);
+ }
+ const attrs=['placeholder','title','aria-label'];
+ document.querySelectorAll('input,textarea,button,select,[title],[aria-label]').forEach(el=>{
+  attrs.forEach(attr=>{
+   if(!el.hasAttribute(attr))return;
+   const key='uiOriginal'+attr.replace(/-([a-z])/g,(_,c)=>c.toUpperCase());
+   if(!el.dataset[key])el.dataset[key]=el.getAttribute(attr);
+   const original=el.dataset[key];
+   el.setAttribute(attr,ix<0?original:translateUiText(original,ix));
+  });
+ });
+}
+const uiObserver=new MutationObserver(()=>applyInterfaceLanguage());
+uiObserver.observe(document.body,{childList:true,subtree:true});
+
 function applyInterfaceLanguage(){const ix=uiLang==='de'?0:uiLang==='en'?1:-1;document.documentElement.lang=uiLang;document.documentElement.dir=uiLang==='fa'?'rtl':'ltr';const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);let n;while(n=w.nextNode()){if(!n.__faOriginal)n.__faOriginal=n.nodeValue;const raw=n.__faOriginal,trim=raw.trim();if(!trim)continue;const val=ix>=0&&uiText[trim]?uiText[trim][ix]:trim;n.nodeValue=raw.replace(trim,val);}document.querySelectorAll('input[placeholder],textarea[placeholder]').forEach(e=>{if(!e.dataset.faPlaceholder)e.dataset.faPlaceholder=e.placeholder;const v=e.dataset.faPlaceholder;e.placeholder=ix>=0&&uiText[v]?uiText[v][ix]:v;});}
 const uiObserver=new MutationObserver(()=>applyInterfaceLanguage());uiObserver.observe(document.body,{childList:true,subtree:true});
 function save(){localStorage.setItem('md_known',JSON.stringify([...known]));localStorage.setItem('md_prefs',JSON.stringify(prefs));}
