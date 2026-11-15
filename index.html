@@ -74,9 +74,35 @@ header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 9
 .translate-tab.active{background:var(--accent2);border-color:var(--accent);color:var(--text)}
 .translate-tool{margin-top:0}
 @media(max-width:760px){.translate-tabs{top:62px}}
+
+/* Mein Deutsch branded launch screen */
+#meinSplash{position:fixed;inset:0;z-index:99999;display:grid;place-items:center;background:radial-gradient(circle at 50% 38%,#243d50 0,#142636 48%,#101b28 100%);color:#f5f7f8;opacity:1;visibility:visible;transition:opacity .42s ease,visibility .42s ease}
+#meinSplash.is-leaving{opacity:0;visibility:hidden;pointer-events:none}
+#meinSplash .splash-inner{display:flex;flex-direction:column;align-items:center;gap:17px;transform:translateY(-3vh);animation:splashIn .65s cubic-bezier(.2,.8,.2,1) both}
+#meinSplash .splash-mark{width:112px;height:112px;filter:drop-shadow(0 12px 24px #07131c88)}
+#meinSplash .splash-name{font-size:27px;font-weight:850;letter-spacing:.4px}
+#meinSplash .splash-tag{font-size:12px;letter-spacing:2.4px;color:#a9c3c8;font-weight:650}
+#meinSplash .splash-rule{width:34px;height:3px;border-radius:9px;background:#63c6b3;margin-top:3px}
+@keyframes splashIn{from{opacity:0;transform:translateY(12px) scale(.96)}to{opacity:1;transform:translateY(-3vh) scale(1)}}
+@media(prefers-reduced-motion:reduce){#meinSplash .splash-inner{animation:none}#meinSplash{transition:none}}
 </style>
 </head>
 <body>
+<div id="meinSplash" role="status" aria-label="Mein Deutsch">
+  <div class="splash-inner">
+    <svg class="splash-mark" viewBox="0 0 120 120" role="img" aria-label="نشان Mein Deutsch">
+      <defs><linearGradient id="mdMark" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8ce0cb"/><stop offset="1" stop-color="#42ad9f"/></linearGradient></defs>
+      <rect x="5" y="5" width="110" height="110" rx="31" fill="#20394b" stroke="#527181" stroke-width="1.5"/>
+      <path d="M27 79V39q0-5 5-5h7q4 0 6 4l15 24 15-24q2-4 6-4h7q5 0 5 5v40H77V55L64 75q-2 3-5 3t-5-3L41 55v24z" fill="url(#mdMark)"/>
+      <path d="M82 88h17l9 8V79" fill="none" stroke="#e7c98b" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="89" cy="47" r="3" fill="#e7c98b"/><circle cx="99" cy="47" r="3" fill="#e7c98b"/>
+    </svg>
+    <div class="splash-name">Mein Deutsch</div>
+    <div class="splash-tag">DEIN WEG ZUM DEUTSCH</div>
+    <div class="splash-rule"></div>
+  </div>
+</div>
+
 <header><button class="iconbtn" id="menuBtn" aria-label="باز کردن منو">☰</button><div class="brand"><div class="logo">م</div><div><strong>Mein Deutsch</strong><small>آلمانی من · یادگیری ساده و پیوسته</small></div></div><button class="iconbtn" id="themeBtn" title="تغییر تم">◐</button></header>
 <div class="shell">
 <aside class="sidebar" id="sidebar" aria-label="منوی اصلی"><div class="sidebar-head"><div class="sidebar-brand-mark">DE</div><div class="sidebar-brand-copy"><span class="sidebar-kicker">MEIN DEUTSCH</span><span class="sidebar-caption">مسیر یادگیری آلمانی</span></div></div><div class="sidebar-level-card"><div class="sidebar-level-top"><span class="sidebar-level-label">سطح فعلی</span><span class="sidebar-level-status">در حال یادگیری</span></div><div class="sidebar-level-main"><strong>A1</strong><div><b>مبتدی</b><small>پایه‌سازی قدم‌به‌قدم</small></div><span class="sidebar-level-mark">✓</span></div><div class="sidebar-level-track"><i></i></div></div><nav class="nav" id="nav">
@@ -2795,5 +2821,12 @@ newListeningNumber();
 
 setupCardCategories();if(prefs.theme)setTheme(prefs.theme);else setTheme('dark');$('languageSelect').value=lang;$('settingsLanguage').value=lang;$('interfaceLanguage').value=uiLang;counts();renderCard();renderGrammar();applyInterfaceLanguage();
 if('serviceWorker'in navigator && location.protocol.startsWith('http'))window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+</script>
+<script>
+(function(){
+  var splash=document.getElementById('meinSplash');
+  if(!splash)return;
+  window.setTimeout(function(){splash.classList.add('is-leaving');window.setTimeout(function(){if(splash.parentNode)splash.parentNode.removeChild(splash);},480);},2000);
+})();
 </script>
 </body></html>
