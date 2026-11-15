@@ -1227,7 +1227,7 @@ base.push(
 );
 const extra=JSON.parse(localStorage.getItem('md_custom')||'[]');
 // Keep one canonical card per German headword; avoid duplicate flashcards and inflated lists.
-const uniqueCards=list=>[...new Map(list.filter(w=>Array.isArray(w)&&w.length===9).map(w=>[String(w[0]).toLocaleLowerCase('de-DE').trim(),w])).values()];
+const uniqueCards=list=>{const map=new Map();for(const w of list.filter(w=>Array.isArray(w)&&w.length===9)){const key=String(w[0]).toLocaleLowerCase('de-DE').trim().replace(/^(der|die|das)\s+/,'');const old=map.get(key);if(!old||((old[4]==='—'||!old[4])&&w[4]&&w[4]!=='—'))map.set(key,w)}return [...map.values()]};
 let words=uniqueCards([...base,...extra]);
 let known=new Set(JSON.parse(localStorage.getItem('md_known')||'[]'));let idx=0,filtered=[];
 const $=id=>document.getElementById(id),fa=n=>String(n).replace(/\d/g,d=>'۰۱۲۳۴۵۶۷۸۹'[d]);
@@ -1235,7 +1235,7 @@ let prefs=JSON.parse(localStorage.getItem('md_prefs')||'{}');let lang=prefs.lang
 function save(){localStorage.setItem('md_known',JSON.stringify([...known]));localStorage.setItem('md_prefs',JSON.stringify(prefs));}
 function setTheme(v){prefs.theme=v;document.documentElement.dataset.theme=v==='system'?(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'):v; if($('themeSelect'))$('themeSelect').value=v;save()}
 function page(p){document.querySelectorAll('.page').forEach(x=>x.classList.add('hidden'));$('page-'+p).classList.remove('hidden');document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x.dataset.page===p));$('sidebar').classList.remove('open');if(p==='cards')renderCard();if(p==='dictionary')searchDict()}
-function counts(){$('knownCount').textContent=fa(known.size);let allA1=words.filter(w=>w[6]==='A1'),uniqueA1=new Set(allA1.map(w=>normalizeWord(w[0])));$('totalCount').textContent=fa(uniqueA1.size);$('streakCount').textContent=fa(Number(localStorage.getItem('md_sessions')||0))}
+function counts(){$('knownCount').textContent=fa(known.size);let allA1=uniqueCards(words.filter(w=>w[6]==='A1'));$('totalCount').textContent=fa(allA1.length);$('streakCount').textContent=fa(Number(localStorage.getItem('md_sessions')||0))}
 function setupCardCategories(){
  let select=$('categoryFilter'),current=select.value;
  let cats=[...new Set(words.filter(w=>w[6]==='A1').map(w=>w[5]).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'fa'));
@@ -1312,8 +1312,8 @@ setupWordSuggestions();$('dictSearch').oninput=searchDict;$('languageSelect').on
 $('dictResults').addEventListener('click',e=>{let s=e.target.closest('[data-speak]');if(s)say(s.dataset.speak);let a=e.target.closest('[data-add]');if(a){idx=Number(a.dataset.add);page('cards');renderCard()}});
 function findVocabularyMatches(q){
  let n=normalizeWord(q);if(!n)return [];
- const bare=n.replace(/^(der|die|das)\\s+/,'');
- const germanKey=w=>normalizeWord(w[0]).replace(/^(der|die|das)\\s+/,'');
+ const bare=n.replace(/^(der|die|das)\s+/,'');
+ const germanKey=w=>normalizeWord(w[0]).replace(/^(der|die|das)\s+/,'');
  const unique=list=>[...new Map(list.map(w=>[germanKey(w),w])).values()];
  let exactGerman=unique(words.filter(w=>germanKey(w)===bare));
  if(exactGerman.length)return exactGerman;
