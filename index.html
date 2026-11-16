@@ -2,9 +2,9 @@
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#171d27"><meta name="description" content="Mein Deutsch — یادگیری زبان آلمانی از A1 تا C2">
+<meta name="theme-color" content="#171d27"><meta name="description" content="Zuno — یادگیری زبان آلمانی از A1 تا C2">
 <link rel="manifest" href="./manifest.json"><link rel="icon" href="./icon.svg" type="image/svg+xml">
-<title>Mein Deutsch | آلمانی من</title>
+<title>Zuno | یادگیری زبان</title>
 <style>
 :root{--bg:#171d27;--panel:#222b38;--panel2:#2c3949;--text:#eef2f5;--muted:#aab7c5;--line:#3b4858;--accent:#83c6bb;--accent2:#344f55;--danger:#e58f91;--shadow:0 16px 40px #080d1680}
 [data-theme="light"]{--bg:#dfe4e7;--panel:#e9edef;--panel2:#d3dce1;--text:#263442;--muted:#5e6e7c;--line:#bdc9d1;--accent:#397f80;--accent2:#c3d9d5;--danger:#b85d64;--shadow:0 12px 30px #27384818}
@@ -62,14 +62,15 @@ header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 9
 .translate-tool{margin-top:0}
 @media(max-width:760px){.translate-tabs{top:62px}}
 
-/* Mein Deutsch branded launch screen */
+/* Zuno branded launch screen */
 #meinSplash{position:fixed;inset:0;z-index:99999;display:grid;place-items:center;overflow:hidden;background:radial-gradient(ellipse at 18% 18%,#f9d9c8 0,transparent 38%),radial-gradient(ellipse at 82% 20%,#d9d5f3 0,transparent 40%),radial-gradient(ellipse at 72% 88%,#ccebe1 0,transparent 42%),linear-gradient(135deg,#fff7e9 0%,#f4edf4 52%,#eaf5f1 100%);color:#35465a;opacity:1;visibility:visible;transition:opacity .42s ease,visibility .42s ease}
 #meinSplash:before,#meinSplash:after{content:"";position:absolute;border-radius:50%;filter:blur(2px);pointer-events:none}
 #meinSplash:before{width:210px;height:210px;left:-85px;bottom:8%;background:#f4cbb8aa}
 #meinSplash:after{width:190px;height:190px;right:-65px;top:9%;background:#c9c4eaaa}
 #meinSplash.is-leaving{opacity:0;visibility:hidden;pointer-events:none}
 #meinSplash .splash-inner{display:flex;flex-direction:column;align-items:center;gap:17px;transform:translateY(-3vh);animation:splashIn .65s cubic-bezier(.2,.8,.2,1) both}
-#meinSplash .splash-mark{width:120px;height:120px;filter:drop-shadow(0 12px 22px #7d819044)}
+#meinSplash .splash-mark{width:180px;height:180px;object-fit:contain;filter:drop-shadow(0 12px 22px #7d819044)}
+.brand .logo{background:transparent;padding:0;overflow:hidden}.brand .logo img{width:100%;height:100%;object-fit:contain;border-radius:9px}
 #meinSplash .splash-name{font-size:27px;font-weight:850;letter-spacing:.4px}
 #meinSplash .splash-tag{font-size:12px;letter-spacing:2.4px;color:#788a91;font-weight:700}
 #meinSplash .splash-rule{width:46px;height:4px;border-radius:9px;background:linear-gradient(90deg,#e6a98e,#b7a8d9,#80c8b4);margin-top:3px}
@@ -182,25 +183,17 @@ header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 9
 </style>
 </head>
 <body>
-<div id="meinSplash" role="status" aria-label="Mein Deutsch">
+<div id="meinSplash" role="status" aria-label="Zuno">
   <div class="splash-inner">
-    <svg class="splash-mark" viewBox="0 0 120 120" role="img" aria-label="نشان مینیمال حرف M برای Mein Deutsch">
-      <defs>
-        <linearGradient id="mdTile" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fffdf8"/><stop offset=".52" stop-color="#f2e8f5"/><stop offset="1" stop-color="#dff1e9"/></linearGradient>
-        <linearGradient id="mdStroke" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#79bfb0"/><stop offset=".52" stop-color="#9d91c9"/><stop offset="1" stop-color="#e2a68e"/></linearGradient>
-      </defs>
-      <rect x="4" y="4" width="112" height="112" rx="34" fill="url(#mdTile)" stroke="#ffffff" stroke-width="2"/>
-      <path d="M25 82V43c0-7 5-11 11-11 5 0 8 3 11 8l13 21 13-21c3-5 6-8 11-8 6 0 11 4 11 11v39" fill="none" stroke="url(#mdStroke)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M79 91h17" fill="none" stroke="#d99d78" stroke-width="4" stroke-linecap="round"/>
-      <circle cx="99" cy="27" r="4.5" fill="#d99d78"/>
-    </svg>
-    <div class="splash-name">Mein Deutsch</div>
+    <img class="splash-mark" src="./assets/zuno-logo.jpg" alt="لوگوی گربه عینکی Zuno">
+
+    <div class="splash-name">Zuno</div>
     <div class="splash-tag">DEIN WEG ZUM DEUTSCH</div>
     <div class="splash-rule"></div>
   </div>
 </div>
 
-<header><button type="button" class="iconbtn" id="menuBtn" aria-label="باز کردن منو" aria-controls="sidebar" aria-expanded="false">☰</button><div class="brand"><div class="logo"><svg viewBox="0 0 120 120" width="30" height="30" aria-hidden="true"><path d="M25 82V43c0-7 5-11 11-11 5 0 8 3 11 8l13 21 13-21c3-5 6-8 11-8 6 0 11 4 11 11v39" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><circle cx="99" cy="27" r="5" fill="#d5a95d"/></svg></div><div><strong>Mein Deutsch</strong><small>آلمانی من · یادگیری ساده و پیوسته</small></div></div><button class="iconbtn" id="themeBtn" title="تغییر تم">◐</button></header>
+<header><button type="button" class="iconbtn" id="menuBtn" aria-label="باز کردن منو" aria-controls="sidebar" aria-expanded="false">☰</button><div class="brand"><div class="logo"><img src="./assets/zuno-logo.jpg" alt=""></div><div><strong>Zuno</strong><small>یادگیری زبان · ساده و پیوسته</small></div></div><button class="iconbtn" id="themeBtn" title="تغییر تم">◐</button></header>
 <div class="shell">
 <aside class="sidebar" id="sidebar" aria-label="منوی اصلی"><div class="sidebar-head"><div class="sidebar-brand-mark">DE</div><div class="sidebar-brand-copy"><span class="sidebar-kicker">MEIN DEUTSCH</span><span class="sidebar-caption">مسیر یادگیری آلمانی</span></div></div><nav class="nav" id="nav">
 <div class="nav-group"><div class="nav-heading"><span>شروع</span><span class="nav-heading-line"></span></div>
@@ -332,7 +325,7 @@ header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 9
 </div></section>
 <section id="page-vocabulary" class="page hidden"><div class="panel"><div class="row between"><div><h2 class="section-title">واژه‌های موضوعی</h2><p class="muted tiny">واژه را با آرتیکل، معنی، مثال و تلفظ یاد بگیر؛ نه فقط حفظ‌کردن ترجمه.</p></div><span class="chip">A1</span></div><input id="topicWordSearch" placeholder="جستجوی واژه آلمانی یا معنی فارسی…" autocomplete="off"><div class="chips" id="topicFilters" style="margin-top:10px"><button class="chip active" data-topic="همه">همه</button><button class="chip" data-topic="خانواده">خانواده</button><button class="chip" data-topic="خانه">خانه</button><button class="chip" data-topic="غذا">غذا</button><button class="chip" data-topic="زمان">زمان</button><button class="chip" data-topic="عبارت‌ها">عبارت‌ها</button></div><div id="topicWordResults" class="topic-word-grid" style="margin-top:14px"></div></div></section>
 <section id="page-settings" class="page hidden"><div class="panel"><h2 class="section-title">تنظیمات برنامه</h2><div class="field"><label>زبان کل برنامه</label><select id="interfaceLanguage"><option value="fa">فارسی</option><option value="de">Deutsch</option><option value="en">English</option></select><small class="muted tiny">زبان منوها، عنوان‌ها و دکمه‌ها را تغییر می‌دهد؛ متن آموزشی آلمانی حفظ می‌شود.</small></div><div class="field" style="margin-top:14px"><label>زبان ترجمه واژه‌ها</label><select id="settingsLanguage"><option value="fa">آلمانی به فارسی</option><option value="en">آلمانی به انگلیسی</option><option value="de">Deutsch–Deutsch (آلمانی به آلمانی)</option></select></div><div class="field" style="margin-top:14px"><label>ظاهر برنامه</label><select id="themeSelect"><option value="dark">تیره</option><option value="light">روشن</option><option value="system">مطابق دستگاه</option></select></div><div class="field" style="margin-top:14px"><label>سطح فعلی یادگیری</label><select id="settingsLevel"><option>A1</option><option>A2</option><option>B1</option><option>B2</option><option>C1</option><option>C2</option></select></div><p class="muted tiny">تنظیمات و پیشرفت روی همین دستگاه ذخیره می‌شوند. برای انتقال به گوشی دیگر، از پشتیبان‌گیری استفاده کن.</p><div class="grid2" style="margin:12px 0"><button class="btn primary" id="exportBackup">⬇️ دریافت نسخه پشتیبان</button><button class="btn" id="importBackup">⬆️ بازیابی نسخه پشتیبان</button></div><input id="backupFile" type="file" accept="application/json,.json" class="hidden"><p id="backupStatus" class="muted tiny" aria-live="polite"></p><button class="btn" id="resetProgress">پاک کردن پیشرفت این دستگاه</button></div></section>
-<footer>Mein Deutsch · نسخه آغازین · ساخته‌شده برای یادگیری ساده آلمانی</footer>
+<footer>Zuno · نسخه آغازین · یادگیری ساده آلمانی</footer>
 </main></div>
 <script>
 const base=[
