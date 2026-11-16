@@ -109,40 +109,42 @@ header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 9
 
 .podcast-text{margin-top:9px;border:1px solid var(--line);border-radius:11px;background:var(--bg);overflow:hidden}.podcast-text summary{cursor:pointer;padding:10px 12px;color:var(--accent);font-weight:800;list-style-position:inside}.podcast-lines{padding:2px 14px 9px;line-height:1.75}.podcast-lines p{margin:7px 0}.podcast-lines[dir="ltr"]{text-align:left}
 
-/* Requested UI refinement: square home shortcuts and individually framed menu items */
+/* Requested UI refinement: compact square home shortcuts with readable labels */
 #page-home .panel>.grid2{
-  grid-template-columns:repeat(auto-fit,minmax(132px,1fr));
-  gap:12px;
+  grid-template-columns:repeat(auto-fit,minmax(112px,124px));
+  justify-content:start;
+  gap:10px;
 }
 #page-home .panel>.grid2>[data-go]{
   aspect-ratio:1 / 1;
   min-width:0;
-  padding:16px 12px;
+  padding:10px 8px;
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
-  gap:10px;
+  gap:7px;
   text-align:center;
   border:1px solid var(--line);
-  border-radius:15px;
+  border-radius:14px;
   background:linear-gradient(145deg,var(--panel2),var(--bg));
   color:var(--text);
 }
 #page-home .panel>.grid2>[data-go] strong{
-  font-size:15px;
-  line-height:1.55;
+  font-size:14px;
+  line-height:1.45;
   font-weight:800;
 }
 #page-home .panel>.grid2>[data-go] small{
-  font-size:12px;
-  line-height:1.5;
+  font-size:11.5px;
+  line-height:1.4;
   color:var(--muted);
 }
 @media(max-width:760px){
-  #page-home .panel>.grid2{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-  #page-home .panel>.grid2>[data-go]{padding:13px 9px}
-  #page-home .panel>.grid2>[data-go] strong{font-size:14px}
+  #page-home .panel>.grid2{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+  #page-home .panel>.grid2>[data-go]{padding:8px 5px}
+  #page-home .panel>.grid2>[data-go] strong{font-size:13.5px}
+  #page-home .panel>.grid2>[data-go] small{font-size:11px}
 }
 .nav-group{gap:7px}
 .nav button:not(.course-level){
