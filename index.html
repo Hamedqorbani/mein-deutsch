@@ -2453,8 +2453,8 @@ async function runImageTranslation(){
   if(!extracted)throw new Error('متنی در عکس پیدا نشد؛ عکس واضح‌تری انتخاب کن.');
   out.innerHTML='<b>متن شناسایی‌شده:</b><p dir="auto">'+esc(extracted)+'</p><div class="muted tiny">در حال ترجمه متن…</div>';
   const translated=await translateOnline(extracted,$('imageSource').value==='deu'?'de':$('imageSource').value==='fas'?'fa':'en',$('imageTarget').value);
-  const tokens=extracted.split(/(\\s+)/).filter(Boolean);
-  const tokenHtml=tokens.map(token=>/^\\s+$/.test(token)?esc(token):'<button type="button" class="chip image-word-token" data-image-word="'+esc(token.replace(/^[^\\p{L}ÄÖÜäöüß]+|[^\\p{L}ÄÖÜäöüß]+$/gu,''))+'" style="margin:2px;cursor:pointer">'+esc(token)+'</button>').join('');
+  const tokens=extracted.split(/(\s+)/).filter(Boolean);
+  const tokenHtml=tokens.map(token=>/^\s+$/.test(token)?esc(token):'<button type="button" class="chip image-word-token" data-image-word="'+esc(token.replace(/^[^\p{L}ÄÖÜäöüß]+|[^\p{L}ÄÖÜäöüß]+$/gu,''))+'" style="margin:2px;cursor:pointer">'+esc(token)+'</button>').join('');
   out.innerHTML='<b>متن شناسایی‌شده:</b><div id="imageOcrTokens" dir="auto" style="line-height:2.5;margin:6px 0">'+tokenHtml+'</div><div id="imageWordDetails" class="result hidden" style="margin:10px 0"></div><hr style="border-color:var(--line)"><b>ترجمه:</b><p dir="auto">'+esc(translated)+'</p><small class="muted">روی هر واژه آلمانی بزن تا معنی، آرتیکل و تلفظ آن را ببینی.</small>';
   const tokenArea=$('imageOcrTokens');tokenArea.querySelectorAll('[data-image-word]').forEach(btn=>btn.addEventListener('click',()=>showImageWord(btn.dataset.imageWord)));
   const overlay=$('imageTranslationOverlay');if(overlay){overlay.textContent=translated;overlay.classList.remove('hidden')}
@@ -2636,7 +2636,7 @@ $('addCard').onclick=()=>{
  if(!w||!m){alert('واژه آلمانی و معنی لازم است.');return}
  let ar=$('newArticle').value;
  let item=[w,m,m,$('newPron').value||'—',ar,'شخصی','A1',w+'.',m];
- extra.push(item);localStorage.setItem('md_custom',JSON.stringify(extra));words=uniqueCards([...base,...extra]);setupTranslateTabs();
+ extra.push(item);localStorage.setItem('md_custom',JSON.stringify(extra));words=uniqueCards([...base,...extra]);
 setupCardCategories();idx=0;renderCard();
  $('newWord').value=$('newMeaning').value=$('newPron').value='';
  $('newCardHint').textContent='کارت با موفقیت اضافه شد.';counts();alert('فلش‌کارت اضافه شد.');
@@ -2871,7 +2871,7 @@ $('nextListeningNumber').onclick=newListeningNumber;
 $('listeningAnswer').addEventListener('keydown',e=>{if(e.key==='Enter')$('checkListeningAnswer').click()});
 newListeningNumber();
 
-setupCardCategories();if(prefs.theme)setTheme(prefs.theme);else setTheme('dark');$('languageSelect').value=lang;$('settingsLanguage').value=lang;$('interfaceLanguage').value=uiLang;counts();renderCard();renderGrammar();applyInterfaceLanguage();
+setupTranslateTabs();setupCardCategories();if(prefs.theme)setTheme(prefs.theme);else setTheme('dark');$('languageSelect').value=lang;$('settingsLanguage').value=lang;$('interfaceLanguage').value=uiLang;counts();renderCard();renderGrammar();applyInterfaceLanguage();
 if('serviceWorker'in navigator && location.protocol.startsWith('http'))window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
 </script>
 <script>
