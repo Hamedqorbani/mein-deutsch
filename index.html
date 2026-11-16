@@ -2564,6 +2564,23 @@ betrügen:['betrüge','betrügst','betrügt','betrügen','betrügt','betrügen']
 trinken:['trinke','trinkst','trinkt','trinken','trinkt','trinken'],finden:['finde','findest','findet','finden','findet','finden'],
 binden:['binde','bindest','bindet','binden','bindet','binden'],verbieten:['verbiete','verbietest','verbietet','verbieten','verbietet','verbieten'],
 
+
+ // فعل‌های پرکاربرد تکمیلی
+beginnen:['beginne','beginnst','beginnt','beginnen','beginnt','beginnen'],
+aufstehen:['stehe auf','stehst auf','steht auf','stehen auf','steht auf','stehen auf'],
+vorlesen:['lese vor','liest vor','liest vor','lesen vor','lest vor','lesen vor'],
+zusehen:['sehe zu','siehst zu','sieht zu','sehen zu','seht zu','sehen zu'],
+nachdenken:['denke nach','denkst nach','denkt nach','denken nach','denkt nach','denken nach'],
+stattfinden:['finde statt','findest statt','findet statt','finden statt','findet statt','finden statt'],
+mitbringen:['bringe mit','bringst mit','bringt mit','bringen mit','bringt mit','bringen mit'],
+zurückkommen:['komme zurück','kommst zurück','kommt zurück','kommen zurück','kommt zurück','kommen zurück'],
+weggehen:['gehe weg','gehst weg','geht weg','gehen weg','geht weg','gehen weg'],
+ausgeben:['gebe aus','gibst aus','gibt aus','geben aus','gebt aus','geben aus'],
+vorschlagen:['schlage vor','schlägst vor','schlägt vor','schlagen vor','schlagt vor','schlagen vor'],
+beschreiben:['beschreibe','beschreibst','beschreibt','beschreiben','beschreibt','beschreiben'],
+entscheiden:['entscheide','entscheidest','entscheidet','entscheiden','entscheidet','entscheiden'],
+vergleichen:['vergleiche','vergleichst','vergleicht','vergleichen','vergleicht','vergleichen'],
+
 };
 function conj(){let v=$('verbInput').value.trim().toLowerCase(),m=$('verbMeaning').value.trim();if(!v){$('verbOutput').textContent='لطفاً فعل را وارد کن.';return}let forms=irregular[v];if(!forms){const regular=['machen','lernen','wohnen','spielen','kaufen','fragen','arbeiten','kochen','hören','sagen','suchen','brauchen','kosten','öffnen','reisen','tanzen','lieben','leben','lachen','warten','reden','studieren'];if(!regular.includes(v)){$('verbOutput').innerHTML='<div class="result">این فعل هنوز در فهرست صرفِ بررسی‌شده نیست. برای جلوگیری از نمایش صرف اشتباه، فعلاً شکل‌ها را حدس نمی‌زنم.</div>';return}let stem=v.slice(0,-2);if(['arbeiten','öffnen','warten','reden'].includes(v)){forms=[stem+'e',stem+'est',stem+'et',stem+'en',stem+'et',stem+'en']}else forms=[stem+'e',stem+'st',stem+'t',stem+'en',stem+'t',stem+'en'];}
 let prefixes=['zurück','vor','nach','weg','mit','teil','ein','aus','an','auf','ab','um','fern','zu'];let prefix=prefixes.find(p=>v.startsWith(p)&&v.length>p.length+2)||'';let core=prefix?v.slice(prefix.length):v;let root=core.endsWith('en')?core.slice(0,-2):core;let duWord=(forms[1]||'').split(' ')[0],erWord=(forms[2]||'').split(' ')[0];let duStem=duWord.replace(/(est|st|t)$/,'');let erStem=erWord.replace(/(et|t)$/,'');let stemNote=root.length>1&&((duStem&&duStem!==root)||(erStem&&erStem!==root))?'<p class="muted tiny">ریشه پایه: <b dir="ltr">'+esc(root)+'</b> · تغییر ریشه: <b dir="ltr">'+esc([duStem,erStem].filter((x,i,a)=>x&&x!==root&&a.indexOf(x)===i).join(' / '))+'</b></p>':'<p class="muted tiny">ریشه فعل: <b dir="ltr">'+esc(root)+'</b></p>';let labels=['من','تو','او','ما','شما (جمع)','شما (رسمی) / آنها'];$('verbOutput').innerHTML='<h3>'+esc(v)+' — '+esc(m||'')+'</h3>'+stemNote+'<div class="grid2">'+forms.map((f,i)=>'<div class="result"><strong>'+pronouns[i]+' → '+f+'</strong><small>'+labels[i]+'</small></div>').join('')+'</div><p class="muted tiny">صرف زمان حال (Präsens). نکته: بعضی افعال قوی در زمان حال تغییر ریشه ندارند، اما در گذشته بی‌قاعده‌اند.</p>'}
@@ -2659,6 +2676,8 @@ const verbMeanings={
  fernsehen:'تلویزیون تماشا کردن',verstehen:'فهمیدن',schreiben:'نوشتن',trinken:'نوشیدن',finden:'پیدا کردن',
  ziehen:'کشیدن / نقل مکان کردن',anziehen:'پوشیدن',ausziehen:'درآوردن لباس / نقل مکان کردن',
  einsteigen:'سوار شدن',umsteigen:'خط عوض کردن',schneiden:'بریدن',schließen:'بستن',fliegen:'پرواز کردن'
+,beginnen:'شروع کردن',aufstehen:'بلند شدن از خواب',vorlesen:'با صدای بلند خواندن',zusehen:'تماشا کردن',nachdenken:'فکر کردن',stattfinden:'برگزار شدن',mitbringen:'همراه آوردن',zurückkommen:'برگشتن',weggehen:'بیرون رفتن',ausgeben:'خرج کردن',vorschlagen:'پیشنهاد دادن',beschreiben:'توصیف کردن',entscheiden:'تصمیم گرفتن',vergleichen:'مقایسه کردن'
+
 };
 const modalVerbs=new Set(['können','müssen','wollen','dürfen','sollen','mögen','möchten']);
 const specialVerbs=new Set(['sein','haben','werden','wissen','tun','heißen']);
