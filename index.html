@@ -2588,16 +2588,16 @@ function say(t){if(!('speechSynthesis'in window)){alert('پخش صدا در ای
 function chatReply(q){
 let raw=q.trim(),s=raw.toLowerCase(),L=$('chatLevel').value,lang=$('chatLanguage').value;
 const vocab=words||[];
-const norm=t=>String(t||'').toLocaleLowerCase('de-DE').normalize('NFKC').trim().replace(/[؟?!.,،؛:]/g,'').replace(/\\s+/g,' ');
+const norm=t=>String(t||'').toLocaleLowerCase('de-DE').normalize('NFKC').trim().replace(/[؟?!.,،؛:]/g,'').replace(/\s+/g,' ');
 const exact=vocab.find(w=>norm(w[0])===norm(raw)||norm(w[1])===norm(raw));
 const answer=(faText,deText,enText)=>lang==='de'?deText:lang==='en'?enText:faText;
-if(/^(سلام|درود|hi|hallo|hello)$/i.test(raw))return 'Hallo! 😊\\nسلام! سؤال آلمانی‌ات را فارسی یا آلمانی بنویس؛ من کمک می‌کنم و مثال می‌زنم.';
+if(/^(سلام|درود|hi|hallo|hello)$/i.test(raw))return 'Hallo! 😊\nسلام! سؤال آلمانی‌ات را فارسی یا آلمانی بنویس؛ من کمک می‌کنم و مثال می‌زنم.';
 
 // Recognize German input before the Persian-only fallback. This intentionally
 // accepts complete sentences, questions and imperfect learner spelling.
-const germanWords=/\\b(ich|du|er|sie|es|wir|ihr|der|die|das|ein|eine|einen|einem|einer|mein|meine|meinen|nicht|und|aber|ist|bin|bist|sind|seid|habe|hast|hat|haben|geht|gehe|gehst|kommen|komme|kommst|kommt|spreche|sprichst|spricht|lerne|lernst|lernt|möchte|möchtest|kann|kannst|muss|musst|was|wer|wie|wo|woher|wann|warum|welche|welcher|welches|bitte|danke)\\b/i;
+const germanWords=/\b(ich|du|er|sie|es|wir|ihr|der|die|das|ein|eine|einen|einem|einer|mein|meine|meinen|nicht|und|aber|ist|bin|bist|sind|seid|habe|hast|hat|haben|geht|gehe|gehst|kommen|komme|kommst|kommt|spreche|sprichst|spricht|lerne|lernst|lernt|möchte|möchtest|kann|kannst|muss|musst|was|wer|wie|wo|woher|wann|warum|welche|welcher|welches|bitte|danke)\b/i;
 const hasGermanChars=/[äöüßÄÖÜ]/.test(raw);
-const looksGerman=hasGermanChars||germanWords.test(raw)||/^(hallo|guten morgen|guten tag|guten abend|auf wiedersehen)\\b/i.test(raw);
+const looksGerman=hasGermanChars||germanWords.test(raw)||/^(hallo|guten morgen|guten tag|guten abend|auf wiedersehen)\b/i.test(raw);
 if(looksGerman){
  const sentence=raw.replace(/[.!?]+$/,'').trim();
  const translations={
@@ -2618,45 +2618,45 @@ if(looksGerman){
  };
  const key=norm(sentence);
  const knownTranslation=translations[key];
- const tokens=sentence.split(/\\s+/);
+ const tokens=sentence.split(/\s+/);
  const matches=[];
  for(const token of tokens){
-  const clean=token.replace(/^[^\\p{L}ÄÖÜäöüß]+|[^\\p{L}ÄÖÜäöüß]+$/gu,'');
+  const clean=token.replace(/^[^\p{L}ÄÖÜäöüß]+|[^\p{L}ÄÖÜäöüß]+$/gu,'');
   if(!clean)continue;
-  const hit=vocab.find(w=>norm(w[0])===norm(clean)||norm(w[0]).replace(/^(der|die|das)\\s+/,'')===norm(clean));
+  const hit=vocab.find(w=>norm(w[0])===norm(clean)||norm(w[0]).replace(/^(der|die|das)\s+/,'')===norm(clean));
   if(hit&&!matches.some(x=>x[0]===hit[0]))matches.push(hit);
  }
  const detected=answer(
-  'جمله‌ات آلمانی است و معلم آن را تشخیص داد.\\n'+(knownTranslation?'معنی: '+knownTranslation+'\\n':'')+
-  (matches.length?'واژه‌های شناخته‌شده: '+matches.map(w=>w[0]+' = '+w[1]).join('، ')+'\\n':'')+
+  'جمله‌ات آلمانی است و معلم آن را تشخیص داد.\n'+(knownTranslation?'معنی: '+knownTranslation+'\n':'')+
+  (matches.length?'واژه‌های شناخته‌شده: '+matches.map(w=>w[0]+' = '+w[1]).join('، ')+'\n':'')+
   'می‌توانم ترجمه، اصلاح جمله یا توضیح گرامر آن را انجام بدهم. دقیقاً کدام را می‌خواهی؟',
-  'Dein Satz ist Deutsch. Ich habe ihn erkannt.\\n'+(knownTranslation?'Bedeutung: '+knownTranslation+'\\n':'')+
+  'Dein Satz ist Deutsch. Ich habe ihn erkannt.\n'+(knownTranslation?'Bedeutung: '+knownTranslation+'\n':'')+
   'Möchtest du eine Übersetzung, eine Korrektur oder eine Grammatikerklärung?',
-  'Your sentence is German. I recognized it.\\n'+(knownTranslation?'Meaning: '+knownTranslation+'\\n':'')+
+  'Your sentence is German. I recognized it.\n'+(knownTranslation?'Meaning: '+knownTranslation+'\n':'')+
   'Would you like a translation, a correction, or a grammar explanation?'
  );
  return detected;
 }
 if(/امری|imperativ|دستور|توصیه|trink|lies|lest|hört|trinken sie/.test(s)){
-return 'موضوع: حالت امری (Imperativ) · گرامر · درس ۳\\n\\nقاعده ساده:\\n• du: ضمیر را حذف کن؛ Trink! / Lies! / Hör!\\n• ihr: شکل ihr بدون ضمیر؛ Trinkt! / Lest! / Hört!\\n• Sie: مصدر + Sie؛ Trinken Sie! / Lesen Sie! / Hören Sie!\\n\\nمثال‌ها:\\nTrink Tee! = چای بنوش!\\nLest ein Buch! = کتاب بخوانید! (خطاب به چند نفر)\\nHören Sie Podcasts! = پادکست گوش کنید! (رسمی)\\n\\nاین مبحث در بخش «گرامر آلمانی» است؛ از فهرست درس‌ها «حالت امری و جمله‌سازی» را انتخاب کن. برای تمرین بیشتر، بخش «تمرین‌های گرامری» را انجام بده.';
+return 'موضوع: حالت امری (Imperativ) · گرامر · درس ۳\n\nقاعده ساده:\n• du: ضمیر را حذف کن؛ Trink! / Lies! / Hör!\n• ihr: شکل ihr بدون ضمیر؛ Trinkt! / Lest! / Hört!\n• Sie: مصدر + Sie؛ Trinken Sie! / Lesen Sie! / Hören Sie!\n\nمثال‌ها:\nTrink Tee! = چای بنوش!\nLest ein Buch! = کتاب بخوانید! (خطاب به چند نفر)\nHören Sie Podcasts! = پادکست گوش کنید! (رسمی)\n\nاین مبحث در بخش «گرامر آلمانی» است؛ از فهرست درس‌ها «حالت امری و جمله‌سازی» را انتخاب کن. برای تمرین بیشتر، بخش «تمرین‌های گرامری» را انجام بده.';
 }
 if(/جمله|بساز|ساختار|ترتیب کلمات|ترتیب جمله/.test(s)){
-return 'برای جمله‌سازی آلمانی اول فاعل و فعل را پیدا کن. در جمله خبری، فعل صرف‌شده معمولاً جایگاه دوم است.\\n\\nمثال: Ich trinke Tee. = من چای می‌نوشم.\\nDu liest ein Buch. = تو یک کتاب می‌خوانی.\\nدر حالت امری، فاعل du یا ihr حذف می‌شود: Trink Tee! / Lest ein Buch!\\n\\nبخش مرتبط: «گرامر آلمانی» → «ساخت جمله ساده» یا «حالت امری و جمله‌سازی».';
+return 'برای جمله‌سازی آلمانی اول فاعل و فعل را پیدا کن. در جمله خبری، فعل صرف‌شده معمولاً جایگاه دوم است.\n\nمثال: Ich trinke Tee. = من چای می‌نوشم.\nDu liest ein Buch. = تو یک کتاب می‌خوانی.\nدر حالت امری، فاعل du یا ihr حذف می‌شود: Trink Tee! / Lest ein Buch!\n\nبخش مرتبط: «گرامر آلمانی» → «ساخت جمله ساده» یا «حالت امری و جمله‌سازی».';
 }
 if(exact){
-return 'واژه: '+exact[0]+' = '+(lang==='de'?exact[2]:exact[1])+'\\nتلفظ: '+(exact[3]||'')+'\\nمثال: '+(exact[7]||'')+(exact[8]?' = '+exact[8]:'')+'\\n\\nبخش مرتبط: «فلش‌کارت‌ها / واژگان». این واژه را همراه آرتیکل حفظ کن.';
+return 'واژه: '+exact[0]+' = '+(lang==='de'?exact[2]:exact[1])+'\nتلفظ: '+(exact[3]||'')+'\nمثال: '+(exact[7]||'')+(exact[8]?' = '+exact[8]:'')+'\n\nبخش مرتبط: «فلش‌کارت‌ها / واژگان». این واژه را همراه آرتیکل حفظ کن.';
 }
 if(/ترجمه|معنی|به آلمانی|آلمانی چی میشه|چی میشه/.test(s)){
 let term=raw.replace(/ترجمه|معنی|به آلمانی|آلمانی چی میشه|چی میشه/g,'').trim();
 let found=vocab.find(w=>norm(w[1])===norm(term));
-if(found)return 'به آلمانی: '+found[0]+'\\nمعنی: '+found[1]+'\\nتلفظ: '+found[3]+'\\nمثال: '+found[7]+' = '+found[8]+'\\n\\nبخش مرتبط: فلش‌کارت‌ها / واژگان.';
+if(found)return 'به آلمانی: '+found[0]+'\nمعنی: '+found[1]+'\nتلفظ: '+found[3]+'\nمثال: '+found[7]+' = '+found[8]+'\n\nبخش مرتبط: فلش‌کارت‌ها / واژگان.';
 }
-if(/(der|die|das|آرتیکل|حرف تعریف)/.test(s))return 'آرتیکل اسم‌ها:\\nder = مذکر · die = مؤنث · das = خنثی؛ برای جمع معمولاً die.\\nمثال: der Kaffee، das Buch، die Zeitung.\\n\\nبخش مرتبط: گرامر آلمانی → آرتیکل der / die / das و فلش‌کارت‌ها.';
-if(/sein|هستن|بودن/.test(s))return 'sein یعنی بودن:\\nich bin · du bist · er/sie/es ist · wir sind · ihr seid · Sie/sie sind.\\nمثال: Du bist müde. = تو خسته‌ای.\\n\\nبخش مرتبط: گرامر آلمانی → فعل sein.';
-if(/haben|داشتن/.test(s))return 'haben یعنی داشتن:\\nich habe · du hast · er/sie/es hat · wir haben · ihr habt · Sie/sie haben.\\nمثال: Ich habe ein Buch. = من یک کتاب دارم.\\n\\nبخش مرتبط: گرامر آلمانی → فعل haben.';
-if(/فعل|صرف/.test(s))return 'برای صرف فعل، مصدر را به ریشه و شناسه تقسیم کن. مثال: lernen → lern؛ ich lerne، du lernst، ihr lernt.\\nبرای دیدن صرف شش ضمیر، به بخش «صرف فعل‌ها» برو. برای تمرین جمله‌سازی، بخش «تمرین‌های گرامری» مناسب است.';
-if(/سلام|ممنون|تشکر/.test(s))return 'Gern geschehen! = خواهش می‌کنم.\\nDanke! = ممنون.\\nاین‌ها در بخش واژگان و عبارت‌های روزمره قرار می‌گیرند.';
-return 'من معلم زبان آلمانی هستم و به سؤال‌های مربوط به آلمانی پاسخ می‌دهم. سؤال را فارسی یا آلمانی بپرس؛ مثلاً «معنی lesen چیست؟» یا «Ich lerne Deutsch».\\n\\nاگر موضوع در برنامه باشد، نام بخش را هم می‌گویم و مثال‌های بیشتری می‌زنم. سطح پاسخ: '+L+'.';
+if(/(der|die|das|آرتیکل|حرف تعریف)/.test(s))return 'آرتیکل اسم‌ها:\nder = مذکر · die = مؤنث · das = خنثی؛ برای جمع معمولاً die.\nمثال: der Kaffee، das Buch، die Zeitung.\n\nبخش مرتبط: گرامر آلمانی → آرتیکل der / die / das و فلش‌کارت‌ها.';
+if(/sein|هستن|بودن/.test(s))return 'sein یعنی بودن:\nich bin · du bist · er/sie/es ist · wir sind · ihr seid · Sie/sie sind.\nمثال: Du bist müde. = تو خسته‌ای.\n\nبخش مرتبط: گرامر آلمانی → فعل sein.';
+if(/haben|داشتن/.test(s))return 'haben یعنی داشتن:\nich habe · du hast · er/sie/es hat · wir haben · ihr habt · Sie/sie haben.\nمثال: Ich habe ein Buch. = من یک کتاب دارم.\n\nبخش مرتبط: گرامر آلمانی → فعل haben.';
+if(/فعل|صرف/.test(s))return 'برای صرف فعل، مصدر را به ریشه و شناسه تقسیم کن. مثال: lernen → lern؛ ich lerne، du lernst، ihr lernt.\nبرای دیدن صرف شش ضمیر، به بخش «صرف فعل‌ها» برو. برای تمرین جمله‌سازی، بخش «تمرین‌های گرامری» مناسب است.';
+if(/سلام|ممنون|تشکر/.test(s))return 'Gern geschehen! = خواهش می‌کنم.\nDanke! = ممنون.\nاین‌ها در بخش واژگان و عبارت‌های روزمره قرار می‌گیرند.';
+return 'من معلم زبان آلمانی هستم و به سؤال‌های مربوط به آلمانی پاسخ می‌دهم. سؤال را فارسی یا آلمانی بپرس؛ مثلاً «معنی lesen چیست؟» یا «Ich lerne Deutsch».\n\nاگر موضوع در برنامه باشد، نام بخش را هم می‌گویم و مثال‌های بیشتری می‌زنم. سطح پاسخ: '+L+'.';
 }
 function send(){let q=$('chatInput').value.trim();if(!q)return;let log=$('chatLog');let a=document.createElement('div');a.className='bubble me';a.textContent=q;log.append(a);$('chatInput').value='';let b=document.createElement('div');b.className='bubble bot';b.textContent=chatReply(q);log.append(b);log.scrollTop=log.scrollHeight;localStorage.setItem('md_sessions',String(Number(localStorage.getItem('md_sessions')||0)+1));counts()}
 document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>page(b.dataset.page)));document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>page(b.dataset.go)));
