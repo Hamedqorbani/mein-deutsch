@@ -2701,7 +2701,8 @@ function renderVerbLibrary(){
 }
 $('verbLibrarySearch').addEventListener('input',renderVerbLibrary);
 $('verbLibraryFilter').addEventListener('change',renderVerbLibrary);
-\n$('conjugate').onclick=conj;\nrenderVerbLibrary();$('verbInput').addEventListener('keydown',e=>{if(e.key==='Enter')conj()});$('sendChat').onclick=send;$('chatInput').addEventListener('keydown',e=>{if(e.key==='Enter')send()});
+$('conjugate').onclick=conj;
+renderVerbLibrary();$('verbInput').addEventListener('keydown',e=>{if(e.key==='Enter')conj()});$('sendChat').onclick=send;$('chatInput').addEventListener('keydown',e=>{if(e.key==='Enter')send()});
 $('interfaceLanguage').value=uiLang;$('interfaceLanguage').onchange=e=>{uiLang=e.target.value;prefs.uiLang=uiLang;save();applyInterfaceLanguage()};$('settingsLanguage').onchange=e=>{$('languageSelect').value=e.target.value;$('languageSelect').dispatchEvent(new Event('change'))};$('resetProgress').onclick=()=>{if(confirm('پیشرفت و تنظیمات ذخیره‌شده این دستگاه پاک شود؟')){localStorage.removeItem('md_known');known.clear();counts();alert('پیشرفت پاک شد.')}};
 $('settingsLevel').onchange=e=>{$('chatLevel').value=e.target.value};
 function makeBackup(){
