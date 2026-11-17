@@ -216,13 +216,43 @@ input,select,textarea{max-width:100%;min-width:0}
 .language-globe-icon{display:block;width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:1.55;stroke-linecap:round;stroke-linejoin:round;color:var(--accent)}.top-language-trigger:hover .language-globe-icon{color:var(--text)}
 /* Language picker: stack the circular flags vertically */
 .top-language-menu{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;width:46px;padding:7px;border-radius:24px;right:50%;transform:translateX(50%)}
+
+/* First-launch language selection, shown after the Zuno logo */
+#meinSplash{padding:22px}
+#meinSplash .startup-language{width:min(100%,390px);margin:auto;padding:25px 21px;border:1px solid #dce8f2;border-radius:25px;background:#f7fbff;color:#233448;box-shadow:0 20px 65px #17466b35;text-align:center;animation:splashIn .4s ease both}
+#meinSplash .startup-language.hidden{display:none!important}
+#meinSplash .startup-logo{font-size:27px;font-weight:900;letter-spacing:.4px;color:#3998e8;direction:ltr}
+#meinSplash .startup-language h1{font-size:21px;line-height:1.4;margin:8px 0}
+#meinSplash .startup-language p{font-size:13px;line-height:1.7;color:#63758a;margin:0 0 15px}
+#meinSplash .startup-language-options{display:grid;gap:9px;margin:18px 0}
+#meinSplash .startup-language-option{display:flex;align-items:center;gap:12px;width:100%;min-height:55px;padding:9px 13px;border:1px solid #d7e2ec;border-radius:14px;background:#fff;color:#233448;text-align:start;font-weight:750}
+#meinSplash .startup-language-option.selected{border:2px solid #3998e8;background:#edf7ff;padding:8px 12px}
+#meinSplash .startup-flag{font-size:24px;line-height:1}
+#meinSplash .startup-selected{margin-inline-start:auto;display:grid;place-items:center;width:23px;height:23px;border-radius:50%;background:#3998e8;color:#fff;font-size:13px;opacity:0}
+#meinSplash .startup-language-option.selected .startup-selected{opacity:1}
+#meinSplash .startup-continue{width:100%;min-height:49px;border:0;border-radius:14px;background:#3998e8;color:#fff;font-size:16px;font-weight:800}
+#meinSplash .startup-system-note{margin:12px 0 0;font-size:11px;color:#718196}
+@media(max-width:380px){#meinSplash .startup-language{padding:20px 16px}#meinSplash .startup-language h1{font-size:19px}}
+
 </style>
 </head>
 <body>
-<div id="meinSplash" role="status" aria-label="Zuno">
-  <div class="splash-inner">
+<div id="meinSplash" role="dialog" aria-modal="true" aria-label="Zuno">
+  <div class="splash-inner" id="splashLogoStage">
     <img class="splash-mark" src="./assets/zuno-logo.png" alt="لوگوی گربه عینکی Zuno">
   </div>
+  <section class="startup-language hidden" id="startupLanguage" aria-labelledby="startupLanguageTitle">
+    <div class="startup-logo">Zuno</div>
+    <h1 id="startupLanguageTitle">Wähle deine Sprache</h1>
+    <p id="startupLanguageHint">Du kannst die Sprache später in den Einstellungen ändern.</p>
+    <div class="startup-language-options">
+      <button type="button" class="startup-language-option" data-start-lang="de"><span class="startup-flag">🇩🇪</span><span>Deutsch</span><span class="startup-selected" aria-hidden="true">✓</span></button>
+      <button type="button" class="startup-language-option" data-start-lang="fa"><span class="startup-flag">🇮🇷</span><span>فارسی</span><span class="startup-selected" aria-hidden="true">✓</span></button>
+      <button type="button" class="startup-language-option" data-start-lang="en"><span class="startup-flag">🇬🇧</span><span>English</span><span class="startup-selected" aria-hidden="true">✓</span></button>
+    </div>
+    <button type="button" class="startup-continue" id="startupLanguageContinue">Weiter</button>
+    <p class="startup-system-note" id="startupSystemNote">Die Gerätesprache wurde vorausgewählt.</p>
+  </section>
 </div>
 
 <header><button type="button" class="iconbtn" id="menuBtn" aria-label="باز کردن منو" aria-controls="sidebar" aria-expanded="false">☰</button><button type="button" class="iconbtn top-back hidden" id="topBackBtn" aria-label="بازگشت" title="بازگشت">←</button><div class="brand"><img class="brand-logo" src="./assets/zuno-logo.png" alt="لوگوی گربه عینکی Zuno"></div><form id="globalSearchForm" class="global-search" role="search" onsubmit="return false"><input id="globalWordSearch" type="search" placeholder="جستجوی واژه یا معنی…" aria-label="جستجوی واژه یا معنی" autocomplete="off"><button class="iconbtn" type="button" id="globalSearchButton" aria-label="جستجو">⌕</button><div id="globalSearchSuggestions" class="global-suggestions hidden" role="listbox" aria-label="پیشنهادهای جستجو"></div></form><div class="top-language-wrap" id="topLanguageWrap"><button class="top-language-trigger" id="topLanguageTrigger" type="button" aria-label="تغییر زبان" aria-expanded="false"><svg class="language-globe-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path class="globe-land" d="M5.1 5.2 7.4 4l2.1.5 1.1 1.6-.8 1.2-2 .3-.7 1.6-1.7-.2-.8-1.5-1.2-.5zM2.2 10.2l2.1-.8 1.8.7.7 1.8-.8 1.4.7 1.8-1.1 2.1-1.3-1.4-.3-2-1.4-1.7zM9.3 8.2l2-1.1 2.4.2 1.1 1.1 2-.2 1.2 1.3 2.2.4-.5 1.6-2.2.6-1.1 1.7-1.9.3-.8 2-1.4 1.2-1.2-1.8-1.8-.8-.4-2-1.7-.9.5-1.9zM12.1 17.1l1.7-.6 1.4 1.1-.3 2-1.5 1.1-1.2-1.5zM18.3 16.1l1.7.4.8 1.3-1.1 1.1-1.7-.7z"/></svg><span class="language-code" id="topLanguageCode">FA</span></button><div class="top-language-menu hidden" id="topLanguageMenu" role="group" aria-label="انتخاب زبان"><button type="button" class="language-flag" data-ui-lang="fa" aria-label="فارسی" title="فارسی">🇮🇷</button><button type="button" class="language-flag" data-ui-lang="en" aria-label="English" title="English">🇬🇧</button><button type="button" class="language-flag" data-ui-lang="de" aria-label="Deutsch" title="Deutsch">🇩🇪</button></div><select id="topInterfaceLanguage" class="top-language-select" aria-hidden="true" tabindex="-1"><option value="fa">فارسی</option><option value="en">English</option><option value="de">Deutsch</option></select></div><button class="iconbtn" id="themeBtn" title="تغییر تم">◐</button></header>
@@ -1544,7 +1574,7 @@ const uniqueCards=list=>{const map=new Map();for(const w of list.filter(w=>Array
 let words=uniqueCards([...base,...extra]);
 let known=new Set(JSON.parse(localStorage.getItem('md_known')||'[]'));let idx=0,filtered=[];
 const $=id=>document.getElementById(id),fa=n=>String(n).replace(/\d/g,d=>'۰۱۲۳۴۵۶۷۸۹'[d]);
-let prefs=JSON.parse(localStorage.getItem('md_prefs')||'{}');let lang=prefs.lang||'fa';let uiLang=prefs.uiLang||'fa';
+let prefs=JSON.parse(localStorage.getItem('md_prefs')||'{}');let lang=prefs.lang||'fa';const detectedUiLanguage=(()=>{const n=(navigator.language||'').toLowerCase();return n.startsWith('fa')?'fa':n.startsWith('de')?'de':n.startsWith('en')?'en':'de'})();let uiLang=prefs.uiLang||(localStorage.getItem('md_ui_language_chosen')?'fa':detectedUiLanguage);
 const uiText={
   "آلمانی من · یادگیری ساده و پیوسته": [
     "Mein Deutsch · einfach und kontinuierlich lernen",
@@ -3210,7 +3240,50 @@ if('serviceWorker'in navigator && location.protocol.startsWith('http'))window.ad
 (function(){
   var splash=document.getElementById('meinSplash');
   if(!splash)return;
-  window.setTimeout(function(){splash.classList.add('is-leaving');window.setTimeout(function(){if(splash.parentNode)splash.parentNode.removeChild(splash);},480);},2000);
+  var chosen=localStorage.getItem('md_ui_language_chosen')==='1';
+  var detected=(navigator.language||'').toLowerCase();
+  var initial=detected.startsWith('fa')?'fa':detected.startsWith('en')?'en':'de';
+  var selected=chosen?(localStorage.getItem('md_prefs')?JSON.parse(localStorage.getItem('md_prefs')).uiLang:null)||initial:initial;
+  var stage=document.getElementById('splashLogoStage');
+  var panel=document.getElementById('startupLanguage');
+  var title=document.getElementById('startupLanguageTitle');
+  var hint=document.getElementById('startupLanguageHint');
+  var go=document.getElementById('startupLanguageContinue');
+  var note=document.getElementById('startupSystemNote');
+  var copy={
+    de:{title:'Wähle deine Sprache',hint:'In welcher Sprache möchtest du Zuno verwenden?',go:'Weiter',note:'Die Gerätesprache wurde vorausgewählt.'},
+    fa:{title:'زبان زونو را انتخاب کنید',hint:'دوست دارید برنامه به چه زبانی نمایش داده شود؟',go:'ادامه',note:'زبان دستگاه به‌صورت پیش‌فرض انتخاب شده است.'},
+    en:{title:'Choose your language',hint:'Which language would you like to use in Zuno?',go:'Continue',note:'Your device language was selected by default.'}
+  };
+  function paint(){
+    var c=copy[selected]||copy.de;
+    title.textContent=c.title;hint.textContent=c.hint;go.textContent=c.go;note.textContent=c.note;
+    panel.dir=selected==='fa'?'rtl':'ltr';
+    panel.lang=selected;
+    panel.querySelectorAll('[data-start-lang]').forEach(function(b){
+      var active=b.dataset.startLang===selected;
+      b.classList.toggle('selected',active);
+      b.setAttribute('aria-pressed',String(active));
+    });
+  }
+  panel.querySelectorAll('[data-start-lang]').forEach(function(b){
+    b.addEventListener('click',function(){selected=b.dataset.startLang;paint();});
+  });
+  go.addEventListener('click',function(){
+    try{
+      var p=JSON.parse(localStorage.getItem('md_prefs')||'{}');
+      p.uiLang=selected;localStorage.setItem('md_prefs',JSON.stringify(p));
+      localStorage.setItem('md_ui_language_chosen','1');
+    }catch(e){}
+    var setting=document.getElementById('interfaceLanguage');
+    if(setting){setting.value=selected;setting.dispatchEvent(new Event('change'));}
+    splash.classList.add('is-leaving');
+    window.setTimeout(function(){if(splash.parentNode)splash.parentNode.removeChild(splash);},480);
+  });
+  window.setTimeout(function(){
+    if(chosen){splash.classList.add('is-leaving');window.setTimeout(function(){if(splash.parentNode)splash.parentNode.removeChild(splash);},480);}
+    else{stage.classList.add('hidden');panel.classList.remove('hidden');paint();}
+  },1900);
 })();
 </script>
 <!-- Progress dashboard script removed completely. -->
