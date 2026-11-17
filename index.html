@@ -196,7 +196,7 @@ html[dir="ltr"] .nav button{text-align:left}body{margin:0;background:var(--bg);c
   </div>
 </div>
 
-<header><button type="button" class="iconbtn" id="menuBtn" aria-label="باز کردن منو" aria-controls="sidebar" aria-expanded="false">☰</button><div class="brand"><img class="brand-logo" src="./assets/zuno-original.webp" alt="لوگوی گربه عینکی Zuno"></div><form id="globalSearchForm" class="global-search" role="search" onsubmit="return runGlobalSearch(event)"><input id="globalWordSearch" type="search" placeholder="جستجوی واژه یا معنی…" aria-label="جستجوی واژه یا معنی" autocomplete="off"><button class="iconbtn" type="submit" aria-label="جستجو">⌕</button></form><button class="iconbtn" id="themeBtn" title="تغییر تم">◐</button></header>
+<header><button type="button" class="iconbtn" id="menuBtn" aria-label="باز کردن منو" aria-controls="sidebar" aria-expanded="false">☰</button><div class="brand"><img class="brand-logo" src="./assets/zuno-original.webp" alt="لوگوی گربه عینکی Zuno"></div><form id="globalSearchForm" class="global-search" role="search"><input id="globalWordSearch" type="search" placeholder="جستجوی واژه یا معنی…" aria-label="جستجوی واژه یا معنی" autocomplete="off"><button class="iconbtn" type="button" id="globalSearchButton" aria-label="جستجو">⌕</button></form><button class="iconbtn" id="themeBtn" title="تغییر تم">◐</button></header>
 <div class="shell">
 <aside class="sidebar" id="sidebar" aria-label="منوی اصلی"><div class="sidebar-head"><div class="sidebar-brand-mark">DE</div><div class="sidebar-brand-copy"><span class="sidebar-kicker">MEIN DEUTSCH</span><span class="sidebar-caption">مسیر یادگیری آلمانی</span></div></div><nav class="nav" id="nav">
 <div class="nav-group"><div class="nav-heading"><span>شروع</span><span class="nav-heading-line"></span></div>
@@ -2597,7 +2597,7 @@ async function runImageTranslation(){
 }
 
 function searchDict(){let q=($('dictSearch')?.value||'').trim();let res=words.filter(w=>w[6]==='A1'&&(!q||searchMatches(w,q)));$('dictResults').innerHTML=res.length?'<div class="grid2">'+res.slice(0,50).map(dictEntry).join('')+'</div>':'<div class="empty">واژه‌ای پیدا نشد.</div>'}
-function runGlobalSearch(event){if(event)event.preventDefault();const input=$('globalWordSearch');const target=$('dictSearch');const q=(input?.value||'').trim();if(!q){input?.focus();return false;}page('dictionary');if(target)target.value=q;searchDict();target?.focus();return false;}
+
 function setupWordSuggestions(){
  let dl=document.getElementById('wordSuggestions');
  if(!dl){dl=document.createElement('datalist');dl.id='wordSuggestions';document.body.appendChild(dl)}
@@ -3144,6 +3144,31 @@ if('serviceWorker'in navigator && location.protocol.startsWith('http'))window.ad
   var splash=document.getElementById('meinSplash');
   if(!splash)return;
   window.setTimeout(function(){splash.classList.add('is-leaving');window.setTimeout(function(){if(splash.parentNode)splash.parentNode.removeChild(splash);},480);},2000);
+})();
+</script>
+<script>
+(function(){
+  var form=document.getElementById('globalSearchForm');
+  var input=document.getElementById('globalWordSearch');
+  var button=document.getElementById('globalSearchButton');
+  function doSearch(event){
+    if(event){event.preventDefault();event.stopPropagation();}
+    var q=(input && input.value ? input.value : '').trim();
+    if(!q){if(input)input.focus();return false;}
+    var dictNav=document.querySelector('.nav button[data-page="dictionary"]');
+    if(dictNav)dictNav.click();
+    var dictInput=document.getElementById('dictSearch');
+    if(dictInput){
+      dictInput.value=q;
+      dictInput.dispatchEvent(new Event('input',{bubbles:true}));
+    }
+    if(typeof window.searchDict==='function')window.searchDict();
+    if(dictInput)dictInput.focus();
+    return false;
+  }
+  if(form)form.addEventListener('submit',doSearch);
+  if(button)button.addEventListener('click',doSearch);
+  if(input)input.addEventListener('keydown',function(e){if(e.key==='Escape')input.value='';});
 })();
 </script>
 <!-- Progress dashboard script removed completely. -->
