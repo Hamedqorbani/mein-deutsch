@@ -2571,7 +2571,7 @@ function setupTranslateTabs(){
 }
 function showImageWord(raw){
  const q=normalizeWord(raw),detail=$('imageWordDetails');if(!detail)return;
- const found=words.find(w=>normalizeWord(w[0])===q)||words.find(w=>normalizeWord(w[0]).replace(/^(der|die|das)\\s+/,'')===q);
+ const found=words.find(w=>normalizeWord(w[0])===q)||words.find(w=>normalizeWord(w[0]).replace(/^(der|die|das)\s+/,'')===q);
  detail.classList.remove('hidden');
  if(!found){detail.innerHTML='<b dir="auto">'+esc(raw)+'</b><p class="muted tiny">این واژه در واژه‌نامه A1 پیدا نشد. می‌توانی آن را در دیکشنری جستجو کنی.</p><button class="btn small" type="button" id="searchOcrWord">جستجو در دیکشنری</button>';const b=$('searchOcrWord');b.onclick=()=>{$('dictSearch').value=raw;showPage('dictionary');searchDict()};return}
  detail.innerHTML='<div class="row between"><strong dir="ltr">'+esc(found[0])+'</strong><button class="btn small" type="button" id="speakOcrWord">🔊 تلفظ</button></div><b>'+esc(found[1])+'</b><p class="muted tiny">آرتیکل: '+esc(found[4]||'—')+' · تلفظ: '+esc(found[3]||'—')+'</p><p class="tiny" dir="ltr">'+esc(found[7]||'')+'</p><p class="tiny" dir="auto">'+esc(found[8]||'')+'</p><div class="lesson-tag">'+esc(lessonForWord(found))+' · Starten wir! A1</div>';
