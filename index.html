@@ -3052,7 +3052,7 @@ function conj(){
  html+='<h4>Imperativ / وجه امری</h4><div class="past-table-wrap"><table class="past-table"><tbody><tr><th dir="ltr">du</th><td dir="ltr">'+esc(d.imperative[0])+'</td></tr><tr><th dir="ltr">ihr</th><td dir="ltr">'+esc(d.imperative[1])+'</td></tr></tbody></table></div></div>';
  $('verbOutput').innerHTML=html;
 }
-function say(t){{if(!('speechSynthesis'in window)){alert('پخش صدا در این مرورگر پشتیبانی نمی‌شود.');return}const synth=window.speechSynthesis;const voices=synth.getVoices();const german=voices.filter(v=>/^de(-|_)/i.test(v.lang));const preferred=german.find(v=>/natural|premium|enhanced|google|microsoft.*(katja|conrad|hedda)|anna|helena/i.test(v.name))||german.find(v=>/de-DE/i.test(v.lang))||german[0];const u=new SpeechSynthesisUtterance(String(t));u.lang='de-DE';if(preferred)u.voice=preferred;u.rate=.88;u.pitch=1;synth.cancel();synth.speak(u)}
+function say(t){if(!('speechSynthesis'in window)){alert('پخش صدا در این مرورگر پشتیبانی نمی‌شود.');return}const synth=window.speechSynthesis;const voices=synth.getVoices();const german=voices.filter(v=>/^de(-|_)/i.test(v.lang));const preferred=german.find(v=>/natural|premium|enhanced|google|microsoft.*(katja|conrad|hedda)|anna|helena/i.test(v.name))||german.find(v=>/de-DE/i.test(v.lang))||german[0];const u=new SpeechSynthesisUtterance(String(t));u.lang='de-DE';if(preferred)u.voice=preferred;u.rate=.88;u.pitch=1;synth.cancel();synth.speak(u)}
 function chatReply(q){
 let raw=q.trim(),s=raw.toLowerCase(),L=$('chatLevel').value,lang=$('chatLanguage').value;
 const vocab=words||[];
