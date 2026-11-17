@@ -2980,12 +2980,12 @@ function verbConjugationData(v,forms){
  const konj2= v==='heißen'?['hieße','hießest','hieße','hießen','hießet','hießen']:v==='sein'?['wäre','wärest','wäre','wären','wäret','wären']:null;
  const imperative=v==='sein'?['sei','seid']:v==='haben'?['hab','habt']:v==='heißen'?['heiße','heißt']: [forms[1].split(' ')[0].replace(/st$/,'') ,forms[4].split(' ')[0]];
  const perf=perfAux.map(x=>x+' '+part),pluperf=pluperfAux.map(x=>x+' '+part),fut=futAux.map(x=>x+' '+v),fut2=futAux.map(x=>x+' '+part+' '+(aux==='sein'?'sein':'haben'));
- const konjPerf=(v==='sein'?konjBe:konjHave).map(x=>x+' '+part);
+ const konjPerf=(aux==='sein'?konjBe:konjHave).map(x=>x+' '+part);
  const konjPluperf=(aux==='sein'?konjPastBe:konjPastHave).map(x=>x+' '+part);
  const würde=['würde','würdest','würde','würden','würdet','würden'];
  const conditional=wü=>wü.map(x=>x+' '+v);
  const k2Perf=konjPluperf;
- return {past,part,aux,pastForms,perf,pluperf,fut,fut2,konj1,konjPerf,konj2,konjPluperf,conditional:conditional(würde),conditionalPerf:conditional(würde).map(x=>x+' '+(aux==='sein'?'gewesen':'gehabt')),imperative};
+ return {past,part,aux,pastForms,perf,pluperf,fut,fut2,konj1,konjPerf,konj2,konjPluperf,conditional:conditional(würde),conditionalPerf:würde.map(x=>x+' '+part+' '+aux),imperative};
 }
 function conj(){
  let v=$('verbInput').value.trim().toLowerCase(),m=$('verbMeaning').value.trim();if(!v){$('verbOutput').textContent='لطفاً فعل را وارد کن.';return}
