@@ -2677,7 +2677,6 @@ function dictionaryExamples(w){
    {de:cap+' '+bare+(isPlural?' sind':' ist')+' hier.',fa:(w[1]||bare)+(isPlural?' اینجا هستند.':' اینجاست.'),pron:(article==='der'?'دِر':article==='die'?'دی':'داس')+' '+(w[3]||bare)+' '+(isPlural?'زیند':'ایست')+' هیر'}
   ];
  }else{
-  if(w[7]&&w[8])examples.push({de:w[7],fa:w[8],pron:'برای تلفظ دقیق، دکمه صوت را بزن.'});
   const quoted='„'+bare+'“';
   examples.push({de:'Ich lerne das Wort '+quoted+'.',fa:'من واژهٔ «'+bare+'» را یاد می‌گیرم.',pron:'ایش لِرنِ داس وُرت '+(w[3]||bare)});
   examples.push({de:'Kannst du das Wort '+quoted+' sagen?',fa:'می‌توانی واژهٔ «'+bare+'» را بگویی؟',pron:'کَنست دو داس وُرت '+(w[3]||bare)+' زاگِن؟'});
