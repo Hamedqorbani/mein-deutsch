@@ -2959,6 +2959,58 @@ const verbLevels={A1:['sein','haben','heißen','machen','lernen','wohnen','komme
 const levelOfVerb=v=>Object.keys(verbLevels).find(level=>verbLevels[level].includes(v))||'B1';
 const verbPast={heißen:['hieß','geheißen','haben'],sein:['war','gewesen','sein'],haben:['hatte','gehabt','haben'],werden:['wurde','geworden','sein'],gehen:['ging','gegangen','sein'],kommen:['kam','gekommen','sein'],fahren:['fuhr','gefahren','sein'],sprechen:['sprach','gesprochen','haben'],lesen:['las','gelesen','haben'],sehen:['sah','gesehen','haben'],essen:['aß','gegessen','haben'],nehmen:['nahm','genommen','haben'],geben:['gab','gegeben','haben'],schlafen:['schlief','geschlafen','haben'],laufen:['lief','gelaufen','sein'],tragen:['trug','getragen','haben'],waschen:['wusch','gewaschen','haben'],helfen:['half','geholfen','haben'],treffen:['traf','getroffen','haben'],vergessen:['vergaß','vergessen','haben'],gefallen:['gefiel','gefallen','haben'],fallen:['fiel','gefallen','sein'],halten:['hielt','gehalten','haben'],lassen:['ließ','gelassen','haben'],fangen:['fing','gefangen','haben'],werfen:['warf','geworfen','haben'],brechen:['brach','gebrochen','haben'],stehlen:['stahl','gestohlen','haben'],sterben:['starb','gestorben','sein'],wachsen:['wuchs','gewachsen','sein'],raten:['riet','geraten','haben'],laden:['lud','geladen','haben'],stoßen:['stieß','gestoßen','haben'],treten:['trat','getreten','sein'],bitten:['bat','gebeten','haben'],sitzen:['saß','gesessen','haben'],liegen:['lag','gelegen','haben'],stehen:['stand','gestanden','haben'],tun:['tat','getan','haben'],wissen:['wusste','gewusst','haben'],können:['konnte','gekonnt','haben'],müssen:['musste','gemusst','haben'],wollen:['wollte','gewollt','haben'],dürfen:['durfte','gedurft','haben'],sollen:['sollte','gesollt','haben'],mögen:['mochte','gemocht','haben'],bleiben:['blieb','geblieben','sein'],denken:['dachte','gedacht','haben'],kennen:['kannte','gekannt','haben'],rennen:['rannte','gerannt','sein'],singen:['sang','gesungen','haben'],springen:['sprang','gesprungen','sein'],schwimmen:['schwamm','geschwommen','sein'],rufen:['rief','gerufen','haben'],verlieren:['verlor','verloren','haben'],gewinnen:['gewann','gewonnen','haben'],anfangen:['fing an','angefangen','haben'],aufgeben:['gab auf','aufgegeben','haben'],anrufen:['rief an','angerufen','haben'],einladen:['lud ein','eingeladen','haben'],mitnehmen:['nahm mit','mitgenommen','haben'],teilnehmen:['nahm teil','teilgenommen','haben'],einschlafen:['schlief ein','eingeschlafen','sein'],aussehen:['sah aus','ausgesehen','haben'],fernsehen:['sah fern','ferngesehen','haben'],verstehen:['verstand','verstanden','haben'],finden:['fand','gefunden','haben'],schreiben:['schrieb','geschrieben','haben'],trinken:['trank','getrunken','haben'],ziehen:['zog','gezogen','haben'],anziehen:['zog an','angezogen','haben'],ausziehen:['zog aus','ausgezogen','sein'],einsteigen:['stieg ein','eingestiegen','sein'],umsteigen:['stieg um','umgestiegen','sein'],schneiden:['schnitt','geschnitten','haben'],schließen:['schloss','geschlossen','haben'],fliegen:['flog','geflogen','sein'],beginnen:['begann','begonnen','haben'],aufstehen:['stand auf','aufgestanden','sein'],vorlesen:['las vor','vorgelesen','haben'],zusehen:['sah zu','zugesehen','haben'],nachdenken:['dachte nach','nachgedacht','haben'],stattfinden:['fand statt','stattgefunden','haben'],mitbringen:['brachte mit','mitgebracht','haben'],zurückkommen:['kam zurück','zurückgekommen','sein'],weggehen:['ging weg','weggegangen','sein'],ausgeben:['gab aus','ausgegeben','haben'],vorschlagen:['schlug vor','vorgeschlagen','haben'],beschreiben:['beschrieb','beschrieben','haben'],entscheiden:['entschied','entschieden','haben'],vergleichen:['verglich','verglichen','haben']};
 const verbSimplePastForms={heißen:['hieß','hießest','hieß','hießen','hießt','hießen'],sein:['war','warst','war','waren','wart','waren'],haben:['hatte','hattest','hatte','hatten','hattet','hatten'],werden:['wurde','wurdest','wurde','wurden','wurdet','wurden'],gehen:['ging','gingst','ging','gingen','gingt','gingen'],kommen:['kam','kamst','kam','kamen','kamt','kamen'],fahren:['fuhr','fuhrst','fuhr','fuhren','fuhrt','fuhren'],sprechen:['sprach','sprachst','sprach','sprachen','spracht','sprachen'],lesen:['las','lasest','las','lasen','last','lasen'],sehen:['sah','sahst','sah','sahen','saht','sahen'],essen:['aß','aßest','aß','aßen','aßt','aßen'],nehmen:['nahm','nahmst','nahm','nahmen','nahmt','nahmen'],geben:['gab','gabst','gab','gaben','gabt','gaben'],schlafen:['schlief','schliefst','schlief','schliefen','schlieft','schliefen'],bleiben:['blieb','bliebst','blieb','blieben','bliebt','blieben'],finden:['fand','fandest','fand','fanden','fandet','fanden'],schreiben:['schrieb','schriebst','schrieb','schrieben','schriebt','schrieben'],trinken:['trank','trankst','trank','tranken','trankt','tranken'],fliegen:['flog','flogst','flog','flogen','flogt','flogen'],sprechen:['sprach','sprachst','sprach','sprachen','spracht','sprachen']};
+// Complete the tense metadata for irregular verbs already available in the Präsens bank.
+Object.assign(verbPast,{
+empfehlen:['empfahl','empfohlen','haben'],backen:['buk','gebacken','haben'],bieten:['bot','geboten','haben'],brennen:['brannte','gebrannt','haben'],senden:['sandte','gesandt','haben'],einfallen:['fiel ein','eingefallen','sein'],messen:['maß','gemessen','haben'],gelten:['galt','gegolten','haben'],stechen:['stach','gestochen','haben'],schlagen:['schlug','geschlagen','haben'],empfangen:['empfing','empfangen','haben'],befehlen:['befahl','befohlen','haben'],schreien:['schrie','geschrien','haben'],schweigen:['schwieg','geschwiegen','haben'],leiden:['litt','gelitten','haben'],meiden:['mied','gemieden','haben'],scheinen:['schien','geschienen','haben'],steigen:['stieg','gestiegen','sein'],wegwerfen:['warf weg','weggeworfen','haben'],graben:['grub','gegraben','haben'],bergen:['barg','geborgen','haben'],schmelzen:['schmolz','geschmolzen','haben'],quellen:['quoll','gequollen','sein'],pfeifen:['pfiff','gepfiffen','haben'],greifen:['griff','gegriffen','haben'],kneifen:['kniff','gekniffen','haben'],gleiten:['glitt','geglitten','sein'],reiten:['ritt','geritten','sein'],streiten:['stritt','gestritten','haben'],beißen:['biss','gebissen','haben'],reißen:['riss','gerissen','haben'],schießen:['schoss','geschossen','haben'],fließen:['floss','geflossen','sein'],gießen:['goss','gegossen','haben'],genießen:['genoss','genossen','haben'],frieren:['fror','gefroren','haben'],biegen:['bog','gebogen','haben'],kriechen:['kroch','gekrochen','sein'],riechen:['roch','gerochen','haben'],schieben:['schob','geschoben','haben'],lügen:['log','gelogen','haben'],betrügen:['betrog','betrogen','haben'],sinken:['sank','gesunken','sein'],binden:['band','gebunden','haben'],verbieten:['verbot','verboten','haben'],möchten:['mochte','gemocht','haben']
+});
+Object.assign(verbSimplePastForms,{
+empfehlen:['empfahl','empfahlst','empfahl','empfahlen','empfahlt','empfahlen'],
+backen:['buk','bukst','buk','buken','bukt','buken'],
+bieten:['bot','botst','bot','boten','botet','boten'],
+brennen:['brannte','branntest','brannte','brannten','branntet','brannten'],
+senden:['sandte','sandtest','sandte','sandten','sandtet','sandten'],
+einfallen:['fiel ein','fielst ein','fiel ein','fielen ein','fielt ein','fielen ein'],
+messen:['maß','maßest','maß','maßen','maßt','maßen'],
+gelten:['galt','galtest','galt','galten','galtet','galten'],
+stechen:['stach','stachst','stach','stachen','st acht','stachen'],
+schlagen:['schlug','schlugst','schlug','schlugen','schlugt','schlugen'],
+empfangen:['empfing','empfingst','empfing','empfingen','empfingt','empfingen'],
+befehlen:['befahl','befahlst','befahl','befahlen','befahlt','befahlen'],
+schreien:['schrie','schriest','schrie','schrien','schriet','schrien'],
+schweigen:['schwieg','schwiegst','schwieg','schwiegen','schwiegt','schwiegen'],
+leiden:['litt','littest','litt','litten','littet','litten'],
+meiden:['mied','miedest','mied','mieden','miedet','mieden'],
+scheinen:['schien','schienst','schien','schienen','schient','schienen'],
+steigen:['stieg','stiegst','stieg','stiegen','stiegt','stiegen'],
+wegwerfen:['warf weg','warfst weg','warf weg','warfen weg','warft weg','warfen weg'],
+graben:['grub','grubst','grub','gruben','grubt','gruben'],
+bergen:['barg','bargst','barg','bargen','b argt','bargen'],
+schmelzen:['schmolz','schmolzest','schmolz','schmolzen','schmolzt','schmolzen'],
+quellen:['quoll','quollst','quoll','quollen','quollt','quollen'],
+pfeifen:['pfiff','pfiffst','pfiff','pfiffen','pfifft','pfiffen'],
+greifen:['griff','griffst','griff','griffen','grifft','griffen'],
+kneifen:['kniff','kniffst','kniff','kniffen','knifft','kniffen'],
+gleiten:['glitt','glittest','glitt','glitten','glittet','glitten'],
+reiten:['ritt','rittest','ritt','ritten','rittet','ritten'],
+streiten:['stritt','strittest','stritt','stritten','strittet','stritten'],
+beißen:['biss','bissest','biss','bissen','bisst','bissen'],
+reißen:['riss','rissest','riss','rissen','risst','rissen'],
+schießen:['schoss','schossest','schoss','schossen','schosst','schossen'],
+fließen:['floss','flossest','floss','flossen','flosst','flossen'],
+gießen:['goss','gossest','goss','gossen','gosst','gossen'],
+genießen:['genoss','genossest','genoss','genossen','genosst','genossen'],
+frieren:['fror','frorst','fror','froren','frort','froren'],
+biegen:['bog','bogst','bog','bogen','bogt','bogen'],
+kriechen:['kroch','krochst','kroch','krochen','krocht','krochen'],
+riechen:['roch','rochst','roch','rochen','rocht','rochen'],
+schieben:['schob','schobst','schob','schoben','sch obt','schoben'],
+lügen:['log','logst','log','logen','logt','logen'],
+betrügen:['betrog','betrogst','betrog','betrogen','betrogt','betrogen'],
+sinken:['sank','sankst','sank','sanken','sankt','sanken'],
+binden:['band','bandst','band','banden','bandet','banden'],
+verbieten:['verbot','verbotest','verbot','verboten','verbotet','verboten'],
+möchten:['mochte','mochtest','mochte','mochten','mochtet','mochten']
+});
 const regularVerbs=['machen','lernen','wohnen','spielen','kaufen','fragen','arbeiten','kochen','hören','sagen','suchen','brauchen','kosten','öffnen','reisen','tanzen','lieben','leben','lachen','warten','reden','studieren'];
 function regularForms(v){let stem=v.slice(0,-2);return ['arbeiten','öffnen','warten','reden'].includes(v)?[stem+'e',stem+'est',stem+'et',stem+'en',stem+'et',stem+'en']:[stem+'e',stem+'st',stem+'t',stem+'en',stem+'t',stem+'en']}
 function tableBlock(title,rows){return '<div class="verb-tense"><h5>'+title+'</h5><div class="past-table-wrap"><table class="past-table"><tbody>'+rows.map(([p,f])=>'<tr><th dir="ltr">'+p+'</th><td dir="ltr">'+esc(f)+'</td></tr>').join('')+'</tbody></table></div></div>'}
