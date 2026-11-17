@@ -2668,11 +2668,11 @@ function checkPastPractice(){
   select.style.borderColor=ok?'var(--accent)':'var(--danger)';
   explain.textContent=(ok?'✓ درست · ':'✗ پاسخ درست: '+item.o[item.a]+' · ')+item.h;
  });
- const sentence=$('pastSentenceBuild'),expected='Ich habe gestern einen Film gesehen.';
- const sentenceOk=normalizePastSentence(sentence.value)===normalizePastSentence(expected);
+ const sentence=$('pastSentenceBuild'),expected=['Ich habe gestern einen Film gesehen.','Gestern habe ich einen Film gesehen.'];
+ const sentenceOk=expected.some(option=>normalizePastSentence(sentence.value)===normalizePastSentence(option));
  if(sentenceOk)score++;
  sentence.style.borderColor=sentenceOk?'var(--accent)':'var(--danger)';
- $('pastPracticeFeedback').textContent='نتیجه: '+fa(score)+' از ۹. '+(sentenceOk?'جمله‌سازی درست است.':'جملهٔ درست: '+expected+'.')+(score===9?' عالی! همه پاسخ‌ها درست است.':' موارد قرمز را مرور کن و دوباره تلاش کن.');
+ $('pastPracticeFeedback').textContent='نتیجه: '+fa(score)+' از ۹. '+(sentenceOk?'جمله‌سازی درست است.':'نمونهٔ درست: '+expected[0])+(score===9?' عالی! همه پاسخ‌ها درست است.':' موارد قرمز را مرور کن و دوباره تلاش کن.');
 }
 function resetPastPractice(){
  pastPracticeItems.forEach((_,i)=>{$('pastAnswer'+i).value='';$('pastAnswer'+i).style.borderColor='';$('pastExplain'+i).textContent='';});
