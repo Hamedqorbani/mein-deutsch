@@ -1,5 +1,5 @@
-const CACHE='mein-deutsch-v60';
-const FILES=['./','./index.html','./manifest.json','./icon.svg','./enhancements.js'];
+const CACHE='mein-deutsch-v61';
+const FILES=['./','./index.html','./manifest.json','./icon.svg','./assets/zuno-logo.svg','./enhancements.js'];
 
 self.addEventListener('install',event=>{
   event.waitUntil(
