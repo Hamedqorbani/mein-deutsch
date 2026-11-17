@@ -3161,7 +3161,7 @@ function renderTopicWords(){
  $('topicWordCount').textContent=fa(shown.length)+' واژه از '+fa(topicWords.length);
  $('topicWordResults').innerHTML=shown.length?shown.map(x=>{
   const articleClass=x.article==='der'?'der':x.article==='die'?'die':x.article==='das'?'das':'';
-  const bare=x.w.replace(/^(der|die|das)\\s+/,'').replace(/[!]/g,'');
+  const bare=x.w.replace(/^(der|die|das)\s+/,'').replace(/[!]/g,'');
   return '<article class="topic-word"><div class="row between"><span class="chip">'+esc(x.t)+'</span><span class="tiny muted">'+esc(x.article&&x.article!=='—'?x.article.toUpperCase():'')+'</span></div><strong class="'+articleClass+'">'+esc(x.w)+'</strong><div class="topic-meaning">'+esc(x.m)+'</div><div class="tiny muted" dir="ltr">'+esc(x.en||'')+'</div>'+(x.pron&&x.pron!=='—'?'<div class="tiny muted">تلفظ: '+esc(x.pron)+'</div>':'')+'<div class="topic-example" dir="ltr">'+esc(x.example)+'</div>'+(x.exampleFa?'<div class="tiny muted">'+esc(x.exampleFa)+'</div>':'')+'<div class="row" style="margin-top:9px"><button class="btn small" type="button" data-topic-say="'+esc(bare)+'">🔊 شنیدن</button><button class="btn small" type="button" data-topic-google="'+esc(bare)+'">ترجمه بیشتر</button></div></article>';
  }).join(''):'<div class="empty">واژه‌ای پیدا نشد.</div>';
 }
