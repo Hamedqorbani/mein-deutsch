@@ -269,6 +269,7 @@ input,select,textarea{max-width:100%;min-width:0}
 <button data-page="chat"><span class="ico">✦</span><span class="nav-label">معلم هوشمند</span></button></div>
 <div class="nav-group"><div class="nav-heading"><span>پایه‌های زبان</span><span class="nav-heading-line"></span></div><button data-page="alphabet"><span class="ico">Ä</span><span class="nav-label">الفبا و تلفظ</span></button><button data-page="stories"><span class="ico">▤</span><span class="nav-label">داستانک‌های آلمانی</span></button><button data-page="vocabulary"><span class="ico">W</span><span class="nav-label">واژه‌های موضوعی</span></button></div>
 <div class="nav-group"><div class="nav-heading"><span>شنیداری</span><span class="nav-heading-line"></span></div><button data-page="radio"><span class="ico">◖</span><span class="nav-label">رادیو آلمانی</span></button><button data-page="podcast"><span class="ico">♫</span><span class="nav-label">پادکست آموزشی</span></button></div>
+<div class="nav-group"><div class="nav-heading"><span>منابع</span><span class="nav-heading-line"></span></div><button data-page="resources"><span class="ico">▤</span><span class="nav-label">منابع آموزشی</span></button></div>
 <div class="nav-group course-group"><div class="nav-heading"><span>دوره‌های آموزشی</span><span class="nav-heading-line"></span></div>
 <div class="course-levels"><button class="course-level active-level" data-page="home"><b>A1</b><span>مبتدی · فعال</span></button><button class="course-level" disabled><b>A2</b><span>پایه · به‌زودی</span></button><button class="course-level" disabled><b>B1</b><span>متوسط · به‌زودی</span></button><button class="course-level" disabled><b>B2</b><span>متوسط رو به بالا · به‌زودی</span></button><button class="course-level" disabled><b>C1</b><span>پیشرفته · به‌زودی</span></button><button class="course-level" disabled><b>C2</b><span>تسلط · به‌زودی</span></button></div></div>
 <div class="nav-group nav-settings"><div class="nav-heading"><span>برنامه</span><span class="nav-heading-line"></span></div><button data-page="settings"><span class="ico">⚙</span><span class="nav-label">تنظیمات</span></button></div>
@@ -390,6 +391,7 @@ input,select,textarea{max-width:100%;min-width:0}
 </section>
 <section id="page-vocabulary" class="page hidden"><div class="panel"><div class="row between"><div><h2 class="section-title">دایره واژگان آلمانی</h2><p class="muted tiny">بانک کامل واژه‌های A1؛ همراه معنی، آرتیکل، تلفظ، مثال و شنیدن واژه.</p></div><span class="chip" id="topicWordCount">A1</span></div><input id="topicWordSearch" placeholder="جستجوی آلمانی، فارسی یا انگلیسی…" autocomplete="off"><div class="chips" id="topicFilters" style="margin-top:10px"></div><div id="topicWordResults" class="topic-word-grid" style="margin-top:14px"></div></div></section>
 <section id="page-settings" class="page hidden"><div class="panel"><h2 class="section-title">تنظیمات برنامه</h2><div class="field"><label>زبان کل برنامه</label><select id="interfaceLanguage"><option value="fa">فارسی</option><option value="de">Deutsch</option><option value="en">English</option></select><small class="muted tiny">زبان منوها، عنوان‌ها و دکمه‌ها را تغییر می‌دهد؛ متن آموزشی آلمانی حفظ می‌شود.</small></div><div class="field" style="margin-top:14px"><label>زبان ترجمه واژه‌ها</label><select id="settingsLanguage"><option value="fa">آلمانی به فارسی</option><option value="en">آلمانی به انگلیسی</option><option value="de">Deutsch–Deutsch (آلمانی به آلمانی)</option></select></div><div class="field" style="margin-top:14px"><label>ظاهر برنامه</label><select id="themeSelect"><option value="dark">تیره</option><option value="light">روشن</option><option value="system">مطابق دستگاه</option></select></div><div class="field" style="margin-top:14px"><label>سطح فعلی یادگیری</label><select id="settingsLevel"><option>A1</option><option>A2</option><option>B1</option><option>B2</option><option>C1</option><option>C2</option></select></div><p class="muted tiny">تنظیمات و پیشرفت روی همین دستگاه ذخیره می‌شوند. برای انتقال به گوشی دیگر، از پشتیبان‌گیری استفاده کن.</p><div class="grid2" style="margin:12px 0"><button class="btn primary" id="exportBackup">⬇️ دریافت نسخه پشتیبان</button><button class="btn" id="importBackup">⬆️ بازیابی نسخه پشتیبان</button></div><input id="backupFile" type="file" accept="application/json,.json" class="hidden"><p id="backupStatus" class="muted tiny" aria-live="polite"></p><button class="btn" id="resetProgress">پاک کردن پیشرفت این دستگاه</button></div></section>
+<section id="page-resources" class="page hidden"><div class="panel"><div class="row between"><div><span class="chip">کتابخانه آموزشی</span><h2 class="section-title" style="margin-top:10px">منابع آموزشی زبان آلمانی</h2><p class="muted tiny">مرجع بیرونی برای پیدا کردن کتاب‌ها و منابع کمک‌آموزشی آلمانی</p></div><span class="ico" aria-hidden="true">▤</span></div><div class="result" style="margin-top:14px"><strong>DeutschTest · کتابخانه</strong><p class="muted tiny" style="margin:8px 0">در این بخش می‌توانی فهرست کتاب‌ها و منابع آموزشی را در وب‌سایت مرجع بررسی کنی. برای مشاهده جزئیات و دسترسی به منابع، کتابخانه در صفحه‌ای جداگانه باز می‌شود.</p><div class="row between" style="align-items:center;gap:10px;flex-wrap:wrap"><span class="tiny muted" dir="ltr">deutschtest.ir/library</span><a class="btn primary" href="https://deutschtest.ir/library" target="_blank" rel="noopener noreferrer">باز کردن کتابخانه ↗</a></div></div><p class="muted tiny" style="margin-top:12px">Zuno این وب‌سایت را به‌عنوان مرجع بیرونی معرفی می‌کند؛ محتوای کتابخانه متعلق به همان وب‌سایت است.</p></div></section>
 <footer>Zuno · نسخه آغازین · یادگیری ساده آلمانی</footer>
 </main></div>
 <script>
@@ -1648,6 +1650,42 @@ const uiText={
   "معلم هوشمند": [
     "Lernassistent",
     "Learning assistant"
+  ],
+  "منابع آموزشی": [
+    "Lernressourcen",
+    "Learning resources"
+  ],
+  "منابع": [
+    "Ressourcen",
+    "Resources"
+  ],
+  "منابع آموزشی زبان آلمانی": [
+    "Lernressourcen für Deutsch",
+    "German learning resources"
+  ],
+  "کتابخانه آموزشی": [
+    "Lernbibliothek",
+    "Learning library"
+  ],
+  "مرجع بیرونی برای پیدا کردن کتاب‌ها و منابع کمک‌آموزشی آلمانی": [
+    "Externe Quelle für Deutsch-Lehrbücher und ergänzende Lernmaterialien",
+    "External reference for German textbooks and supplementary learning materials"
+  ],
+  "DeutschTest · کتابخانه": [
+    "DeutschTest · Bibliothek",
+    "DeutschTest · Library"
+  ],
+  "در این بخش می‌توانی فهرست کتاب‌ها و منابع آموزشی را در وب‌سایت مرجع بررسی کنی. برای مشاهده جزئیات و دسترسی به منابع، کتابخانه در صفحه‌ای جداگانه باز می‌شود.": [
+    "Hier kannst du Lehrbücher und Lernmaterialien auf der Referenzwebsite ansehen. Die Bibliothek wird in einem neuen Fenster geöffnet.",
+    "Browse textbooks and learning materials on the reference website. The library opens in a separate tab."
+  ],
+  "باز کردن کتابخانه ↗": [
+    "Bibliothek öffnen ↗",
+    "Open library ↗"
+  ],
+  "Zuno این وب‌سایت را به‌عنوان مرجع بیرونی معرفی می‌کند؛ محتوای کتابخانه متعلق به همان وب‌سایت است.": [
+    "Zuno empfiehlt diese externe Website als Quelle; die Inhalte gehören zur jeweiligen Website.",
+    "Zuno lists this as an external reference; its content belongs to that website."
   ],
   "تنظیمات": [
     "Einstellungen",
