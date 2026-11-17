@@ -2870,7 +2870,9 @@ globalSuggestions?.addEventListener('click',e=>{const btn=e.target.closest('[dat
 globalButton?.addEventListener('click',()=>runGlobalSearchNow(globalInput?.value));
 globalForm?.addEventListener('submit',e=>{e.preventDefault();e.stopPropagation();runGlobalSearchNow(globalInput?.value);});
 $('dictSearch').oninput=searchDict;$('translateSentence').onclick=runSentenceTranslation;$('translateImage').onclick=runImageTranslation;$('languageSelect').onchange=e=>{lang=e.target.value;prefs.lang=lang;save();searchDict();renderCard();$('settingsLanguage').value=lang};
-$('dictResults').addEventListener('click',e=>{let s=e.target.closest('[data-speak]');if(s)say(s.dataset.speak);let a=e.target.closest('[data-add]');if(a){idx=Number(a.dataset.add);page('cards');renderCard()}});\n$('globalWordSearch').addEventListener('keydown',e=>{if(e.key==='Escape')e.target.value=''});\n$('dictResults').addEventListener('click',e=>{const g=e.target.closest('[data-google]');if(g){const q=encodeURIComponent(g.dataset.google);window.open('https://translate.google.com/?sl=de&tl='+encodeURIComponent(lang)+'&op=translate&text='+q,'_blank','noopener');}});
+$('dictResults').addEventListener('click',e=>{let s=e.target.closest('[data-speak]');if(s)say(s.dataset.speak);let a=e.target.closest('[data-add]');if(a){idx=Number(a.dataset.add);page('cards');renderCard()}});
+$('globalWordSearch').addEventListener('keydown',e=>{if(e.key==='Escape')e.target.value=''});
+$('dictResults').addEventListener('click',e=>{const g=e.target.closest('[data-google]');if(g){const q=encodeURIComponent(g.dataset.google);window.open('https://translate.google.com/?sl=de&tl='+encodeURIComponent(lang)+'&op=translate&text='+q,'_blank','noopener');}});
 function findVocabularyMatches(q){
  let n=normalizeWord(q);if(!n)return [];
  const articleMatch=n.match(/^(der|die|das)\s+/);
