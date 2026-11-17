@@ -187,7 +187,21 @@ html[dir="ltr"] .nav button{text-align:left}body{margin:0;background:var(--bg);c
   .nav button:not(.course-level){min-height:46px}
 }
 
-.pronunciation-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:10px 0 14px}.pronunciation-item{display:grid;grid-template-columns:1fr auto;align-items:center;gap:5px 8px;padding:9px 10px;background:var(--bg);border:1px solid var(--line);border-radius:12px}.pronunciation-item [dir="ltr"]{font-size:17px}.pronunciation-item .btn{grid-column:1/-1;justify-self:start}@media(max-width:420px){.pronunciation-grid{grid-template-columns:1fr}}</style>
+.pronunciation-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:10px 0 14px}.pronunciation-item{display:grid;grid-template-columns:1fr auto;align-items:center;gap:5px 8px;padding:9px 10px;background:var(--bg);border:1px solid var(--line);border-radius:12px}.pronunciation-item [dir="ltr"]{font-size:17px}.pronunciation-item .btn{grid-column:1/-1;justify-self:start}@media(max-width:420px){.pronunciation-grid{grid-template-columns:1fr}}
+/* Multilingual layout safety: prevent translated labels from escaping cards and controls */
+html{max-width:100%;overflow-x:hidden}body{max-width:100%;overflow-x:hidden;overflow-wrap:anywhere} .shell,.main,.page,.panel,.welcome,.result,.stat,.nav-group,.sidebar,.cardword{min-width:0;max-width:100%}
+.row,.between,.chips{min-width:0;max-width:100%;flex-wrap:wrap}
+.row>* ,.between>*{min-width:0;max-width:100%}
+.nav button{min-width:0;white-space:normal;align-items:center;flex-wrap:wrap;overflow-wrap:anywhere}
+.nav .nav-label{flex:1 1 0;min-width:0;white-space:normal;overflow-wrap:anywhere;line-height:1.45}
+.nav-heading,.section-title,.welcome h1,.welcome p,.panel h1,.panel h2,.panel h3,.result,.stat span,.field label{min-width:0;max-width:100%;white-space:normal;overflow-wrap:anywhere;word-break:normal}
+button,.btn,.chip{max-width:100%;white-space:normal;overflow-wrap:anywhere;line-height:1.45}
+.grid2,.stats,.course-levels{grid-template-columns:repeat(2,minmax(0,1fr))}
+.grid2>*,.stats>*,.course-levels>*{min-width:0;max-width:100%}
+input,select,textarea{max-width:100%;min-width:0}
+[dir="ltr"] .nav button{text-align:left}
+@media(max-width:520px){.panel{padding:12px}.welcome{padding:14px}.section-title{font-size:clamp(16px,4.5vw,20px)}.stats{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.stat{padding:7px}.stat b{font-size:18px}.stat span{font-size:11px}.grid2{grid-template-columns:minmax(0,1fr)}.course-levels{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>
 </head>
 <body>
 <div id="meinSplash" role="status" aria-label="Zuno">
