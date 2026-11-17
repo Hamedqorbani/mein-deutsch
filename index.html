@@ -203,8 +203,10 @@ input,select,textarea{max-width:100%;min-width:0}
 @media(max-width:520px){.panel{padding:12px}.welcome{padding:14px}.section-title{font-size:clamp(16px,4.5vw,20px)}.stats{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.stat{padding:7px}.stat b{font-size:18px}.stat span{font-size:11px}.grid2{grid-template-columns:minmax(0,1fr)}.course-levels{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
 /* Small flag-only language picker */
-.top-language-wrap{position:relative;display:grid;place-items:center;flex:0 0 40px;width:40px;height:40px;border:0;background:transparent;border-radius:50%;z-index:30}
-.top-language-trigger{display:flex;align-items:center;justify-content:center;gap:5px;min-width:62px;height:38px;padding:0 8px;border:1px solid var(--line);border-radius:22px;background:var(--panel);color:var(--text)}.language-code{font-size:11px;font-weight:800;letter-spacing:.35px;line-height:1;color:var(--text);direction:ltr}
+.top-language-wrap{position:relative;display:flex;align-items:center;justify-content:center;flex:0 0 72px;width:72px;height:40px;min-width:72px;border:0;background:transparent;border-radius:22px;z-index:30;margin-inline:2px}
+.top-language-trigger{display:inline-flex;flex:0 0 72px;align-items:center;justify-content:center;gap:7px;width:72px;min-width:72px;height:36px;padding:0 9px;border:1px solid var(--line);border-radius:22px;background:var(--panel);color:var(--text);white-space:nowrap;position:relative}
+.language-code{display:inline-block;flex:0 0 auto;font-size:10px;font-weight:800;letter-spacing:.35px;line-height:1;color:var(--text);direction:ltr}
+.top-language-trigger .language-globe-icon{flex:0 0 19px;width:19px;height:19px}
 .top-language-menu{position:absolute;top:calc(100% + 6px);right:50%;transform:translateX(50%);display:flex;align-items:center;justify-content:center;gap:6px;width:max-content;padding:6px;border:1px solid var(--line);border-radius:999px;background:var(--panel);box-shadow:var(--shadow);z-index:1001}
 .top-language-menu.hidden{display:none!important}
 .language-flag{display:grid;place-items:center;width:34px;height:34px;padding:0;border:1px solid var(--line);border-radius:50%;background:var(--bg);font-size:19px;line-height:1}
