@@ -2618,7 +2618,38 @@ Object.assign(uiText,{
   "مثلاً Haus یا خانه": [
     "Zum Beispiel Haus oder home",
     "For example Haus or home"
-  ]
+  ],
+  "همه": ["Alle","All"],
+  "رفت‌وآمد": ["Verkehr","Transport"],
+  "مکان": ["Orte","Places"],
+  "پرسشی": ["Fragewörter","Question words"],
+  "روزمره": ["Alltag","Daily life"],
+  "سلامتی": ["Gesundheit","Health"],
+  "قیدها": ["Adverbien","Adverbs"],
+  "رنگ‌ها": ["Farben","Colors"],
+  "لباس": ["Kleidung","Clothing"],
+  "بدن": ["Körper","Body"],
+  "کار": ["Arbeit","Work"],
+  "واژه‌های پایه": ["Grundwortschatz","Basic vocabulary"],
+  "پوشاک": ["Bekleidung","Clothes"],
+  "تحصیل": ["Bildung","Education"],
+  "اتصال‌دهنده": ["Konnektoren","Linking words"],
+  "حروف اضافه": ["Präpositionen","Prepositions"],
+  "سفر": ["Reisen","Travel"],
+  "خدمات": ["Dienstleistungen","Services"],
+  "ارتباط": ["Kommunikation","Communication"],
+  "طبیعت": ["Natur","Nature"],
+  "حیوانات": ["Tiere","Animals"],
+  "ترتیب": ["Reihenfolge","Order"],
+  "تعداد": ["Mengen","Quantities"],
+  "ورزش": ["Sport","Sports"],
+  "ضمیرها": ["Pronomen","Pronouns"],
+  "عبارت‌ها": ["Redewendungen","Phrases"],
+  "آموزش": ["Lernen","Learning"],
+  "شهر": ["Stadt","City"],
+  "خانواده": ["Familie","Family"],
+  "صفت": ["Adjektiv","Adjective"],
+  "فعل": ["Verb","Verb"]
 });
 
 function translateUiText(raw,ix){
@@ -2626,7 +2657,9 @@ function translateUiText(raw,ix){
  if(!trim)return value;
  let translated=uiText[trim]?uiText[trim][ix]:trim;
  if(translated===trim){
-  let m=trim.match(/^درس\s*(\d+)\s*·\s*(.+)$/);
+  let m=trim.match(/^([0-9۰-۹]+)\s*واژه\s*از\s*([0-9۰-۹]+)$/);
+  if(m)translated=ix===0?m[1]+' Wörter von '+m[2]:m[1]+' words of '+m[2];
+  m=trim.match(/^درس\s*(\d+)\s*·\s*(.+)$/);
   if(m)translated=(ix===0?'Lektion ':'Lesson ')+m[1]+' · '+m[2];
   m=trim.match(/^درس\s*(\d+)\s*تا\s*(\d+)\s*·\s*مرور$/);
   if(m)translated=ix===0?'Lektion '+m[1]+'–'+m[2]+' · Wiederholung':'Lessons '+m[1]+'–'+m[2]+' · Review';
