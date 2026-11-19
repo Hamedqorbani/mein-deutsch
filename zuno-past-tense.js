@@ -57,7 +57,7 @@
     }).join('') + '</tr></thead>';
     var body = '<tbody>' + rows.map(function (row) {
       return '<tr>' + row.map(function (item, index) {
-        return '<td' + (index === 0 ? ' dir="auto"' : ' dir="ltr"') + '>' + escapeHtml(item) + '</td>';
+        return '<td dir="auto">' + escapeHtml(item) + '</td>';
       }).join('') + '</tr>';
     }).join('') + '</tbody>';
     return '<div class="past-table-wrap"><table class="past-table">' + head + body + '</table></div>';
@@ -95,7 +95,7 @@
     var host = document.getElementById('zptVerbDetail');
     if (!host) return;
     host.innerHTML =
-      '<div class="row between"><b dir="ltr" style="font-size:19px">' + escapeHtml(verb.verb) + '</b><span class="chip">' + escapeHtml(verb.level) + ' · ' + escapeHtml(verb.meaning) + '</span></div>' +
+      '<div class="row between"><b dir="ltr" style="font-size:19px">' + escapeHtml(verb.verb) + '</b><span class="chip">' + escapeHtml(verb.level) + ' · درس تکمیلی ۳ · ' + escapeHtml(verb.meaning) + '</span></div>' +
       '<p class="muted tiny">Partizip II: <b dir="ltr">' + escapeHtml(verb.part) + '</b> · فعل کمکی در این کاربرد: <b dir="ltr">' + escapeHtml(verb.aux) + '</b></p>' +
       makeTable(['ضمیر فاعلی', 'Präteritum', 'Partizip II', 'Perfekt'], rows) + note;
   }
@@ -189,7 +189,7 @@
       '<p><b>صرف فعل کمکی sein</b></p>',
       makeTable(['ضمیر', 'صرف sein'], PRONOUNS.map(function (p, i) { return [p, AUXILIARIES.sein[i]]; })),
       '<div class="zpt-callout"><b>دو مثال ساده</b><p dir="ltr">Ich habe einen Film gesehen.</p><small>من یک فیلم دیدم.</small><p dir="ltr">Wir sind nach Hause gegangen.</p><small>ما به خانه رفتیم.</small></div>',
-      '<div class="zpt-callout"><b>استثنای فعل‌های مُدال</b><p>اگر فعل مُدال همراه یک مصدر دیگر بیاید، در Perfekt معمولاً به‌جای Partizip II از مصدر خود فعل مُدال استفاده می‌شود.</p><p dir="ltr">Ich habe gestern nicht kommen können.</p><small>دیروز نتوانستم بیایم.</small><p dir="ltr">Wir haben früh aufstehen müssen.</p><small>مجبور شدیم زود از خواب بلند شویم.</small></div>',
+      '<div class="zpt-callout"><b>استثنای فعل‌های مُدال</b> <span class="lesson-tag">A2 · درس تکمیلی ۲</span><p>اگر فعل مُدال همراه یک مصدر دیگر بیاید، در Perfekt معمولاً به‌جای Partizip II از مصدر خود فعل مُدال استفاده می‌شود.</p><p dir="ltr">Ich habe gestern nicht kommen können.</p><small>دیروز نتوانستم بیایم.</small><p dir="ltr">Wir haben früh aufstehen müssen.</p><small>مجبور شدیم زود از خواب بلند شویم.</small></div>',
       '<p class="muted tiny">در Perfekt، با عوض شدن ضمیر، فعل کمکی صرف می‌شود؛ Partizip II همان شکل می‌ماند.</p>',
       '</div>',
       '<div class="zpt-pane" data-zpt-pane="praeteritum" hidden>',
@@ -208,14 +208,14 @@
       '<div class="zpt-pane" data-zpt-pane="partizip" hidden>',
       '<span class="lesson-tag">A1–A2 · درس تکمیلی ۴ · ساخت Partizip II</span>',
       '<p>Partizip II شکل سوم فعل است. الگوها کمک می‌کنند، اما فعل‌های قوی و مختلط را باید همراه خود فعل یاد گرفت.</p>',
-      makeTable(['نوع فعل', 'الگو', 'نمونه'], [
-        ['باقاعده', 'ge- + ریشه + -t', 'lernen → gelernt'],
-        ['ریشه پایان‌یافته به -d / -t / -m / -n', 'اغلب ge- + ریشه + -et', 'arbeiten → gearbeitet · atmen → geatmet'],
-        ['قوی', 'اغلب ge- + ریشه + -en', 'gehen → gegangen · trinken → getrunken'],
-        ['مختلط', 'تغییر ریشه + -t', 'bringen → gebracht · denken → gedacht'],
-        ['جداشدنی', 'پیشوند + ge + ریشه', 'einkaufen → eingekauft · aufstehen → aufgestanden'],
-        ['جدانشدنی', 'بدون ge-', 'besuchen → besucht · verstehen → verstanden'],
-        ['پایان -ieren', 'بدون ge- و با -t', 'studieren → studiert']
+      makeTable(['نوع فعل', 'الگو', 'نمونه', 'سطح / درس'], [
+        ['باقاعده', 'ge- + ریشه + -t', 'lernen → gelernt', 'A1 · درس ۴'],
+        ['پایان -d / -t / -m / -n', 'اغلب ge- + ریشه + -et', 'arbeiten → gearbeitet · atmen → geatmet', 'A1–A2 · درس ۴'],
+        ['قوی', 'اغلب ge- + ریشه + -en', 'gehen → gegangen · trinken → getrunken', 'A1–A2 · درس ۴'],
+        ['مختلط', 'تغییر ریشه + -t', 'bringen → gebracht · denken → gedacht', 'A2 · درس ۴'],
+        ['جداشدنی', 'پیشوند + ge + ریشه', 'einkaufen → eingekauft · aufstehen → aufgestanden', 'A2 · درس ۴'],
+        ['جدانشدنی', 'بدون ge-', 'besuchen → besucht · verstehen → verstanden', 'A2 · درس ۴'],
+        ['پایان -ieren', 'بدون ge- و با -t', 'studieren → studiert', 'A1–A2 · درس ۴']
       ]),
       '<div class="zpt-callout"><b>سه نکته مهم</b><p>۱) فعل‌های جداشدنی: ge میان پیشوند و ریشه می‌آید.</p><p>۲) پیشوندهای رایجِ جدانشدنی مانند be-, emp-, ent-, er-, ge-, miss-, ver- و zer- معمولاً ge نمی‌گیرند.</p><p>۳) فعل‌های پایان‌یافته به -ieren نیز ge نمی‌گیرند.</p></div>',
       '<p dir="ltr">Ich habe gestern eingekauft. = من دیروز خرید کردم.</p>',
