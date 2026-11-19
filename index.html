@@ -3622,16 +3622,20 @@ if('serviceWorker'in navigator && location.protocol.startsWith('http'))window.ad
 (function(){
   var splash=document.getElementById('meinSplash');
   if(!splash)return;
-  var chosen=localStorage.getItem('md_ui_language_chosen')==='1';
   var detected=(navigator.language||'').toLowerCase();
   var initial=detected.startsWith('fa')?'fa':detected.startsWith('en')?'en':'de';
-  var selected=chosen?(localStorage.getItem('md_prefs')?JSON.parse(localStorage.getItem('md_prefs')).uiLang:null)||initial:initial;
+  var prefs={};
+  try{prefs=JSON.parse(localStorage.getItem('md_prefs')||'{}')||{};}catch(e){prefs={};}
+  var chosen=false;
+  try{chosen=localStorage.getItem('md_ui_language_chosen')==='1';}catch(e){}
+  var selected=chosen?(prefs.uiLang||initial):initial;
   var stage=document.getElementById('splashLogoStage');
   var panel=document.getElementById('startupLanguage');
   var title=document.getElementById('startupLanguageTitle');
   var hint=document.getElementById('startupLanguageHint');
   var go=document.getElementById('startupLanguageContinue');
   var note=document.getElementById('startupSystemNote');
+  var finished=false,autoTimer=null;
   var copy={
     de:{title:'Wähle deine Sprache',hint:'In welcher Sprache möchtest du Zuno verwenden?',go:'Weiter',note:'Die Gerätesprache wurde vorausgewählt.'},
     fa:{title:'زبان زونو را انتخاب کنید',hint:'دوست دارید برنامه به چه زبانی نمایش داده شود؟',go:'ادامه',note:'زبان دستگاه به‌صورت پیش‌فرض انتخاب شده است.'},
@@ -3639,21 +3643,21 @@ if('serviceWorker'in navigator && location.protocol.startsWith('http'))window.ad
   };
   function paint(){
     var c=copy[selected]||copy.de;
-    title.textContent=c.title;hint.textContent=c.hint;go.textContent=c.go;note.textContent=c.note;
-    panel.dir=selected==='fa'?'rtl':'ltr';
-    panel.lang=selected;
-    panel.querySelectorAll('[data-start-lang]').forEach(function(b){
-      var active=b.dataset.startLang===selected;
-      b.classList.toggle('selected',active);
-      b.setAttribute('aria-pressed',String(active));
-    });
+    if(title)title.textContent=c.title;
+    if(hint)hint.textContent=c.hint;
+    if(go)go.textContent=c.go;
+    if(note)note.textContent=c.note;
+    if(panel){panel.dir=selected==='fa'?'rtl':'ltr';panel.lang=selected;
+      panel.querySelectorAll('[data-start-lang]').forEach(function(b){
+        var active=b.dataset.startLang===selected;
+        b.classList.toggle('selected',active);b.setAttribute('aria-pressed',String(active));
+      });
+    }
   }
-  panel.querySelectorAll('[data-start-lang]').forEach(function(b){
-    b.addEventListener('click',function(){selected=b.dataset.startLang;paint();});
-  });
-  go.addEventListener('click',function(){
-    try{
-      var p=JSON.parse(localStorage.getItem('md_prefs')||'{}');
+  function finish(){
+    if(finished)return;finished=true;
+    if(autoTimer)clearTimeout(autoTimer);
+    try{var p={};try{p=JSON.parse(localStorage.getItem('md_prefs')||'{}')||{};}catch(e){}
       p.uiLang=selected;localStorage.setItem('md_prefs',JSON.stringify(p));
       localStorage.setItem('md_ui_language_chosen','1');
     }catch(e){}
@@ -3661,13 +3665,21 @@ if('serviceWorker'in navigator && location.protocol.startsWith('http'))window.ad
     if(setting){setting.value=selected;setting.dispatchEvent(new Event('change'));}
     splash.classList.add('is-leaving');
     window.setTimeout(function(){if(splash.parentNode)splash.parentNode.removeChild(splash);},480);
+  }
+  if(panel)panel.querySelectorAll('[data-start-lang]').forEach(function(b){
+    b.addEventListener('click',function(){selected=b.dataset.startLang;paint();});
   });
+  if(go)go.addEventListener('click',finish);
+  paint();
   window.setTimeout(function(){
-    if(chosen){splash.classList.add('is-leaving');window.setTimeout(function(){if(splash.parentNode)splash.parentNode.removeChild(splash);},480);}
-    else{stage.classList.add('hidden');panel.classList.remove('hidden');paint();}
-  },1900);
-})();
-</script>
+    if(!splash.parentNode)return;
+    if(chosen){finish();return;}
+    if(stage)stage.classList.add('hidden');
+    if(panel)panel.classList.remove('hidden');
+    // Never let the first-run screen block the app indefinitely.
+    autoTimer=window.setTimeout(finish,5000);
+  },1200);
+})();</script>
 <!-- Progress dashboard script removed completely. -->
 <script>
 /* Remove obsolete notes data from earlier builds. */
