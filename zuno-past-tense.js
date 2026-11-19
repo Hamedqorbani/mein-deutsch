@@ -231,31 +231,7 @@
       '<div id="zptPracticeFeedback" class="zpt-feedback" aria-live="polite">پاسخ‌ها را انتخاب کن و بررسی را بزن.</div>',
       '</div>',
       '<div class="zpt-callout" style="margin-top:14px"><b>سطح‌بندی این بخش</b><p><span class="lesson-tag">A1</span> Perfekt ساده با haben/sein و Partizip II پرکاربرد؛ Präteritum فعل‌های sein و haben.</p><p><span class="lesson-tag">A2</span> گسترش صرف Präteritum، فعل‌های جداشدنی/جدانشدنی و الگوهای بیشتر Partizip II.</p></div>',
-      '<details class="podcast-text"><summary>منابع بررسی‌شده برای شکل‌ها و قواعد</summary>',
-      '<p class="muted tiny">صرف‌های جدول فعل‌ها با مدخل‌های صرف Duden تطبیق داده شده‌اند؛ تفاوت کاربرد دو زمان با IDS grammis و ساخت Perfekt با Goethe-Institut بررسی شده است.</p>',
-      '<div class="zpt-sources">',
-      '<a href="https://www.duden.de/konjugation/sein_Hilfsverb" target="_blank" rel="noopener noreferrer">Duden · sein</a>',
-      '<a href="https://www.duden.de/konjugation/haben_Hilfsverb" target="_blank" rel="noopener noreferrer">Duden · haben</a>',
-      '<a href="https://www.duden.de/konjugation/gehen" target="_blank" rel="noopener noreferrer">Duden · gehen</a>',
-      '<a href="https://www.duden.de/konjugation/kommen" target="_blank" rel="noopener noreferrer">Duden · kommen</a>',
-      '<a href="https://www.duden.de/konjugation/machen" target="_blank" rel="noopener noreferrer">Duden · machen</a>',
-      '<a href="https://www.duden.de/konjugation/lernen" target="_blank" rel="noopener noreferrer">Duden · lernen</a>',
-      '<a href="https://www.duden.de/konjugation/arbeiten" target="_blank" rel="noopener noreferrer">Duden · arbeiten</a>',
-      '<a href="https://www.duden.de/konjugation/essen" target="_blank" rel="noopener noreferrer">Duden · essen</a>',
-      '<a href="https://www.duden.de/konjugation/trinken" target="_blank" rel="noopener noreferrer">Duden · trinken</a>',
-      '<a href="https://www.duden.de/konjugation/sprechen" target="_blank" rel="noopener noreferrer">Duden · sprechen</a>',
-      '<a href="https://www.duden.de/konjugation/fahren" target="_blank" rel="noopener noreferrer">Duden · fahren</a>',
-      '<a href="https://www.duden.de/konjugation/bleiben" target="_blank" rel="noopener noreferrer">Duden · bleiben</a>',
-      '<a href="https://www.duden.de/konjugation/aufstehen" target="_blank" rel="noopener noreferrer">Duden · aufstehen</a>',
-      '<a href="https://www.duden.de/konjugation/einkaufen" target="_blank" rel="noopener noreferrer">Duden · einkaufen</a>',
-      '<a href="https://www.duden.de/konjugation/besuchen" target="_blank" rel="noopener noreferrer">Duden · besuchen</a>',
-      '<a href="https://www.duden.de/konjugation/studieren" target="_blank" rel="noopener noreferrer">Duden · studieren</a>',
-      '<a href="https://www.duden.de/konjugation/koennen" target="_blank" rel="noopener noreferrer">Duden · können</a>',
-      '<a href="https://www.duden.de/konjugation/muessen" target="_blank" rel="noopener noreferrer">Duden · müssen</a>',
-      '<a href="https://grammis.ids-mannheim.de/fragen/3287" target="_blank" rel="noopener noreferrer">IDS grammis · Präteritum و Perfekt</a>',
-      '<a href="https://lernen.goethe.de/deutschonline/A1/PDF/DE/deutschonline_Redemittel_und_Grammatik_1-18.pdf" target="_blank" rel="noopener noreferrer">Goethe-Institut · Perfekt A1</a>',
-      '<a href="https://deutschegrammatik20.de/verbformen/das-partizip-ii/partizip-ii/" target="_blank" rel="noopener noreferrer">Deutsche Grammatik 2.0 · Partizip II</a>',
-      '</div></details>'
+
     ].join('');
 
     var notes = page.querySelector('.zuno-notes');
