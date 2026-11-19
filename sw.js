@@ -1,4 +1,4 @@
-const CACHE='mein-deutsch-v75';
+const CACHE='mein-deutsch-v76';
 const FILES=['./','./index.html','./manifest.json','./icon.svg','./assets/zuno-logo.png','./enhancements.js','./zuno-past-tense.js','./zuno-starten-wir-data.js'];
 
 self.addEventListener('install',event=>{
