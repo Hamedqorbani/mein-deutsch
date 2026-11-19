@@ -27,7 +27,9 @@
     { verb: 'aufstehen', meaning: 'از خواب یا جا بلند شدن', level: 'A2', past: ['stand auf', 'standest auf', 'stand auf', 'standen auf', 'standet auf', 'standen auf'], part: 'aufgestanden', aux: 'sein', note: 'در معنی معمولِ برخاستن از خواب، شکل رایج bin aufgestanden است؛ Duden با توجه به کاربرد، haben را هم ثبت می‌کند.' },
     { verb: 'einkaufen', meaning: 'خرید کردن', level: 'A2', past: ['kaufte ein', 'kauftest ein', 'kaufte ein', 'kauften ein', 'kauftet ein', 'kauften ein'], part: 'eingekauft', aux: 'haben', note: 'فعل جداشدنی: ein + ge + kauft → eingekauft.' },
     { verb: 'besuchen', meaning: 'دیدار کردن', level: 'A2', past: ['besuchte', 'besuchtest', 'besuchte', 'besuchten', 'besuchtet', 'besuchten'], part: 'besucht', aux: 'haben', note: 'پیشوند be- جدانشدنی است؛ بنابراین ge نمی‌آید.' },
-    { verb: 'studieren', meaning: 'تحصیل کردن', level: 'A2', past: ['studierte', 'studiertest', 'studierte', 'studierten', 'studiertet', 'studierten'], part: 'studiert', aux: 'haben', note: 'فعل پایان‌یافته به -ieren، Partizip II را بدون ge می‌سازد.' }
+    { verb: 'studieren', meaning: 'تحصیل کردن', level: 'A2', past: ['studierte', 'studiertest', 'studierte', 'studierten', 'studiertet', 'studierten'], part: 'studiert', aux: 'haben', note: 'فعل پایان‌یافته به -ieren، Partizip II را بدون ge می‌سازد.' },
+    { verb: 'können', meaning: 'توانستن', level: 'A1', past: ['konnte', 'konntest', 'konnte', 'konnten', 'konntet', 'konnten'], part: 'gekonnt', aux: 'haben', note: 'اگر با مصدر فعل دیگری بیاید، در Perfekt معمولاً مصدر können در پایان می‌آید: Ich habe kommen können. Duden هر دو صورت gekonnt/können را ثبت می‌کند.' },
+    { verb: 'müssen', meaning: 'مجبور بودن / باید', level: 'A1', past: ['musste', 'musstest', 'musste', 'mussten', 'musstet', 'mussten'], part: 'gemusst', aux: 'haben', note: 'اگر با مصدر فعل دیگری بیاید، در Perfekt معمولاً مصدر müssen در پایان می‌آید: Wir haben früh aufstehen müssen.' }
   ];
 
   var QUESTIONS = [
@@ -38,7 +40,9 @@
     { q: 'Partizip II فعل essen کدام است؟', options: ['geesst', 'gegessen', 'geessen'], answer: 1, why: 'شکل ثبت‌شده در Duden: gegessen.' },
     { q: 'Partizip II فعل einkaufen کدام است؟', options: ['geeingekauft', 'eingekauft', 'einkauft'], answer: 1, why: 'در فعل جداشدنی، ge بین پیشوند و ریشه می‌آید: eingekauft.' },
     { q: 'Präteritum فعل sein برای du کدام است؟', options: ['war', 'warst', 'waren'], answer: 1, why: 'صرف درست: ich war، du warst، er war.' },
-    { q: 'Partizip II فعل studieren کدام است؟', options: ['gestudiert', 'studiert', 'studieren'], answer: 1, why: 'فعل‌های پایان‌یافته به -ieren معمولاً ge نمی‌گیرند.' }
+    { q: 'Partizip II فعل studieren کدام است؟', options: ['gestudiert', 'studiert', 'studieren'], answer: 1, why: 'فعل‌های پایان‌یافته به -ieren معمولاً ge نمی‌گیرند.' },
+    { q: 'جای خالی: Ich habe gestern nicht kommen ___.', options: ['gekonnt', 'können', 'kann'], answer: 1, why: 'وقتی فعل مُدال با یک مصدر دیگر می‌آید، معمولاً مصدر آن را نگه می‌داریم: kommen können.' },
+    { q: 'Präteritum فعل müssen برای wir کدام است؟', options: ['musst', 'mussten', 'müssten'], answer: 1, why: 'شکل گذشتهٔ خبری برای wir برابر mussten است؛ müssten شکل Konjunktiv II است.' }
   ];
 
   function escapeHtml(value) {
@@ -131,9 +135,9 @@
     if (sentenceOk) score += 1;
     if (sentence) sentence.style.borderColor = sentenceOk ? 'var(--accent)' : 'var(--danger)';
     var feedback = document.getElementById('zptPracticeFeedback');
-    if (feedback) feedback.textContent = 'نتیجه: ' + score + ' از ۹. ' +
+    if (feedback) feedback.textContent = 'نتیجه: ' + score + ' از ۱۱. ' +
       (sentenceOk ? 'جمله‌سازی درست است. ' : 'نمونه درست: ' + expected[0] + ' ') +
-      (score === 9 ? 'عالی! همه پاسخ‌ها درست است.' : 'پاسخ‌های نادرست را مرور کن و دوباره تلاش کن.');
+      (score === 11 ? 'عالی! همه پاسخ‌ها درست است.' : 'پاسخ‌های نادرست را مرور کن و دوباره تلاش کن.');
   }
 
   function resetPractice() {
@@ -185,6 +189,7 @@
       '<p><b>صرف فعل کمکی sein</b></p>',
       makeTable(['ضمیر', 'صرف sein'], PRONOUNS.map(function (p, i) { return [p, AUXILIARIES.sein[i]]; })),
       '<div class="zpt-callout"><b>دو مثال ساده</b><p dir="ltr">Ich habe einen Film gesehen.</p><small>من یک فیلم دیدم.</small><p dir="ltr">Wir sind nach Hause gegangen.</p><small>ما به خانه رفتیم.</small></div>',
+      '<div class="zpt-callout"><b>استثنای فعل‌های مُدال</b><p>اگر فعل مُدال همراه یک مصدر دیگر بیاید، در Perfekt معمولاً به‌جای Partizip II از مصدر خود فعل مُدال استفاده می‌شود.</p><p dir="ltr">Ich habe gestern nicht kommen können.</p><small>دیروز نتوانستم بیایم.</small><p dir="ltr">Wir haben früh aufstehen müssen.</p><small>مجبور شدیم زود از خواب بلند شویم.</small></div>',
       '<p class="muted tiny">در Perfekt، با عوض شدن ضمیر، فعل کمکی صرف می‌شود؛ Partizip II همان شکل می‌ماند.</p>',
       '</div>',
       '<div class="zpt-pane" data-zpt-pane="praeteritum" hidden>',
@@ -205,7 +210,7 @@
       '<p>Partizip II شکل سوم فعل است. الگوها کمک می‌کنند، اما فعل‌های قوی و مختلط را باید همراه خود فعل یاد گرفت.</p>',
       makeTable(['نوع فعل', 'الگو', 'نمونه'], [
         ['باقاعده', 'ge- + ریشه + -t', 'lernen → gelernt'],
-        ['ریشه پایان‌یافته به -t / -d', 'اغلب ge- + ریشه + -et', 'arbeiten → gearbeitet'],
+        ['ریشه پایان‌یافته به -d / -t / -m / -n', 'اغلب ge- + ریشه + -et', 'arbeiten → gearbeitet · atmen → geatmet'],
         ['قوی', 'اغلب ge- + ریشه + -en', 'gehen → gegangen · trinken → getrunken'],
         ['مختلط', 'تغییر ریشه + -t', 'bringen → gebracht · denken → gedacht'],
         ['جداشدنی', 'پیشوند + ge + ریشه', 'einkaufen → eingekauft · aufstehen → aufgestanden'],
@@ -219,7 +224,7 @@
       '</div>',
       '<div class="zpt-pane" data-zpt-pane="practice" hidden>',
       '<span class="lesson-tag">A1–A2 · درس تکمیلی ۵ · تشخیص و جمله‌سازی</span>',
-      '<p class="muted tiny">هشت سؤال را پاسخ بده و جمله آخر را با ترتیب درست بنویس.</p>',
+      '<p class="muted tiny">ده سؤال را پاسخ بده و جمله آخر را با ترتیب درست بنویس.</p>',
       '<div id="zptQuestions"></div>',
       '<div class="zpt-question"><label for="zptSentence">جمله‌سازی: کلمه‌ها را به جمله درست تبدیل کن.</label><p dir="ltr">Ich / gestern / einen Film / gesehen / habe</p><input id="zptSentence" dir="ltr" autocomplete="off" placeholder="Ich habe gestern ..."></div>',
       '<div class="row" style="margin-top:10px"><button type="button" class="btn primary" id="zptCheck">بررسی پاسخ‌ها</button><button type="button" class="btn" id="zptReset">شروع دوباره</button></div>',
@@ -245,6 +250,8 @@
       '<a href="https://www.duden.de/konjugation/einkaufen" target="_blank" rel="noopener noreferrer">Duden · einkaufen</a>',
       '<a href="https://www.duden.de/konjugation/besuchen" target="_blank" rel="noopener noreferrer">Duden · besuchen</a>',
       '<a href="https://www.duden.de/konjugation/studieren" target="_blank" rel="noopener noreferrer">Duden · studieren</a>',
+      '<a href="https://www.duden.de/konjugation/koennen" target="_blank" rel="noopener noreferrer">Duden · können</a>',
+      '<a href="https://www.duden.de/konjugation/muessen" target="_blank" rel="noopener noreferrer">Duden · müssen</a>',
       '<a href="https://grammis.ids-mannheim.de/fragen/3287" target="_blank" rel="noopener noreferrer">IDS grammis · Präteritum و Perfekt</a>',
       '<a href="https://lernen.goethe.de/deutschonline/A1/PDF/DE/deutschonline_Redemittel_und_Grammatik_1-18.pdf" target="_blank" rel="noopener noreferrer">Goethe-Institut · Perfekt A1</a>',
       '<a href="https://deutschegrammatik20.de/verbformen/das-partizip-ii/partizip-ii/" target="_blank" rel="noopener noreferrer">Deutsche Grammatik 2.0 · Partizip II</a>',
