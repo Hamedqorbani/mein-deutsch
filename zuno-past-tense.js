@@ -1,5 +1,4 @@
 /* Zuno past-tense learning module
- * Verb forms checked against Duden conjugation tables; usage notes against IDS grammis and Goethe-Institut.
  * Checked: 2026-11-19. The displayed forms are a deliberately selected A1/A2 starter set.
  */
 (function () {
@@ -19,16 +18,16 @@
     { verb: 'machen', meaning: 'انجام دادن', level: 'A1', past: ['machte', 'machtest', 'machte', 'machten', 'machtet', 'machten'], part: 'gemacht', aux: 'haben' },
     { verb: 'lernen', meaning: 'یاد گرفتن', level: 'A1', past: ['lernte', 'lerntest', 'lernte', 'lernten', 'lerntet', 'lernten'], part: 'gelernt', aux: 'haben' },
     { verb: 'arbeiten', meaning: 'کار کردن', level: 'A1', past: ['arbeitete', 'arbeitetest', 'arbeitete', 'arbeiteten', 'arbeitetet', 'arbeiteten'], part: 'gearbeitet', aux: 'haben', note: 'چون ریشه به t ختم می‌شود، Partizip II با -et ساخته شده است.' },
-    { verb: 'essen', meaning: 'غذا خوردن', level: 'A1', past: ['aß', 'aßest', 'aß', 'aßen', 'aßt', 'aßen'], part: 'gegessen', aux: 'haben', note: 'برای du، شکل aßt نیز در Duden ثبت شده است؛ این جدول aßest را نشان می‌دهد.' },
+    { verb: 'essen', meaning: 'غذا خوردن', level: 'A1', past: ['aß', 'aßest', 'aß', 'aßen', 'aßt', 'aßen'], part: 'gegessen', aux: 'haben', note: 'برای du، شکل aßt نیز نیز به‌کار می‌رود؛ این جدول aßest را نشان می‌دهد.' },
     { verb: 'trinken', meaning: 'نوشیدن', level: 'A1', past: ['trank', 'trankst', 'trank', 'tranken', 'trankt', 'tranken'], part: 'getrunken', aux: 'haben' },
     { verb: 'sprechen', meaning: 'صحبت کردن', level: 'A1', past: ['sprach', 'sprachst', 'sprach', 'sprachen', 'spracht', 'sprachen'], part: 'gesprochen', aux: 'haben' },
-    { verb: 'fahren', meaning: 'رفتن با وسیله / رانندگی کردن', level: 'A1', past: ['fuhr', 'fuhrst', 'fuhr', 'fuhren', 'fuhrt', 'fuhren'], part: 'gefahren', aux: 'sein', note: 'در حرکت به مقصد: sein، مانند Ich bin nach Berlin gefahren. برای معنی رانندگی/هدایت وسیله، Duden صورت haben را نیز ثبت می‌کند.' },
+    { verb: 'fahren', meaning: 'رفتن با وسیله / رانندگی کردن', level: 'A1', past: ['fuhr', 'fuhrst', 'fuhr', 'fuhren', 'fuhrt', 'fuhren'], part: 'gefahren', aux: 'sein', note: 'در حرکت به مقصد: sein، مانند Ich bin nach Berlin gefahren. برای معنی رانندگی/هدایت وسیله، در این کاربرد صورت haben نیز به‌کار می‌رود.' },
     { verb: 'bleiben', meaning: 'ماندن', level: 'A1', past: ['blieb', 'bliebst', 'blieb', 'blieben', 'bliebt', 'blieben'], part: 'geblieben', aux: 'sein' },
-    { verb: 'aufstehen', meaning: 'از خواب یا جا بلند شدن', level: 'A2', past: ['stand auf', 'standest auf', 'stand auf', 'standen auf', 'standet auf', 'standen auf'], part: 'aufgestanden', aux: 'sein', note: 'در معنی معمولِ برخاستن از خواب، شکل رایج bin aufgestanden است؛ Duden با توجه به کاربرد، haben را هم ثبت می‌کند.' },
+    { verb: 'aufstehen', meaning: 'از خواب یا جا بلند شدن', level: 'A2', past: ['stand auf', 'standest auf', 'stand auf', 'standen auf', 'standet auf', 'standen auf'], part: 'aufgestanden', aux: 'sein', note: 'در معنی معمولِ برخاستن از خواب، شکل رایج bin aufgestanden است؛ بسته به کاربرد، haben نیز ممکن است.' },
     { verb: 'einkaufen', meaning: 'خرید کردن', level: 'A2', past: ['kaufte ein', 'kauftest ein', 'kaufte ein', 'kauften ein', 'kauftet ein', 'kauften ein'], part: 'eingekauft', aux: 'haben', note: 'فعل جداشدنی: ein + ge + kauft → eingekauft.' },
     { verb: 'besuchen', meaning: 'دیدار کردن', level: 'A2', past: ['besuchte', 'besuchtest', 'besuchte', 'besuchten', 'besuchtet', 'besuchten'], part: 'besucht', aux: 'haben', note: 'پیشوند be- جدانشدنی است؛ بنابراین ge نمی‌آید.' },
     { verb: 'studieren', meaning: 'تحصیل کردن', level: 'A2', past: ['studierte', 'studiertest', 'studierte', 'studierten', 'studiertet', 'studierten'], part: 'studiert', aux: 'haben', note: 'فعل پایان‌یافته به -ieren، Partizip II را بدون ge می‌سازد.' },
-    { verb: 'können', meaning: 'توانستن', level: 'A1', past: ['konnte', 'konntest', 'konnte', 'konnten', 'konntet', 'konnten'], part: 'gekonnt', aux: 'haben', note: 'اگر با مصدر فعل دیگری بیاید، در Perfekt معمولاً مصدر können در پایان می‌آید: Ich habe kommen können. Duden هر دو صورت gekonnt/können را ثبت می‌کند.' },
+    { verb: 'können', meaning: 'توانستن', level: 'A1', past: ['konnte', 'konntest', 'konnte', 'konnten', 'konntet', 'konnten'], part: 'gekonnt', aux: 'haben', note: 'اگر با مصدر فعل دیگری بیاید، در Perfekt معمولاً مصدر können در پایان می‌آید: Ich habe kommen können. هر دو صورت gekonnt و können به‌کار می‌روند.' },
     { verb: 'müssen', meaning: 'مجبور بودن / باید', level: 'A1', past: ['musste', 'musstest', 'musste', 'mussten', 'musstet', 'mussten'], part: 'gemusst', aux: 'haben', note: 'اگر با مصدر فعل دیگری بیاید، در Perfekt معمولاً مصدر müssen در پایان می‌آید: Wir haben früh aufstehen müssen.' }
   ];
 
@@ -37,7 +36,7 @@
     { q: 'Ich ging nach Hause. این جمله در کدام زمان است؟', options: ['Präteritum', 'Perfekt', 'Präsens'], answer: 0, why: 'ging شکل Präteritum فعل gehen است.' },
     { q: 'جای خالی: Ich ___ Deutsch gelernt.', options: ['habe', 'bin', 'hat'], answer: 0, why: 'lernen در این مثال با haben می‌آید: Ich habe gelernt.' },
     { q: 'جای خالی: Wir ___ nach Hause gegangen.', options: ['haben', 'sind', 'seid'], answer: 1, why: 'فاعل wir با sein به شکل sind می‌آید.' },
-    { q: 'Partizip II فعل essen کدام است؟', options: ['geesst', 'gegessen', 'geessen'], answer: 1, why: 'شکل ثبت‌شده در Duden: gegessen.' },
+    { q: 'Partizip II فعل essen کدام است؟', options: ['geesst', 'gegessen', 'geessen'], answer: 1, why: 'شکل درست: gegessen.' },
     { q: 'Partizip II فعل einkaufen کدام است؟', options: ['geeingekauft', 'eingekauft', 'einkauft'], answer: 1, why: 'در فعل جداشدنی، ge بین پیشوند و ریشه می‌آید: eingekauft.' },
     { q: 'Präteritum فعل sein برای du کدام است؟', options: ['war', 'warst', 'waren'], answer: 1, why: 'صرف درست: ich war، du warst، er war.' },
     { q: 'Partizip II فعل studieren کدام است؟', options: ['gestudiert', 'studiert', 'studieren'], answer: 1, why: 'فعل‌های پایان‌یافته به -ieren معمولاً ge نمی‌گیرند.' },
