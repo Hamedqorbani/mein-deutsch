@@ -1,5 +1,5 @@
-const CACHE='mein-deutsch-v76';
-const FILES=['./','./index.html','./manifest.json','./icon.svg','./assets/zuno-logo.png','./enhancements.js','./zuno-past-tense.js','./zuno-starten-wir-data.js'];
+const CACHE='mein-deutsch-v77';
+const FILES=['./','./index.html','./manifest.json','./icon.svg','./assets/zuno-logo.png','./enhancements.js','./zuno-past-tense.js','./zuno-a1-completion.js','./zuno-starten-wir-data.js'];
 
 self.addEventListener('install',event=>{
   event.waitUntil(
