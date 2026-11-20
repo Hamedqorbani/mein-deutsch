@@ -263,7 +263,7 @@
       '<p>Partizip II شکل سوم فعل است. الگوها کمک می‌کنند، اما فعل‌های قوی و مختلط را باید همراه خود فعل یاد گرفت.</p>',
       makeTable(['نوع فعل', 'الگو', 'نمونه', 'سطح / درس'], [
         ['باقاعده', 'ge- + ریشه + -t', 'lernen → gelernt', 'A1 · درس ۴'],
-        ['پایان -d / -t / -m / -n', 'اغلب ge- + ریشه + -et', 'arbeiten → gearbeitet · atmen → geatmet', 'A1–A2 · درس ۴'],
+        ['ریشه پایان‌یافته به -d/-t؛ یا -m/-n پس از همخوان', 'اغلب ge- + ریشه + -et', 'arbeiten → gearbeitet · atmen → geatmet', 'A1–A2 · درس ۴'],
         ['قوی', 'اغلب ge- + ریشه + -en', 'gehen → gegangen · trinken → getrunken', 'A1–A2 · درس ۴'],
         ['مختلط', 'تغییر ریشه + -t', 'bringen → gebracht · denken → gedacht', 'A2 · درس ۴'],
         ['جداشدنی', 'پیشوند + ge + ریشه', 'einkaufen → eingekauft · aufstehen → aufgestanden', 'A2 · درس ۴'],
@@ -278,7 +278,7 @@
       '</div>',
       '<div class="zpt-pane" data-zpt-pane="practice" hidden>',
       '<span class="lesson-tag">A1–A2 · درس تکمیلی ۵ · تشخیص و جمله‌سازی</span>',
-      '<p class="muted tiny">ده سؤال را پاسخ بده و جمله آخر را با ترتیب درست بنویس.</p>',
+      '<p class="muted tiny">۲۲ سؤال را پاسخ بده و دو جمله را با ترتیب درست بساز.</p>',
       '<div id="zptQuestions"></div>',
       '<div class="zpt-question"><label for="zptSentence">جمله‌سازی ۱: کلمه‌ها را به جمله درست تبدیل کن.</label><p dir="ltr">Ich / gestern / einen Film / gesehen / habe</p><input id="zptSentence" dir="ltr" autocomplete="off" placeholder="Ich habe gestern ..."></div>',
       '<div class="zpt-question"><label for="zptSentence2">جمله‌سازی ۲: فعل جداشدنی را در Perfekt به‌کار ببر.</label><p dir="ltr">Wir / am Abend / ferngesehen / haben</p><input id="zptSentence2" dir="ltr" autocomplete="off" placeholder="Wir haben am Abend ..."></div>',
