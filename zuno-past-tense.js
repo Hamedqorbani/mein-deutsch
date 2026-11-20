@@ -21,15 +21,40 @@
     { verb: 'essen', meaning: 'غذا خوردن', level: 'A1', past: ['aß', 'aßest', 'aß', 'aßen', 'aßt', 'aßen'], part: 'gegessen', aux: 'haben', note: 'برای du، شکل aßt نیز به‌کار می‌رود؛ این جدول aßest را نشان می‌دهد.' },
     { verb: 'trinken', meaning: 'نوشیدن', level: 'A1', past: ['trank', 'trankst', 'trank', 'tranken', 'trankt', 'tranken'], part: 'getrunken', aux: 'haben' },
     { verb: 'sprechen', meaning: 'صحبت کردن', level: 'A1', past: ['sprach', 'sprachst', 'sprach', 'sprachen', 'spracht', 'sprachen'], part: 'gesprochen', aux: 'haben' },
-    { verb: 'fahren', meaning: 'رفتن با وسیله / رانندگی کردن', level: 'A1', past: ['fuhr', 'fuhrst', 'fuhr', 'fuhren', 'fuhrt', 'fuhren'], part: 'gefahren', aux: 'sein', note: 'در حرکت به مقصد: sein، مانند Ich bin nach Berlin gefahren. برای معنی رانندگی/هدایت وسیله، در این کاربرد صورت haben نیز به‌کار می‌رود.' },
+    { verb: 'fahren', meaning: 'رفتن با وسیله / رانندگی کردن', level: 'A1', past: ['fuhr', 'fuhrst', 'fuhr', 'fuhren', 'fuhrt', 'fuhren'], part: 'gefahren', aux: 'sein', altAux: 'haben', note: 'در حرکت به مقصد: sein، مانند Ich bin nach Berlin gefahren. برای معنی رانندگی/هدایت وسیله، در این کاربرد صورت haben نیز به‌کار می‌رود.' },
     { verb: 'bleiben', meaning: 'ماندن', level: 'A1', past: ['blieb', 'bliebst', 'blieb', 'blieben', 'bliebt', 'blieben'], part: 'geblieben', aux: 'sein' },
-    { verb: 'aufstehen', meaning: 'از خواب یا جا بلند شدن', level: 'A2', past: ['stand auf', 'standest auf', 'stand auf', 'standen auf', 'standet auf', 'standen auf'], part: 'aufgestanden', aux: 'sein', note: 'در معنی معمولِ برخاستن از خواب، شکل رایج bin aufgestanden است؛ بسته به کاربرد، haben نیز ممکن است.' },
+    { verb: 'aufstehen', meaning: 'از خواب یا جا بلند شدن', level: 'A2', past: ['stand auf', 'standest auf', 'stand auf', 'standen auf', 'standet auf', 'standen auf'], part: 'aufgestanden', aux: 'sein', altAux: 'haben', note: 'در معنی معمولِ برخاستن از خواب، شکل رایج bin aufgestanden است؛ بسته به کاربرد، haben نیز ممکن است.' },
     { verb: 'einkaufen', meaning: 'خرید کردن', level: 'A2', past: ['kaufte ein', 'kauftest ein', 'kaufte ein', 'kauften ein', 'kauftet ein', 'kauften ein'], part: 'eingekauft', aux: 'haben', note: 'فعل جداشدنی: ein + ge + kauft → eingekauft.' },
     { verb: 'besuchen', meaning: 'دیدار کردن', level: 'A2', past: ['besuchte', 'besuchtest', 'besuchte', 'besuchten', 'besuchtet', 'besuchten'], part: 'besucht', aux: 'haben', note: 'پیشوند be- جدانشدنی است؛ بنابراین ge نمی‌آید.' },
     { verb: 'studieren', meaning: 'تحصیل کردن', level: 'A2', past: ['studierte', 'studiertest', 'studierte', 'studierten', 'studiertet', 'studierten'], part: 'studiert', aux: 'haben', note: 'فعل پایان‌یافته به -ieren، Partizip II را بدون ge می‌سازد.' },
     { verb: 'können', meaning: 'توانستن', level: 'A1', past: ['konnte', 'konntest', 'konnte', 'konnten', 'konntet', 'konnten'], part: 'gekonnt', aux: 'haben', note: 'اگر با مصدر فعل دیگری بیاید، در Perfekt معمولاً مصدر können در پایان می‌آید: Ich habe kommen können. هر دو صورت gekonnt و können به‌کار می‌روند.' },
-    { verb: 'müssen', meaning: 'مجبور بودن / باید', level: 'A1', past: ['musste', 'musstest', 'musste', 'mussten', 'musstet', 'mussten'], part: 'gemusst', aux: 'haben', note: 'اگر با مصدر فعل دیگری بیاید، در Perfekt معمولاً مصدر müssen در پایان می‌آید: Wir haben früh aufstehen müssen.' }
+    { verb: 'müssen', meaning: 'مجبور بودن / باید', level: 'A1', past: ['musste', 'musstest', 'musste', 'mussten', 'musstet', 'mussten'], part: 'gemusst', aux: 'haben', note: 'اگر با مصدر فعل دیگری بیاید، در Perfekt معمولاً مصدر müssen در پایان می‌آید: Wir haben früh aufstehen müssen.' },
+{"verb":"sehen","meaning":"دیدن","level":"A1","past":["sah","sahst","sah","sahen","saht","sahen"],"part":"gesehen","aux":"haben"},
+{"verb":"lesen","meaning":"خواندن","level":"A1","past":["las","last","las","lasen","last","lasen"],"part":"gelesen","aux":"haben","note":"Duden برای du دو صورت lasest و last را ثبت می‌کند؛ این جدول صورت کوتاه last را نشان می‌دهد."},
+{"verb":"schreiben","meaning":"نوشتن","level":"A1","past":["schrieb","schriebst","schrieb","schrieben","schriebt","schrieben"],"part":"geschrieben","aux":"haben"},
+{"verb":"finden","meaning":"پیدا کردن","level":"A1","past":["fand","fandest","fand","fanden","fandet","fanden"],"part":"gefunden","aux":"haben","note":"برای du، Duden صورت‌های fandest و fandst را ثبت می‌کند؛ اینجا fandest آمده است."},
+{"verb":"nehmen","meaning":"گرفتن / برداشتن","level":"A1","past":["nahm","nahmst","nahm","nahmen","nahmt","nahmen"],"part":"genommen","aux":"haben"},
+{"verb":"geben","meaning":"دادن","level":"A1","past":["gab","gabst","gab","gaben","gabt","gaben"],"part":"gegeben","aux":"haben"},
+{"verb":"helfen","meaning":"کمک کردن","level":"A1","past":["half","halfst","half","halfen","halft","halfen"],"part":"geholfen","aux":"haben"},
+{"verb":"treffen","meaning":"ملاقات کردن","level":"A1","past":["traf","trafst","traf","trafen","traft","trafen"],"part":"getroffen","aux":"haben","note":"برای معنی رایجِ ملاقات کردنِ یک شخص، haben به‌کار می‌رود؛ Duden کاربردهای دیگری با sein را نیز ثبت می‌کند."},
+{"verb":"schlafen","meaning":"خوابیدن","level":"A1","past":["schlief","schliefst","schlief","schliefen","schlieft","schliefen"],"part":"geschlafen","aux":"haben"},
+{"verb":"denken","meaning":"فکر کردن","level":"A1","past":["dachte","dachtest","dachte","dachten","dachtet","dachten"],"part":"gedacht","aux":"haben","note":"فعل مختلط است: ریشه تغییر می‌کند، اما در Präteritum شناسه‌های -te می‌آیند."},
+{"verb":"wissen","meaning":"دانستن","level":"A1","past":["wusste","wusstest","wusste","wussten","wusstet","wussten"],"part":"gewusst","aux":"haben"},
+{"verb":"laufen","meaning":"دویدن / راه رفتن","level":"A1","past":["lief","liefst","lief","liefen","lieft","liefen"],"part":"gelaufen","aux":"sein","note":"برای حرکت و جابه‌جایی معمولاً sein می‌آید: Ich bin nach Hause gelaufen. Duden برای برخی کاربردهای دیگر haben را نیز ثبت می‌کند."},
+{"verb":"bringen","meaning":"آوردن","level":"A1","past":["brachte","brachtest","brachte","brachten","brachtet","brachten"],"part":"gebracht","aux":"haben","note":"فعل مختلط است: brachte و gebracht را باید همراه فعل حفظ کرد."},
+{"verb":"verstehen","meaning":"فهمیدن","level":"A1","past":["verstand","verstandest","verstand","verstanden","verstandet","verstanden"],"part":"verstanden","aux":"haben","note":"پیشوند ver- جدانشدنی است؛ Partizip II بدون ge ساخته می‌شود."},
+{"verb":"fernsehen","meaning":"تلویزیون تماشا کردن","level":"A1","past":["sah fern","sahst fern","sah fern","sahen fern","saht fern","sahen fern"],"part":"ferngesehen","aux":"haben","note":"فعل جداشدنی است: در Präteritum پیشوند به پایان می‌رود و در Partizip II شکل ferngesehen می‌آید."},
+{"verb":"aufräumen","meaning":"مرتب کردن","level":"A2","past":["räumte auf","räumtest auf","räumte auf","räumten auf","räumtet auf","räumten auf"],"part":"aufgeräumt","aux":"haben","note":"فعل جداشدنی و باقاعده است: auf + ge + räumt."},
+{"verb":"bekommen","meaning":"دریافت کردن / گرفتن","level":"A2","past":["bekam","bekamst","bekam","bekamen","bekamt","bekamen"],"part":"bekommen","aux":"haben","altAux":"sein","note":"پیشوند be- جدانشدنی است؛ بنابراین Partizip II بدون ge است. برای معنی رایجِ دریافت کردن، haben را به‌کار ببر."},
+{"verb":"anfangen","meaning":"شروع کردن","level":"A1","past":["fing an","fingst an","fing an","fingen an","fingt an","fingen an"],"part":"angefangen","aux":"haben","note":"فعل جداشدنی و قوی است: anfangen → fing an → angefangen."},
+{"verb":"anrufen","meaning":"تلفن زدن","level":"A1","past":["rief an","riefst an","rief an","riefen an","rieft an","riefen an"],"part":"angerufen","aux":"haben","note":"فعل جداشدنی و قوی است: an + ge + rufen → angerufen."},
+{"verb":"dürfen","meaning":"اجازه داشتن","level":"A1","past":["durfte","durftest","durfte","durften","durftet","durften"],"part":"gedurft","aux":"haben","note":"فعل مُدال؛ اگر با مصدر دیگری بیاید، در Perfekt معمولاً مصدر dürfen در پایان می‌آید."},
+{"verb":"wollen","meaning":"خواستن","level":"A1","past":["wollte","wolltest","wollte","wollten","wolltet","wollten"],"part":"gewollt","aux":"haben","note":"فعل مُدال؛ با مصدر دیگر: Ich habe gehen wollen. به‌تنهایی: Ich habe das nicht gewollt."},
+{"verb":"sollen","meaning":"باید / قرار بودن","level":"A1","past":["sollte","solltest","sollte","sollten","solltet","sollten"],"part":"gesollt","aux":"haben","note":"فعل مُدال؛ با مصدر دیگر در Perfekt معمولاً خود مصدر sollen در پایان می‌آید."},
+{"verb":"mögen","meaning":"دوست داشتن","level":"A1","past":["mochte","mochtest","mochte","mochten","mochtet","mochten"],"part":"gemocht","aux":"haben","note":"در Präteritum، mögen به mochte تبدیل می‌شود؛ möchte شکل Konjunktiv II برای بیان خواستهٔ مؤدبانه است."}
   ];
+
+  var VERB_META = {"sehen":{"type":"قوی","source":"https://www.duden.de/konjugation/sehen","sourceName":"Duden"},"lesen":{"type":"قوی","source":"https://www.duden.de/konjugation/lesen_aufsammeln","sourceName":"Duden"},"schreiben":{"type":"قوی","source":"https://www.duden.de/konjugation/schreiben","sourceName":"Duden"},"finden":{"type":"قوی","source":"https://www.duden.de/konjugation/finden","sourceName":"Duden"},"nehmen":{"type":"قوی","source":"https://www.duden.de/konjugation/nehmen","sourceName":"Duden"},"geben":{"type":"قوی","source":"https://www.duden.de/konjugation/geben","sourceName":"Duden"},"helfen":{"type":"قوی","source":"https://www.duden.de/konjugation/helfen","sourceName":"Duden"},"treffen":{"type":"قوی","source":"https://www.duden.de/konjugation/treffen","sourceName":"Duden"},"schlafen":{"type":"قوی","source":"https://www.duden.de/konjugation/schlafen","sourceName":"Duden"},"denken":{"type":"مختلط","source":"https://www.duden.de/konjugation/denken","sourceName":"Duden"},"wissen":{"type":"بی‌قاعده","source":"https://www.duden.de/konjugation/wissen","sourceName":"Duden"},"laufen":{"type":"قوی · حرکت با sein","source":"https://www.duden.de/konjugation/laufen","sourceName":"Duden"},"bringen":{"type":"مختلط","source":"https://www.duden.de/konjugation/bringen","sourceName":"Duden"},"verstehen":{"type":"قوی · پیشوند جدانشدنی ver-","source":"https://www.duden.de/konjugation/verstehen","sourceName":"Duden"},"fernsehen":{"type":"قوی · جداشدنی","source":"https://www.duden.de/konjugation/fernsehen","sourceName":"Duden"},"aufräumen":{"type":"ضعیف · جداشدنی","source":"https://www.duden.de/konjugation/aufraeumen","sourceName":"Duden"},"bekommen":{"type":"قوی · پیشوند جدانشدنی be-","source":"https://www.duden.de/konjugation/bekommen","sourceName":"Duden"},"anfangen":{"type":"قوی · جداشدنی","source":"https://www.larousse.com/de/konjugation/deutsch/anfangen/487","sourceName":"Larousse"},"anrufen":{"type":"قوی · جداشدنی","source":"https://www.die-konjugation.de/verb/anrufen.php","sourceName":"Die Konjugation"},"dürfen":{"type":"مدال · بی‌قاعده","source":"https://www.duden.de/konjugation/duerfen","sourceName":"Duden"},"wollen":{"type":"مدال · بی‌قاعده","source":"https://www.duden.de/konjugation/wollen_moechten_wuenschen","sourceName":"Duden"},"sollen":{"type":"مدال · بی‌قاعده","source":"https://www.duden.de/konjugation/sollen","sourceName":"Duden"},"mögen":{"type":"مدال · بی‌قاعده","source":"https://www.duden.de/konjugation/moegen","sourceName":"Duden"}};
 
   var QUESTIONS = [
     { q: 'Gestern habe ich Deutsch gelernt. این جمله در کدام زمان است؟', options: ['Präteritum', 'Perfekt', 'Präsens'], answer: 1, why: 'haben + gelernt ساخت Perfekt است.' },
@@ -41,7 +66,19 @@
     { q: 'Präteritum فعل sein برای du کدام است؟', options: ['war', 'warst', 'waren'], answer: 1, why: 'صرف درست: ich war، du warst، er war.' },
     { q: 'Partizip II فعل studieren کدام است؟', options: ['gestudiert', 'studiert', 'studieren'], answer: 1, why: 'فعل‌های پایان‌یافته به -ieren معمولاً ge نمی‌گیرند.' },
     { q: 'جای خالی: Ich habe gestern nicht kommen ___.', options: ['gekonnt', 'können', 'kann'], answer: 1, why: 'وقتی فعل مُدال با یک مصدر دیگر می‌آید، معمولاً مصدر آن را نگه می‌داریم: kommen können.' },
-    { q: 'Präteritum فعل müssen برای wir کدام است؟', options: ['musst', 'mussten', 'müssten'], answer: 1, why: 'شکل گذشتهٔ خبری برای wir برابر mussten است؛ müssten شکل Konjunktiv II است.' }
+    { q: 'Präteritum فعل müssen برای wir کدام است؟', options: ['musst', 'mussten', 'müssten'], answer: 1, why: 'شکل گذشتهٔ خبری برای wir برابر mussten است؛ müssten شکل Konjunktiv II است.' },
+{"q":"Partizip II فعل lesen کدام است؟","options":["gelesen","gelesst","ge lesen"],"answer":0,"why":"شکل درست gelesen است: Ich habe das Buch gelesen."},
+{"q":"Präteritum فعل nehmen برای du کدام است؟","options":["nahmst","nehmtest","nahmte"],"answer":0,"why":"Duden صورت nahmst را ثبت می‌کند."},
+{"q":"Präteritum فعل denken برای wir کدام است؟","options":["denken","dachten","gedacht"],"answer":1,"why":"denken فعل مختلط است: wir dachten."},
+{"q":"Partizip II فعل fernsehen کدام است؟","options":["gefernsehen","ferngesehen","fernsehen"],"answer":1,"why":"فعل جداشدنی است و شکل Partizip II آن ferngesehen است."},
+{"q":"Präteritum فعل anfangen برای ich کدام است؟","options":["anfangte","fing an","angefangen"],"answer":1,"why":"anfangen فعل قوی و جداشدنی است: ich fing an."},
+{"q":"Partizip II فعل verstehen کدام است؟","options":["geverstanden","verstanden","vergestanden"],"answer":1,"why":"پیشوند ver- جدانشدنی است؛ ge اضافه نمی‌شود."},
+{"q":"جای خالی: Ich ___ dich gestern angerufen.","options":["bin","habe","hat"],"answer":1,"why":"anrufen در این کاربرد با haben می‌آید: Ich habe angerufen."},
+{"q":"Partizip II فعل bringen کدام است؟","options":["gebringt","gebracht","gebringen"],"answer":1,"why":"bringen فعل مختلط است: brachte – gebracht."},
+{"q":"Präteritum فعل wissen برای du کدام است؟","options":["wusstest","wusste","gewusst"],"answer":0,"why":"شکل درست برای du برابر wusstest است."},
+{"q":"برای حرکت با laufen در Perfekt معمولاً کدام فعل کمکی می‌آید؟","options":["haben","sein","werden"],"answer":1,"why":"برای جابه‌جایی و حرکت: Ich bin gelaufen."},
+{"q":"Präteritum فعل dürfen برای ihr کدام است؟","options":["durftet","dürftet","gedurft"],"answer":0,"why":"صورت خبری گذشته durftet است؛ dürftet شکل Konjunktiv II است."},
+{"q":"وقتی wollen با مصدر دیگری در Perfekt بیاید، کدام جمله درست است؟","options":["Ich habe gehen gewollt.","Ich habe gehen wollen.","Ich bin gehen wollen."],"answer":1,"why":"با مصدر دیگر، فعل مُدال معمولاً به شکل Ersatzinfinitiv می‌آید: gehen wollen."}
   ];
 
   function escapeHtml(value) {
@@ -87,16 +124,21 @@
 
   function renderVerb(verbName) {
     var verb = VERBS.filter(function (item) { return item.verb === verbName; })[0] || VERBS[2];
+    var meta = VERB_META[verb.verb] || { type: 'پرکاربرد · بررسی‌شده در مرحله قبل', source: 'https://www.duden.de/konjugation', sourceName: 'Duden' };
     var rows = PRONOUNS.map(function (pronoun, index) {
-      return [pronoun, verb.past[index], verb.part, AUXILIARIES[verb.aux][index] + ' ' + verb.part];
+      var perfect = AUXILIARIES[verb.aux][index] + ' ' + verb.part;
+      if (verb.altAux) perfect += ' / ' + AUXILIARIES[verb.altAux][index] + ' ' + verb.part;
+      return [pronoun, verb.past[index], verb.part, perfect];
     });
-    var note = verb.note ? '<p class="muted tiny">' + escapeHtml(verb.note) + '</p>' : '';
+    var note = verb.note ? '<p class="muted tiny"><span class="lesson-tag">' + escapeHtml(verb.level) + ' · درس تکمیلی ۳</span> ' + escapeHtml(verb.note) + '</p>' : '';
+    var sourceLink = '<p class="muted tiny"><a href="' + escapeHtml(meta.source) + '" target="_blank" rel="noopener noreferrer">بررسی جدول صرف در ' + escapeHtml(meta.sourceName) + '</a></p>';
     var host = document.getElementById('zptVerbDetail');
     if (!host) return;
     host.innerHTML =
-      '<div class="row between"><b dir="ltr" style="font-size:19px">' + escapeHtml(verb.verb) + '</b><span class="chip">' + escapeHtml(verb.level) + ' · درس تکمیلی ۳ · ' + escapeHtml(verb.meaning) + '</span></div>' +
-      '<p class="muted tiny">Partizip II: <b dir="ltr">' + escapeHtml(verb.part) + '</b> · فعل کمکی در این کاربرد: <b dir="ltr">' + escapeHtml(verb.aux) + '</b></p>' +
-      makeTable(['ضمیر فاعلی', 'Präteritum', 'Partizip II', 'Perfekt'], rows) + note;
+      '<div class="row between"><b dir="ltr" style="font-size:19px">' + escapeHtml(verb.verb) + '</b><span class="chip">واژه ' + escapeHtml(verb.level) + ' · درس تکمیلی ۳ · ' + escapeHtml(verb.meaning) + '</span></div>' +
+      '<p class="muted tiny">نوع فعل: <b>' + escapeHtml(meta.type) + '</b> · مبحث صرف گذشته: <b>' + (verb.verb === 'sein' || verb.verb === 'haben' ? 'A1' : 'A2') + '</b></p>' +
+      '<p class="muted tiny">Partizip II: <b dir="ltr">' + escapeHtml(verb.part) + '</b> · فعل کمکی در این کاربرد: <b dir="ltr">' + escapeHtml(verb.aux) + (verb.altAux ? ' / ' + escapeHtml(verb.altAux) : '') + '</b></p>' +
+      makeTable(['ضمیر فاعلی', 'Präteritum', 'Partizip II', 'Perfekt'], rows) + note + sourceLink;
   }
 
   function renderQuestions() {
@@ -126,17 +168,26 @@
       if (select) select.style.borderColor = correct ? 'var(--accent)' : 'var(--danger)';
       if (explain) explain.textContent = (correct ? '✓ درست · ' : '✗ پاسخ درست: ' + item.options[item.answer] + ' · ') + item.why;
     });
-    var sentence = document.getElementById('zptSentence');
-    var expected = ['Ich habe gestern einen Film gesehen.', 'Gestern habe ich einen Film gesehen.'];
-    var sentenceOk = expected.some(function (item) {
-      return normalizeSentence(sentence ? sentence.value : '') === normalizeSentence(item);
+    var sentenceRules = [
+      { id: 'zptSentence', accepted: ['Ich habe gestern einen Film gesehen.', 'Gestern habe ich einen Film gesehen.'], expected: 'Ich habe gestern einen Film gesehen.' },
+      { id: 'zptSentence2', accepted: ['Wir haben am Abend ferngesehen.', 'Am Abend haben wir ferngesehen.'], expected: 'Wir haben am Abend ferngesehen.' }
+    ];
+    var sentenceResults = [];
+    sentenceRules.forEach(function (rule) {
+      var field = document.getElementById(rule.id);
+      var correct = rule.accepted.some(function (item) {
+        return normalizeSentence(field ? field.value : '') === normalizeSentence(item);
+      });
+      if (correct) score += 1;
+      if (field) field.style.borderColor = correct ? 'var(--accent)' : 'var(--danger)';
+      sentenceResults.push(correct);
     });
-    if (sentenceOk) score += 1;
-    if (sentence) sentence.style.borderColor = sentenceOk ? 'var(--accent)' : 'var(--danger)';
+    var total = QUESTIONS.length + sentenceRules.length;
     var feedback = document.getElementById('zptPracticeFeedback');
-    if (feedback) feedback.textContent = 'نتیجه: ' + score + ' از ۱۱. ' +
-      (sentenceOk ? 'جمله‌سازی درست است. ' : 'نمونه درست: ' + expected[0] + ' ') +
-      (score === 11 ? 'عالی! همه پاسخ‌ها درست است.' : 'پاسخ‌های نادرست را مرور کن و دوباره تلاش کن.');
+    if (feedback) feedback.textContent = 'نتیجه: ' + score + ' از ' + total + '. ' +
+      'جمله‌سازی ۱: ' + (sentenceResults[0] ? 'درست' : 'نمونه: ' + sentenceRules[0].expected) + '؛ ' +
+      'جمله‌سازی ۲: ' + (sentenceResults[1] ? 'درست' : 'نمونه: ' + sentenceRules[1].expected) + '. ' +
+      (score === total ? 'عالی! همه پاسخ‌ها درست است.' : 'پاسخ‌های نادرست را مرور کن و دوباره تلاش کن.');
   }
 
   function resetPractice() {
@@ -146,8 +197,10 @@
       if (select) { select.value = ''; select.style.borderColor = ''; }
       if (explain) explain.textContent = '';
     });
-    var sentence = document.getElementById('zptSentence');
-    if (sentence) { sentence.value = ''; sentence.style.borderColor = ''; }
+    ['zptSentence', 'zptSentence2'].forEach(function (id) {
+      var sentence = document.getElementById(id);
+      if (sentence) { sentence.value = ''; sentence.style.borderColor = ''; }
+    });
     var feedback = document.getElementById('zptPracticeFeedback');
     if (feedback) feedback.textContent = 'تمرین دوباره آماده است.';
   }
@@ -188,7 +241,7 @@
       '<p><b>صرف فعل کمکی sein</b></p>',
       makeTable(['ضمیر', 'صرف sein'], PRONOUNS.map(function (p, i) { return [p, AUXILIARIES.sein[i]]; })),
       '<div class="zpt-callout"><b>دو مثال ساده</b><p dir="ltr">Ich habe einen Film gesehen.</p><small>من یک فیلم دیدم.</small><p dir="ltr">Wir sind nach Hause gegangen.</p><small>ما به خانه رفتیم.</small></div>',
-      '<div class="zpt-callout"><b>استثنای فعل‌های مُدال</b> <span class="lesson-tag">A2 · درس تکمیلی ۲</span><p>اگر فعل مُدال همراه یک مصدر دیگر بیاید، در Perfekt معمولاً به‌جای Partizip II از مصدر خود فعل مُدال استفاده می‌شود.</p><p dir="ltr">Ich habe gestern nicht kommen können.</p><small>دیروز نتوانستم بیایم.</small><p dir="ltr">Wir haben früh aufstehen müssen.</p><small>مجبور شدیم زود از خواب بلند شویم.</small></div>',
+      '<div class="zpt-callout"><b>استثنای فعل‌های مُدال</b> <span class="lesson-tag">A2 · درس تکمیلی ۲</span><p>اگر فعل مُدال همراه یک مصدر دیگر بیاید، در Perfekt معمولاً مصدر خود فعل مُدال در پایان می‌آید؛ به این ساختار Ersatzinfinitiv می‌گویند.</p><p dir="ltr">Ich habe gestern nicht kommen können. · Wir haben früh aufstehen müssen.</p><small>دیروز نتوانستم بیایم. · مجبور شدیم زود بیدار شویم.</small><p dir="ltr">Sie hat nach Hause gehen wollen. · Du hast hier nicht parken dürfen.</p><small>او خواسته به خانه برود. · تو اجازه نداشتی اینجا پارک کنی.</small><p>اگر فعل مُدال بدون مصدر دیگری به‌کار رود، Partizip II معمولی می‌آید: <b dir="ltr">Ich habe das nicht gewollt.</b></p></div>',
       '<p class="muted tiny">در Perfekt، با عوض شدن ضمیر، فعل کمکی صرف می‌شود؛ Partizip II همان شکل می‌ماند.</p>',
       '</div>',
       '<div class="zpt-pane" data-zpt-pane="praeteritum" hidden>',
@@ -196,6 +249,7 @@
       '<p>برای شروع، شکل‌های Präteritum فعل‌های sein و haben را حفظ کن. بعد می‌توانی شکل گذشته فعل‌های باقاعده و قوی را در جدول ببینی.</p>',
       '<div class="grid2"><div><b>sein · بودن</b>' + makeTable(['ضمیر', 'Präteritum'], PRONOUNS.map(function (p, i) { return [p, VERBS[0].past[i]]; })) + '</div><div><b>haben · داشتن</b>' + makeTable(['ضمیر', 'Präteritum'], PRONOUNS.map(function (p, i) { return [p, VERBS[1].past[i]]; })) + '</div></div>',
       '<div class="zpt-callout"><b>نمونه جمله</b><p dir="ltr">Ich war gestern zu Hause.</p><small>من دیروز خانه بودم.</small><p dir="ltr">Wir hatten keine Zeit.</p><small>ما وقت نداشتیم.</small></div>',
+      '<div class="zpt-callout"><b>الگوی سادهٔ ساخت Präteritum</b> <span class="lesson-tag">A2 · درس تکمیلی ۳</span><p><b>فعل ضعیف:</b> ریشه + -te؛ سپس شناسه‌های شخصی می‌آیند.</p><p dir="ltr">machen → ich machte · du machtest · er machte · wir machten · ihr machtet · sie machten</p><p><b>فعل قوی:</b> معمولاً واکهٔ ریشه تغییر می‌کند و -te نمی‌گیرد.</p><p dir="ltr">gehen → ich ging · du gingst · er ging · wir gingen · ihr gingt · sie gingen</p><p><b>فعل مختلط:</b> ریشه تغییر می‌کند، اما پایان‌های -te را می‌گیرد.</p><p dir="ltr">bringen → ich brachte · du brachtest · wir brachten</p><small>این الگوها راهنما هستند؛ شکل فعل‌های قوی و مختلط را از جدول معتبر یاد بگیر، نه با حدس.</small></div>',
       '<h4>صرف فعل‌های پرکاربرد با شش ضمیر</h4>',
       '<p class="muted tiny">فعل را انتخاب کن تا Präteritum، Partizip II و Perfekt را کنار هم ببینی. برچسب A1/A2 سطح آموزشی فعل در این مجموعه است.</p>',
       '<label for="zptVerbSelect" class="muted tiny">انتخاب فعل</label>',
@@ -217,6 +271,7 @@
         ['پایان -ieren', 'بدون ge- و با -t', 'studieren → studiert', 'A1–A2 · درس ۴']
       ]),
       '<div class="zpt-callout"><b>سه نکته مهم</b><p>۱) فعل‌های جداشدنی: ge میان پیشوند و ریشه می‌آید.</p><p>۲) پیشوندهای رایجِ جدانشدنی مانند be-, emp-, ent-, er-, ge-, miss-, ver- و zer- معمولاً ge نمی‌گیرند.</p><p>۳) فعل‌های پایان‌یافته به -ieren نیز ge نمی‌گیرند.</p></div>',
+      '<div class="zpt-callout"><b>جداشدنی و جدانشدنی را مقایسه کن</b> <span class="lesson-tag">A2 · درس تکمیلی ۴</span><p>در فعل جداشدنی، ge میان پیشوند و ریشه می‌آید:</p><p dir="ltr">anrufen → angerufen · fernsehen → ferngesehen · aufräumen → aufgeräumt</p><p>پیشوندهای جدانشدنی مانند be- و ver-، ge نمی‌گیرند:</p><p dir="ltr">bekommen → bekommen · verstehen → verstanden · besuchen → besucht</p><small>در فعل‌های پایان‌یافته به -ieren نیز ge نمی‌آید: studieren → studiert.</small></div>',
       '<p dir="ltr">Ich habe gestern eingekauft. = من دیروز خرید کردم.</p>',
       '<p dir="ltr">Ich habe meine Mutter besucht. = من به دیدن مادرم رفتم.</p>',
       '<p dir="ltr">Ich habe Softwaretechnik studiert. = من مهندسی نرم‌افزار خوانده‌ام.</p>',
@@ -225,11 +280,13 @@
       '<span class="lesson-tag">A1–A2 · درس تکمیلی ۵ · تشخیص و جمله‌سازی</span>',
       '<p class="muted tiny">ده سؤال را پاسخ بده و جمله آخر را با ترتیب درست بنویس.</p>',
       '<div id="zptQuestions"></div>',
-      '<div class="zpt-question"><label for="zptSentence">جمله‌سازی: کلمه‌ها را به جمله درست تبدیل کن.</label><p dir="ltr">Ich / gestern / einen Film / gesehen / habe</p><input id="zptSentence" dir="ltr" autocomplete="off" placeholder="Ich habe gestern ..."></div>',
+      '<div class="zpt-question"><label for="zptSentence">جمله‌سازی ۱: کلمه‌ها را به جمله درست تبدیل کن.</label><p dir="ltr">Ich / gestern / einen Film / gesehen / habe</p><input id="zptSentence" dir="ltr" autocomplete="off" placeholder="Ich habe gestern ..."></div>',
+      '<div class="zpt-question"><label for="zptSentence2">جمله‌سازی ۲: فعل جداشدنی را در Perfekt به‌کار ببر.</label><p dir="ltr">Wir / am Abend / ferngesehen / haben</p><input id="zptSentence2" dir="ltr" autocomplete="off" placeholder="Wir haben am Abend ..."></div>',
       '<div class="row" style="margin-top:10px"><button type="button" class="btn primary" id="zptCheck">بررسی پاسخ‌ها</button><button type="button" class="btn" id="zptReset">شروع دوباره</button></div>',
       '<div id="zptPracticeFeedback" class="zpt-feedback" aria-live="polite">پاسخ‌ها را انتخاب کن و بررسی را بزن.</div>',
       '</div>',
-      '<div class="zpt-callout" style="margin-top:14px"><b>سطح‌بندی این بخش</b><p><span class="lesson-tag">A1</span> Perfekt ساده با haben/sein و Partizip II پرکاربرد؛ Präteritum فعل‌های sein و haben.</p><p><span class="lesson-tag">A2</span> گسترش صرف Präteritum، فعل‌های جداشدنی/جدانشدنی و الگوهای بیشتر Partizip II.</p></div>',
+      '<div class="zpt-callout" style="margin-top:14px"><b>سطح‌بندی این بخش</b><p><span class="lesson-tag">A1 · درس تکمیلی ۱–۲</span> کاربرد گذشته، Perfekt ساده و فعل‌های کمکی haben/sein.</p><p><span class="lesson-tag">A1 · درس تکمیلی ۳</span> Präteritum فعل‌های sein و haben.</p><p><span class="lesson-tag">A2 · درس تکمیلی ۳–۵</span> Präteritum سایر فعل‌ها، الگوهای Partizip II و تمرین ترکیبی.</p></div>',
+      '<div class="zpt-callout"><b>منابع بررسی صرف و قواعد</b><div class="zpt-sources"><a href="https://www.duden.de/konjugation" target="_blank" rel="noopener noreferrer">Duden · جدول‌های صرف</a><a href="https://www.duden.de/sprachwissen/sprachratgeber/Perfektbildung-mit-haben-oder-sein" target="_blank" rel="noopener noreferrer">Duden · haben یا sein</a><a href="https://www.goethe.de/ins/de/de/prf/grm.html" target="_blank" rel="noopener noreferrer">Goethe-Institut · دستور زبان</a><a href="https://grammis.ids-mannheim.de/kontrastive-grammatik/3933" target="_blank" rel="noopener noreferrer">IDS grammis · Partizip II</a></div><small>برای هر فعل، پیوند جدول صرف همان فعل نیز کنار جدول آن نمایش داده می‌شود.</small></div>',
 
     ].join('');
 
