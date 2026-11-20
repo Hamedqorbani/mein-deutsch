@@ -116,7 +116,7 @@
 
   function speak(text, rate) {
     if (!('speechSynthesis' in window) || !('SpeechSynthesisUtterance' in window)) {
-      alert('پخش گفتار در این مرورگر در دسترس نیست. از Safari به‌روز یا مرورگر دیگری استفاده کن.');
+      const uiLang=document.documentElement.lang||'fa'; alert(uiLang==='de'?'Sprachausgabe ist in diesem Browser nicht verfügbar. Verwende eine aktuelle Safari-Version oder einen anderen Browser.':uiLang==='en'?'Speech playback is unavailable in this browser. Use an up-to-date Safari or another browser.':'پخش گفتار در این مرورگر در دسترس نیست. از Safari به‌روز یا مرورگر دیگری استفاده کن.');
       return;
     }
     window.speechSynthesis.cancel();
@@ -143,7 +143,7 @@
       const q = (search.value || '').toLocaleLowerCase();
       const group = type.value;
       const filtered = verbs.filter(v => (group === 'all' || v[2].indexOf(group) >= 0) && (v[0]+' '+v[1]).toLocaleLowerCase().includes(q));
-      results.innerHTML = filtered.map(v => '<button type="button" class="result" data-zv="'+esc(v[0])+'" style="text-align:start"><b dir="ltr">'+esc(v[0])+'</b><small class="muted">'+esc(v[1])+' · '+esc(v[2])+'</small></button>').join('') || '<div class="empty">فعلی پیدا نشد.</div>';
+      results.innerHTML = filtered.map(v => '<button type="button" class="result" data-zv="'+esc(v[0])+'" style="text-align:start"><b dir="ltr">'+esc(v[0])+'</b><small class="muted"><span>'+esc(v[1])+'</span> · <span>'+esc(v[2])+'</span></small></button>').join('') || '<div class="empty">فعلی پیدا نشد.</div>';
     }
     function detail(lemma) {
       const v = verbs.find(x => x[0] === lemma);
@@ -189,7 +189,7 @@
     host.innerHTML=exam.map((q,i)=>'<div class="result" style="margin:8px 0"><b>'+(i+1)+'. '+esc(q[0])+'</b><select data-exam="'+i+'" style="width:100%;margin-top:7px"><option value="">انتخاب پاسخ</option>'+q[1].map((o,j)=>'<option value="'+j+'">'+esc(o)+'</option>').join('')+'</select><small class="muted tiny" id="zunoExamExplain'+i+'"></small></div>').join('');
     $('zunoExamCheck').onclick=()=>{
       let score=0;
-      exam.forEach((q,i)=>{const sel=host.querySelector('[data-exam="'+i+'"]');const ok=sel.value!==''&&Number(sel.value)===q[2];if(ok)score++;sel.style.borderColor=ok?'var(--accent)':'var(--danger)';$('zunoExamExplain'+i).textContent=(ok?'✓ درست · ':'✗ پاسخ: '+q[1][q[2]]+' · ')+q[3];});
+      exam.forEach((q,i)=>{const sel=host.querySelector('[data-exam="'+i+'"]');const ok=sel.value!==''&&Number(sel.value)===q[2];if(ok)score++;sel.style.borderColor=ok?'var(--accent)':'var(--danger)';$('zunoExamExplain'+i).innerHTML=ok?'<span>✓ درست · </span><span>'+esc(q[3])+'</span>':'<span>✗ پاسخ: </span><b dir="ltr">'+esc(q[1][q[2]])+'</b><span> · '+esc(q[3])+'</span>';});
       const pct=Math.round(score/exam.length*100);
       $('zunoExamResult').innerHTML='<b>نتیجه: '+score+' از '+exam.length+' ('+pct+'٪)</b><p>'+(pct>=90?'عالی! تسلط بسیار خوبی داری.':pct>=75?'خوب است؛ چند مبحث را دوباره مرور کن.':pct>=60?'در مسیر یادگیری هستی؛ اشتباه‌ها را بررسی کن.':'پیشنهاد می‌شود درس‌ها را مرور و دوباره امتحان کنی.')+'</p><p class="muted tiny">این آزمون تشخیصی تألیفی است و به‌تنهایی مدرک رسمی سطح A1 محسوب نمی‌شود.</p>';
       try{localStorage.setItem('zuno_a1_final_exam',JSON.stringify({score,total:exam.length,pct,date:new Date().toISOString()}));}catch(e){}
