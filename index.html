@@ -2991,6 +2991,40 @@ Object.assign(uiText, {
   ]
 });
 
+Object.assign(uiText, {
+  "تمرین سؤال پرسیدن": ["Fragen stellen üben", "Practice asking questions"],
+  "سؤال‌های پرکاربرد آلمانی را با جواب، تلفظ فارسی و ترجمه تمرین کن.": [
+    "Übe häufige deutsche Fragen mit Antworten, persischer Aussprachehilfe und Übersetzung.",
+    "Practice common German questions with answers, Persian pronunciation, and translations."
+  ],
+  "باز کردن تمرین": ["Übung öffnen", "Open exercise"],
+  "بستن تمرین": ["Übung schließen", "Close exercise"],
+  "موضوع سؤال": ["Fragethema", "Question topic"],
+  "جستجو در سؤال‌ها": ["Fragen durchsuchen", "Search questions"],
+  "مثلاً ساعت کاری، رنگ مورد علاقه، سن…": ["z. B. Arbeitszeit, Lieblingsfarbe, Alter …", "e.g. work hours, favorite color, age…"],
+  "سؤالی پیدا نشد.": ["Keine Frage gefunden.", "No question found."],
+  "موضوع یا عبارت دیگری را جستجو کن.": ["Suche nach einem anderen Thema oder Ausdruck.", "Search for another topic or phrase."],
+  "سؤال به آلمانی": ["Frage auf Deutsch", "Question in German"],
+  "پنهان کردن جواب": ["Antwort ausblenden", "Hide answer"],
+  "نمایش جواب": ["Antwort anzeigen", "Show answer"],
+  "سلام و احوال‌پرسی": ["Begrüßung und Smalltalk", "Greetings and small talk"],
+  "معرفی و اطلاعات شخصی": ["Vorstellung und persönliche Angaben", "Introductions and personal information"],
+  "رنگ‌ها و سلیقه": ["Farben und Vorlieben", "Colors and preferences"],
+  "علاقه و اوقات فراغت": ["Interessen und Freizeit", "Interests and free time"],
+  "ساعت و زمان": ["Uhrzeit und Zeit", "Clock and time"],
+  "شغل و ساعت کاری": ["Beruf und Arbeitszeiten", "Occupation and working hours"],
+  "غذا و نوشیدنی": ["Essen und Getränke", "Food and drinks"],
+  "خرید و قیمت": ["Einkaufen und Preise", "Shopping and prices"],
+  "مکان و مسیر": ["Orte und Wegbeschreibung", "Places and directions"],
+  "سفر و حمل‌ونقل": ["Reisen und Verkehrsmittel", "Travel and transport"],
+  "خانه و زندگی": ["Wohnen und Alltag", "Home and daily life"],
+  "آب‌وهوا": ["Wetter", "Weather"],
+  "سلامت و نیازها": ["Gesundheit und Bedürfnisse", "Health and needs"],
+  "کلاس و یادگیری": ["Unterricht und Lernen", "Class and learning"],
+  "درخواست و مکالمه": ["Bitten und Gespräche", "Requests and conversations"],
+  "سؤال‌های بله و خیر": ["Ja/Nein-Fragen", "Yes/no questions"]
+});
+
 function translateUiText(raw,ix){
  const value=String(raw||''),trim=value.trim();
  if(!trim)return value;
@@ -3002,8 +3036,16 @@ function translateUiText(raw,ix){
   if(m)translated=(ix===0?'Lektion ':'Lesson ')+m[1]+' · '+m[2];
   m=trim.match(/^درس\s*(\d+)\s*تا\s*(\d+)\s*·\s*مرور$/);
   if(m)translated=ix===0?'Lektion '+m[1]+'–'+m[2]+' · Wiederholung':'Lessons '+m[1]+'–'+m[2]+' · Review';
-  m=trim.match(/^سؤال\s*(\d+)\s*از\s*(\d+)$/);
-  if(m)translated=ix===0?'Frage '+m[1]+' von '+m[2]:'Question '+m[1]+' of '+m[2];
+  m=trim.match(/^سؤال\s*([0-9۰-۹]+)\s*از\s*([0-9۰-۹]+)$/);
+  if(m){const latin=s=>s.replace(/[۰-۹]/g,d=>'۰۱۲۳۴۵۶۷۸۹'.indexOf(d));translated=ix===0?'Frage '+latin(m[1])+' von '+latin(m[2]):'Question '+latin(m[1])+' of '+latin(m[2]);}
+  m=trim.match(/^([0-9۰-۹]+)\s*سؤال$/);
+  if(m){const count=m[1].replace(/[۰-۹]/g,d=>'۰۱۲۳۴۵۶۷۸۹'.indexOf(d));translated=ix===0?count+' Fragen':count+' questions';}
+  m=trim.match(/^تلفظ فارسی:\s*(.*)$/);
+  if(m)translated=(ix===0?'Persische Aussprache: ':'Persian pronunciation: ')+m[1];
+  m=trim.match(/^ترجمه:\s*(.*)$/);
+  if(m)translated=(ix===0?'Übersetzung: ':'Translation: ')+m[1];
+  const categorySeparator=trim.lastIndexOf(' · ');
+  if(categorySeparator>=0){const category=trim.slice(categorySeparator+3);if(uiText[category])translated=trim.slice(0,categorySeparator+3)+uiText[category][ix];}
   m=trim.match(/^مبحث\s*(\d+)\s*از\s*(\d+)\s*·\s*(.+)$/);
   if(m)translated=ix===0?'Thema '+m[1]+' von '+m[2]+' · '+m[3]:'Topic '+m[1]+' of '+m[2]+' · '+m[3];
   m=trim.match(/^زمان:\s*(.+)$/);
