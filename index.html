@@ -3438,13 +3438,36 @@ frieren:['fror','frorst','fror','froren','frort','froren'],
 biegen:['bog','bogst','bog','bogen','bogt','bogen'],
 kriechen:['kroch','krochst','kroch','krochen','krocht','krochen'],
 riechen:['roch','rochst','roch','rochen','rocht','rochen'],
-schieben:['schob','schobst','schob','schoben','sch obt','schoben'],
+schieben:['schob','schobst','schob','schoben','schobt','schoben'],
 lügen:['log','logst','log','logen','logt','logen'],
 betrügen:['betrog','betrogst','betrog','betrogen','betrogt','betrogen'],
 sinken:['sank','sankst','sank','sanken','sankt','sanken'],
 binden:['band','bandst','band','banden','bandet','banden'],
 verbieten:['verbot','verbotest','verbot','verboten','verbotet','verboten'],
 möchten:['mochte','mochtest','mochte','mochten','mochtet','mochten']
+});
+Object.assign(verbSimplePastForms,{
+  vergessen:['vergaß','vergaßest','vergaß','vergaßen','vergaßt','vergaßen'],
+  schließen:['schloss','schlossest','schloss','schlossen','schlosst','schlossen'],
+  lassen:['ließ','ließest','ließ','ließen','ließt','ließen'],
+  tun:['tat','tatest','tat','taten','tatet','taten'],
+  wachsen:['wuchs','wuchst','wuchs','wuchsen','wuchst','wuchsen'],
+  anfangen:['fing an','fingst an','fing an','fingen an','fingt an','fingen an'],
+  aufgeben:['gab auf','gabst auf','gab auf','gaben auf','gabt auf','gaben auf'],
+  mitnehmen:['nahm mit','nahmst mit','nahm mit','nahmen mit','nahmt mit','nahmen mit'],
+  teilnehmen:['nahm teil','nahmst teil','nahm teil','nahmen teil','nahmt teil','nahmen teil'],
+  einschlafen:['schlief ein','schliefst ein','schlief ein','schliefen ein','schlieft ein','schliefen ein'],
+  aussehen:['sah aus','sahst aus','sah aus','sahen aus','saht aus','sahen aus'],
+  fernsehen:['sah fern','sahst fern','sah fern','sahen fern','saht fern','sahen fern'],
+  vorlesen:['las vor','lasest vor','las vor','lasen vor','last vor','lasen vor'],
+  zusehen:['sah zu','sahst zu','sah zu','sahen zu','saht zu','sahen zu'],
+  nachdenken:['dachte nach','dachtest nach','dachte nach','dachten nach','dachtet nach','dachten nach'],
+  weggehen:['ging weg','gingst weg','ging weg','gingen weg','gingt weg','gingen weg'],
+  ausgeben:['gab aus','gabst aus','gab aus','gaben aus','gabt aus','gaben aus'],
+  anziehen:['zog an','zogst an','zog an','zogen an','zogt an','zogen an'],
+  ausziehen:['zog aus','zogst aus','zog aus','zogen aus','zogt aus','zogen aus'],
+  mitbringen:['brachte mit','brachtest mit','brachte mit','brachten mit','brachtet mit','brachten mit'],
+  zurückkommen:['kam zurück','kamst zurück','kam zurück','kamen zurück','kamt zurück','kamen zurück']
 });
 const regularVerbs=['machen','lernen','wohnen','spielen','kaufen','fragen','arbeiten','kochen','hören','sagen','suchen','brauchen','kosten','öffnen','reisen','tanzen','lieben','leben','lachen','warten','reden','studieren','besuchen'];
 function regularForms(v){let stem=v.slice(0,-2);return ['arbeiten','öffnen','warten','reden'].includes(v)?[stem+'e',stem+'est',stem+'et',stem+'en',stem+'et',stem+'en']:[stem+'e',stem+'st',stem+'t',stem+'en',stem+'t',stem+'en']}
