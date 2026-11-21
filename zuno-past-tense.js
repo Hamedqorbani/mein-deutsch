@@ -1,5 +1,5 @@
 /* Zuno past-tense learning module
- * Checked: 2026-11-19. The displayed forms are a deliberately selected A1/A2 starter set.
+ * Checked: 2026-11-21. The displayed forms are a deliberately selected A1/A2 starter set.
  */
 (function () {
   'use strict';
@@ -51,10 +51,18 @@
 {"verb":"dürfen","meaning":"اجازه داشتن","level":"A1","past":["durfte","durftest","durfte","durften","durftet","durften"],"part":"gedurft","aux":"haben","note":"فعل مُدال؛ اگر با مصدر دیگری بیاید، در Perfekt معمولاً مصدر dürfen در پایان می‌آید."},
 {"verb":"wollen","meaning":"خواستن","level":"A1","past":["wollte","wolltest","wollte","wollten","wolltet","wollten"],"part":"gewollt","aux":"haben","note":"فعل مُدال؛ با مصدر دیگر: Ich habe gehen wollen. به‌تنهایی: Ich habe das nicht gewollt."},
 {"verb":"sollen","meaning":"باید / قرار بودن","level":"A1","past":["sollte","solltest","sollte","sollten","solltet","sollten"],"part":"gesollt","aux":"haben","note":"فعل مُدال؛ با مصدر دیگر در Perfekt معمولاً خود مصدر sollen در پایان می‌آید."},
-{"verb":"mögen","meaning":"دوست داشتن","level":"A1","past":["mochte","mochtest","mochte","mochten","mochtet","mochten"],"part":"gemocht","aux":"haben","note":"در Präteritum، mögen به mochte تبدیل می‌شود؛ möchte شکل Konjunktiv II برای بیان خواستهٔ مؤدبانه است."}
+{"verb":"mögen","meaning":"دوست داشتن","level":"A1","past":["mochte","mochtest","mochte","mochten","mochtet","mochten"],"part":"gemocht","aux":"haben","note":"در Präteritum، mögen به mochte تبدیل می‌شود؛ möchte شکل Konjunktiv II برای بیان خواستهٔ مؤدبانه است."},
+    { verb: 'vergessen', meaning: 'فراموش کردن', level: 'A2', past: ['vergaß', 'vergaßest', 'vergaß', 'vergaßen', 'vergaßt', 'vergaßen'], part: 'vergessen', aux: 'haben', note: 'پیشوند ver- جدانشدنی است؛ ge نمی‌آید. Duden دو صورت vergaßest و vergaßt را برای du ثبت می‌کند.' },
+    { verb: 'einladen', meaning: 'دعوت کردن', level: 'A2', past: ['lud ein', 'ludest ein', 'lud ein', 'luden ein', 'ludet ein', 'luden ein'], part: 'eingeladen', aux: 'haben', note: 'فعل جداشدنی و قوی است: lud ... ein؛ در Partizip II، ge میان ein و laden می‌آید.' },
+    { verb: 'mitbringen', meaning: 'همراه آوردن', level: 'A2', past: ['brachte mit', 'brachtest mit', 'brachte mit', 'brachten mit', 'brachtet mit', 'brachten mit'], part: 'mitgebracht', aux: 'haben', note: 'فعل جداشدنی و مختلط است: brachte ... mit → mitgebracht.' },
+    { verb: 'zurückkommen', meaning: 'برگشتن', level: 'A2', past: ['kam zurück', 'kamst zurück', 'kam zurück', 'kamen zurück', 'kamt zurück', 'kamen zurück'], part: 'zurückgekommen', aux: 'sein', note: 'فعل جداشدنی و قوی؛ برای برگشتن، Perfekt با sein ساخته می‌شود.' }
   ];
 
-  var VERB_META = {"sehen":{"type":"قوی","source":"https://www.duden.de/konjugation/sehen","sourceName":"Duden"},"lesen":{"type":"قوی","source":"https://www.duden.de/konjugation/lesen_aufsammeln","sourceName":"Duden"},"schreiben":{"type":"قوی","source":"https://www.duden.de/konjugation/schreiben","sourceName":"Duden"},"finden":{"type":"قوی","source":"https://www.duden.de/konjugation/finden","sourceName":"Duden"},"nehmen":{"type":"قوی","source":"https://www.duden.de/konjugation/nehmen","sourceName":"Duden"},"geben":{"type":"قوی","source":"https://www.duden.de/konjugation/geben","sourceName":"Duden"},"helfen":{"type":"قوی","source":"https://www.duden.de/konjugation/helfen","sourceName":"Duden"},"treffen":{"type":"قوی","source":"https://www.duden.de/konjugation/treffen","sourceName":"Duden"},"schlafen":{"type":"قوی","source":"https://www.duden.de/konjugation/schlafen","sourceName":"Duden"},"denken":{"type":"مختلط","source":"https://www.duden.de/konjugation/denken","sourceName":"Duden"},"wissen":{"type":"بی‌قاعده","source":"https://www.duden.de/konjugation/wissen","sourceName":"Duden"},"laufen":{"type":"قوی · حرکت با sein","source":"https://www.duden.de/konjugation/laufen","sourceName":"Duden"},"bringen":{"type":"مختلط","source":"https://www.duden.de/konjugation/bringen","sourceName":"Duden"},"verstehen":{"type":"قوی · پیشوند جدانشدنی ver-","source":"https://www.duden.de/konjugation/verstehen","sourceName":"Duden"},"fernsehen":{"type":"قوی · جداشدنی","source":"https://www.duden.de/konjugation/fernsehen","sourceName":"Duden"},"aufräumen":{"type":"ضعیف · جداشدنی","source":"https://www.duden.de/konjugation/aufraeumen","sourceName":"Duden"},"bekommen":{"type":"قوی · پیشوند جدانشدنی be-","source":"https://www.duden.de/konjugation/bekommen","sourceName":"Duden"},"anfangen":{"type":"قوی · جداشدنی","source":"https://www.larousse.com/de/konjugation/deutsch/anfangen/487","sourceName":"Larousse"},"anrufen":{"type":"قوی · جداشدنی","source":"https://www.die-konjugation.de/verb/anrufen.php","sourceName":"Die Konjugation"},"dürfen":{"type":"مدال · بی‌قاعده","source":"https://www.duden.de/konjugation/duerfen","sourceName":"Duden"},"wollen":{"type":"مدال · بی‌قاعده","source":"https://www.duden.de/konjugation/wollen_moechten_wuenschen","sourceName":"Duden"},"sollen":{"type":"مدال · بی‌قاعده","source":"https://www.duden.de/konjugation/sollen","sourceName":"Duden"},"mögen":{"type":"مدال · بی‌قاعده","source":"https://www.duden.de/konjugation/moegen","sourceName":"Duden"},"sein":{"type":"بی‌قاعده · فعل کمکی","source":"https://www.duden.de/konjugation/sein_Hilfsverb","sourceName":"Duden"},"haben":{"type":"بی‌قاعده · فعل کمکی","source":"https://www.duden.de/konjugation/haben_Hilfsverb","sourceName":"Duden"},"gehen":{"type":"قوی","source":"https://www.duden.de/konjugation/gehen","sourceName":"Duden"},"kommen":{"type":"قوی","source":"https://www.duden.de/konjugation/kommen","sourceName":"Duden"},"machen":{"type":"ضعیف","source":"https://www.duden.de/konjugation/machen","sourceName":"Duden"},"lernen":{"type":"ضعیف","source":"https://www.duden.de/konjugation/lernen","sourceName":"Duden"},"arbeiten":{"type":"ضعیف · ریشه پایان‌یافته به t","source":"https://www.duden.de/konjugation/arbeiten","sourceName":"Duden"},"essen":{"type":"قوی","source":"https://www.duden.de/konjugation/essen","sourceName":"Duden"},"trinken":{"type":"قوی","source":"https://www.duden.de/konjugation/trinken","sourceName":"Duden"},"sprechen":{"type":"قوی","source":"https://www.duden.de/konjugation/sprechen","sourceName":"Duden"},"fahren":{"type":"قوی · فعل حرکتی","source":"https://www.duden.de/konjugation/fahren","sourceName":"Duden"},"bleiben":{"type":"قوی · فعل ماندن","source":"https://www.duden.de/konjugation/bleiben","sourceName":"Duden"},"aufstehen":{"type":"قوی · جداشدنی","source":"https://www.duden.de/konjugation/aufstehen","sourceName":"Duden"},"einkaufen":{"type":"ضعیف · جداشدنی","source":"https://www.duden.de/konjugation/einkaufen","sourceName":"Duden"},"besuchen":{"type":"ضعیف · جدانشدنی","source":"https://www.duden.de/konjugation/besuchen","sourceName":"Duden"},"studieren":{"type":"ضعیف · پایان -ieren","source":"https://www.duden.de/konjugation/studieren","sourceName":"Duden"},"können":{"type":"مدال · بی‌قاعده","source":"https://www.duden.de/konjugation/koennen","sourceName":"Duden"},"müssen":{"type":"مدال · بی‌قاعده","source":"https://www.duden.de/konjugation/muessen","sourceName":"Duden"}};
+  var VERB_META = {"sehen":{"type":"قوی","source":"https://www.duden.de/konjugation/sehen","sourceName":"Duden"},"lesen":{"type":"قوی","source":"https://www.duden.de/konjugation/lesen_aufsammeln","sourceName":"Duden"},"schreiben":{"type":"قوی","source":"https://www.duden.de/konjugation/schreiben","sourceName":"Duden"},"finden":{"type":"قوی","source":"https://www.duden.de/konjugation/finden","sourceName":"Duden"},"nehmen":{"type":"قوی","source":"https://www.duden.de/konjugation/nehmen","sourceName":"Duden"},"geben":{"type":"قوی","source":"https://www.duden.de/konjugation/geben","sourceName":"Duden"},"helfen":{"type":"قوی","source":"https://www.duden.de/konjugation/helfen","sourceName":"Duden"},"treffen":{"type":"قوی","source":"https://www.duden.de/konjugation/treffen","sourceName":"Duden"},"schlafen":{"type":"قوی","source":"https://www.duden.de/konjugation/schlafen","sourceName":"Duden"},"denken":{"type":"مختلط","source":"https://www.duden.de/konjugation/denken","sourceName":"Duden"},"wissen":{"type":"بی‌قاعده","source":"https://www.duden.de/konjugation/wissen","sourceName":"Duden"},"laufen":{"type":"قوی · حرکت با sein","source":"https://www.duden.de/konjugation/laufen","sourceName":"Duden"},"bringen":{"type":"مختلط","source":"https://www.duden.de/konjugation/bringen","sourceName":"Duden"},"verstehen":{"type":"قوی · پیشوند جدانشدنی ver-","source":"https://www.duden.de/konjugation/verstehen","sourceName":"Duden"},"fernsehen":{"type":"قوی · جداشدنی","source":"https://www.duden.de/konjugation/fernsehen","sourceName":"Duden"},"aufräumen":{"type":"ضعیف · جداشدنی","source":"https://www.duden.de/konjugation/aufraeumen","sourceName":"Duden"},"bekommen":{"type":"قوی · پیشوند جدانشدنی be-","source":"https://www.duden.de/konjugation/bekommen","sourceName":"Duden"},"anfangen":{"type":"قوی · جداشدنی","source":"https://www.larousse.com/de/konjugation/deutsch/anfangen/487","sourceName":"Larousse"},"anrufen":{"type":"قوی · جداشدنی","source":"https://www.die-konjugation.de/verb/anrufen.php","sourceName":"Die Konjugation"},"dürfen":{"type":"مدال · بی‌قاعده","source":"https://www.duden.de/konjugation/duerfen","sourceName":"Duden"},"wollen":{"type":"مدال · بی‌قاعده","source":"https://www.duden.de/konjugation/wollen_moechten_wuenschen","sourceName":"Duden"},"sollen":{"type":"مدال · بی‌قاعده","source":"https://www.duden.de/konjugation/sollen","sourceName":"Duden"},"mögen":{"type":"مدال · بی‌قاعده","source":"https://www.duden.de/konjugation/moegen","sourceName":"Duden"},"sein":{"type":"بی‌قاعده · فعل کمکی","source":"https://www.duden.de/konjugation/sein_Hilfsverb","sourceName":"Duden"},"haben":{"type":"بی‌قاعده · فعل کمکی","source":"https://www.duden.de/konjugation/haben_Hilfsverb","sourceName":"Duden"},"gehen":{"type":"قوی","source":"https://www.duden.de/konjugation/gehen","sourceName":"Duden"},"kommen":{"type":"قوی","source":"https://www.duden.de/konjugation/kommen","sourceName":"Duden"},"machen":{"type":"ضعیف","source":"https://www.duden.de/konjugation/machen","sourceName":"Duden"},"lernen":{"type":"ضعیف","source":"https://www.duden.de/konjugation/lernen","sourceName":"Duden"},"arbeiten":{"type":"ضعیف · ریشه پایان‌یافته به t","source":"https://www.duden.de/konjugation/arbeiten","sourceName":"Duden"},"essen":{"type":"قوی","source":"https://www.duden.de/konjugation/essen","sourceName":"Duden"},"trinken":{"type":"قوی","source":"https://www.duden.de/konjugation/trinken","sourceName":"Duden"},"sprechen":{"type":"قوی","source":"https://www.duden.de/konjugation/sprechen","sourceName":"Duden"},"fahren":{"type":"قوی · فعل حرکتی","source":"https://www.duden.de/konjugation/fahren","sourceName":"Duden"},"bleiben":{"type":"قوی · فعل ماندن","source":"https://www.duden.de/konjugation/bleiben","sourceName":"Duden"},"aufstehen":{"type":"قوی · جداشدنی","source":"https://www.duden.de/konjugation/aufstehen","sourceName":"Duden"},"einkaufen":{"type":"ضعیف · جداشدنی","source":"https://www.duden.de/konjugation/einkaufen","sourceName":"Duden"},"besuchen":{"type":"ضعیف · جدانشدنی","source":"https://www.duden.de/konjugation/besuchen","sourceName":"Duden"},"studieren":{"type":"ضعیف · پایان -ieren","source":"https://www.duden.de/konjugation/studieren","sourceName":"Duden"},"können":{"type":"مدال · بی‌قاعده","source":"https://www.duden.de/konjugation/koennen","sourceName":"Duden"},"müssen":{"type":"مدال · بی‌قاعده","source":"https://www.duden.de/konjugation/muessen","sourceName":"Duden"},
+    "vergessen":{"type":"قوی · پیشوند جدانشدنی ver-","source":"https://www.duden.de/konjugation/vergessen_Verb_nicht_erinnern","sourceName":"Duden"},
+    "einladen":{"type":"قوی · جداشدنی","source":"https://www.duden.de/konjugation/einladen_verladen","sourceName":"Duden"},
+    "mitbringen":{"type":"مختلط · جداشدنی","source":"https://www.duden.de/konjugation/mitbringen","sourceName":"Duden"},
+    "zurückkommen":{"type":"قوی · جداشدنی و حرکتی","source":"https://www.duden.de/konjugation/zurueckkommen","sourceName":"Duden"}};
 
   var QUESTIONS = [
     { q: 'Gestern habe ich Deutsch gelernt. این جمله در کدام زمان است؟', options: ['Präteritum', 'Perfekt', 'Präsens'], answer: 1, why: 'haben + gelernt ساخت Perfekt است.' },
@@ -80,7 +88,19 @@
 {"q":"Präteritum فعل dürfen برای ihr کدام است؟","options":["durftet","dürftet","gedurft"],"answer":0,"why":"صورت خبری گذشته durftet است؛ dürftet شکل Konjunktiv II است."},
 {"q":"وقتی wollen با مصدر دیگری در Perfekt بیاید، کدام جمله درست است؟","options":["Ich habe gehen gewollt.","Ich habe gehen wollen.","Ich bin gehen wollen."],"answer":1,"why":"با مصدر دیگر، فعل مُدال معمولاً به شکل Ersatzinfinitiv می‌آید: gehen wollen."},
 {"q":"A2 · در معنی ملاقات کردن یک شخص، جای خالی را کامل کن: Ich ___ meinen Freund getroffen.","options":["habe","bin","hat"],"answer":0,"why":"برای jemanden treffen به معنی ملاقات کردن یک شخص، Duden فعل کمکی haben را ثبت می‌کند."},
-{"q":"A2 · جمله را کامل کن: Die Kur ___ ihm gut bekommen.","options":["hat","ist","haben"],"answer":1,"why":"در این معنیِ bekommen یعنی برای کسی خوب/بد بودن، Duden فعل کمکی sein را ثبت می‌کند: Die Kur ist ihm gut bekommen."}
+{"q":"A2 · جمله را کامل کن: Die Kur ___ ihm gut bekommen.","options":["hat","ist","haben"],"answer":1,"why":"در این معنیِ bekommen یعنی برای کسی خوب/بد بودن، Duden فعل کمکی sein را ثبت می‌کند: Die Kur ist ihm gut bekommen."},
+    { q: 'کدام پرسش بله/خیر در Perfekt درست است؟', options: ['Hast du gestern gelernt?', 'Du hast gestern gelernt?', 'Hast gestern du gelernt?'], answer: 0, why: 'در پرسش بله/خیر، فعل کمکی صرف‌شده در جایگاه اول می‌آید.' },
+    { q: 'کدام پرسش با واژهٔ پرسشی درست است؟', options: ['Wann du hast gelernt?', 'Wann hast du gelernt?', 'Wann gelernt hast du?'], answer: 1, why: 'الگو: واژهٔ پرسشی + فعل کمکی + فاعل + ادامه جمله + Partizip II.' },
+    { q: 'کدام جمله منفی‌سازی درست دارد؟', options: ['Ich habe den Film nicht gesehen.', 'Ich nicht habe den Film gesehen.', 'Ich habe nicht den Film gesehen gestern.'], answer: 0, why: 'در این جمله ساده، nicht پیش از Partizip II آمده است؛ جای آن به بخش مورد نفی هم بستگی دارد.' },
+    { q: 'Partizip II فعل vergessen کدام است؟', options: ['gevergessen', 'vergessen', 'vergesst'], answer: 1, why: 'پیشوند جدانشدنی ver- باعث می‌شود ge اضافه نشود.' },
+    { q: 'Präteritum فعل vergessen برای du کدام است؟', options: ['vergaßst', 'vergaßest', 'vergessest'], answer: 1, why: 'Duden صورت‌های vergaßest و vergaßt را ثبت می‌کند؛ اینجا صورت vergaßest انتخاب شده است.' },
+    { q: 'Partizip II فعل einladen کدام است؟', options: ['geeinladen', 'eingeladen', 'einladet'], answer: 1, why: 'در فعل جداشدنی، ge میان پیشوند ein و بخش laden قرار می‌گیرد.' },
+    { q: 'Präteritum فعل einladen برای du کدام است؟', options: ['ludest ein', 'einladest', 'geludt'], answer: 0, why: 'Duden صورت ludest ein و صورت کوتاه ludst ein را ثبت می‌کند.' },
+    { q: 'Partizip II فعل mitbringen کدام است؟', options: ['mitgebracht', 'gemitbracht', 'mitgebringen'], answer: 0, why: 'فعل مختلط و جداشدنی است: brachte mit → mitgebracht.' },
+    { q: 'Perfekt فعل zurückkommen در معنی برگشتن با کدام فعل کمکی ساخته می‌شود؟', options: ['haben', 'sein', 'werden'], answer: 1, why: 'Duden برای zurückkommen در معنی برگشتن، bin zurückgekommen را ثبت می‌کند.' },
+    { q: 'کدام جمله با zurückkommen درست است؟', options: ['Ich habe zurückgekommen.', 'Ich bin zurückgekommen.', 'Ich werde zurückgekommen.'], answer: 1, why: 'در این معنیِ حرکت/بازگشت، فعل کمکی sein می‌آید.' },
+    { q: 'کدام جمله پرسشِ «چه زمانی برگشتی؟» است؟', options: ['Wann bist du zurückgekommen?', 'Wann du bist zurückgekommen?', 'Bist wann du zurückgekommen?'], answer: 0, why: 'در پرسش W، واژهٔ پرسشی اول و فعل کمکی صرف‌شده دوم می‌آید.' },
+    { q: 'جملهٔ «من دیروز دوستم را دعوت کردم» کدام است؟', options: ['Ich habe gestern meinen Freund eingeladen.', 'Ich bin gestern meinen Freund eingeladen.', 'Ich habe gestern meinen Freund geeinladet.'], answer: 0, why: 'einladen در این کاربرد با haben می‌آید و Partizip II آن eingeladen است.' }
   ];
 
   function escapeHtml(value) {
@@ -172,7 +192,10 @@
     });
     var sentenceRules = [
       { id: 'zptSentence', accepted: ['Ich habe gestern einen Film gesehen.', 'Gestern habe ich einen Film gesehen.'], expected: 'Ich habe gestern einen Film gesehen.' },
-      { id: 'zptSentence2', accepted: ['Wir haben am Abend ferngesehen.', 'Am Abend haben wir ferngesehen.'], expected: 'Wir haben am Abend ferngesehen.' }
+      { id: 'zptSentence2', accepted: ['Wir haben am Abend ferngesehen.', 'Am Abend haben wir ferngesehen.'], expected: 'Wir haben am Abend ferngesehen.' },
+      { id: 'zptSentence3', accepted: ['Hast du gestern gearbeitet?'], expected: 'Hast du gestern gearbeitet?' },
+      { id: 'zptSentence4', accepted: ['Wann bist du zurückgekommen?'], expected: 'Wann bist du zurückgekommen?' },
+      { id: 'zptSentence5', accepted: ['Ich habe den Film nicht gesehen.'], expected: 'Ich habe den Film nicht gesehen.' }
     ];
     var sentenceResults = [];
     sentenceRules.forEach(function (rule) {
@@ -187,8 +210,9 @@
     var total = QUESTIONS.length + sentenceRules.length;
     var feedback = document.getElementById('zptPracticeFeedback');
     if (feedback) feedback.textContent = 'نتیجه: ' + score + ' از ' + total + '. ' +
-      'جمله‌سازی ۱: ' + (sentenceResults[0] ? 'درست' : 'نمونه: ' + sentenceRules[0].expected) + '؛ ' +
-      'جمله‌سازی ۲: ' + (sentenceResults[1] ? 'درست' : 'نمونه: ' + sentenceRules[1].expected) + '. ' +
+      sentenceResults.map(function (correct, index) {
+        return 'جمله‌سازی ' + (index + 1) + ': ' + (correct ? 'درست' : 'نمونه: ' + sentenceRules[index].expected);
+      }).join('؛ ') + '. ' +
       (score === total ? 'عالی! همه پاسخ‌ها درست است.' : 'پاسخ‌های نادرست را مرور کن و دوباره تلاش کن.');
   }
 
@@ -199,7 +223,7 @@
       if (select) { select.value = ''; select.style.borderColor = ''; }
       if (explain) explain.textContent = '';
     });
-    ['zptSentence', 'zptSentence2'].forEach(function (id) {
+    ['zptSentence', 'zptSentence2', 'zptSentence3', 'zptSentence4', 'zptSentence5'].forEach(function (id) {
       var sentence = document.getElementById(id);
       if (sentence) { sentence.value = ''; sentence.style.borderColor = ''; }
     });
@@ -244,6 +268,7 @@
       makeTable(['ضمیر', 'صرف sein'], PRONOUNS.map(function (p, i) { return [p, AUXILIARIES.sein[i]]; })),
       '<div class="zpt-callout"><b>دو مثال ساده</b><p dir="ltr">Ich habe einen Film gesehen.</p><small>من یک فیلم دیدم.</small><p dir="ltr">Wir sind nach Hause gegangen.</p><small>ما به خانه رفتیم.</small></div>',
       '<div class="zpt-callout"><b>استثنای فعل‌های مُدال</b> <span class="lesson-tag">A2 · درس تکمیلی ۲</span><p>اگر فعل مُدال همراه یک مصدر دیگر بیاید، در Perfekt معمولاً مصدر خود فعل مُدال در پایان می‌آید؛ به این ساختار Ersatzinfinitiv می‌گویند.</p><p dir="ltr">Ich habe gestern nicht kommen können. · Wir haben früh aufstehen müssen.</p><small>دیروز نتوانستم بیایم. · مجبور شدیم زود بیدار شویم.</small><p dir="ltr">Sie hat nach Hause gehen wollen. · Du hast hier nicht parken dürfen.</p><small>او خواسته به خانه برود. · تو اجازه نداشتی اینجا پارک کنی.</small><p>اگر فعل مُدال بدون مصدر دیگری به‌کار رود، Partizip II معمولی می‌آید: <b dir="ltr">Ich habe das nicht gewollt.</b></p></div>',
+      '<div class="zpt-callout"><b>سؤال پرسیدن و منفی کردن Perfekt</b> <span class="lesson-tag">A1 · درس تکمیلی ۲</span><p><b>پرسش بله/خیر:</b> فعل کمکی به جایگاه اول می‌رود.</p><p dir="ltr">Hast du gestern gelernt? = آیا دیروز درس خواندی؟</p><p><b>پرسش با کلمهٔ پرسشی:</b> کلمهٔ پرسشی اول و فعل کمکی دوم می‌آید.</p><p dir="ltr">Wann hast du gelernt? = چه زمانی درس خواندی؟</p><p><b>منفی:</b> در این نمونهٔ ساده، nicht پیش از Partizip II آمده است.</p><p dir="ltr">Ich habe den Film nicht gesehen. = من فیلم را ندیدم.</p><small>جای nicht با توجه به چیزی که نفی می‌شود می‌تواند تغییر کند.</small></div>',
       '<p class="muted tiny">در Perfekt، با عوض شدن ضمیر، فعل کمکی صرف می‌شود؛ Partizip II همان شکل می‌ماند.</p>',
       '</div>',
       '<div class="zpt-pane" data-zpt-pane="praeteritum" hidden>',
@@ -280,10 +305,13 @@
       '</div>',
       '<div class="zpt-pane" data-zpt-pane="practice" hidden>',
       '<span class="lesson-tag">A1–A2 · درس تکمیلی ۵ · تشخیص و جمله‌سازی</span>',
-      '<p class="muted tiny">۲۲ سؤال را پاسخ بده و دو جمله را با ترتیب درست بساز.</p>',
+      '<p class="muted tiny">' + QUESTIONS.length + ' سؤال را پاسخ بده و پنج جمله را بساز.</p>',
       '<div id="zptQuestions"></div>',
       '<div class="zpt-question"><label for="zptSentence">جمله‌سازی ۱: کلمه‌ها را به جمله درست تبدیل کن.</label><p dir="ltr">Ich / gestern / einen Film / gesehen / habe</p><input id="zptSentence" dir="ltr" autocomplete="off" placeholder="Ich habe gestern ..."></div>',
       '<div class="zpt-question"><label for="zptSentence2">جمله‌سازی ۲: فعل جداشدنی را در Perfekt به‌کار ببر.</label><p dir="ltr">Wir / am Abend / ferngesehen / haben</p><input id="zptSentence2" dir="ltr" autocomplete="off" placeholder="Wir haben am Abend ..."></div>',
+      '<div class="zpt-question"><label for="zptSentence3">جمله‌سازی ۳: یک پرسش بله/خیر بساز.</label><p dir="ltr">Hast / du / gestern / gearbeitet ?</p><input id="zptSentence3" dir="ltr" autocomplete="off" placeholder="Hast du ...?"></div>',
+      '<div class="zpt-question"><label for="zptSentence4">جمله‌سازی ۴: یک پرسش با کلمهٔ پرسشی بساز.</label><p dir="ltr">Wann / bist / du / zurückgekommen ?</p><input id="zptSentence4" dir="ltr" autocomplete="off" placeholder="Wann bist du ...?"></div>',
+      '<div class="zpt-question"><label for="zptSentence5">جمله‌سازی ۵: جمله را منفی کن.</label><p dir="ltr">Ich / habe / den Film / nicht / gesehen</p><input id="zptSentence5" dir="ltr" autocomplete="off" placeholder="Ich habe ... nicht ..."></div>',
       '<div class="row" style="margin-top:10px"><button type="button" class="btn primary" id="zptCheck">بررسی پاسخ‌ها</button><button type="button" class="btn" id="zptReset">شروع دوباره</button></div>',
       '<div id="zptPracticeFeedback" class="zpt-feedback" aria-live="polite">پاسخ‌ها را انتخاب کن و بررسی را بزن.</div>',
       '</div>',
@@ -319,9 +347,15 @@
     if (reset) reset.addEventListener('click', resetPractice);
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init, { once: true });
-  } else {
-    init();
+  if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { PRONOUNS: PRONOUNS, AUXILIARIES: AUXILIARIES, VERBS: VERBS, QUESTIONS: QUESTIONS };
+  }
+
+  if (typeof document !== 'undefined') {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init, { once: true });
+    } else {
+      init();
+    }
   }
 })();
