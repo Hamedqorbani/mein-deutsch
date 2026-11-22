@@ -82,5 +82,5 @@ assert.equal(dynamicNode.nodeValue, 'Dictionary & Search', 'Direct dynamic text-
 applyTextNode(dynamicNode, 1);
 assert.equal(dynamicNode.nodeValue, 'Dictionary & Search', 'Observer re-runs must preserve the original source text');
 assert.ok(html.includes('characterData:true'), 'Localization observer must watch direct text-node updates');
-assert.ok(html.includes("input:not([dir]),textarea:not([dir])"), 'Unspecified text inputs must use automatic text direction');
+assert.ok(html.includes("input:not([dir]):not([type]),input[type="text"]:not([dir]),input[type="search"]:not([dir]),textarea:not([dir])"), 'Unspecified text inputs must use automatic text direction');
 console.log('PASS: ' + new Set(categories).size + ' question categories, ' + labels.length + ' UI labels, pronunciation/translation prefixes, counters, and dynamic category suffixes.');
