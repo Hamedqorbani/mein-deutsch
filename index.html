@@ -3089,7 +3089,7 @@ function applyInterfaceLanguage(){
    el.setAttribute(attr,ix<0?original:translateUiText(original,ix));
   });
  });
- document.querySelectorAll('input:not([dir]),textarea:not([dir])').forEach(el=>el.setAttribute('dir','auto'));
+ document.querySelectorAll('input:not([dir]):not([type]),input[type="text"]:not([dir]),input[type="search"]:not([dir]),textarea:not([dir])').forEach(el=>el.setAttribute('dir','auto'));
 }
 const uiObserver=new MutationObserver(()=>applyInterfaceLanguage());
 uiObserver.observe(document.body,{childList:true,subtree:true,characterData:true});
