@@ -21,9 +21,9 @@
     { verb: 'essen', meaning: 'غذا خوردن', level: 'A1', past: ['aß', 'aßest', 'aß', 'aßen', 'aßt', 'aßen'], part: 'gegessen', aux: 'haben', note: 'برای du، شکل aßt نیز به‌کار می‌رود؛ این جدول aßest را نشان می‌دهد.' },
     { verb: 'trinken', meaning: 'نوشیدن', level: 'A1', past: ['trank', 'trankst', 'trank', 'tranken', 'trankt', 'tranken'], part: 'getrunken', aux: 'haben' },
     { verb: 'sprechen', meaning: 'صحبت کردن', level: 'A1', past: ['sprach', 'sprachst', 'sprach', 'sprachen', 'spracht', 'sprachen'], part: 'gesprochen', aux: 'haben' },
-    { verb: 'fahren', meaning: 'رفتن با وسیله / رانندگی کردن', level: 'A1', past: ['fuhr', 'fuhrst', 'fuhr', 'fuhren', 'fuhrt', 'fuhren'], part: 'gefahren', aux: 'sein', altAux: 'haben', note: 'در حرکت به مقصد: sein، مانند Ich bin nach Berlin gefahren. برای معنی رانندگی/هدایت وسیله، در این کاربرد صورت haben نیز به‌کار می‌رود.' },
+    { verb: 'fahren', meaning: 'رفتن با وسیله / رانندگی کردن', level: 'A1', past: ['fuhr', 'fuhrst', 'fuhr', 'fuhren', 'fuhrt', 'fuhren'], part: 'gefahren', aux: 'sein', auxCases: [{ aux: 'haben', label: 'هدایت کردن خودرو یا وسیله', example: 'Wer von euch hat das Auto gefahren?', translation: 'کدام‌یک از شما ماشین را رانده است؟', lesson: 'A2 · درس تکمیلی ۶', source: 'https://www.duden.de/rechtschreibung/fahren' }], note: 'برای رفتن به مقصد: sein. اگر fahren به معنی هدایت کردن یک وسیله و مفعول مستقیم داشته باشد، haben می‌آید.' },
     { verb: 'bleiben', meaning: 'ماندن', level: 'A1', past: ['blieb', 'bliebst', 'blieb', 'blieben', 'bliebt', 'blieben'], part: 'geblieben', aux: 'sein' },
-    { verb: 'aufstehen', meaning: 'از خواب یا جا بلند شدن', level: 'A2', past: ['stand auf', 'standest auf', 'stand auf', 'standen auf', 'standet auf', 'standen auf'], part: 'aufgestanden', aux: 'sein', altAux: 'haben', note: 'برای برخاستن از تخت یا صندلی: sein، مانند Ich bin früh aufgestanden. Duden در معنی محاوره‌ایِ «باز/رو به بالا بودن» دربارهٔ در یا پنجره نیز haben را ثبت می‌کند؛ این دو فعل کمکی آزادانه جای هم نمی‌آیند.' },
+    { verb: 'aufstehen', meaning: 'از خواب یا جا بلند شدن', level: 'A2', past: ['stand auf', 'standest auf', 'stand auf', 'standen auf', 'standet auf', 'standen auf'], part: 'aufgestanden', aux: 'sein', note: 'برای برخاستن از تخت یا صندلی، sein می‌آید: Ich bin früh aufgestanden. Duden برای معنی‌های جداگانه‌ای مانند روی چیزی قرار داشتن یا باز بودن، haben را هم ثبت می‌کند؛ این دو کاربرد را با هم جابه‌جا نکن.' },
     { verb: 'einkaufen', meaning: 'خرید کردن', level: 'A2', past: ['kaufte ein', 'kauftest ein', 'kaufte ein', 'kauften ein', 'kauftet ein', 'kauften ein'], part: 'eingekauft', aux: 'haben', note: 'فعل جداشدنی: ein + ge + kauft → eingekauft.' },
     { verb: 'besuchen', meaning: 'دیدار کردن', level: 'A2', past: ['besuchte', 'besuchtest', 'besuchte', 'besuchten', 'besuchtet', 'besuchten'], part: 'besucht', aux: 'haben', note: 'پیشوند be- جدانشدنی است؛ بنابراین ge نمی‌آید.' },
     { verb: 'studieren', meaning: 'تحصیل کردن', level: 'A2', past: ['studierte', 'studiertest', 'studierte', 'studierten', 'studiertet', 'studierten'], part: 'studiert', aux: 'haben', note: 'فعل پایان‌یافته به -ieren، Partizip II را بدون ge می‌سازد.' },
@@ -36,16 +36,16 @@
 {"verb":"nehmen","meaning":"گرفتن / برداشتن","level":"A1","past":["nahm","nahmst","nahm","nahmen","nahmt","nahmen"],"part":"genommen","aux":"haben"},
 {"verb":"geben","meaning":"دادن","level":"A1","past":["gab","gabst","gab","gaben","gabt","gaben"],"part":"gegeben","aux":"haben"},
 {"verb":"helfen","meaning":"کمک کردن","level":"A1","past":["half","halfst","half","halfen","halft","halfen"],"part":"geholfen","aux":"haben"},
-{"verb":"treffen","meaning":"ملاقات کردن / برخورد کردن","level":"A1","past":["traf","trafst","traf","trafen","traft","trafen"],"part":"getroffen","aux":"haben","altAux":"sein","note":"برای ملاقات با یک شخص: haben، مانند Ich habe einen Freund getroffen. در ساخت auf jemanden/etwas treffen به معنی برخوردن یا مواجه‌شدن، sein می‌آید: Am Bahnhof ist sie auf einen alten Bekannten getroffen. این دو کاربرد را با هم اشتباه نگیر."},
+{"verb":"treffen","meaning":"ملاقات کردن / برخورد کردن","level":"A1","past":["traf","trafst","traf","trafen","traft","trafen"],"part":"getroffen","aux":"haben","auxCases":[{"aux":"sein","label":"برخوردن اتفاقی به کسی یا چیزی با auf + Akkusativ","example":"Am Bahnhof ist sie auf einen alten Bekannten getroffen.","translation":"او در ایستگاه به‌طور اتفاقی با یک آشنای قدیمی روبه‌رو شد.","lesson":"A2 · درس تکمیلی ۶","source":"https://www.duden.de/rechtschreibung/treffen"}],"note":"برای ملاقات کردن یک شخص، haben را به‌کار ببر؛ ساخت auf jemanden/etwas treffen به معنی روبه‌رو شدن، کاربرد جداگانه‌ای است و با sein می‌آید."},
 {"verb":"schlafen","meaning":"خوابیدن","level":"A1","past":["schlief","schliefst","schlief","schliefen","schlieft","schliefen"],"part":"geschlafen","aux":"haben"},
 {"verb":"denken","meaning":"فکر کردن","level":"A1","past":["dachte","dachtest","dachte","dachten","dachtet","dachten"],"part":"gedacht","aux":"haben","note":"فعل مختلط است: ریشه تغییر می‌کند، اما در Präteritum شناسه‌های -te می‌آیند."},
 {"verb":"wissen","meaning":"دانستن","level":"A1","past":["wusste","wusstest","wusste","wussten","wusstet","wussten"],"part":"gewusst","aux":"haben"},
-{"verb":"laufen","meaning":"دویدن / راه رفتن","level":"A1","past":["lief","liefst","lief","liefen","lieft","liefen"],"part":"gelaufen","aux":"sein","note":"برای حرکت و جابه‌جایی معمولاً sein می‌آید: Ich bin nach Hause gelaufen. Duden برای برخی کاربردهای دیگر haben را نیز ثبت می‌کند."},
+{"verb":"laufen","meaning":"دویدن / راه رفتن","level":"A1","past":["lief","liefst","lief","liefen","lieft","liefen"],"part":"gelaufen","aux":"sein","auxCases":[{"aux":"haben","label":"پیمودن یک مسافت مشخص در کاربرد ورزشی","example":"Die Läuferin hat 800 Meter gelaufen.","translation":"دونده ۸۰۰ متر دوید.","lesson":"A2 · درس تکمیلی ۶","source":"https://www.duden.de/rechtschreibung/laufen"}],"note":"برای حرکت به مقصد، sein می‌آید؛ Duden در برخی کاربردهای ورزشیِ مسافت‌محور، مانند ۸۰۰ متر دویدن، haben را ثبت می‌کند."},
 {"verb":"bringen","meaning":"آوردن","level":"A1","past":["brachte","brachtest","brachte","brachten","brachtet","brachten"],"part":"gebracht","aux":"haben","note":"فعل مختلط است: brachte و gebracht را باید همراه فعل حفظ کرد."},
 {"verb":"verstehen","meaning":"فهمیدن","level":"A1","past":["verstand","verstandest","verstand","verstanden","verstandet","verstanden"],"part":"verstanden","aux":"haben","note":"پیشوند ver- جدانشدنی است؛ Partizip II بدون ge ساخته می‌شود."},
 {"verb":"fernsehen","meaning":"تلویزیون تماشا کردن","level":"A1","past":["sah fern","sahst fern","sah fern","sahen fern","saht fern","sahen fern"],"part":"ferngesehen","aux":"haben","note":"فعل جداشدنی است: در Präteritum پیشوند به پایان می‌رود و در Partizip II شکل ferngesehen می‌آید."},
 {"verb":"aufräumen","meaning":"مرتب کردن","level":"A2","past":["räumte auf","räumtest auf","räumte auf","räumten auf","räumtet auf","räumten auf"],"part":"aufgeräumt","aux":"haben","note":"فعل جداشدنی و باقاعده است: auf + ge + räumt."},
-{"verb":"bekommen","meaning":"دریافت کردن / گرفتن","level":"A2","past":["bekam","bekamst","bekam","bekamen","bekamt","bekamen"],"part":"bekommen","aux":"haben","altAux":"sein","note":"پیشوند be- جدانشدنی است؛ بنابراین Partizip II بدون ge است. برای معنی رایجِ دریافت کردن: haben، مانند Ich habe ein Geschenk bekommen. در معنی «برای کسی خوب یا بد بودن/سازگار بودن»، sein می‌آید: Die Kur ist ihm gut bekommen. این دو معنی را جدا یاد بگیر."},
+{"verb":"bekommen","meaning":"دریافت کردن / گرفتن","level":"A2","past":["bekam","bekamst","bekam","bekamen","bekamt","bekamen"],"part":"bekommen","aux":"haben","auxCases":[{"aux":"sein","label":"برای کسی مفید یا نامفید بودن","example":"Die Kur ist ihm gut bekommen.","translation":"آن دورهٔ درمان برای او مفید بود.","lesson":"A2 · درس تکمیلی ۶","source":"https://www.duden.de/rechtschreibung/bekommen"}],"note":"پیشوند be- جدانشدنی است؛ بنابراین Partizip II بدون ge ساخته می‌شود. در معنی رایجِ دریافت کردن، haben می‌آید؛ معنی «برای کسی مفید/نامفید بودن» با sein ساخته می‌شود."},
 {"verb":"anfangen","meaning":"شروع کردن","level":"A1","past":["fing an","fingst an","fing an","fingen an","fingt an","fingen an"],"part":"angefangen","aux":"haben","note":"فعل جداشدنی و قوی است: anfangen → fing an → angefangen."},
 {"verb":"anrufen","meaning":"تلفن زدن","level":"A1","past":["rief an","riefst an","rief an","riefen an","rieft an","riefen an"],"part":"angerufen","aux":"haben","note":"فعل جداشدنی و قوی است: an + ge + rufen → angerufen."},
 {"verb":"dürfen","meaning":"اجازه داشتن","level":"A1","past":["durfte","durftest","durfte","durften","durftet","durften"],"part":"gedurft","aux":"haben","note":"فعل مُدال؛ اگر با مصدر دیگری بیاید، در Perfekt معمولاً مصدر dürfen در پایان می‌آید."},
@@ -100,7 +100,13 @@
     { q: 'Perfekt فعل zurückkommen در معنی برگشتن با کدام فعل کمکی ساخته می‌شود؟', options: ['haben', 'sein', 'werden'], answer: 1, why: 'Duden برای zurückkommen در معنی برگشتن، bin zurückgekommen را ثبت می‌کند.' },
     { q: 'کدام جمله با zurückkommen درست است؟', options: ['Ich habe zurückgekommen.', 'Ich bin zurückgekommen.', 'Ich werde zurückgekommen.'], answer: 1, why: 'در این معنیِ حرکت/بازگشت، فعل کمکی sein می‌آید.' },
     { q: 'کدام جمله پرسشِ «چه زمانی برگشتی؟» است؟', options: ['Wann bist du zurückgekommen?', 'Wann du bist zurückgekommen?', 'Bist wann du zurückgekommen?'], answer: 0, why: 'در پرسش W، واژهٔ پرسشی اول و فعل کمکی صرف‌شده دوم می‌آید.' },
-    { q: 'جملهٔ «من دیروز دوستم را دعوت کردم» کدام است؟', options: ['Ich habe gestern meinen Freund eingeladen.', 'Ich bin gestern meinen Freund eingeladen.', 'Ich habe gestern meinen Freund geeinladet.'], answer: 0, why: 'einladen در این کاربرد با haben می‌آید و Partizip II آن eingeladen است.' }
+    { q: 'جملهٔ «من دیروز دوستم را دعوت کردم» کدام است؟', options: ['Ich habe gestern meinen Freund eingeladen.', 'Ich bin gestern meinen Freund eingeladen.', 'Ich habe gestern meinen Freund geeinladet.'], answer: 0, why: 'einladen در این کاربرد با haben می‌آید و Partizip II آن eingeladen است.' },
+    { q: 'A2 · برای رفتن به مقصد با fahren کدام درست است؟ Ich ___ nach Berlin gefahren.', options: ['bin', 'habe', 'hat'], answer: 0, why: 'برای سفر/حرکت به مقصد، Duden Perfekt را با sein ثبت می‌کند.' },
+    { q: 'A2 · برای هدایت خودرو کدام درست است؟ Ich ___ das Auto selbst gefahren.', options: ['bin', 'habe', 'ist'], answer: 1, why: 'وقتی fahren به معنی هدایت کردن خودرو و با مفعول مستقیم است، Duden haben را ثبت می‌کند.' },
+    { q: 'A2 · برای حرکت پیاده به خانه کدام درست است؟ Wir ___ nach Hause gelaufen.', options: ['haben', 'sind', 'seid'], answer: 1, why: 'در معنی حرکت به مقصد، laufen با sein می‌آید.' },
+    { q: 'A2 · در مسابقه و با مسافت مشخص کدام درست است؟ Die Läuferin ___ 800 Meter gelaufen.', options: ['ist', 'hat', 'sind'], answer: 1, why: 'Duden برای پیمودن مسافت مشخص در کاربرد ورزشی، haben را ثبت می‌کند.' },
+    { q: 'A2 · برای «از خواب بلند شدن» کدام جمله درست است؟', options: ['Ich habe früh aufgestanden.', 'Ich bin früh aufgestanden.', 'Ich werde früh aufgestanden.'], answer: 1, why: 'در معنی برخاستن از تخت یا صندلی، aufstehen با sein ساخته می‌شود.' },
+    { q: 'A2 · bekommen به معنی «دریافت کردن» با کدام فعل کمکی می‌آید؟', options: ['sein', 'haben', 'werden'], answer: 1, why: 'برای معنی دریافت کردن، Duden haben را ثبت می‌کند؛ کاربرد جداگانهٔ «برای کسی مفید بودن» با sein می‌آید.' }
   ];
 
   function escapeHtml(value) {
@@ -149,18 +155,25 @@
     var meta = VERB_META[verb.verb] || { type: 'پرکاربرد · بررسی‌شده در مرحله قبل', source: 'https://www.duden.de/konjugation', sourceName: 'Duden' };
     var rows = PRONOUNS.map(function (pronoun, index) {
       var perfect = AUXILIARIES[verb.aux][index] + ' ' + verb.part;
-      if (verb.altAux) perfect += ' / ' + AUXILIARIES[verb.altAux][index] + ' ' + verb.part;
       return [pronoun, verb.past[index], verb.part, perfect];
     });
     var note = verb.note ? '<p class="muted tiny"><span class="lesson-tag">' + escapeHtml(verb.level) + ' · درس تکمیلی ۳</span> ' + escapeHtml(verb.note) + '</p>' : '';
+    var auxCaseHtml = (verb.auxCases || []).map(function (item) {
+      return '<div class="zpt-callout zpt-aux-case"><b>کاربرد دیگر · فعل کمکی ' + escapeHtml(item.aux) + '</b><p>' + escapeHtml(item.label) + '</p>' +
+        (item.example ? '<p dir="ltr">' + escapeHtml(item.example) + '</p>' : '') +
+        (item.translation ? '<small>' + escapeHtml(item.translation) + '</small>' : '') +
+        '<p><span class="lesson-tag">' + escapeHtml(item.lesson || 'A2 · درس تکمیلی ۶') + '</span></p>' +
+        (item.source ? '<p class="muted tiny"><a href="' + escapeHtml(item.source) + '" target="_blank" rel="noopener noreferrer">منبع Duden برای این کاربرد</a></p>' : '') +
+      '</div>';
+    }).join('');
     var sourceLink = '<p class="muted tiny"><a href="' + escapeHtml(meta.source) + '" target="_blank" rel="noopener noreferrer">بررسی جدول صرف در ' + escapeHtml(meta.sourceName) + '</a></p>';
     var host = document.getElementById('zptVerbDetail');
     if (!host) return;
     host.innerHTML =
       '<div class="row between"><b dir="ltr" style="font-size:19px">' + escapeHtml(verb.verb) + '</b><span class="chip">واژه ' + escapeHtml(verb.level) + ' · درس تکمیلی ۳ · ' + escapeHtml(verb.meaning) + '</span></div>' +
       '<p class="muted tiny">نوع فعل: <b>' + escapeHtml(meta.type) + '</b> · مبحث صرف گذشته: <b>' + (verb.verb === 'sein' || verb.verb === 'haben' ? 'A1' : 'A2') + '</b></p>' +
-      '<p class="muted tiny">Partizip II: <b dir="ltr">' + escapeHtml(verb.part) + '</b> · فعل کمکی در این کاربرد: <b dir="ltr">' + escapeHtml(verb.aux) + (verb.altAux ? ' / ' + escapeHtml(verb.altAux) : '') + '</b></p>' +
-      makeTable(['ضمیر فاعلی', 'Präteritum', 'Partizip II', 'Perfekt'], rows) + note + sourceLink;
+      '<p class="muted tiny">Partizip II: <b dir="ltr">' + escapeHtml(verb.part) + '</b> · فعل کمکی در کاربرد اصلی: <b dir="ltr">' + escapeHtml(verb.aux) + '</b></p>' +
+      makeTable(['ضمیر فاعلی', 'Präteritum', 'Partizip II', 'Perfekt'], rows) + note + auxCaseHtml + sourceLink;
   }
 
   function renderQuestions() {
@@ -195,7 +208,10 @@
       { id: 'zptSentence2', accepted: ['Wir haben am Abend ferngesehen.', 'Am Abend haben wir ferngesehen.'], expected: 'Wir haben am Abend ferngesehen.' },
       { id: 'zptSentence3', accepted: ['Hast du gestern gearbeitet?'], expected: 'Hast du gestern gearbeitet?' },
       { id: 'zptSentence4', accepted: ['Wann bist du zurückgekommen?'], expected: 'Wann bist du zurückgekommen?' },
-      { id: 'zptSentence5', accepted: ['Ich habe den Film nicht gesehen.'], expected: 'Ich habe den Film nicht gesehen.' }
+      { id: 'zptSentence5', accepted: ['Ich habe den Film nicht gesehen.'], expected: 'Ich habe den Film nicht gesehen.' },
+      { id: 'zptSentence6', accepted: ['Ich bin gestern nach Berlin gefahren.', 'Gestern bin ich nach Berlin gefahren.'], expected: 'Ich bin gestern nach Berlin gefahren.' },
+      { id: 'zptSentence7', accepted: ['Ich habe das Auto selbst gefahren.', 'Das Auto habe ich selbst gefahren.'], expected: 'Ich habe das Auto selbst gefahren.' },
+      { id: 'zptSentence8', accepted: ['Wir sind nach Hause gelaufen.', 'Nach Hause sind wir gelaufen.'], expected: 'Wir sind nach Hause gelaufen.' }
     ];
     var sentenceResults = [];
     sentenceRules.forEach(function (rule) {
@@ -223,7 +239,7 @@
       if (select) { select.value = ''; select.style.borderColor = ''; }
       if (explain) explain.textContent = '';
     });
-    ['zptSentence', 'zptSentence2', 'zptSentence3', 'zptSentence4', 'zptSentence5'].forEach(function (id) {
+    ['zptSentence', 'zptSentence2', 'zptSentence3', 'zptSentence4', 'zptSentence5', 'zptSentence6', 'zptSentence7', 'zptSentence8'].forEach(function (id) {
       var sentence = document.getElementById(id);
       if (sentence) { sentence.value = ''; sentence.style.borderColor = ''; }
     });
@@ -244,6 +260,7 @@
       '<div class="zpt-tabs" role="tablist" aria-label="مراحل آموزش زمان گذشته">',
       '<button type="button" class="zpt-tab" data-zpt-tab="overview" aria-selected="true">تفاوت کاربرد</button>',
       '<button type="button" class="zpt-tab" data-zpt-tab="perfekt" aria-selected="false">Perfekt</button>',
+      '<button type="button" class="zpt-tab" data-zpt-tab="auxiliary" aria-selected="false">انتخاب haben / sein</button>',
       '<button type="button" class="zpt-tab" data-zpt-tab="praeteritum" aria-selected="false">Präteritum</button>',
       '<button type="button" class="zpt-tab" data-zpt-tab="partizip" aria-selected="false">Partizip II</button>',
       '<button type="button" class="zpt-tab" data-zpt-tab="practice" aria-selected="false">تمرین</button>',
@@ -270,6 +287,23 @@
       '<div class="zpt-callout"><b>استثنای فعل‌های مُدال</b> <span class="lesson-tag">A2 · درس تکمیلی ۲</span><p>اگر فعل مُدال همراه یک مصدر دیگر بیاید، در Perfekt معمولاً مصدر خود فعل مُدال در پایان می‌آید؛ به این ساختار Ersatzinfinitiv می‌گویند.</p><p dir="ltr">Ich habe gestern nicht kommen können. · Wir haben früh aufstehen müssen.</p><small>دیروز نتوانستم بیایم. · مجبور شدیم زود بیدار شویم.</small><p dir="ltr">Sie hat nach Hause gehen wollen. · Du hast hier nicht parken dürfen.</p><small>او خواسته به خانه برود. · تو اجازه نداشتی اینجا پارک کنی.</small><p>اگر فعل مُدال بدون مصدر دیگری به‌کار رود، Partizip II معمولی می‌آید: <b dir="ltr">Ich habe das nicht gewollt.</b></p></div>',
       '<div class="zpt-callout"><b>سؤال پرسیدن و منفی کردن Perfekt</b> <span class="lesson-tag">A1 · درس تکمیلی ۲</span><p><b>پرسش بله/خیر:</b> فعل کمکی به جایگاه اول می‌رود.</p><p dir="ltr">Hast du gestern gelernt? = آیا دیروز درس خواندی؟</p><p><b>پرسش با کلمهٔ پرسشی:</b> کلمهٔ پرسشی اول و فعل کمکی دوم می‌آید.</p><p dir="ltr">Wann hast du gelernt? = چه زمانی درس خواندی؟</p><p><b>منفی:</b> در این نمونهٔ ساده، nicht پیش از Partizip II آمده است.</p><p dir="ltr">Ich habe den Film nicht gesehen. = من فیلم را ندیدم.</p><small>جای nicht با توجه به چیزی که نفی می‌شود می‌تواند تغییر کند.</small></div>',
       '<p class="muted tiny">در Perfekt، با عوض شدن ضمیر، فعل کمکی صرف می‌شود؛ Partizip II همان شکل می‌ماند.</p>',
+      '</div>',
+      '<div class="zpt-pane" data-zpt-pane="auxiliary" hidden>',
+      '<span class="lesson-tag">A1 · درس تکمیلی ۲ · قاعدهٔ پایه | A2 · درس تکمیلی ۶ · کاربردهای وابسته به معنی</span>',
+      '<p>برای شروع، بیشتر فعل‌ها در Perfekt با <b dir="ltr">haben</b> می‌آیند. <b dir="ltr">sein</b> معمولاً با بعضی فعل‌های بی‌مفعولِ حرکت به مقصد یا تغییر حالت می‌آید. اما فقط از روی «حرکت» تصمیم نگیر؛ معنی و ساخت جمله مهم است.</p>',
+      makeTable(['فعل و کاربرد', 'کمکی', 'نمونه آلمانی', 'معنی فارسی', 'سطح / درس'], [
+        ['fahren · حرکت به مقصد', 'sein', 'Ich bin nach Berlin gefahren.', 'من به برلین رفتم.', 'A1 · تکمیلی ۲'],
+        ['fahren · هدایت خودرو', 'haben', 'Wer von euch hat das Auto gefahren?', 'کدام‌یک از شما ماشین را رانده است؟', 'A2 · تکمیلی ۶'],
+        ['treffen · ملاقات کردن', 'haben', 'Ich habe meinen Freund getroffen.', 'من دوستم را ملاقات کردم.', 'A1 · تکمیلی ۲'],
+        ['auf jemanden treffen · روبه‌رو شدن اتفاقی', 'sein', 'Am Bahnhof ist sie auf einen alten Bekannten getroffen.', 'او در ایستگاه به‌طور اتفاقی با یک آشنای قدیمی روبه‌رو شد.', 'A2 · تکمیلی ۶'],
+        ['bekommen · دریافت کردن', 'haben', 'Ich habe ein Geschenk bekommen.', 'من هدیه‌ای دریافت کردم.', 'A2 · تکمیلی ۶'],
+        ['bekommen · برای کسی مفید بودن', 'sein', 'Die Kur ist ihm gut bekommen.', 'آن دورهٔ درمان برای او مفید بود.', 'A2 · تکمیلی ۶'],
+        ['laufen · حرکت به مقصد', 'sein', 'Wir sind nach Hause gelaufen.', 'ما پیاده به خانه رفتیم.', 'A1 · تکمیلی ۲'],
+        ['laufen · پیمودن مسافت ورزشی', 'haben', 'Die Läuferin hat 800 Meter gelaufen.', 'دونده ۸۰۰ متر دوید.', 'A2 · تکمیلی ۶'],
+        ['aufstehen · از خواب یا صندلی برخاستن', 'sein', 'Ich bin früh aufgestanden.', 'من زود از خواب بلند شدم.', 'A2 · تکمیلی ۲']
+      ]),
+      '<div class="zpt-callout"><b>یادت بماند</b><p>این دو فعل کمکی را آزادانه جای هم نگذار. یک فعل ممکن است در دو معنی یا ساخت متفاوت، دو فعل کمکی داشته باشد.</p><p>برای معنی روزمرهٔ «از خواب بلند شدن»، <b dir="ltr">aufstehen</b> با <b dir="ltr">sein</b> می‌آید. Duden برای معنی‌های جداگانه‌ای مثل «روی چیزی قرار داشتن/باز بودن» کاربرد <b dir="ltr">haben</b> را هم ثبت می‌کند؛ این نکته برای سطح پایه لازم نیست حفظ شود.</p></div>',
+      '<div class="zpt-sources"><a href="https://www.duden.de/sprachwissen/sprachratgeber/Perfektbildung-mit-haben-oder-sein" target="_blank" rel="noopener noreferrer">Duden · قاعدهٔ انتخاب haben یا sein</a><a href="https://www.goethe.de/ins/de/de/prf/grm.html" target="_blank" rel="noopener noreferrer">Goethe-Institut · دستور زبان</a></div>',
       '</div>',
       '<div class="zpt-pane" data-zpt-pane="praeteritum" hidden>',
       '<span class="lesson-tag">A1 · درس تکمیلی ۳ · sein و haben | A2 · صرف فعل‌های دیگر</span>',
@@ -305,13 +339,16 @@
       '</div>',
       '<div class="zpt-pane" data-zpt-pane="practice" hidden>',
       '<span class="lesson-tag">A1–A2 · درس تکمیلی ۵ · تشخیص و جمله‌سازی</span>',
-      '<p class="muted tiny">' + QUESTIONS.length + ' سؤال را پاسخ بده و پنج جمله را بساز.</p>',
+      '<p class="muted tiny">' + QUESTIONS.length + ' سؤال را پاسخ بده و هشت جمله را بساز.</p>',
       '<div id="zptQuestions"></div>',
       '<div class="zpt-question"><label for="zptSentence">جمله‌سازی ۱: کلمه‌ها را به جمله درست تبدیل کن.</label><p dir="ltr">Ich / gestern / einen Film / gesehen / habe</p><input id="zptSentence" dir="ltr" autocomplete="off" placeholder="Ich habe gestern ..."></div>',
       '<div class="zpt-question"><label for="zptSentence2">جمله‌سازی ۲: فعل جداشدنی را در Perfekt به‌کار ببر.</label><p dir="ltr">Wir / am Abend / ferngesehen / haben</p><input id="zptSentence2" dir="ltr" autocomplete="off" placeholder="Wir haben am Abend ..."></div>',
       '<div class="zpt-question"><label for="zptSentence3">جمله‌سازی ۳: یک پرسش بله/خیر بساز.</label><p dir="ltr">Hast / du / gestern / gearbeitet ?</p><input id="zptSentence3" dir="ltr" autocomplete="off" placeholder="Hast du ...?"></div>',
       '<div class="zpt-question"><label for="zptSentence4">جمله‌سازی ۴: یک پرسش با کلمهٔ پرسشی بساز.</label><p dir="ltr">Wann / bist / du / zurückgekommen ?</p><input id="zptSentence4" dir="ltr" autocomplete="off" placeholder="Wann bist du ...?"></div>',
       '<div class="zpt-question"><label for="zptSentence5">جمله‌سازی ۵: جمله را منفی کن.</label><p dir="ltr">Ich / habe / den Film / nicht / gesehen</p><input id="zptSentence5" dir="ltr" autocomplete="off" placeholder="Ich habe ... nicht ..."></div>',
+      '<div class="zpt-question"><label for="zptSentence6">جمله‌سازی ۶: فعل کمکی درست برای حرکت به مقصد را انتخاب و جمله بساز.</label><p dir="ltr">Ich / gestern / nach Berlin / gefahren / bin</p><input id="zptSentence6" dir="ltr" autocomplete="off" placeholder="Ich bin gestern ..."></div>',
+      '<div class="zpt-question"><label for="zptSentence7">جمله‌سازی ۷: معنی «خودم ماشین را راندم» را بساز.</label><p dir="ltr">Ich / das Auto / selbst / gefahren / habe</p><input id="zptSentence7" dir="ltr" autocomplete="off" placeholder="Ich habe das Auto ..."></div>',
+      '<div class="zpt-question"><label for="zptSentence8">جمله‌سازی ۸: حرکت پیاده به مقصد را در Perfekt بنویس.</label><p dir="ltr">Wir / nach Hause / gelaufen / sind</p><input id="zptSentence8" dir="ltr" autocomplete="off" placeholder="Wir sind nach Hause ..."></div>',
       '<div class="row" style="margin-top:10px"><button type="button" class="btn primary" id="zptCheck">بررسی پاسخ‌ها</button><button type="button" class="btn" id="zptReset">شروع دوباره</button></div>',
       '<div id="zptPracticeFeedback" class="zpt-feedback" aria-live="polite">پاسخ‌ها را انتخاب کن و بررسی را بزن.</div>',
       '</div>',
