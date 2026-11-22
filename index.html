@@ -3063,6 +3063,14 @@ function translateUiText(raw,ix){
  }
  return value.replace(trim,translated);
 }
+function applyUiTextNode(node,ix){
+ if(typeof node.__faOriginal==='undefined')node.__faOriginal=node.nodeValue;
+ else if(typeof node.__faRendered==='string'&&node.nodeValue!==node.__faRendered)node.__faOriginal=node.nodeValue;
+ const original=node.__faOriginal;
+ const rendered=ix<0?original:translateUiText(original,ix);
+ if(node.nodeValue!==rendered)node.nodeValue=rendered;
+ node.__faRendered=rendered;
+}
 function applyInterfaceLanguage(){
  const ix=uiLang==='de'?0:uiLang==='en'?1:-1;
  document.documentElement.lang=uiLang;
@@ -3070,11 +3078,7 @@ function applyInterfaceLanguage(){
  document.body.dataset.uiLanguage=uiLang;
  const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
  let node;
- while(node=walker.nextNode()){
-  if(!node.__faOriginal)node.__faOriginal=node.nodeValue;
-  const original=node.__faOriginal;
-  node.nodeValue=ix<0?original:translateUiText(original,ix);
- }
+ while(node=walker.nextNode())applyUiTextNode(node,ix);
  const attrs=['placeholder','title','aria-label'];
  document.querySelectorAll('input,textarea,button,select,[title],[aria-label]').forEach(el=>{
   attrs.forEach(attr=>{
@@ -3085,9 +3089,10 @@ function applyInterfaceLanguage(){
    el.setAttribute(attr,ix<0?original:translateUiText(original,ix));
   });
  });
+ document.querySelectorAll('input:not([dir]),textarea:not([dir])').forEach(el=>el.setAttribute('dir','auto'));
 }
 const uiObserver=new MutationObserver(()=>applyInterfaceLanguage());
-uiObserver.observe(document.body,{childList:true,subtree:true});
+uiObserver.observe(document.body,{childList:true,subtree:true,characterData:true});
 
 function save(){localStorage.setItem('md_known',JSON.stringify([...known]));localStorage.setItem('md_prefs',JSON.stringify(prefs));}
 function setTheme(v){prefs.theme=v;const activeTheme=v==='system'?(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'):v;document.documentElement.dataset.theme=activeTheme;const themeColor=document.querySelector('meta[name="theme-color"]');if(themeColor)themeColor.setAttribute('content',activeTheme==='light'?'#dfe4e7':'#171d27'); if($('themeSelect'))$('themeSelect').value=v;save()}
