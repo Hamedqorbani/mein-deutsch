@@ -61,4 +61,26 @@ assert.equal(
   translate('حالت چطور است؟ · سلام و احوال‌پرسی', 1),
   'حالت چطور است؟ · Greetings and small talk'
 );
+const helperStart = html.indexOf('function applyUiTextNode(node,ix){');
+const helperEnd = html.indexOf('\nfunction applyInterfaceLanguage()', helperStart);
+assert.ok(helperStart >= 0 && helperEnd > helperStart, 'Live text-node localization helper must exist');
+vm.runInNewContext(
+  html.slice(helperStart, helperEnd) + '\n globalThis.__zunoApplyUiTextNode = applyUiTextNode;',
+  context
+);
+const applyTextNode = context.__zunoApplyUiTextNode;
+const dynamicNode = { nodeValue: 'فلش‌کارت‌ها' };
+applyTextNode(dynamicNode, 0);
+assert.equal(dynamicNode.nodeValue, 'Lernkarten');
+applyTextNode(dynamicNode, 1);
+assert.equal(dynamicNode.nodeValue, 'Flashcards');
+applyTextNode(dynamicNode, -1);
+assert.equal(dynamicNode.nodeValue, 'فلش‌کارت‌ها');
+dynamicNode.nodeValue = 'دیکشنری و جستجو';
+applyTextNode(dynamicNode, 1);
+assert.equal(dynamicNode.nodeValue, 'Dictionary & Search', 'Direct dynamic text-node updates must be translated');
+applyTextNode(dynamicNode, 1);
+assert.equal(dynamicNode.nodeValue, 'Dictionary & Search', 'Observer re-runs must preserve the original source text');
+assert.ok(html.includes('characterData:true'), 'Localization observer must watch direct text-node updates');
+assert.ok(html.includes("input:not([dir]),textarea:not([dir])"), 'Unspecified text inputs must use automatic text direction');
 console.log('PASS: ' + new Set(categories).size + ' question categories, ' + labels.length + ' UI labels, pronunciation/translation prefixes, counters, and dynamic category suffixes.');
