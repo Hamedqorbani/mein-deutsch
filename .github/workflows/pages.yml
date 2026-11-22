@@ -25,6 +25,8 @@ jobs:
           node-version: 22
       - name: Validate project scripts and past-tense data
         run: node tests/validate-past-tense.js
+      - name: Validate interface localization
+        run: node tests/validate-localization.js
       - name: Setup Pages
         uses: actions/configure-pages@v5
         with:
