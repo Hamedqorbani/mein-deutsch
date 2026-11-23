@@ -3032,8 +3032,8 @@ function translateUiText(raw,ix){
  if(translated===trim){
   let m=trim.match(/^([0-9۰-۹]+)\s*واژه\s*از\s*([0-9۰-۹]+)$/);
   if(m)translated=ix===0?m[1]+' Wörter von '+m[2]:m[1]+' words of '+m[2];
-  m=trim.match(/^درس\s*(\d+)\s*·\s*(.+)$/);
-  if(m)translated=(ix===0?'Lektion ':'Lesson ')+m[1]+' · '+m[2];
+  m=trim.match(/^درس\s*([0-9۰-۹]+)\s*·\s*(.+)$/);
+  if(m){const lessonNumber=m[1].replace(/[۰-۹]/g,d=>'۰۱۲۳۴۵۶۷۸۹'.indexOf(d));translated=(ix===0?'Lektion ':'Lesson ')+lessonNumber+' · '+m[2];}
   m=trim.match(/^درس\s*(\d+)\s*تا\s*(\d+)\s*·\s*مرور$/);
   if(m)translated=ix===0?'Lektion '+m[1]+'–'+m[2]+' · Wiederholung':'Lessons '+m[1]+'–'+m[2]+' · Review';
   m=trim.match(/^سؤال\s*([0-9۰-۹]+)\s*از\s*([0-9۰-۹]+)$/);
@@ -3096,7 +3096,20 @@ uiObserver.observe(document.body,{childList:true,subtree:true,characterData:true
 
 function save(){localStorage.setItem('md_known',JSON.stringify([...known]));localStorage.setItem('md_prefs',JSON.stringify(prefs));}
 function setTheme(v){prefs.theme=v;const activeTheme=v==='system'?(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'):v;document.documentElement.dataset.theme=activeTheme;const themeColor=document.querySelector('meta[name="theme-color"]');if(themeColor)themeColor.setAttribute('content',activeTheme==='light'?'#dfe4e7':'#171d27'); if($('themeSelect'))$('themeSelect').value=v;save()}
-function lessonForWord(w){const z=(String(w[0]||'')+' '+String(w[1]||'')+' '+String(w[5]||'')).toLowerCase();if(/apfel|banane|orange|birne|erdbeere|brot|wasser|milch|käse|fleisch|reis|tomate|kartoffel|gurke|möhre|tee|saft|obst|gemüse|essen|trink|frühstück|mittagessen|abendessen|farbe|rot|blau|grün|gelb|غذا|میوه|سبزی|صبحانه|ناهار|شام|رنگ/.test(z))return 'درس ۳ · Essen und Trinken';if(/mutter|vater|bruder|schwester|eltern|freund|frau|mann|kind|familie|menschen|name|alter|heißen|wohnort|خانواده|دوست|مادر|پدر|خواهر|برادر/.test(z))return 'درس ۲ · Menschen';if(/brauchen|nehmen|hobby|arbeiten|freizeit|spielen|musik|sport|tag|leben|روزمره|زندگی|کار|سرگرمی/.test(z))return 'درس ۴ · Mein Leben';if(/guten morgen|guten tag|guten abend|tschüss|auf wiedersehen|hallo|bitte|danke|kommen|sprechen|sprache|land|iran|deutsch|englisch|zahlen|nummer|buchstab|alphabet|سلام|خداحافظ|کشور|زبان|عدد/.test(z))return 'درس ۱ · Super!';return 'واژگان تکمیلی A1 · بدون تطبیق قطعی با درس';}
+function lessonForWord(w){
+ const sourceLesson=String(w&&w[10]||'').trim().match(/^Lektion\s+(\d+)$/i);
+ if(sourceLesson){
+  const number=Number(sourceLesson[1]),digits=String(number).replace(/\d/g,d=>'۰۱۲۳۴۵۶۷۸۹'[Number(d)]);
+  const titles={1:'Super!',2:'Menschen',3:'Essen und Trinken',4:'Mein Leben'};
+  return 'درس '+digits+(titles[number]?' · '+titles[number]:'');
+ }
+ const z=(String(w&&w[0]||'')+' '+String(w&&w[1]||'')+' '+String(w&&w[5]||'')).toLowerCase();
+ if(/apfel|banane|orange|birne|erdbeere|brot|wasser|milch|käse|fleisch|reis|tomate|kartoffel|gurke|möhre|tee|saft|obst|gemüse|essen|trink|frühstück|mittagessen|abendessen|farbe|rot|blau|grün|gelb|غذا|میوه|سبزی|صبحانه|ناهار|شام|رنگ/.test(z))return 'درس ۳ · Essen und Trinken';
+ if(/mutter|vater|bruder|schwester|eltern|freund|frau|mann|kind|familie|menschen|name|alter|heißen|wohnort|خانواده|دوست|مادر|پدر|خواهر|برادر/.test(z))return 'درس ۲ · Menschen';
+ if(/brauchen|nehmen|hobby|arbeiten|freizeit|spielen|musik|sport|tag|leben|روزمره|زندگی|کار|سرگرمی/.test(z))return 'درس ۴ · Mein Leben';
+ if(/guten morgen|guten tag|guten abend|tschüss|auf wiedersehen|hallo|bitte|danke|kommen|sprechen|sprache|land|iran|deutsch|englisch|zahlen|nummer|buchstab|alphabet|سلام|خداحافظ|کشور|زبان|عدد/.test(z))return 'درس ۱ · Super!';
+ return 'واژگان تکمیلی A1 · بدون تطبیق قطعی با درس';
+}
 let currentPage='home',previousPage='home';function page(p){if(!p||!$('page-'+p))return;if(p!==currentPage){previousPage=currentPage;currentPage=p;}document.querySelectorAll('.page').forEach(x=>x.classList.add('hidden'));$('page-'+p).classList.remove('hidden');document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x.dataset.page===p));$('topBackBtn')?.classList.toggle('hidden',p==='home');setMainMenu(false);if(p==='cards')renderCard();if(p==='dictionary')searchDict()}
 function counts(){let allA1=uniqueCards(words.filter(w=>w[6]==='A1'));const knownEl=$('knownCount'),totalEl=$('totalCount'),streakEl=$('streakCount');if(knownEl)knownEl.textContent=fa(allA1.filter(w=>known.has(w[0])).length);if(totalEl)totalEl.textContent=fa(allA1.length);if(streakEl)streakEl.textContent=fa(Number(localStorage.getItem('md_sessions')||0))}
 function setupCardCategories(){
