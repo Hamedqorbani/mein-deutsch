@@ -27,6 +27,8 @@ jobs:
         run: node tests/validate-past-tense.js
       - name: Validate interface localization
         run: node tests/validate-localization.js
+      - name: Validate source-based Starten wir lesson labels
+        run: node tests/validate-lesson-labels.js
       - name: Setup Pages
         uses: actions/configure-pages@v5
         with:
