@@ -82,4 +82,4 @@ for (const file of ['zuno-past-tense.js','enhancements.js','zuno-a1-completion.j
 }
 const pastSource = fs.readFileSync(path.join(root, 'zuno-past-tense.js'), 'utf8');
 for (const id of ['zptSentence3','zptSentence4','zptSentence5','zptSentence6','zptSentence7','zptSentence8','zptSentence9','zptSentence10','zptSentence11','zptSentence12']) assert.ok(pastSource.includes(id));
-console.log('PASS: ' + VERBS.length + ' unique A1/A2 verbs, ' + QUESTIONS.length + ' validated questions, six pronoun forms, five sentence builders, ' + inlineCount + ' inline script(s), and all external JavaScript files compile.');
+console.log('PASS: ' + VERBS.length + ' unique A1/A2 verbs, ' + QUESTIONS.length + ' validated questions, six pronoun forms, twelve sentence builders, ' + inlineCount + ' inline script(s), and all external JavaScript files compile.');
