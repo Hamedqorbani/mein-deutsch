@@ -82,5 +82,8 @@ assert.equal(dynamicNode.nodeValue, 'Dictionary & Search', 'Direct dynamic text-
 applyTextNode(dynamicNode, 1);
 assert.equal(dynamicNode.nodeValue, 'Dictionary & Search', 'Observer re-runs must preserve the original source text');
 assert.ok(html.includes('characterData:true'), 'Localization observer must watch direct text-node updates');
+assert.equal(translate('درس ۳ · Essen und Trinken', 0), 'Lektion 3 · Essen und Trinken', 'Persian lesson digits must translate to German');
+assert.equal(translate('درس ۱۲ · Starten wir! A1', 1), 'Lesson 12 · Starten wir! A1', 'Two-digit Persian lesson labels must translate to English');
+assert.equal(translate('درس 3 · Starten wir! A1', 1), 'Lesson 3 · Starten wir! A1', 'Latin lesson digits must remain supported');
 assert.ok(html.includes(`input:not([dir]):not([type]),input[type="text"]:not([dir]),input[type="search"]:not([dir]),textarea:not([dir])`), 'Unspecified text inputs must use automatic text direction');
 console.log('PASS: ' + new Set(categories).size + ' question categories, ' + labels.length + ' UI labels, pronunciation/translation prefixes, counters, and dynamic category suffixes.');
