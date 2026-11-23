@@ -92,8 +92,14 @@ function setupLiveFeedback(){
    $$('select,input,textarea',panel).forEach(el=>{
     const color=(el.style.borderColor||'').toLowerCase();
     el.classList.remove('zuno-live-correct','zuno-live-wrong');
-    if(color.includes('85b')||color.includes('55b')||color.includes('45a')||color.includes('rgb(69, 173, 123)'))el.classList.add('zuno-live-correct');
+    if(color.includes('85b')||color.includes('55b')||color.includes('45a')||color.includes('rgb(69, 173, 123)')||color.includes('var(--accent)'))el.classList.add('zuno-live-correct');
     else if(color.includes('danger')||color.includes('rgb(229, 143, 145)'))el.classList.add('zuno-live-wrong');
+    else {
+     const feedback=$('[aria-live="polite"]',panel);
+     const message=feedback?feedback.textContent.trim():'';
+     if(message.startsWith('✓'))el.classList.add('zuno-live-correct');
+     else if(message.startsWith('✗'))el.classList.add('zuno-live-wrong');
+    }
    });
   },0);
  });
