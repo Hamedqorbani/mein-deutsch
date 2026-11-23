@@ -58,11 +58,43 @@
     { verb: 'zurückkommen', meaning: 'برگشتن', level: 'A2', past: ['kam zurück', 'kamst zurück', 'kam zurück', 'kamen zurück', 'kamt zurück', 'kamen zurück'], part: 'zurückgekommen', aux: 'sein', note: 'فعل جداشدنی و قوی؛ برای برگشتن، Perfekt با sein ساخته می‌شود.' }
   ];
 
+
+  VERBS.push(
+    { verb: 'wohnen', meaning: 'زندگی کردن / ساکن بودن', level: 'A1', lesson: 'A1 · درس تکمیلی ۴ · فعل‌های روزمره', past: ['wohnte', 'wohntest', 'wohnte', 'wohnten', 'wohntet', 'wohnten'], part: 'gewohnt', aux: 'haben' },
+    { verb: 'spielen', meaning: 'بازی کردن', level: 'A1', lesson: 'A1 · درس تکمیلی ۴ · فعل‌های روزمره', past: ['spielte', 'spieltest', 'spielte', 'spielten', 'spieltet', 'spielten'], part: 'gespielt', aux: 'haben' },
+    { verb: 'kaufen', meaning: 'خریدن', level: 'A1', lesson: 'A1 · درس تکمیلی ۴ · فعل‌های روزمره', past: ['kaufte', 'kauftest', 'kaufte', 'kauften', 'kauftet', 'kauften'], part: 'gekauft', aux: 'haben' },
+    { verb: 'fragen', meaning: 'پرسیدن', level: 'A1', lesson: 'A1 · درس تکمیلی ۴ · فعل‌های روزمره', past: ['fragte', 'fragtest', 'fragte', 'fragten', 'fragtet', 'fragten'], part: 'gefragt', aux: 'haben' },
+    { verb: 'sagen', meaning: 'گفتن', level: 'A1', lesson: 'A1 · درس تکمیلی ۴ · فعل‌های روزمره', past: ['sagte', 'sagtest', 'sagte', 'sagten', 'sagtet', 'sagten'], part: 'gesagt', aux: 'haben' },
+    { verb: 'hören', meaning: 'شنیدن / گوش دادن', level: 'A1', lesson: 'A1 · درس تکمیلی ۴ · فعل‌های روزمره', past: ['hörte', 'hörtest', 'hörte', 'hörten', 'hörtet', 'hörten'], part: 'gehört', aux: 'haben' },
+    { verb: 'kochen', meaning: 'آشپزی کردن / پختن', level: 'A1', lesson: 'A1 · درس تکمیلی ۴ · فعل‌های روزمره', past: ['kochte', 'kochtest', 'kochte', 'kochten', 'kochtet', 'kochten'], part: 'gekocht', aux: 'haben' },
+    { verb: 'suchen', meaning: 'جست‌وجو کردن / دنبال چیزی گشتن', level: 'A1', lesson: 'A1 · درس تکمیلی ۴ · فعل‌های روزمره', past: ['suchte', 'suchtest', 'suchte', 'suchten', 'suchtet', 'suchten'], part: 'gesucht', aux: 'haben' }
+  );
+
+  VERBS.forEach(function (item) {
+    if (!item.lesson) {
+      item.lesson = item.level + (item.level === 'A1'
+        ? ' · درس تکمیلی ۳ · فعل‌های پایه'
+        : ' · درس تکمیلی ۳ · فعل‌های تکمیلی');
+    }
+  });
+
   var VERB_META = {"sehen":{"type":"قوی","source":"https://www.duden.de/konjugation/sehen","sourceName":"Duden"},"lesen":{"type":"قوی","source":"https://www.duden.de/konjugation/lesen_aufsammeln","sourceName":"Duden"},"schreiben":{"type":"قوی","source":"https://www.duden.de/konjugation/schreiben","sourceName":"Duden"},"finden":{"type":"قوی","source":"https://www.duden.de/konjugation/finden","sourceName":"Duden"},"nehmen":{"type":"قوی","source":"https://www.duden.de/konjugation/nehmen","sourceName":"Duden"},"geben":{"type":"قوی","source":"https://www.duden.de/konjugation/geben","sourceName":"Duden"},"helfen":{"type":"قوی","source":"https://www.duden.de/konjugation/helfen","sourceName":"Duden"},"treffen":{"type":"قوی","source":"https://www.duden.de/konjugation/treffen","sourceName":"Duden"},"schlafen":{"type":"قوی","source":"https://www.duden.de/konjugation/schlafen","sourceName":"Duden"},"denken":{"type":"مختلط","source":"https://www.duden.de/konjugation/denken","sourceName":"Duden"},"wissen":{"type":"بی‌قاعده","source":"https://www.duden.de/konjugation/wissen","sourceName":"Duden"},"laufen":{"type":"قوی · حرکت با sein","source":"https://www.duden.de/konjugation/laufen","sourceName":"Duden"},"bringen":{"type":"مختلط","source":"https://www.duden.de/konjugation/bringen","sourceName":"Duden"},"verstehen":{"type":"قوی · پیشوند جدانشدنی ver-","source":"https://www.duden.de/konjugation/verstehen","sourceName":"Duden"},"fernsehen":{"type":"قوی · جداشدنی","source":"https://www.duden.de/konjugation/fernsehen","sourceName":"Duden"},"aufräumen":{"type":"ضعیف · جداشدنی","source":"https://www.duden.de/konjugation/aufraeumen","sourceName":"Duden"},"bekommen":{"type":"قوی · پیشوند جدانشدنی be-","source":"https://www.duden.de/konjugation/bekommen","sourceName":"Duden"},"anfangen":{"type":"قوی · جداشدنی","source":"https://www.larousse.com/de/konjugation/deutsch/anfangen/487","sourceName":"Larousse"},"anrufen":{"type":"قوی · جداشدنی","source":"https://www.die-konjugation.de/verb/anrufen.php","sourceName":"Die Konjugation"},"dürfen":{"type":"مدال · بی‌قاعده","source":"https://www.duden.de/konjugation/duerfen","sourceName":"Duden"},"wollen":{"type":"مدال · بی‌قاعده","source":"https://www.duden.de/konjugation/wollen_moechten_wuenschen","sourceName":"Duden"},"sollen":{"type":"مدال · بی‌قاعده","source":"https://www.duden.de/konjugation/sollen","sourceName":"Duden"},"mögen":{"type":"مدال · بی‌قاعده","source":"https://www.duden.de/konjugation/moegen","sourceName":"Duden"},"sein":{"type":"بی‌قاعده · فعل کمکی","source":"https://www.duden.de/konjugation/sein_Hilfsverb","sourceName":"Duden"},"haben":{"type":"بی‌قاعده · فعل کمکی","source":"https://www.duden.de/konjugation/haben_Hilfsverb","sourceName":"Duden"},"gehen":{"type":"قوی","source":"https://www.duden.de/konjugation/gehen","sourceName":"Duden"},"kommen":{"type":"قوی","source":"https://www.duden.de/konjugation/kommen","sourceName":"Duden"},"machen":{"type":"ضعیف","source":"https://www.duden.de/konjugation/machen","sourceName":"Duden"},"lernen":{"type":"ضعیف","source":"https://www.duden.de/konjugation/lernen","sourceName":"Duden"},"arbeiten":{"type":"ضعیف · ریشه پایان‌یافته به t","source":"https://www.duden.de/konjugation/arbeiten","sourceName":"Duden"},"essen":{"type":"قوی","source":"https://www.duden.de/konjugation/essen","sourceName":"Duden"},"trinken":{"type":"قوی","source":"https://www.duden.de/konjugation/trinken","sourceName":"Duden"},"sprechen":{"type":"قوی","source":"https://www.duden.de/konjugation/sprechen","sourceName":"Duden"},"fahren":{"type":"قوی · فعل حرکتی","source":"https://www.duden.de/konjugation/fahren","sourceName":"Duden"},"bleiben":{"type":"قوی · فعل ماندن","source":"https://www.duden.de/konjugation/bleiben","sourceName":"Duden"},"aufstehen":{"type":"قوی · جداشدنی","source":"https://www.duden.de/konjugation/aufstehen","sourceName":"Duden"},"einkaufen":{"type":"ضعیف · جداشدنی","source":"https://www.duden.de/konjugation/einkaufen","sourceName":"Duden"},"besuchen":{"type":"ضعیف · جدانشدنی","source":"https://www.duden.de/konjugation/besuchen","sourceName":"Duden"},"studieren":{"type":"ضعیف · پایان -ieren","source":"https://www.duden.de/konjugation/studieren","sourceName":"Duden"},"können":{"type":"مدال · بی‌قاعده","source":"https://www.duden.de/konjugation/koennen","sourceName":"Duden"},"müssen":{"type":"مدال · بی‌قاعده","source":"https://www.duden.de/konjugation/muessen","sourceName":"Duden"},
     "vergessen":{"type":"قوی · پیشوند جدانشدنی ver-","source":"https://www.duden.de/konjugation/vergessen_Verb_nicht_erinnern","sourceName":"Duden"},
     "einladen":{"type":"قوی · جداشدنی","source":"https://www.duden.de/konjugation/einladen_verladen","sourceName":"Duden"},
     "mitbringen":{"type":"مختلط · جداشدنی","source":"https://www.duden.de/konjugation/mitbringen","sourceName":"Duden"},
     "zurückkommen":{"type":"قوی · جداشدنی و حرکتی","source":"https://www.duden.de/konjugation/zurueckkommen","sourceName":"Duden"}};
+
+
+  Object.assign(VERB_META, {
+    'wohnen': { type: 'ضعیف', source: 'https://www.duden.de/konjugation/wohnen', sourceName: 'Duden' },
+    'spielen': { type: 'ضعیف', source: 'https://www.duden.de/konjugation/spielen', sourceName: 'Duden' },
+    'kaufen': { type: 'ضعیف', source: 'https://www.duden.de/konjugation/kaufen', sourceName: 'Duden' },
+    'fragen': { type: 'ضعیف', source: 'https://www.duden.de/konjugation/fragen', sourceName: 'Duden' },
+    'sagen': { type: 'ضعیف', source: 'https://www.duden.de/konjugation/sagen', sourceName: 'Duden' },
+    'hören': { type: 'ضعیف', source: 'https://www.duden.de/konjugation/hoeren', sourceName: 'Duden' },
+    'kochen': { type: 'ضعیف', source: 'https://www.duden.de/konjugation/kochen', sourceName: 'Duden' },
+    'suchen': { type: 'ضعیف', source: 'https://www.duden.de/konjugation/suchen', sourceName: 'Duden' }
+  });
 
   var QUESTIONS = [
     { q: 'Gestern habe ich Deutsch gelernt. این جمله در کدام زمان است؟', options: ['Präteritum', 'Perfekt', 'Präsens'], answer: 1, why: 'haben + gelernt ساخت Perfekt است.' },
@@ -106,7 +138,15 @@
     { q: 'A2 · برای حرکت پیاده به خانه کدام درست است؟ Wir ___ nach Hause gelaufen.', options: ['haben', 'sind', 'seid'], answer: 1, why: 'در معنی حرکت به مقصد، laufen با sein می‌آید.' },
     { q: 'A2 · در مسابقه و با مسافت مشخص کدام درست است؟ Die Läuferin ___ 800 Meter gelaufen.', options: ['ist', 'hat', 'sind'], answer: 1, why: 'Duden برای پیمودن مسافت مشخص در کاربرد ورزشی، haben را ثبت می‌کند.' },
     { q: 'A2 · برای «از خواب بلند شدن» کدام جمله درست است؟', options: ['Ich habe früh aufgestanden.', 'Ich bin früh aufgestanden.', 'Ich werde früh aufgestanden.'], answer: 1, why: 'در معنی برخاستن از تخت یا صندلی، aufstehen با sein ساخته می‌شود.' },
-    { q: 'A2 · bekommen به معنی «دریافت کردن» با کدام فعل کمکی می‌آید؟', options: ['sein', 'haben', 'werden'], answer: 1, why: 'برای معنی دریافت کردن، Duden haben را ثبت می‌کند؛ کاربرد جداگانهٔ «برای کسی مفید بودن» با sein می‌آید.' }
+    { q: 'A2 · bekommen به معنی «دریافت کردن» با کدام فعل کمکی می‌آید؟', options: ['sein', 'haben', 'werden'], answer: 1, why: 'برای معنی دریافت کردن، Duden haben را ثبت می‌کند؛ کاربرد جداگانهٔ «برای کسی مفید بودن» با sein می‌آید.' },
+    { q: 'A1 · درس تکمیلی ۴ · Präteritum فعل wohnen برای du کدام است؟', options: ['wohnte', 'wohntest', 'wohnten'], answer: 1, why: 'Duden صرف ضعیف wohnen را برای du به شکل wohntest ثبت می‌کند.' },
+    { q: 'A1 · درس تکمیلی ۴ · Partizip II فعل spielen کدام است؟', options: ['gespielt', 'gespielen', 'gespieltet'], answer: 0, why: 'Partizip II فعل ضعیف spielen برابر gespielt است.' },
+    { q: 'A1 · درس تکمیلی ۴ · جمله را کامل کن: Er ___ gestern ein Buch gekauft.', options: ['hat', 'ist', 'haben'], answer: 0, why: 'kaufen در این کاربرد با haben می‌آید: Er hat ein Buch gekauft.' },
+    { q: 'A1 · درس تکمیلی ۴ · Präteritum فعل fragen برای wir کدام است؟', options: ['fragt', 'fragten', 'fragte'], answer: 1, why: 'صرف wir در Präteritum برابر fragten است.' },
+    { q: 'A1 · درس تکمیلی ۴ · Partizip II فعل sagen کدام است؟', options: ['gesagt', 'gesagen', 'gesagte'], answer: 0, why: 'Partizip II فعل sagen برابر gesagt است.' },
+    { q: 'A1 · درس تکمیلی ۴ · Partizip II فعل hören کدام است؟', options: ['gehört', 'gehören', 'gehoren'], answer: 0, why: 'شکل درست Partizip II برابر gehört است؛ ö را فراموش نکن.' },
+    { q: 'A1 · درس تکمیلی ۴ · جمله را کامل کن: Wir ___ zusammen gekocht.', options: ['haben', 'sind', 'hat'], answer: 0, why: 'kochen در این کاربرد با haben ساخته می‌شود: Wir haben gekocht.' },
+    { q: 'A1 · درس تکمیلی ۴ · Präteritum فعل suchen برای ihr کدام است؟', options: ['suchtet', 'suchten', 'sucht'], answer: 0, why: 'پایان فعل ضعیف برای ihr برابر -tet است: ihr suchtet.' }
   ];
 
   function escapeHtml(value) {
@@ -153,11 +193,12 @@
   function renderVerb(verbName) {
     var verb = VERBS.filter(function (item) { return item.verb === verbName; })[0] || VERBS[2];
     var meta = VERB_META[verb.verb] || { type: 'پرکاربرد · بررسی‌شده در مرحله قبل', source: 'https://www.duden.de/konjugation', sourceName: 'Duden' };
+    var lesson = verb.lesson || (verb.level + ' · درس تکمیلی ۳');
     var rows = PRONOUNS.map(function (pronoun, index) {
       var perfect = AUXILIARIES[verb.aux][index] + ' ' + verb.part;
       return [pronoun, verb.past[index], verb.part, perfect];
     });
-    var note = verb.note ? '<p class="muted tiny"><span class="lesson-tag">' + escapeHtml(verb.level) + ' · درس تکمیلی ۳</span> ' + escapeHtml(verb.note) + '</p>' : '';
+    var note = verb.note ? '<p class="muted tiny"><span class="lesson-tag">' + escapeHtml(lesson) + '</span> ' + escapeHtml(verb.note) + '</p>' : '';
     var auxCaseHtml = (verb.auxCases || []).map(function (item) {
       return '<div class="zpt-callout zpt-aux-case"><b>کاربرد دیگر · فعل کمکی ' + escapeHtml(item.aux) + '</b><p>' + escapeHtml(item.label) + '</p>' +
         (item.example ? '<p dir="ltr">' + escapeHtml(item.example) + '</p>' : '') +
@@ -170,8 +211,8 @@
     var host = document.getElementById('zptVerbDetail');
     if (!host) return;
     host.innerHTML =
-      '<div class="row between"><b dir="ltr" style="font-size:19px">' + escapeHtml(verb.verb) + '</b><span class="chip">واژه ' + escapeHtml(verb.level) + ' · درس تکمیلی ۳ · ' + escapeHtml(verb.meaning) + '</span></div>' +
-      '<p class="muted tiny">نوع فعل: <b>' + escapeHtml(meta.type) + '</b> · مبحث صرف گذشته: <b>' + (verb.verb === 'sein' || verb.verb === 'haben' ? 'A1' : 'A2') + '</b></p>' +
+      '<div class="row between"><b dir="ltr" style="font-size:19px">' + escapeHtml(verb.verb) + '</b><span class="chip">واژه ' + escapeHtml(verb.level) + ' · ' + escapeHtml(lesson) + ' · ' + escapeHtml(verb.meaning) + '</span></div>' +
+      '<p class="muted tiny">نوع فعل: <b>' + escapeHtml(meta.type) + '</b> · سطح و درس صرف گذشته: <b>' + escapeHtml(verb.level) + ' · ' + escapeHtml(lesson) + '</b></p>' +
       '<p class="muted tiny">Partizip II: <b dir="ltr">' + escapeHtml(verb.part) + '</b> · فعل کمکی در کاربرد اصلی: <b dir="ltr">' + escapeHtml(verb.aux) + '</b></p>' +
       makeTable(['ضمیر فاعلی', 'Präteritum', 'Partizip II', 'Perfekt'], rows) + note + auxCaseHtml + sourceLink;
   }
@@ -211,7 +252,11 @@
       { id: 'zptSentence5', accepted: ['Ich habe den Film nicht gesehen.'], expected: 'Ich habe den Film nicht gesehen.' },
       { id: 'zptSentence6', accepted: ['Ich bin gestern nach Berlin gefahren.', 'Gestern bin ich nach Berlin gefahren.'], expected: 'Ich bin gestern nach Berlin gefahren.' },
       { id: 'zptSentence7', accepted: ['Ich habe das Auto selbst gefahren.', 'Das Auto habe ich selbst gefahren.'], expected: 'Ich habe das Auto selbst gefahren.' },
-      { id: 'zptSentence8', accepted: ['Wir sind nach Hause gelaufen.', 'Nach Hause sind wir gelaufen.'], expected: 'Wir sind nach Hause gelaufen.' }
+      { id: 'zptSentence8', accepted: ['Wir sind nach Hause gelaufen.', 'Nach Hause sind wir gelaufen.'], expected: 'Wir sind nach Hause gelaufen.' },
+      { id: 'zptSentence9', accepted: ['Ich habe gestern Brot gekauft.', 'Gestern habe ich Brot gekauft.'], expected: 'Ich habe gestern Brot gekauft.' },
+      { id: 'zptSentence10', accepted: ['Wir haben Fußball gespielt.'], expected: 'Wir haben Fußball gespielt.' },
+      { id: 'zptSentence11', accepted: ['Wo hast du gewohnt?'], expected: 'Wo hast du gewohnt?' },
+      { id: 'zptSentence12', accepted: ['Wir haben zusammen gekocht.'], expected: 'Wir haben zusammen gekocht.' }
     ];
     var sentenceResults = [];
     sentenceRules.forEach(function (rule) {
@@ -239,7 +284,7 @@
       if (select) { select.value = ''; select.style.borderColor = ''; }
       if (explain) explain.textContent = '';
     });
-    ['zptSentence', 'zptSentence2', 'zptSentence3', 'zptSentence4', 'zptSentence5', 'zptSentence6', 'zptSentence7', 'zptSentence8'].forEach(function (id) {
+    ['zptSentence', 'zptSentence2', 'zptSentence3', 'zptSentence4', 'zptSentence5', 'zptSentence6', 'zptSentence7', 'zptSentence8', 'zptSentence9', 'zptSentence10', 'zptSentence11', 'zptSentence12'].forEach(function (id) {
       var sentence = document.getElementById(id);
       if (sentence) { sentence.value = ''; sentence.style.borderColor = ''; }
     });
@@ -331,6 +376,17 @@
         ['جدانشدنی', 'بدون ge-', 'besuchen → besucht · verstehen → verstanden', 'A2 · درس ۴'],
         ['پایان -ieren', 'بدون ge- و با -t', 'studieren → studiert', 'A1–A2 · درس ۴']
       ]),
+      makeTable(['فعل', 'Präteritum · ich', 'Partizip II', 'فعل کمکی', 'سطح / درس'], [
+        ['wohnen · زندگی کردن', 'wohnte', 'gewohnt', 'haben', 'A1 · درس تکمیلی ۴'],
+        ['spielen · بازی کردن', 'spielte', 'gespielt', 'haben', 'A1 · درس تکمیلی ۴'],
+        ['kaufen · خریدن', 'kaufte', 'gekauft', 'haben', 'A1 · درس تکمیلی ۴'],
+        ['fragen · پرسیدن', 'fragte', 'gefragt', 'haben', 'A1 · درس تکمیلی ۴'],
+        ['sagen · گفتن', 'sagte', 'gesagt', 'haben', 'A1 · درس تکمیلی ۴'],
+        ['hören · گوش دادن', 'hörte', 'gehört', 'haben', 'A1 · درس تکمیلی ۴'],
+        ['kochen · آشپزی کردن', 'kochte', 'gekocht', 'haben', 'A1 · درس تکمیلی ۴'],
+        ['suchen · جست‌وجو کردن', 'suchte', 'gesucht', 'haben', 'A1 · درس تکمیلی ۴']
+      ]),
+      '<div class="zpt-callout"><b>تمرین الگوی فعل‌های ضعیف</b> <span class="lesson-tag">A1 · درس تکمیلی ۴</span><p>در این هشت فعل، Präteritum با -te و Partizip II با ge- ... -t ساخته شده است. شکل‌های شش ضمیر را در فهرست فعل‌ها جداگانه ببین.</p><p dir="ltr">ich wohnte · du wohntest · wir wohnten</p><p dir="ltr">ich habe gewohnt · du hast gewohnt · wir haben gewohnt</p></div>',
       '<div class="zpt-callout"><b>سه نکته مهم</b><p>۱) فعل‌های جداشدنی: ge میان پیشوند و ریشه می‌آید.</p><p>۲) پیشوندهای رایجِ جدانشدنی مانند be-, emp-, ent-, er-, ge-, miss-, ver- و zer- معمولاً ge نمی‌گیرند.</p><p>۳) فعل‌های پایان‌یافته به -ieren نیز ge نمی‌گیرند.</p></div>',
       '<div class="zpt-callout"><b>جداشدنی و جدانشدنی را مقایسه کن</b> <span class="lesson-tag">A2 · درس تکمیلی ۴</span><p>در فعل جداشدنی، ge میان پیشوند و ریشه می‌آید:</p><p dir="ltr">anrufen → angerufen · fernsehen → ferngesehen · aufräumen → aufgeräumt</p><p>پیشوندهای جدانشدنی مانند be- و ver-، ge نمی‌گیرند:</p><p dir="ltr">bekommen → bekommen · verstehen → verstanden · besuchen → besucht</p><small>در فعل‌های پایان‌یافته به -ieren نیز ge نمی‌آید: studieren → studiert.</small></div>',
       '<p dir="ltr">Ich habe gestern eingekauft. = من دیروز خرید کردم.</p>',
@@ -349,6 +405,10 @@
       '<div class="zpt-question"><label for="zptSentence6">جمله‌سازی ۶: فعل کمکی درست برای حرکت به مقصد را انتخاب و جمله بساز.</label><p dir="ltr">Ich / gestern / nach Berlin / gefahren / bin</p><input id="zptSentence6" dir="ltr" autocomplete="off" placeholder="Ich bin gestern ..."></div>',
       '<div class="zpt-question"><label for="zptSentence7">جمله‌سازی ۷: معنی «خودم ماشین را راندم» را بساز.</label><p dir="ltr">Ich / das Auto / selbst / gefahren / habe</p><input id="zptSentence7" dir="ltr" autocomplete="off" placeholder="Ich habe das Auto ..."></div>',
       '<div class="zpt-question"><label for="zptSentence8">جمله‌سازی ۸: حرکت پیاده به مقصد را در Perfekt بنویس.</label><p dir="ltr">Wir / nach Hause / gelaufen / sind</p><input id="zptSentence8" dir="ltr" autocomplete="off" placeholder="Wir sind nach Hause ..."></div>',
+      '<div class="zpt-question"><label for="zptSentence9">جمله‌سازی ۹ · A1: خرید کردن را در Perfekt بنویس.</label><p dir="ltr">Ich / gestern / Brot / gekauft / habe</p><small>معنی: من دیروز نان خریدم.</small><input id="zptSentence9" dir="ltr" autocomplete="off" placeholder="Ich habe gestern ..."></div>',
+      '<div class="zpt-question"><label for="zptSentence10">جمله‌سازی ۱۰ · A1: بازی کردن را در Perfekt بنویس.</label><p dir="ltr">Wir / Fußball / gespielt / haben</p><small>معنی: ما فوتبال بازی کردیم.</small><input id="zptSentence10" dir="ltr" autocomplete="off" placeholder="Wir haben ..."></div>',
+      '<div class="zpt-question"><label for="zptSentence11">جمله‌سازی ۱۱ · A1: با wohnen یک پرسش بساز.</label><p dir="ltr">Wo / hast / du / gewohnt ?</p><small>معنی: کجا زندگی کردی؟</small><input id="zptSentence11" dir="ltr" autocomplete="off" placeholder="Wo hast du ...?"></div>',
+      '<div class="zpt-question"><label for="zptSentence12">جمله‌سازی ۱۲ · A1: آشپزی کردن را در Perfekt بنویس.</label><p dir="ltr">Wir / zusammen / gekocht / haben</p><small>معنی: ما با هم آشپزی کردیم.</small><input id="zptSentence12" dir="ltr" autocomplete="off" placeholder="Wir haben ..."></div>',
       '<div class="row" style="margin-top:10px"><button type="button" class="btn primary" id="zptCheck">بررسی پاسخ‌ها</button><button type="button" class="btn" id="zptReset">شروع دوباره</button></div>',
       '<div id="zptPracticeFeedback" class="zpt-feedback" aria-live="polite">پاسخ‌ها را انتخاب کن و بررسی را بزن.</div>',
       '</div>',
