@@ -6,12 +6,12 @@ const path = require('node:path');
 const root = path.resolve(__dirname, '..');
 const { PRONOUNS, AUXILIARIES, VERBS, QUESTIONS } = require(path.join(root, 'zuno-past-tense.js'));
 assert.equal(PRONOUNS.length, 6);
-assert.equal(VERBS.length, 45);
-assert.equal(QUESTIONS.length, 42);
+assert.equal(VERBS.length, 53);
+assert.equal(QUESTIONS.length, 50);
 for (const auxiliary of ['haben', 'sein']) assert.equal(AUXILIARIES[auxiliary].length, 6);
 const names = new Set();
 for (const item of VERBS) {
-  assert.ok(item.verb && item.meaning && item.level && item.part);
+  assert.ok(item.verb && item.meaning && item.level && item.lesson && item.part);
   assert.ok(['A1', 'A2'].includes(item.level));
   assert.equal(item.past.length, 6, item.verb + ' must have six Präteritum forms');
   assert.ok(AUXILIARIES[item.aux], item.verb + ' has invalid auxiliary');
@@ -28,7 +28,15 @@ const expected = {
   vergessen: { past: ['vergaß','vergaßest','vergaß','vergaßen','vergaßt','vergaßen'], part: 'vergessen', aux: 'haben' },
   einladen: { past: ['lud ein','ludest ein','lud ein','luden ein','ludet ein','luden ein'], part: 'eingeladen', aux: 'haben' },
   mitbringen: { past: ['brachte mit','brachtest mit','brachte mit','brachten mit','brachtet mit','brachten mit'], part: 'mitgebracht', aux: 'haben' },
-  zurückkommen: { past: ['kam zurück','kamst zurück','kam zurück','kamen zurück','kamt zurück','kamen zurück'], part: 'zurückgekommen', aux: 'sein' }
+  zurückkommen: { past: ['kam zurück','kamst zurück','kam zurück','kamen zurück','kamt zurück','kamen zurück'], part: 'zurückgekommen', aux: 'sein' },
+  wohnen: { past: ['wohnte','wohntest','wohnte','wohnten','wohntet','wohnten'], part: 'gewohnt', aux: 'haben' },
+  spielen: { past: ['spielte','spieltest','spielte','spielten','spieltet','spielten'], part: 'gespielt', aux: 'haben' },
+  kaufen: { past: ['kaufte','kauftest','kaufte','kauften','kauftet','kauften'], part: 'gekauft', aux: 'haben' },
+  fragen: { past: ['fragte','fragtest','fragte','fragten','fragtet','fragten'], part: 'gefragt', aux: 'haben' },
+  sagen: { past: ['sagte','sagtest','sagte','sagten','sagtet','sagten'], part: 'gesagt', aux: 'haben' },
+  hören: { past: ['hörte','hörtest','hörte','hörten','hörtet','hörten'], part: 'gehört', aux: 'haben' },
+  kochen: { past: ['kochte','kochtest','kochte','kochten','kochtet','kochten'], part: 'gekocht', aux: 'haben' },
+  suchen: { past: ['suchte','suchtest','suchte','suchten','suchtet','suchten'], part: 'gesucht', aux: 'haben' }
 };
 for (const [name, value] of Object.entries(expected)) {
   const actual = VERBS.find(item => item.verb === name);
@@ -59,7 +67,7 @@ for (const item of VERBS) for (const usage of item.auxCases || []) {
 const pastSourceForAux = fs.readFileSync(path.join(root, 'zuno-past-tense.js'), 'utf8');
 assert.ok(pastSourceForAux.includes('data-zpt-tab="auxiliary"'));
 assert.ok(!pastSourceForAux.includes("perfect += ' / '"), 'Primary Perfekt table must not show context-dependent auxiliaries as interchangeable');
-for (const id of ['zptSentence6','zptSentence7','zptSentence8']) assert.ok(pastSourceForAux.includes(id));
+for (const id of ['zptSentence6','zptSentence7','zptSentence8','zptSentence9','zptSentence10','zptSentence11','zptSentence12']) assert.ok(pastSourceForAux.includes(id));
 const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 const pattern = /<script\b([^>]*)>([\s\S]*?)<\/script>/gi;
 let inlineCount = 0;
@@ -73,5 +81,5 @@ for (const file of ['zuno-past-tense.js','enhancements.js','zuno-a1-completion.j
   new vm.Script(fs.readFileSync(path.join(root, file), 'utf8'), { filename: file });
 }
 const pastSource = fs.readFileSync(path.join(root, 'zuno-past-tense.js'), 'utf8');
-for (const id of ['zptSentence3','zptSentence4','zptSentence5','zptSentence6','zptSentence7','zptSentence8']) assert.ok(pastSource.includes(id));
+for (const id of ['zptSentence3','zptSentence4','zptSentence5','zptSentence6','zptSentence7','zptSentence8','zptSentence9','zptSentence10','zptSentence11','zptSentence12']) assert.ok(pastSource.includes(id));
 console.log('PASS: ' + VERBS.length + ' unique A1/A2 verbs, ' + QUESTIONS.length + ' validated questions, six pronoun forms, five sentence builders, ' + inlineCount + ' inline script(s), and all external JavaScript files compile.');
