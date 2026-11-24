@@ -146,7 +146,35 @@
     { q: 'A1 · درس تکمیلی ۴ · Partizip II فعل sagen کدام است؟', options: ['gesagt', 'gesagen', 'gesagte'], answer: 0, why: 'Partizip II فعل sagen برابر gesagt است.' },
     { q: 'A1 · درس تکمیلی ۴ · Partizip II فعل hören کدام است؟', options: ['gehört', 'gehören', 'gehoren'], answer: 0, why: 'شکل درست Partizip II برابر gehört است؛ ö را فراموش نکن.' },
     { q: 'A1 · درس تکمیلی ۴ · جمله را کامل کن: Wir ___ zusammen gekocht.', options: ['haben', 'sind', 'hat'], answer: 0, why: 'kochen در این کاربرد با haben ساخته می‌شود: Wir haben gekocht.' },
-    { q: 'A1 · درس تکمیلی ۴ · Präteritum فعل suchen برای ihr کدام است؟', options: ['suchtet', 'suchten', 'sucht'], answer: 0, why: 'پایان فعل ضعیف برای ihr برابر -tet است: ihr suchtet.' }
+    { q: 'A1 · درس تکمیلی ۴ · Präteritum فعل suchen برای ihr کدام است؟', options: ['suchtet', 'suchten', 'sucht'], answer: 0, why: 'پایان فعل ضعیف برای ihr برابر -tet است: ihr suchtet.' },
+
+    { q: 'A1 · Präteritum فعل sehen برای wir کدام است؟', options: ['sahen', 'sahst', 'gesehen'], answer: 0, why: 'صرف Duden: ich sah، du sahst، wir sahen.', level: 'A1', lesson: 'درس تکمیلی ۳ · Präteritum' },
+    { q: 'A1 · Präteritum فعل schreiben برای du کدام است؟', options: ['schrieb', 'schriebst', 'geschrieben'], answer: 1, why: 'صرف Duden برای du برابر schriebst است.', level: 'A1', lesson: 'درس تکمیلی ۳ · Präteritum' },
+    { q: 'A1 · Präteritum فعل sprechen برای ihr کدام است؟', options: ['spracht', 'sprachst', 'gesprochen'], answer: 0, why: 'صرف Duden: ihr spracht؛ Partizip II برابر gesprochen است.', level: 'A1', lesson: 'درس تکمیلی ۳ · Präteritum' },
+    { q: 'A1 · Präteritum فعل sein برای wir کدام است؟', options: ['waren', 'warst', 'gewesen'], answer: 0, why: 'شکل wir در Präteritum برابر waren است.', level: 'A1', lesson: 'درس تکمیلی ۳ · فعل کمکی sein' },
+    { q: 'A1 · Präteritum فعل haben برای ihr کدام است؟', options: ['hattet', 'hatten', 'gehabt'], answer: 0, why: 'شکل ihr در Präteritum برابر hattet است.', level: 'A1', lesson: 'درس تکمیلی ۳ · فعل کمکی haben' },
+    { q: 'A2 · Partizip II فعل aufstehen کدام است؟', options: ['geaufstanden', 'aufgestanden', 'aufgestanden sein'], answer: 1, why: 'در فعل جداشدنی، ge میان پیشوند auf و ریشه آمده است: aufgestanden.', level: 'A2', lesson: 'درس تکمیلی ۴ · فعل جداشدنی' },
+    { q: 'A2 · Partizip II فعل besuchen کدام است؟', options: ['gebesucht', 'besucht', 'besuchen'], answer: 1, why: 'پیشوند be- جدانشدنی است؛ بنابراین ge اضافه نمی‌شود.', level: 'A2', lesson: 'درس تکمیلی ۴ · پیشوند جدانشدنی' },
+    { q: 'A2 · Partizip II فعل zurückkommen کدام است؟', options: ['zurückgekommen', 'zurückgekommenen', 'ge zurückkommen'], answer: 0, why: 'فعل جداشدنی است: zurück + ge + kommen → zurückgekommen.', level: 'A2', lesson: 'درس تکمیلی ۴ · فعل جداشدنی' }
+  ];
+
+  var SENTENCE_RULES = [
+    { id: 'zptSentence', accepted: ['Ich habe gestern einen Film gesehen.', 'Gestern habe ich einen Film gesehen.'], expected: 'Ich habe gestern einen Film gesehen.', level: 'A1–A2', lesson: 'درس تکمیلی ۵ · جمله‌سازی ترکیبی' },
+    { id: 'zptSentence2', accepted: ['Wir haben am Abend ferngesehen.', 'Am Abend haben wir ferngesehen.'], expected: 'Wir haben am Abend ferngesehen.', level: 'A1–A2', lesson: 'درس تکمیلی ۵ · جمله‌سازی ترکیبی' },
+    { id: 'zptSentence3', accepted: ['Hast du gestern gearbeitet?'], expected: 'Hast du gestern gearbeitet?', level: 'A1', lesson: 'درس تکمیلی ۲ · پرسش در Perfekt' },
+    { id: 'zptSentence4', accepted: ['Wann bist du zurückgekommen?'], expected: 'Wann bist du zurückgekommen?', level: 'A2', lesson: 'درس تکمیلی ۵ · پرسش و فعل جداشدنی' },
+    { id: 'zptSentence5', accepted: ['Ich habe den Film nicht gesehen.'], expected: 'Ich habe den Film nicht gesehen.', level: 'A1–A2', lesson: 'درس تکمیلی ۵ · منفی‌سازی' },
+    { id: 'zptSentence6', accepted: ['Ich bin gestern nach Berlin gefahren.', 'Gestern bin ich nach Berlin gefahren.'], expected: 'Ich bin gestern nach Berlin gefahren.', level: 'A1–A2', lesson: 'درس تکمیلی ۵ · انتخاب فعل کمکی' },
+    { id: 'zptSentence7', accepted: ['Ich habe das Auto selbst gefahren.', 'Das Auto habe ich selbst gefahren.'], expected: 'Ich habe das Auto selbst gefahren.', level: 'A2', lesson: 'درس تکمیلی ۶ · کاربرد وابسته به معنی' },
+    { id: 'zptSentence8', accepted: ['Wir sind nach Hause gelaufen.', 'Nach Hause sind wir gelaufen.'], expected: 'Wir sind nach Hause gelaufen.', level: 'A1–A2', lesson: 'درس تکمیلی ۵ · انتخاب فعل کمکی' },
+    { id: 'zptSentence9', accepted: ['Ich habe gestern Brot gekauft.', 'Gestern habe ich Brot gekauft.'], expected: 'Ich habe gestern Brot gekauft.', level: 'A1', lesson: 'درس تکمیلی ۴ · فعل باقاعده' },
+    { id: 'zptSentence10', accepted: ['Wir haben Fußball gespielt.'], expected: 'Wir haben Fußball gespielt.', level: 'A1', lesson: 'درس تکمیلی ۴ · فعل باقاعده' },
+    { id: 'zptSentence11', accepted: ['Wo hast du gewohnt?'], expected: 'Wo hast du gewohnt?', level: 'A1', lesson: 'درس تکمیلی ۴ · پرسش در Perfekt' },
+    { id: 'zptSentence12', accepted: ['Wir haben zusammen gekocht.'], expected: 'Wir haben zusammen gekocht.', level: 'A1', lesson: 'درس تکمیلی ۴ · فعل باقاعده' },
+    { id: 'zptSentence13', accepted: ['Ich habe gestern meine Mutter besucht.', 'Gestern habe ich meine Mutter besucht.'], expected: 'Ich habe gestern meine Mutter besucht.', level: 'A2', lesson: 'درس تکمیلی ۵ · پیشوند جدانشدنی' },
+    { id: 'zptSentence14', accepted: ['Wir haben das Zimmer aufgeräumt.'], expected: 'Wir haben das Zimmer aufgeräumt.', level: 'A2', lesson: 'درس تکمیلی ۵ · فعل جداشدنی' },
+    { id: 'zptSentence15', accepted: ['Ich habe an dich gedacht.'], expected: 'Ich habe an dich gedacht.', level: 'A1–A2', lesson: 'درس تکمیلی ۵ · فعل مختلط' },
+    { id: 'zptSentence16', accepted: ['Ihr seid spät zurückgekommen.'], expected: 'Ihr seid spät zurückgekommen.', level: 'A2', lesson: 'درس تکمیلی ۵ · فعل جداشدنی و sein' }
   ];
 
   function escapeHtml(value) {
@@ -186,6 +214,7 @@
       '.zpt-question{padding:10px;border:1px solid var(--line);border-radius:11px;background:var(--bg);margin:8px 0}' +
       '.zpt-question label{display:block;font-weight:700;font-size:13px}' +
       '.zpt-question select{margin-top:7px}' +
+      '.zpt-live-feedback{display:block;min-height:1.4em;margin-top:5px;font-size:12px;color:var(--muted)}' +
       '@media(max-width:420px){.zpt-tab{flex:1 1 42%;padding:8px 6px;font-size:12px}.zpt-panel .past-table{min-width:300px}}';
     document.head.appendChild(style);
   }
@@ -217,15 +246,27 @@
       makeTable(['ضمیر فاعلی', 'Präteritum', 'Partizip II', 'Perfekt'], rows) + note + auxCaseHtml + sourceLink;
   }
 
+  function getQuestionMetadata(item) {
+    var text = String(item.q || '');
+    var parts = text.split(' · ');
+    var levelPrefix = parts[0] === 'A1' || parts[0] === 'A2' ? parts[0] : null;
+    var lessonPrefix = parts[1] && parts[1].indexOf('درس تکمیلی ') === 0 ? parts[1] : null;
+    var level = item.level || levelPrefix || 'A1–A2';
+    var lesson = item.lesson || (lessonPrefix ? lessonPrefix + ' · تمرین تشخیص' : 'درس تکمیلی ۵ · مرور ترکیبی');
+    return { level: level, lesson: lesson };
+  }
+
   function renderQuestions() {
     var host = document.getElementById('zptQuestions');
     if (!host) return;
     host.innerHTML = QUESTIONS.map(function (item, index) {
+      var meta = getQuestionMetadata(item);
       return '<div class="zpt-question"><label for="zptAnswer' + index + '">' + (index + 1) + '. ' + escapeHtml(item.q) + '</label>' +
+        '<small class="lesson-tag">' + escapeHtml(meta.level + ' · ' + meta.lesson) + '</small>' +
         '<select id="zptAnswer' + index + '"><option value="">انتخاب پاسخ…</option>' +
         item.options.map(function (option, optionIndex) {
           return '<option value="' + optionIndex + '">' + escapeHtml(option) + '</option>';
-        }).join('') + '</select><small id="zptExplain' + index + '" class="muted tiny"></small></div>';
+        }).join('') + '</select><small id="zptExplain' + index + '" class="zpt-live-feedback" aria-live="polite"></small></div>';
     }).join('');
   }
 
@@ -234,45 +275,80 @@
       .replace(/[.!?،,]/g, '').replace(/\s+/g, ' ').trim();
   }
 
+  function evaluateChoice(value, answer) {
+    if (value === '' || value === null || typeof value === 'undefined') return null;
+    return Number(value) === answer;
+  }
+
+  function evaluateSentence(value, accepted) {
+    var normalized = normalizeSentence(value);
+    return !!normalized && accepted.some(function (item) {
+      return normalizeSentence(item) === normalized;
+    });
+  }
+
+  function updateQuestionFeedback(index, finalCheck) {
+    var item = QUESTIONS[index];
+    var select = document.getElementById('zptAnswer' + index);
+    var explain = document.getElementById('zptExplain' + index);
+    if (!item || !select) return null;
+    var correct = evaluateChoice(select.value, item.answer);
+    if (correct === null) {
+      select.style.borderColor = finalCheck ? 'var(--danger)' : '';
+      if (explain) explain.textContent = finalCheck ? 'پاسخی انتخاب نشده است.' : '';
+      return false;
+    }
+    select.style.borderColor = correct ? 'var(--accent)' : 'var(--danger)';
+    if (explain) explain.textContent = (correct ? '✓ درست · ' : '✗ پاسخ درست: ' + item.options[item.answer] + ' · ') + item.why;
+    return correct;
+  }
+
+  function updateSentenceFeedback(rule, finalCheck) {
+    var field = document.getElementById(rule.id);
+    var feedback = document.getElementById(rule.id + 'Feedback');
+    if (!field) return null;
+    var value = normalizeSentence(field.value);
+    if (!value) {
+      field.style.borderColor = finalCheck ? 'var(--danger)' : '';
+      if (feedback) feedback.textContent = finalCheck ? 'جمله را بنویس.' : '';
+      return false;
+    }
+    var correct = evaluateSentence(field.value, rule.accepted);
+    if (correct) {
+      field.style.borderColor = 'var(--accent)';
+      if (feedback) feedback.textContent = '✓ درست است.';
+      return true;
+    }
+    var currentWords = value.split(' ').length;
+    var expectedWords = normalizeSentence(rule.expected).split(' ').length;
+    if (!finalCheck && currentWords < expectedWords) {
+      field.style.borderColor = '';
+      if (feedback) feedback.textContent = 'ادامه بده؛ جمله هنوز کامل نیست.';
+      return null;
+    }
+    field.style.borderColor = 'var(--danger)';
+    if (feedback) feedback.textContent = finalCheck
+      ? '✗ نمونه درست: ' + rule.expected
+      : '✗ هنوز درست نیست؛ ترتیب واژه‌ها و فعل کمکی را بررسی کن.';
+    return false;
+  }
+
   function checkPractice() {
     var score = 0;
-    QUESTIONS.forEach(function (item, index) {
-      var select = document.getElementById('zptAnswer' + index);
-      var explain = document.getElementById('zptExplain' + index);
-      var correct = select && select.value !== '' && Number(select.value) === item.answer;
-      if (correct) score += 1;
-      if (select) select.style.borderColor = correct ? 'var(--accent)' : 'var(--danger)';
-      if (explain) explain.textContent = (correct ? '✓ درست · ' : '✗ پاسخ درست: ' + item.options[item.answer] + ' · ') + item.why;
+    QUESTIONS.forEach(function (_, index) {
+      if (updateQuestionFeedback(index, true) === true) score += 1;
     });
-    var sentenceRules = [
-      { id: 'zptSentence', accepted: ['Ich habe gestern einen Film gesehen.', 'Gestern habe ich einen Film gesehen.'], expected: 'Ich habe gestern einen Film gesehen.' },
-      { id: 'zptSentence2', accepted: ['Wir haben am Abend ferngesehen.', 'Am Abend haben wir ferngesehen.'], expected: 'Wir haben am Abend ferngesehen.' },
-      { id: 'zptSentence3', accepted: ['Hast du gestern gearbeitet?'], expected: 'Hast du gestern gearbeitet?' },
-      { id: 'zptSentence4', accepted: ['Wann bist du zurückgekommen?'], expected: 'Wann bist du zurückgekommen?' },
-      { id: 'zptSentence5', accepted: ['Ich habe den Film nicht gesehen.'], expected: 'Ich habe den Film nicht gesehen.' },
-      { id: 'zptSentence6', accepted: ['Ich bin gestern nach Berlin gefahren.', 'Gestern bin ich nach Berlin gefahren.'], expected: 'Ich bin gestern nach Berlin gefahren.' },
-      { id: 'zptSentence7', accepted: ['Ich habe das Auto selbst gefahren.', 'Das Auto habe ich selbst gefahren.'], expected: 'Ich habe das Auto selbst gefahren.' },
-      { id: 'zptSentence8', accepted: ['Wir sind nach Hause gelaufen.', 'Nach Hause sind wir gelaufen.'], expected: 'Wir sind nach Hause gelaufen.' },
-      { id: 'zptSentence9', accepted: ['Ich habe gestern Brot gekauft.', 'Gestern habe ich Brot gekauft.'], expected: 'Ich habe gestern Brot gekauft.' },
-      { id: 'zptSentence10', accepted: ['Wir haben Fußball gespielt.'], expected: 'Wir haben Fußball gespielt.' },
-      { id: 'zptSentence11', accepted: ['Wo hast du gewohnt?'], expected: 'Wo hast du gewohnt?' },
-      { id: 'zptSentence12', accepted: ['Wir haben zusammen gekocht.'], expected: 'Wir haben zusammen gekocht.' }
-    ];
     var sentenceResults = [];
-    sentenceRules.forEach(function (rule) {
-      var field = document.getElementById(rule.id);
-      var correct = rule.accepted.some(function (item) {
-        return normalizeSentence(field ? field.value : '') === normalizeSentence(item);
-      });
+    SENTENCE_RULES.forEach(function (rule) {
+      var correct = updateSentenceFeedback(rule, true) === true;
       if (correct) score += 1;
-      if (field) field.style.borderColor = correct ? 'var(--accent)' : 'var(--danger)';
       sentenceResults.push(correct);
     });
-    var total = QUESTIONS.length + sentenceRules.length;
+    var total = QUESTIONS.length + SENTENCE_RULES.length;
     var feedback = document.getElementById('zptPracticeFeedback');
     if (feedback) feedback.textContent = 'نتیجه: ' + score + ' از ' + total + '. ' +
       sentenceResults.map(function (correct, index) {
-        return 'جمله‌سازی ' + (index + 1) + ': ' + (correct ? 'درست' : 'نمونه: ' + sentenceRules[index].expected);
+        return 'جمله‌سازی ' + (index + 1) + ': ' + (correct ? 'درست' : 'نمونه: ' + SENTENCE_RULES[index].expected);
       }).join('؛ ') + '. ' +
       (score === total ? 'عالی! همه پاسخ‌ها درست است.' : 'پاسخ‌های نادرست را مرور کن و دوباره تلاش کن.');
   }
@@ -284,9 +360,11 @@
       if (select) { select.value = ''; select.style.borderColor = ''; }
       if (explain) explain.textContent = '';
     });
-    ['zptSentence', 'zptSentence2', 'zptSentence3', 'zptSentence4', 'zptSentence5', 'zptSentence6', 'zptSentence7', 'zptSentence8', 'zptSentence9', 'zptSentence10', 'zptSentence11', 'zptSentence12'].forEach(function (id) {
-      var sentence = document.getElementById(id);
+    SENTENCE_RULES.forEach(function (rule) {
+      var sentence = document.getElementById(rule.id);
+      var feedback = document.getElementById(rule.id + 'Feedback');
       if (sentence) { sentence.value = ''; sentence.style.borderColor = ''; }
+      if (feedback) feedback.textContent = '';
     });
     var feedback = document.getElementById('zptPracticeFeedback');
     if (feedback) feedback.textContent = 'تمرین دوباره آماده است.';
@@ -395,7 +473,7 @@
       '</div>',
       '<div class="zpt-pane" data-zpt-pane="practice" hidden>',
       '<span class="lesson-tag">A1–A2 · درس تکمیلی ۵ · تشخیص و جمله‌سازی</span>',
-      '<p class="muted tiny">' + QUESTIONS.length + ' سؤال را پاسخ بده و هشت جمله را بساز.</p>',
+      '<p class="muted tiny">' + QUESTIONS.length + ' سؤال و ' + SENTENCE_RULES.length + ' تمرین جمله‌سازی را پاسخ بده.</p>',
       '<div id="zptQuestions"></div>',
       '<div class="zpt-question"><label for="zptSentence">جمله‌سازی ۱: کلمه‌ها را به جمله درست تبدیل کن.</label><p dir="ltr">Ich / gestern / einen Film / gesehen / habe</p><input id="zptSentence" dir="ltr" autocomplete="off" placeholder="Ich habe gestern ..."></div>',
       '<div class="zpt-question"><label for="zptSentence2">جمله‌سازی ۲: فعل جداشدنی را در Perfekt به‌کار ببر.</label><p dir="ltr">Wir / am Abend / ferngesehen / haben</p><input id="zptSentence2" dir="ltr" autocomplete="off" placeholder="Wir haben am Abend ..."></div>',
@@ -409,6 +487,11 @@
       '<div class="zpt-question"><label for="zptSentence10">جمله‌سازی ۱۰ · A1: بازی کردن را در Perfekt بنویس.</label><p dir="ltr">Wir / Fußball / gespielt / haben</p><small>معنی: ما فوتبال بازی کردیم.</small><input id="zptSentence10" dir="ltr" autocomplete="off" placeholder="Wir haben ..."></div>',
       '<div class="zpt-question"><label for="zptSentence11">جمله‌سازی ۱۱ · A1: با wohnen یک پرسش بساز.</label><p dir="ltr">Wo / hast / du / gewohnt ?</p><small>معنی: کجا زندگی کردی؟</small><input id="zptSentence11" dir="ltr" autocomplete="off" placeholder="Wo hast du ...?"></div>',
       '<div class="zpt-question"><label for="zptSentence12">جمله‌سازی ۱۲ · A1: آشپزی کردن را در Perfekt بنویس.</label><p dir="ltr">Wir / zusammen / gekocht / haben</p><small>معنی: ما با هم آشپزی کردیم.</small><input id="zptSentence12" dir="ltr" autocomplete="off" placeholder="Wir haben ..."></div>',
+
+      '<div class="zpt-question"><label for="zptSentence13">جمله‌سازی ۱۳ · A2: با فعل جدانشدنی besuchen جمله بساز.</label><p dir="ltr">Ich / habe / gestern / meine Mutter / besucht</p><small>معنی: دیروز به دیدن مادرم رفتم.</small><input id="zptSentence13" dir="ltr" autocomplete="off" placeholder="Ich habe gestern ..."></div>',
+      '<div class="zpt-question"><label for="zptSentence14">جمله‌سازی ۱۴ · A2: فعل جداشدنی aufräumen را در Perfekt بنویس.</label><p dir="ltr">Wir / haben / das Zimmer / aufgeräumt</p><small>معنی: ما اتاق را مرتب کردیم.</small><input id="zptSentence14" dir="ltr" autocomplete="off" placeholder="Wir haben ..."></div>',
+      '<div class="zpt-question"><label for="zptSentence15">جمله‌سازی ۱۵ · A1–A2: فعل مختلط denken را در Perfekt به‌کار ببر.</label><p dir="ltr">Ich / habe / an dich / gedacht</p><small>معنی: من به تو فکر کردم.</small><input id="zptSentence15" dir="ltr" autocomplete="off" placeholder="Ich habe ..."></div>',
+      '<div class="zpt-question"><label for="zptSentence16">جمله‌سازی ۱۶ · A2: فعل جداشدنی zurückkommen را در Perfekt بنویس.</label><p dir="ltr">Ihr / seid / spät / zurückgekommen</p><small>معنی: شما دیر برگشتید.</small><input id="zptSentence16" dir="ltr" autocomplete="off" placeholder="Ihr seid ..."></div>',
       '<div class="row" style="margin-top:10px"><button type="button" class="btn primary" id="zptCheck">بررسی پاسخ‌ها</button><button type="button" class="btn" id="zptReset">شروع دوباره</button></div>',
       '<div id="zptPracticeFeedback" class="zpt-feedback" aria-live="polite">پاسخ‌ها را انتخاب کن و بررسی را بزن.</div>',
       '</div>',
@@ -423,6 +506,28 @@
 
     renderVerb('gehen');
     renderQuestions();
+
+    QUESTIONS.forEach(function (_, index) {
+      var select = document.getElementById('zptAnswer' + index);
+      if (select) select.addEventListener('change', function () { updateQuestionFeedback(index, false); });
+    });
+    SENTENCE_RULES.forEach(function (rule) {
+      var field = document.getElementById(rule.id);
+      if (!field || !field.parentNode) return;
+      var meta = document.createElement('small');
+      meta.className = 'lesson-tag';
+      meta.textContent = rule.level + ' · ' + rule.lesson;
+      field.parentNode.insertBefore(meta, field);
+      var live = document.createElement('small');
+      live.id = rule.id + 'Feedback';
+      live.className = 'zpt-live-feedback';
+      live.setAttribute('aria-live', 'polite');
+      field.parentNode.insertBefore(live, field.nextSibling);
+      field.setAttribute('aria-describedby', live.id);
+      field.addEventListener('input', function () { updateSentenceFeedback(rule, false); });
+      field.addEventListener('change', function () { updateSentenceFeedback(rule, false); });
+      field.addEventListener('blur', function () { updateSentenceFeedback(rule, true); });
+    });
 
     section.querySelectorAll('[data-zpt-tab]').forEach(function (button) {
       button.addEventListener('click', function () {
@@ -445,7 +550,7 @@
   }
 
   if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { PRONOUNS: PRONOUNS, AUXILIARIES: AUXILIARIES, VERBS: VERBS, QUESTIONS: QUESTIONS };
+    module.exports = { PRONOUNS: PRONOUNS, AUXILIARIES: AUXILIARIES, VERBS: VERBS, QUESTIONS: QUESTIONS, SENTENCE_RULES: SENTENCE_RULES, evaluateChoice: evaluateChoice, evaluateSentence: evaluateSentence, getQuestionMetadata: getQuestionMetadata };
   }
 
   if (typeof document !== 'undefined') {
