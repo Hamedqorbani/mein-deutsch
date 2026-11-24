@@ -4,10 +4,26 @@ const fs = require('node:fs');
 const vm = require('node:vm');
 const path = require('node:path');
 const root = path.resolve(__dirname, '..');
-const { PRONOUNS, AUXILIARIES, VERBS, QUESTIONS } = require(path.join(root, 'zuno-past-tense.js'));
+const { PRONOUNS, AUXILIARIES, VERBS, QUESTIONS, SENTENCE_RULES, evaluateChoice, evaluateSentence, getQuestionMetadata } = require(path.join(root, 'zuno-past-tense.js'));
 assert.equal(PRONOUNS.length, 6);
 assert.equal(VERBS.length, 53);
-assert.equal(QUESTIONS.length, 50);
+assert.equal(QUESTIONS.length, 58);
+assert.equal(SENTENCE_RULES.length, 16);
+assert.equal(evaluateChoice('', 0), null);
+assert.equal(evaluateChoice('0', 0), true);
+assert.equal(evaluateChoice('1', 0), false);
+for (const item of QUESTIONS) {
+  const meta = getQuestionMetadata(item);
+  assert.ok(meta.level && meta.lesson, 'Every question must display a level and lesson');
+  if (item.q.startsWith('A1 ·')) assert.equal(meta.level, 'A1');
+  if (item.q.startsWith('A2 ·')) assert.equal(meta.level, 'A2');
+}
+for (const rule of SENTENCE_RULES) {
+  assert.ok(rule.id && rule.expected && rule.level && rule.lesson);
+  assert.ok(rule.accepted.length > 0);
+  for (const accepted of rule.accepted) assert.equal(evaluateSentence(accepted, rule.accepted), true);
+  assert.equal(evaluateSentence('Das ist ein falscher Satz.', rule.accepted), false);
+}
 for (const auxiliary of ['haben', 'sein']) assert.equal(AUXILIARIES[auxiliary].length, 6);
 const names = new Set();
 for (const item of VERBS) {
@@ -67,7 +83,7 @@ for (const item of VERBS) for (const usage of item.auxCases || []) {
 const pastSourceForAux = fs.readFileSync(path.join(root, 'zuno-past-tense.js'), 'utf8');
 assert.ok(pastSourceForAux.includes('data-zpt-tab="auxiliary"'));
 assert.ok(!pastSourceForAux.includes("perfect += ' / '"), 'Primary Perfekt table must not show context-dependent auxiliaries as interchangeable');
-for (const id of ['zptSentence6','zptSentence7','zptSentence8','zptSentence9','zptSentence10','zptSentence11','zptSentence12']) assert.ok(pastSourceForAux.includes(id));
+for (const id of ['zptSentence6','zptSentence7','zptSentence8','zptSentence9','zptSentence10','zptSentence11','zptSentence12','zptSentence13','zptSentence14','zptSentence15','zptSentence16']) assert.ok(pastSourceForAux.includes(id));
 const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 const pattern = /<script\b([^>]*)>([\s\S]*?)<\/script>/gi;
 let inlineCount = 0;
@@ -81,5 +97,9 @@ for (const file of ['zuno-past-tense.js','enhancements.js','zuno-a1-completion.j
   new vm.Script(fs.readFileSync(path.join(root, file), 'utf8'), { filename: file });
 }
 const pastSource = fs.readFileSync(path.join(root, 'zuno-past-tense.js'), 'utf8');
-for (const id of ['zptSentence3','zptSentence4','zptSentence5','zptSentence6','zptSentence7','zptSentence8','zptSentence9','zptSentence10','zptSentence11','zptSentence12']) assert.ok(pastSource.includes(id));
-console.log('PASS: ' + VERBS.length + ' unique A1/A2 verbs, ' + QUESTIONS.length + ' validated questions, six pronoun forms, twelve sentence builders, ' + inlineCount + ' inline script(s), and all external JavaScript files compile.');
+for (const id of ['zptSentence3','zptSentence4','zptSentence5','zptSentence6','zptSentence7','zptSentence8','zptSentence9','zptSentence10','zptSentence11','zptSentence12','zptSentence13','zptSentence14','zptSentence15','zptSentence16']) assert.ok(pastSource.includes(id));
+assert.ok(pastSource.includes("addEventListener('input'"));
+assert.ok(pastSource.includes("addEventListener('change'"));
+assert.ok(pastSource.includes('aria-live'));
+assert.ok(!pastSource.includes('هشت جمله را بساز'));
+console.log('PASS: ' + VERBS.length + ' unique A1/A2 verbs, ' + QUESTIONS.length + ' validated questions, six pronoun forms, ' + SENTENCE_RULES.length + ' sentence builders, live feedback helpers, ' + inlineCount + ' inline script(s), and all external JavaScript files compile.');
