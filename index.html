@@ -3093,7 +3093,7 @@ function translateUiText(raw,ix){
   const translateFeedbackDetails=source=>{
    let result=source;
    feedbackPhrases.forEach(([from,to])=>{result=result.split(from).join(to);});
-   return result;
+   return result.replace(/[۰-۹]/g,d=>'۰۱۲۳۴۵۶۷۸۹'.indexOf(d));
   };
   m=trim.match(/^نتیجه:\s*([0-9۰-۹]+)\s*از\s*([0-9۰-۹]+)\s*پاسخ درست\.$/);
   if(m)translated=ix===0?'Ergebnis: '+latinDigits(m[1])+' von '+latinDigits(m[2])+' richtige Antworten.':'Result: '+latinDigits(m[1])+' of '+latinDigits(m[2])+' correct answers.';
