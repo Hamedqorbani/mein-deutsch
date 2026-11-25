@@ -3060,6 +3060,50 @@ function translateUiText(raw,ix){
   if(m)translated=ix===0?m[1]+' Dialoge':m[1]+' dialogues';
   m=trim.match(/^نتیجه:\s*(\d+)\s*از\s*(\d+)\s*\((\d+)\s*٪\)$/);
   if(m)translated=ix===0?'Ergebnis: '+m[1]+' von '+m[2]+' ('+m[3]+' %)':'Result: '+m[1]+' of '+m[2]+' ('+m[3]+'%)';
+  const latinDigits=s=>String(s).replace(/[۰-۹]/g,d=>'۰۱۲۳۴۵۶۷۸۹'.indexOf(d));
+  const feedbackLabels={
+   'آرتیکل':['Artikel','Articles'],
+   'دسته‌بندی':['Kategorie','Category'],
+   'اعداد':['Zahlen','Numbers'],
+   'ده‌تایی‌ها':['Zehnerzahlen','Tens'],
+   'جمله‌ها':['Sätze','Sentences'],
+   'کلمه متفاوت':['Ausreißer','Odd one out'],
+   'آرتیکل میوه‌ها':['Obstartikel','Fruit articles'],
+   'جمع میوه‌ها':['Pluralformen von Obst','Fruit plurals'],
+   'وعده‌های غذایی':['Mahlzeiten','Meals']
+  };
+  const feedbackPhrases=[
+   ['پاسخ‌های نادرست را مرور کن و دوباره تلاش کن.',ix===0?'Wiederhole die falschen Antworten und versuche es erneut.':'Review incorrect answers and try again.'],
+   ['عالی! همه پاسخ‌ها درست است.',ix===0?'Ausgezeichnet! Alle Antworten sind richtig.':'Excellent! All answers are correct.'],
+   ['آفرین! همه پاسخ‌ها درست است.',ix===0?'Sehr gut! Alle Antworten sind richtig.':'Well done! All answers are correct.'],
+   ['تمرین دوباره آماده است.',ix===0?'Die Übung ist wieder bereit.':'The exercise is ready again.'],
+   ['ادامه بده؛ جمله هنوز کامل نیست.',ix===0?'Weiter so; der Satz ist noch nicht vollständig.':'Keep going; the sentence is not complete yet.'],
+   ['پاسخی انتخاب نشده است.',ix===0?'Keine Antwort ausgewählt.':'No answer selected.'],
+   ['جمله را بنویس.',ix===0?'Schreibe den Satz.':'Write the sentence.'],
+   ['پاسخ خالی:',ix===0?'Leere Antworten:':'Blank answers:'],
+   ['پاسخ صحیح موارد اشتباه:',ix===0?'Richtige Antworten für falsche Aufgaben:':'Correct answers for incorrect items:'],
+   ['پاسخ صحیح:',ix===0?'Richtige Antwort:':'Correct answer:'],
+   ['جمله‌سازی ',ix===0?'Satzbildung ':'Sentence building '],
+   ['نمونه:',ix===0?'Beispiel:':'Example:'],
+   ['درست است.',ix===0?'ist richtig.':'is correct.'],
+   ['درست',ix===0?'richtig':'correct'],
+   ['؛ ', '; '],
+   ['، ', ', ']
+  ];
+  const translateFeedbackDetails=source=>{
+   let result=source;
+   feedbackPhrases.forEach(([from,to])=>{result=result.split(from).join(to);});
+   return result;
+  };
+  m=trim.match(/^نتیجه:\s*([0-9۰-۹]+)\s*از\s*([0-9۰-۹]+)\s*پاسخ درست\.$/);
+  if(m)translated=ix===0?'Ergebnis: '+latinDigits(m[1])+' von '+latinDigits(m[2])+' richtige Antworten.':'Result: '+latinDigits(m[1])+' of '+latinDigits(m[2])+' correct answers.';
+  m=trim.match(/^نتیجه:\s*([0-9۰-۹]+)\s*از\s*([0-9۰-۹]+)\.\s*(.+)$/);
+  if(m)translated=(ix===0?'Ergebnis: ':'Result: ')+latinDigits(m[1])+(ix===0?' von ':' of ')+latinDigits(m[2])+'. '+translateFeedbackDetails(m[3]);
+  m=trim.match(/^نتیجه\s+(.+?):\s*([0-9۰-۹]+)\s*از\s*([0-9۰-۹]+)\s*\(([0-9۰-۹]+)\s*٪\)\.\s*(.*)$/);
+  if(m){
+   const label=feedbackLabels[m[1]]?feedbackLabels[m[1]][ix]:m[1];
+   translated=(ix===0?'Ergebnis – ':'Result – ')+label+': '+latinDigits(m[2])+(ix===0?' von ':' of ')+latinDigits(m[3])+' ('+latinDigits(m[4])+'%)'+(m[5]?' · '+translateFeedbackDetails(m[5]):'');
+  }
  }
  return value.replace(trim,translated);
 }
