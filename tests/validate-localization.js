@@ -107,4 +107,4 @@ const languageHandler = html.slice(languageHandlerStart, languageHandlerEnd);
 assert.ok(languageHandler.includes("localStorage.setItem('md_ui_language_chosen','1')"), 'Changing interface language in settings must persist an explicit choice');
 assert.ok(html.includes('var selected=prefs.uiLang||initial;'), 'Startup must prefer the saved interface language');
 assert.ok(html.includes('if(chosen||hasSavedLanguage){finish();return;}'), 'Startup must not show the language picker again when a preference is already saved');
-console.log('PASS: ' + new Set(categories).size + ' question categories, ' + labels.length + ' UI labels, pronunciation/translation prefixes, counters, dynamic category suffixes, and persistent interface-language selection.');
+console.log('PASS: ' + new Set(categories).size + ' question categories, ' + labels.length + ' UI labels, pronunciation/translation prefixes, counters, dynamic exercise feedback, Persian-digit normalization, dynamic category suffixes, and persistent interface-language selection.');
