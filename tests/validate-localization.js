@@ -57,6 +57,20 @@ assert.equal(translate('سؤال ۱ از ۱', 0), 'Frage 1 von 1');
 assert.equal(translate('سؤال 2 از 5', 1), 'Question 2 of 5');
 assert.equal(translate('۰ سؤال', 0), '0 Fragen');
 assert.equal(translate('۰ سؤال', 1), '0 questions');
+assert.equal(translate('نتیجه: ۳ از ۷ پاسخ درست.', 0), 'Ergebnis: 3 von 7 richtige Antworten.');
+assert.equal(translate('نتیجه: ۳ از ۷ پاسخ درست.', 1), 'Result: 3 of 7 correct answers.');
+assert.equal(
+  translate('نتیجه: ۳ از ۵. جمله‌سازی ۱: درست؛ جمله‌سازی ۲: نمونه: Ich habe einen Apfel gegessen. پاسخ‌های نادرست را مرور کن و دوباره تلاش کن.', 1),
+  'Result: 3 of 5. Sentence building 1: correct; Sentence building 2: Example: Ich habe einen Apfel gegessen. Review incorrect answers and try again.'
+);
+assert.equal(
+  translate('نتیجه آرتیکل: ۲ از ۵ (۴۰٪). پاسخ خالی: ۱. پاسخ صحیح موارد اشتباه: 1. der Apfel', 1),
+  'Result – Articles: 2 of 5 (40%) · Blank answers: 1. Correct answers for incorrect items: 1. der Apfel'
+);
+assert.equal(
+  translate('نتیجه وعده‌های غذایی: ۵ از ۵ (۱۰۰٪). آفرین! همه پاسخ‌ها درست است.', 0),
+  'Ergebnis – Mahlzeiten: 5 von 5 (100%) · Sehr gut! Alle Antworten sind richtig.'
+);
 assert.equal(
   translate('حالت چطور است؟ · سلام و احوال‌پرسی', 1),
   'حالت چطور است؟ · Greetings and small talk'
