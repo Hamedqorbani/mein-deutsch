@@ -3149,7 +3149,7 @@ function applyDynamicTextDirection(){
  const selector='p,span,small,b,strong,label,button,option,th,td,summary,h1,h2,h3,h4';
  document.querySelectorAll(selector).forEach(el=>{
   if(el.hasAttribute('dir'))return;
-  if(/[\\u0600-\\u06FF]/.test(el.textContent||''))el.setAttribute('dir','auto');
+  if(/[\u0600-\u06FF]/.test(el.textContent||''))el.setAttribute('dir','auto');
  });
 }
 function applyInterfaceLanguage(){
