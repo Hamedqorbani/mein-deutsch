@@ -43,6 +43,73 @@ const syn=(a,fa,b,fb)=>add('synonyms',a,fa,b,fb),ant=(a,fa,b,fb)=>add('antonyms'
 ['lachen','خندیدن','weinen','گریه کردن'],['lieben','دوست داشتن','hassen','متنفر بودن'],
 ['einschalten','روشن کردن','ausschalten','خاموش کردن']
 ].forEach(x=>ant(...x));
+
+/* Additional relations for the expanded everyday vocabulary */
+[
+['lernen','یاد گرفتن','studieren','درس خواندن'],
+['arbeiten','کار کردن','jobben','کار پاره‌وقت کردن'],
+['reden','حرف زدن','sprechen','صحبت کردن'],
+['erzählen','تعریف کردن','berichten','گزارش دادن'],
+['kaufen','خریدن','erwerben','تهیه کردن'],
+['bezahlen','پرداخت کردن','begleichen','تسویه کردن'],
+['suchen','جستجو کردن','nach etwas schauen','دنبال چیزی گشتن'],
+['finden','پیدا کردن','entdecken','کشف کردن'],
+['helfen','کمک کردن','beistehen','یاری کردن'],
+['wichtig','مهم','bedeutsam','بااهمیت'],
+['nett','خوش‌برخورد','freundlich','مهربان'],
+['ruhig','آرام','still','ساکت'],
+['müde','خسته','erschöpft','ازپاافتاده'],
+['schwierig','دشوار','kompliziert','پیچیده'],
+['einfach','ساده','leicht','آسان'],
+['schön','زیبا','hübsch','قشنگ'],
+['schnell','سریع','rasch','تند'],
+['langsam','آهسته','gemächlich','با‌آرامش'],
+['billig','ارزان','preiswert','مقرون‌به‌صرفه'],
+['kaputt','خراب','defekt','معیوب'],
+['sauber','تمیز','rein','پاک'],
+['krank','بیمار','nicht gesund','ناسالم'],
+['glücklich','خوشحال','froh','شاد'],
+['traurig','غمگین','betrübt','اندوهگین'],
+['beginnen','شروع کردن','anfangen','آغاز کردن'],
+['enden','تمام شدن','aufhören','متوقف شدن'],
+['mitbringen','همراه آوردن','bringen','آوردن'],
+['anrufen','تماس گرفتن','telefonieren','تلفنی صحبت کردن'],
+['aufräumen','مرتب کردن','ordnen','سامان دادن'],
+['aufwachen','بیدار شدن','wach werden','از خواب بیدار شدن']
+].forEach(x=>syn(...x));
+[
+['sauber','تمیز','dreckig','چرک'],
+['gesund','سالم','ungesund','ناسالم'],
+['müde','خسته','munter','سرحال'],
+['zufrieden','راضی','unzufrieden','ناراضی'],
+['höflich','مودب','unhöflich','بی‌ادب'],
+['möglich','ممکن','unmöglich','غیرممکن'],
+['sicher','امن','gefährlich','خطرناک'],
+['kostenlos','رایگان','kostenpflichtig','پولی'],
+['ordentlich','مرتب','chaotisch','آشفته'],
+['bequem','راحت','unbequem','ناراحت'],
+['bekannt','آشنا؛ معروف','unbekannt','ناشناخته'],
+['pünktlich','سروقت','unpünktlich','بدقول'],
+['fertig','آماده؛ تمام‌شده','unfertig','ناتمام'],
+['frei','آزاد؛ خالی','besetzt','اشغال'],
+['hell','روشن','finster','تاریک'],
+['bunt','رنگارنگ','farblos','بی‌رنگ'],
+['nah','نزدیک','weit','دور'],
+['oben','بالا','unten','پایین'],
+['links','چپ','rechts','راست'],
+['immer','همیشه','nie','هرگز'],
+['oft','اغلب','selten','به‌ندرت'],
+['zusammen','باهم','getrennt','جدا'],
+['drinnen','داخل','draußen','بیرون'],
+['einsteigen','سوار شدن','aussteigen','پیاده شدن'],
+['anmachen','روشن کردن','ausmachen','خاموش کردن'],
+['öffnen','باز کردن','schließen','بستن'],
+['gewinnen','برنده شدن','verlieren','باختن'],
+['lachen','خندیدن','weinen','گریه کردن'],
+['lieben','دوست داشتن','hassen','متنفر بودن'],
+['aufwachen','بیدار شدن','einschlafen','به خواب رفتن']
+].forEach(x=>ant(...x));
+
 const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const norm=s=>String(s||'').toLocaleLowerCase('de-DE').replace(/^(der|die|das)\s+/,'').trim();
 function render(node){
