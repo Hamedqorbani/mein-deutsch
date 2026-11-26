@@ -130,13 +130,13 @@
   }
 
   function panel(title, subtitle, inner) {
-    return '<div class="panel zuno-completion-panel"><div class="row between"><div><h3 class="section-title">'+esc(title)+'</h3><p class="muted tiny">'+esc(subtitle)+'</p></div></div>'+inner+'</div>';
+    return '<div class="panel zuno-completion-panel"><div class="row between"><div><h3 class="section-title">'+esc(title)+'</h3><p class="muted tiny">'+esc(subtitle)+'</p><small class="muted tiny">مکمل تألیفی A1 · بدون تطبیق صفحه‌ای با کتاب</small></div></div>'+inner+'</div>';
   }
 
   function addVerbBank() {
     const page = $('page-verbs');
     if (!page || $('zunoA1VerbBank')) return;
-    const html = '<section class="panel" id="zunoA1VerbBank"><div class="row between"><div><h3 class="section-title">بانک تکمیلی افعال A1</h3><p class="muted tiny">۴۲ فعل پرکاربرد با صرف شش ضمیر، معنی و مثال</p></div><span class="chip">'+verbs.length+' فعل</span></div><div class="grid2"><input id="zunoVerbSearch" type="search" placeholder="جست‌وجوی فعل یا معنی…" autocomplete="off"><select id="zunoVerbType"><option value="all">همه گروه‌ها</option><option>باقاعده</option><option>بی‌قاعده</option><option>تغییر مصوت</option><option>مدال</option><option>جداشدنی</option></select></div><div id="zunoVerbResults" class="grid2" style="margin-top:12px"></div><div id="zunoVerbDetail" class="result" style="margin-top:12px"></div></section>';
+    const html = '<section class="panel" id="zunoA1VerbBank"><div class="row between"><div><h3 class="section-title">بانک تکمیلی افعال A1</h3><p class="muted tiny">۴۲ فعل پرکاربرد با صرف شش ضمیر، معنی و مثال</p><small class="muted tiny">مکمل تألیفی A1 · بدون تطبیق صفحه‌ای با کتاب</small></div><span class="chip">'+verbs.length+' فعل</span></div><div class="grid2"><input id="zunoVerbSearch" type="search" placeholder="جست‌وجوی فعل یا معنی…" autocomplete="off"><select id="zunoVerbType"><option value="all">همه گروه‌ها</option><option>باقاعده</option><option>بی‌قاعده</option><option>تغییر مصوت</option><option>مدال</option><option>جداشدنی</option></select></div><div id="zunoVerbResults" class="grid2" style="margin-top:12px"></div><div id="zunoVerbDetail" class="result" style="margin-top:12px"></div></section>';
     page.insertAdjacentHTML('beforeend', html);
     const search = $('zunoVerbSearch'), type = $('zunoVerbType'), results = $('zunoVerbResults');
     function render() {
@@ -173,7 +173,7 @@
   function addDialogues() {
     const page = $('page-stories');
     if (!page || $('zunoA1Dialogues')) return;
-    const html = '<div class="panel" id="zunoA1Dialogues"><div class="row between"><div><h3 class="section-title">مکالمه‌های کاربردی A1</h3><p class="muted tiny">۸ موقعیت واقعی؛ گوش کن، متن را بخوان و تکرار کن.</p></div><span class="chip">۸ مکالمه</span></div><select id="zunoDialogueSelect" style="width:100%">'+dialogues.map((d,i)=>'<option value="'+i+'">'+(i+1)+'. '+esc(d[0])+'</option>').join('')+'</select><div id="zunoDialogueText" class="result" style="margin-top:12px"></div><div class="row"><button class="btn primary" id="zunoDialoguePlay">🔊 پخش مکالمه</button><button class="btn" id="zunoDialogueSlow">🐢 آهسته</button></div></div>';
+    const html = '<div class="panel" id="zunoA1Dialogues"><div class="row between"><div><h3 class="section-title">مکالمه‌های کاربردی A1</h3><p class="muted tiny">۸ موقعیت واقعی؛ گوش کن، متن را بخوان و تکرار کن.</p><small class="muted tiny">مکمل تألیفی A1 · بدون تطبیق صفحه‌ای با کتاب</small></div><span class="chip">۸ مکالمه</span></div><select id="zunoDialogueSelect" style="width:100%">'+dialogues.map((d,i)=>'<option value="'+i+'">'+(i+1)+'. '+esc(d[0])+'</option>').join('')+'</select><div id="zunoDialogueText" class="result" style="margin-top:12px"></div><div class="row"><button class="btn primary" id="zunoDialoguePlay">🔊 پخش مکالمه</button><button class="btn" id="zunoDialogueSlow">🐢 آهسته</button></div></div>';
     page.insertAdjacentHTML('beforeend',html);
     const select=$('zunoDialogueSelect'), host=$('zunoDialogueText');
     function render(){const d=dialogues[Number(select.value)||0];host.innerHTML='<b>'+esc(d[0])+'</b><p dir="ltr">'+[d[1],d[2],d[3],d[4]].filter(Boolean).map(esc).join('<br>')+'</p><p class="muted tiny">'+esc(d[5])+'</p>';}
@@ -183,7 +183,7 @@
   function addFinalExam() {
     const page = $('page-book-exercises');
     if (!page || $('zunoA1FinalExam')) return;
-    const html = '<div class="panel" id="zunoA1FinalExam"><div class="row between"><div><h3 class="section-title">آزمون جامع پایان A1</h3><p class="muted tiny">۳۰ سؤال از گرامر، واژگان، فعل‌ها، جمله‌سازی و زمان گذشته</p></div><span class="chip">۳۰ امتیاز</span></div><div id="zunoExamQuestions"></div><div class="row" style="margin-top:12px"><button class="btn primary" id="zunoExamCheck">تصحیح آزمون</button><button class="btn" id="zunoExamReset">شروع دوباره</button></div><div id="zunoExamResult" class="exercise-feedback" aria-live="polite" style="margin-top:12px">پاسخ‌ها را انتخاب کن و آزمون را تصحیح کن.</div></div>';
+    const html = '<div class="panel" id="zunoA1FinalExam"><div class="row between"><div><h3 class="section-title">آزمون جامع پایان A1</h3><p class="muted tiny">۳۰ سؤال از گرامر، واژگان، فعل‌ها، جمله‌سازی و زمان گذشته</p><small class="muted tiny">مکمل تألیفی A1 · بدون تطبیق صفحه‌ای با کتاب</small></div><span class="chip">۳۰ امتیاز</span></div><div id="zunoExamQuestions"></div><div class="row" style="margin-top:12px"><button class="btn primary" id="zunoExamCheck">تصحیح آزمون</button><button class="btn" id="zunoExamReset">شروع دوباره</button></div><div id="zunoExamResult" class="exercise-feedback" aria-live="polite" style="margin-top:12px">پاسخ‌ها را انتخاب کن و آزمون را تصحیح کن.</div></div>';
     page.insertAdjacentHTML('beforeend',html);
     const host=$('zunoExamQuestions');
     host.innerHTML=exam.map((q,i)=>'<div class="result" style="margin:8px 0"><b>'+(i+1)+'. '+esc(q[0])+'</b><select data-exam="'+i+'" style="width:100%;margin-top:7px"><option value="">انتخاب پاسخ</option>'+q[1].map((o,j)=>'<option value="'+j+'">'+esc(o)+'</option>').join('')+'</select><small class="muted tiny" id="zunoExamExplain'+i+'"></small></div>').join('');
