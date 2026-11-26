@@ -1,5 +1,5 @@
 /* Zuno past-tense learning module
- * Checked: 2026-11-21. The displayed forms are a deliberately selected A1/A2 starter set.
+ * Checked: 2026-11-26. The displayed forms are a deliberately selected A1/A2 starter set.
  */
 (function () {
   'use strict';
@@ -72,6 +72,15 @@
 
   VERBS.push({ verb: 'öffnen', meaning: 'باز کردن', level: 'A2', lesson: 'A2 · درس تکمیلی ۴ · پسوند -et', past: ['öffnete', 'öffnetest', 'öffnete', 'öffneten', 'öffnetet', 'öffneten'], part: 'geöffnet', aux: 'haben', note: 'فعل ضعیف است؛ شکل Partizip II آن geöffnet است.' });
 
+  VERBS.push(
+    { verb: 'erzählen', meaning: 'تعریف کردن / روایت کردن', level: 'A1', lesson: 'A1 · درس تکمیلی ۴ · روایت ساده', past: ['erzählte', 'erzähltest', 'erzählte', 'erzählten', 'erzähltet', 'erzählten'], part: 'erzählt', aux: 'haben', note: 'فعل ضعیف؛ در Partizip II به -t ختم می‌شود.' },
+    { verb: 'tanzen', meaning: 'رقصیدن', level: 'A1', lesson: 'A1 · درس تکمیلی ۴ · فعالیت‌های روزمره', past: ['tanzte', 'tanztest', 'tanzte', 'tanzten', 'tanztet', 'tanzten'], part: 'getanzt', aux: 'haben', note: 'در معنی معمولِ رقصیدن، Perfekt با haben ساخته می‌شود: Ich habe getanzt.' },
+    { verb: 'reisen', meaning: 'سفر کردن', level: 'A1', lesson: 'A1 · درس تکمیلی ۴ · سفر', past: ['reiste', 'reistest', 'reiste', 'reisten', 'reistet', 'reisten'], part: 'gereist', aux: 'sein', note: 'فعل ضعیف است، اما در معنی سفر کردن Perfekt با sein ساخته می‌شود: Wir sind gereist.' },
+    { verb: 'telefonieren', meaning: 'تلفنی صحبت کردن', level: 'A1', lesson: 'A1 · درس تکمیلی ۴ · ارتباط روزمره', past: ['telefonierte', 'telefoniertest', 'telefonierte', 'telefonierten', 'telefoniertet', 'telefonierten'], part: 'telefoniert', aux: 'haben', note: 'چون به -ieren ختم می‌شود، Partizip II بدون ge ساخته می‌شود.' },
+    { verb: 'antworten', meaning: 'پاسخ دادن', level: 'A1', lesson: 'A1 · درس تکمیلی ۴ · ارتباط روزمره', past: ['antwortete', 'antwortetest', 'antwortete', 'antworteten', 'antwortetet', 'antworteten'], part: 'geantwortet', aux: 'haben', note: 'ریشه به t ختم می‌شود؛ برای تلفظ روان در Präteritum و Partizip II یک e می‌آید.' },
+    { verb: 'feiern', meaning: 'جشن گرفتن', level: 'A1', lesson: 'A1 · درس تکمیلی ۴ · مناسبت‌ها', past: ['feierte', 'feiertest', 'feierte', 'feierten', 'feiertet', 'feierten'], part: 'gefeiert', aux: 'haben', note: 'فعل ضعیف؛ شکل Partizip II برابر gefeiert است.' }
+  );
+
   VERBS.forEach(function (item) {
     if (!item.lesson) {
       item.lesson = item.level + (item.level === 'A1'
@@ -96,6 +105,15 @@
     'hören': { type: 'ضعیف', source: 'https://www.duden.de/konjugation/hoeren', sourceName: 'Duden' },
     'kochen': { type: 'ضعیف', source: 'https://www.duden.de/konjugation/kochen', sourceName: 'Duden' },
     'suchen': { type: 'ضعیف', source: 'https://www.duden.de/konjugation/suchen', sourceName: 'Duden' }
+  });
+
+  Object.assign(VERB_META, {
+    'erzählen': { type: 'ضعیف', source: 'https://www.duden.de/konjugation/erzaehlen', sourceName: 'Duden' },
+    'tanzen': { type: 'ضعیف', source: 'https://www.duden.de/konjugation/tanzen', sourceName: 'Duden' },
+    'reisen': { type: 'ضعیف · فعل حرکتی با sein', source: 'https://www.duden.de/konjugation/reisen', sourceName: 'Duden' },
+    'telefonieren': { type: 'ضعیف · پایان -ieren', source: 'https://www.duden.de/konjugation/telefonieren', sourceName: 'Duden' },
+    'antworten': { type: 'ضعیف · پایان -t و پسوند -et', source: 'https://www.duden.de/konjugation/antworten', sourceName: 'Duden' },
+    'feiern': { type: 'ضعیف', source: 'https://www.duden.de/konjugation/feiern', sourceName: 'Duden' }
   });
 
   var QUESTIONS = [
@@ -174,6 +192,15 @@
     { q: 'A2 · درس تکمیلی ۵ · برای «از یک ساحل به ساحل دیگر بردن»، Partizip II فعل جداشدنی über|setzen کدام است؟', options: ['übergesetzt', 'übersetzt', 'geübergesetzt'], answer: 0, why: 'در این معنی، über جداشدنی است و ge میان پیشوند و ریشه می‌آید: übergesetzt.', level: 'A2', lesson: 'درس تکمیلی ۵ · پیشوند وابسته به معنی' }
   ];
 
+  QUESTIONS.push(
+    { q: 'A1 · درس تکمیلی ۴ · Präteritum فعل erzählen برای wir کدام است؟', options: ['erzählte', 'erzählten', 'erzählt'], answer: 1, why: 'Duden صرف فعل ضعیف erzählen را برای wir به شکل erzählten ثبت می‌کند.', level: 'A1', lesson: 'درس تکمیلی ۴ · فعل ضعیف' },
+    { q: 'A1 · درس تکمیلی ۴ · Partizip II فعل telefonieren کدام است؟', options: ['getelefoniert', 'telefoniert', 'telefonieren'], answer: 1, why: 'فعل‌های پایان‌یافته به -ieren معمولاً ge نمی‌گیرند: telefoniert.', level: 'A1', lesson: 'درس تکمیلی ۴ · فعل پایان‌یافته به -ieren' },
+    { q: 'A1 · درس تکمیلی ۴ · جمله را کامل کن: Wir ___ im Sommer nach Berlin gereist.', options: ['haben', 'sind', 'seid'], answer: 1, why: 'Duden برای reisen در معنی سفر کردن Perfekt با sein را ثبت می‌کند.', level: 'A1', lesson: 'درس تکمیلی ۴ · فعل حرکتی' },
+    { q: 'A1 · درس تکمیلی ۴ · Partizip II فعل antworten کدام است؟', options: ['geantwortet', 'geantwort', 'geantworten'], answer: 0, why: 'ریشه به t ختم می‌شود؛ شکل درست Partizip II برابر geantwortet است.', level: 'A1', lesson: 'درس تکمیلی ۴ · پایان -et' },
+    { q: 'A1 · درس تکمیلی ۴ · Partizip II فعل tanzen کدام است؟', options: ['getanzt', 'getanzen', 'getanzet'], answer: 0, why: 'Duden شکل Partizip II فعل tanzen را getanzt ثبت می‌کند.', level: 'A1', lesson: 'درس تکمیلی ۴ · فعل ضعیف' },
+    { q: 'A1 · درس تکمیلی ۴ · Präteritum فعل feiern برای du کدام است؟', options: ['feierte', 'feiertest', 'feierten'], answer: 1, why: 'برای du در Präteritum فعل ضعیف feiern، شکل feiertest می‌آید.', level: 'A1', lesson: 'درس تکمیلی ۴ · فعل ضعیف' }
+  );
+
   var SENTENCE_RULES = [
     { id: 'zptSentence', accepted: ['Ich habe gestern einen Film gesehen.', 'Gestern habe ich einen Film gesehen.'], expected: 'Ich habe gestern einen Film gesehen.', level: 'A1–A2', lesson: 'درس تکمیلی ۵ · جمله‌سازی ترکیبی' },
     { id: 'zptSentence2', accepted: ['Wir haben am Abend ferngesehen.', 'Am Abend haben wir ferngesehen.'], expected: 'Wir haben am Abend ferngesehen.', level: 'A1–A2', lesson: 'درس تکمیلی ۵ · جمله‌سازی ترکیبی' },
@@ -196,6 +223,12 @@
     { id: 'zptSentence19', accepted: ['Ich habe den Text übersetzt.'], expected: 'Ich habe den Text übersetzt.', level: 'A2', lesson: 'درس تکمیلی ۵ · پیشوند جدانشدنی' },
     { id: 'zptSentence20', accepted: ['Der Fährmann hat uns ans andere Ufer übergesetzt.'], expected: 'Der Fährmann hat uns ans andere Ufer übergesetzt.', level: 'A2', lesson: 'درس تکمیلی ۵ · پیشوند جداشدنی' }
   ];
+
+  SENTENCE_RULES.push(
+    { id: 'zptSentence21', accepted: ['Ich habe dir gestern eine Geschichte erzählt.', 'Gestern habe ich dir eine Geschichte erzählt.'], expected: 'Ich habe dir gestern eine Geschichte erzählt.', level: 'A1', lesson: 'درس تکمیلی ۴ · روایت ساده' },
+    { id: 'zptSentence22', accepted: ['Wir sind im Sommer nach Berlin gereist.', 'Im Sommer sind wir nach Berlin gereist.'], expected: 'Wir sind im Sommer nach Berlin gereist.', level: 'A1', lesson: 'درس تکمیلی ۴ · فعل حرکتی با sein' },
+    { id: 'zptSentence23', accepted: ['Ich habe gestern mit meiner Mutter telefoniert.', 'Gestern habe ich mit meiner Mutter telefoniert.'], expected: 'Ich habe gestern mit meiner Mutter telefoniert.', level: 'A1', lesson: 'درس تکمیلی ۴ · فعل پایان‌یافته به -ieren' }
+  );
 
   function escapeHtml(value) {
     return String(value == null ? '' : value).replace(/[&<>"']/g, function (ch) {
@@ -482,8 +515,15 @@
         ['sagen · گفتن', 'sagte', 'gesagt', 'haben', 'A1 · درس تکمیلی ۴'],
         ['hören · گوش دادن', 'hörte', 'gehört', 'haben', 'A1 · درس تکمیلی ۴'],
         ['kochen · آشپزی کردن', 'kochte', 'gekocht', 'haben', 'A1 · درس تکمیلی ۴'],
-        ['suchen · جست‌وجو کردن', 'suchte', 'gesucht', 'haben', 'A1 · درس تکمیلی ۴']
+        ['suchen · جست‌وجو کردن', 'suchte', 'gesucht', 'haben', 'A1 · درس تکمیلی ۴'],
+        ['erzählen · تعریف کردن', 'erzählte', 'erzählt', 'haben', 'A1 · درس تکمیلی ۴'],
+        ['tanzen · رقصیدن', 'tanzte', 'getanzt', 'haben', 'A1 · درس تکمیلی ۴'],
+        ['reisen · سفر کردن', 'reiste', 'gereist', 'sein', 'A1 · درس تکمیلی ۴'],
+        ['telefonieren · تلفنی صحبت کردن', 'telefonierte', 'telefoniert', 'haben', 'A1 · درس تکمیلی ۴'],
+        ['antworten · پاسخ دادن', 'antwortete', 'geantwortet', 'haben', 'A1 · درس تکمیلی ۴'],
+        ['feiern · جشن گرفتن', 'feierte', 'gefeiert', 'haben', 'A1 · درس تکمیلی ۴']
       ]),
+      '<div class="zpt-callout"><b>نکتهٔ A1 این مرحله: سه الگوی کاربردی</b> <span class="lesson-tag">A1 · درس تکمیلی ۴</span><p><b dir="ltr">-ieren:</b> telefonieren → telefoniert؛ در این گروه ge نمی‌آید.</p><p><b>ریشهٔ پایان‌یافته به t:</b> antworten → geantwortet؛ برای تلفظ روان، e میان ریشه و t می‌آید.</p><p><b>سفر کردن:</b> reisen → ist gereist؛ در این معنی، فعل کمکی sein به‌کار می‌رود.</p><p dir="ltr">Ich habe gestern telefoniert. = من دیروز تلفنی صحبت کردم.</p><p dir="ltr">Wir sind im Sommer gereist. = ما در تابستان سفر کردیم.</p></div>',
       '<div class="zpt-callout"><b>تمرین الگوی فعل‌های ضعیف</b> <span class="lesson-tag">A1 · درس تکمیلی ۴</span><p>در این هشت فعل، Präteritum با -te و Partizip II با ge- ... -t ساخته شده است. شکل‌های شش ضمیر را در فهرست فعل‌ها جداگانه ببین.</p><p dir="ltr">ich wohnte · du wohntest · wir wohnten</p><p dir="ltr">ich habe gewohnt · du hast gewohnt · wir haben gewohnt</p></div>',
       '<div class="zpt-callout"><b>سه نکته مهم</b><p>۱) فعل‌های جداشدنی: ge میان پیشوند و ریشه می‌آید؛ مانند einkaufen → eingekauft.</p><p>۲) پیشوندهای رایجِ جدانشدنی مانند be-, emp-, ent-, er-, ge-, miss-, ver- و zer- معمولاً ge نمی‌گیرند؛ مانند besuchen → besucht.</p><p>۳) فعل‌های پایان‌یافته به -ieren نیز ge نمی‌گیرند؛ مانند studieren → studiert.</p><p>۴) بعضی پیشوندها مثل über-, um-, unter- و durch- بسته به تکیه و معنی می‌توانند جداشدنی یا جدانشدنی باشند؛ فقط از روی نوشتار تصمیم نگیر.</p></div>',
       '<div class="zpt-callout"><b>یک نوشتار، دو ساخت و دو معنی</b> <span class="lesson-tag">A2 · درس تکمیلی ۵ · نکتهٔ تکمیلی</span><p><b dir="ltr">übersetzen</b> به معنی ترجمه کردن: پیشوند جدانشدنی است و Partizip II می‌شود <b dir="ltr">übersetzt</b>.</p><p><b dir="ltr">über|setzen</b> به معنی عبور دادن از یک ساحل به ساحل دیگر: پیشوند جداشدنی است و Partizip II می‌شود <b dir="ltr">übergesetzt</b>.</p><small>تکیه و معنی، جداشدنی بودن را مشخص می‌کند؛ این دو را با هم اشتباه نکن.</small></div>',
@@ -518,6 +558,9 @@
       '<div class="zpt-question"><label for="zptSentence18">جمله‌سازی ۱۸ · A1: بگو امروز کار کردیم.</label><p dir="ltr">Wir / haben / heute / gearbeitet</p><small>معنی: ما امروز کار کردیم.</small><input id="zptSentence18" dir="ltr" autocomplete="off" placeholder="Wir haben ... gearbeitet."></div>',
       '<div class="zpt-question"><label for="zptSentence19">جمله‌سازی ۱۹ · A2: بگو متن را ترجمه کردم.</label><p dir="ltr">Ich / habe / den Text / übersetzt</p><small>معنی: من متن را ترجمه کردم.</small><input id="zptSentence19" dir="ltr" autocomplete="off" placeholder="Ich habe ... übersetzt."></div>',
       '<div class="zpt-question"><label for="zptSentence20">جمله‌سازی ۲۰ · A2: با معنی عبور دادن از رودخانه جمله بساز.</label><p dir="ltr">Der Fährmann / hat / uns / ans andere Ufer / übergesetzt</p><small>معنی: قایقران ما را به ساحل دیگر رساند.</small><input id="zptSentence20" dir="ltr" autocomplete="off" placeholder="Der Fährmann hat ... übergesetzt."></div>',
+      '<div class="zpt-question"><label for="zptSentence21">جمله‌سازی ۲۱ · A1: با فعل erzählen جمله بساز.</label><p dir="ltr">Ich / dir / gestern / eine Geschichte / erzählt / habe</p><small>معنی: من دیروز برای تو داستانی تعریف کردم.</small><input id="zptSentence21" dir="ltr" autocomplete="off" placeholder="Ich habe dir gestern ... erzählt."></div>',
+      '<div class="zpt-question"><label for="zptSentence22">جمله‌سازی ۲۲ · A1: با reisen و sein جمله بساز.</label><p dir="ltr">Wir / im Sommer / nach Berlin / gereist / sind</p><small>معنی: ما در تابستان به برلین سفر کردیم.</small><input id="zptSentence22" dir="ltr" autocomplete="off" placeholder="Wir sind im Sommer ... gereist."></div>',
+      '<div class="zpt-question"><label for="zptSentence23">جمله‌سازی ۲۳ · A1: با telefonieren جمله بساز.</label><p dir="ltr">Ich / gestern / mit meiner Mutter / telefoniert / habe</p><small>معنی: من دیروز با مادرم تلفنی صحبت کردم.</small><input id="zptSentence23" dir="ltr" autocomplete="off" placeholder="Ich habe gestern ... telefoniert."></div>',
       '<div class="row" style="margin-top:10px"><button type="button" class="btn primary" id="zptCheck">بررسی پاسخ‌ها</button><button type="button" class="btn" id="zptReset">شروع دوباره</button></div>',
       '<div id="zptPracticeFeedback" class="zpt-feedback" aria-live="polite">پاسخ‌ها را انتخاب کن و بررسی را بزن.</div>',
       '</div>',
