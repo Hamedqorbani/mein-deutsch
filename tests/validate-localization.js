@@ -6,6 +6,8 @@ const path = require('node:path');
 const root = path.resolve(__dirname, '..');
 const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 const questionSource = fs.readFileSync(path.join(root, 'zuno-question-practice.js'), 'utf8');
+const completionSource = fs.readFileSync(path.join(root, 'zuno-a1-completion.js'), 'utf8');
+const corePracticeSource = fs.readFileSync(path.join(root, 'zuno-a1-core-practice.js'), 'utf8');
 
 const dictionaryStart = html.indexOf('const uiText={');
 const translatorStart = html.indexOf('function translateUiText(raw,ix){', dictionaryStart);
@@ -23,6 +25,44 @@ vm.runInNewContext(
 );
 const uiText = context.__zunoUiText;
 const translate = context.__zunoTranslate;
+
+const completionUiLabels = [
+  'بانک تکمیلی افعال A1',
+  'همه گروه‌ها',
+  'باقاعده',
+  'بی‌قاعده',
+  'تغییر مصوت',
+  'مدال',
+  'جداشدنی',
+  'فعلی پیدا نشد.',
+  'ضمیر',
+  'صرف فعل',
+  'تکمیل گرامر A1',
+  'مکالمه‌های کاربردی A1',
+  'آزمون جامع پایان A1',
+  'تصحیح آزمون',
+  'شروع دوباره',
+  'انتخاب پاسخ',
+  'تمرین‌های دسته‌بندی‌شده A1',
+  'A1 · تمرین تکمیلی زونو',
+  'ساعت · رسمی و محاوره‌ای',
+  'Nominativ و Akkusativ',
+  'فعل‌های جداشدنی',
+  'واژگان و جمع اسم‌ها',
+  'بررسی تمرین ساعت',
+  'بررسی Akkusativ',
+  'بررسی فعل‌های جداشدنی',
+  'مکمل تألیفی A1 · بدون تطبیق صفحه‌ای با کتاب'
+];
+for (const label of completionUiLabels) {
+  assert.ok(uiText[label], 'Missing A1 add-on translation: ' + label);
+  assert.notEqual(translate(label, 0), label, 'German A1 add-on label remains untranslated: ' + label);
+  assert.notEqual(translate(label, 1), label, 'English A1 add-on label remains untranslated: ' + label);
+}
+assert.equal(translate('۴۲ فعل', 0), '42 Verben', 'Persian verb counts must use Latin digits in German UI');
+assert.equal(translate('۸ مکالمه', 1), '8 dialogues', 'Persian dialogue counts must use Latin digits in English UI');
+assert.equal((completionSource.match(/مکمل تألیفی A1 · بدون تطبیق صفحه‌ای با کتاب/g) || []).length, 4, 'All four supplementary completion panels must show an accurate source note');
+assert.ok(corePracticeSource.includes('تمرین‌های مستقل و تألیفی بر پایه مهارت‌های رایج سطح A1؛ منبع دقیق صفحه‌ای ادعا نمی‌شود.'), 'Core practice must retain its honest original-content/source note');
 
 const categories = [...questionSource.matchAll(/\bc:'([^']+)'/g)].map(match => match[1]);
 for (const category of new Set(categories)) {
@@ -75,6 +115,22 @@ assert.equal(
   translate('حالت چطور است؟ · سلام و احوال‌پرسی', 1),
   'حالت چطور است؟ · Greetings and small talk'
 );
+
+const directionHelperStart = html.indexOf('function applyDynamicTextDirection(){');
+const directionHelperEnd = html.indexOf('\nfunction applyInterfaceLanguage()', directionHelperStart);
+assert.ok(directionHelperStart >= 0 && directionHelperEnd > directionHelperStart, 'Dynamic mixed-script direction helper must exist');
+const directionNodes = [
+  {textContent:'پاسخ درست', attrs:{}, hasAttribute(name){return Object.prototype.hasOwnProperty.call(this.attrs,name);}, setAttribute(name,value){this.attrs[name]=value;}},
+  {textContent:'German sentence', attrs:{dir:'ltr'}, hasAttribute(name){return Object.prototype.hasOwnProperty.call(this.attrs,name);}, setAttribute(name,value){this.attrs[name]=value;}},
+  {textContent:'Heute lerne ich Deutsch.', attrs:{}, hasAttribute(name){return Object.prototype.hasOwnProperty.call(this.attrs,name);}, setAttribute(name,value){this.attrs[name]=value;}}
+];
+context.document = {querySelectorAll(){return directionNodes;}};
+vm.runInNewContext(html.slice(directionHelperStart, directionHelperEnd) + '\n globalThis.__zunoApplyDynamicTextDirection = applyDynamicTextDirection;', context);
+context.__zunoApplyDynamicTextDirection();
+assert.equal(directionNodes[0].attrs.dir, 'auto', 'Persian dynamic text must receive automatic RTL/LTR direction');
+assert.equal(directionNodes[1].attrs.dir, 'ltr', 'Explicit direction must never be overwritten');
+assert.equal(directionNodes[2].attrs.dir, undefined, 'German-only dynamic text should keep the surrounding LTR direction');
+assert.ok(html.includes('applyDynamicTextDirection();'), 'Interface-language changes must apply mixed-script direction to dynamic content');
 const helperStart = html.indexOf('function applyUiTextNode(node,ix){');
 const helperEnd = html.indexOf('\nfunction applyInterfaceLanguage()', helperStart);
 assert.ok(helperStart >= 0 && helperEnd > helperStart, 'Live text-node localization helper must exist');
