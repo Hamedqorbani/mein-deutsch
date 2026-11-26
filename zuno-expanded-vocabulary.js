@@ -176,7 +176,6 @@ const zunoExpandedVocabulary = [
 ["das Internet","اینترنت","internet","اینترنت","das","فناوری","Das Wort „das Internet“ ist wichtig.","واژهٔ «اینترنت» مهم است.","—"],
 ["die Webseite","صفحهٔ وب","web page","وِب‌زایتِه","die","فناوری","Das Wort „die Webseite“ ist wichtig.","واژهٔ «صفحهٔ وب» مهم است.","Webseiten"],
 ["die E-Mail","ایمیل","email","ای‌مِیل","die","فناوری","Das Wort „die E-Mail“ ist wichtig.","واژهٔ «ایمیل» مهم است.","E-Mails"],
-["das Passwort","رمز عبور","password","پاس‌وُرت","das","فناوری","Das Wort „das Passwort“ ist wichtig.","واژهٔ «رمز عبور» مهم است.","Passwörter"],
 ["der Unterricht","کلاس؛ تدریس","lesson; class","اونتِریشت","der","آموزش","Das Wort „der Unterricht“ ist wichtig.","واژهٔ «کلاس» مهم است.","—"],
 ["die Prüfung","امتحان","exam","پروفونگ","die","آموزش","Das Wort „die Prüfung“ ist wichtig.","واژهٔ «امتحان» مهم است.","Prüfungen"],
 ["die Aufgabe","تمرین؛ وظیفه","task; exercise","آوف‌گابه","die","آموزش","Das Wort „die Aufgabe“ ist wichtig.","واژهٔ «تمرین» مهم است.","Aufgaben"],
@@ -320,7 +319,6 @@ const zunoExpandedVocabulary = [
 ["entscheiden","تصمیم گرفتن","to decide","اِنت‌شایدِن","—","روزمره","Ich entscheide heute.","من امروز تصمیم می‌گیرم.","","Verb"],
 ["vergessen","فراموش کردن","to forget","فِرگِسِن","—","روزمره","Ich vergesse den Namen nicht.","من اسم را فراموش نمی‌کنم.","","Verb"],
 ["sich erinnern","به یاد آوردن","to remember","زیش اِرینِرن","—","روزمره","Ich erinnere mich an dich.","من تو را به یاد می‌آورم.","","Verb"],
-["hoffen","امید داشتن","to hope","هُفِن","—","احساسات","Wir hoffen auf gutes Wetter.","ما امیدواریم هوا خوب باشد.","","Verb"],
 ["unterschreiben","امضا کردن","to sign","اونتِرشرایبِن","—","اداری","Ich unterschreibe das Formular.","من فرم را امضا می‌کنم.","","Verb"],
 ["ausfüllen","پر کردن فرم","to fill in","آوس‌فولِن","—","اداری","Ich fülle das Formular aus.","من فرم را پر می‌کنم.","","Verb"],
 ["anrufen","تماس گرفتن","to call","آن‌روفِن","—","ارتباط","Ich rufe dich später an.","بعداً به تو زنگ می‌زنم.","","Verb"],
@@ -409,7 +407,6 @@ const zunoExpandedVocabulary = [
 ["kompliziert","پیچیده","complicated","کُمپلیتسیرت","—","ویژگی‌ها","Das Problem ist kompliziert.","مشکل پیچیده است.","","Adjektiv"],
 ["richtig","درست","correct","ریشتیش","—","آموزش","Die Antwort ist richtig.","پاسخ درست است.","","Adjektiv"],
 ["falsch","غلط","wrong","فالش","—","آموزش","Das ist falsch.","این غلط است.","","Adjektiv"],
-["fertig","آماده؛ تمام‌شده","ready; finished","فِرتیش","—","روزمره","Das Essen ist fertig.","غذا آماده است.","","Adjektiv"],
 ["offen","باز","open","اوفِن","—","خانه","Das Fenster ist offen.","پنجره باز است.","","Adjektiv"],
 ["geschlossen","بسته","closed","گِشلوسِن","—","خانه","Die Tür ist geschlossen.","در بسته است.","","Adjektiv"],
 ["voll","پر","full","فول","—","ویژگی‌ها","Der Bus ist voll.","اتوبوس پر است.","","Adjektiv"],
@@ -442,7 +439,6 @@ const zunoExpandedVocabulary = [
 ["nie","هرگز","never","نی","—","زمان","Ich rauche nie.","من هرگز سیگار نمی‌کشم.","","Adverb"],
 ["genug","به‌اندازهٔ کافی","enough","گِنوق","—","مقدار","Ich habe genug Zeit.","من وقت کافی دارم.","","Adverb"],
 ["fast","تقریباً","almost","فاست","—","مقدار","Ich bin fast fertig.","من تقریباً آماده‌ام.","","Adverb"],
-["besonders","به‌خصوص","especially","بِزوندرس","—","مقدار","Ich mag besonders Musik.","من به‌خصوص موسیقی را دوست دارم.","","Adverb"],
 ["gemeinsam","مشترک؛ باهم","together; jointly","گِماینزام","—","ارتباط","Wir machen das gemeinsam.","ما این کار را باهم انجام می‌دهیم.","","Adverb"]
 ].map(([de,fa,en,pron,article,category,example,exampleFa,plural,pos])=>[
  de,fa,en,pron,article,category,"A1",example,exampleFa,plural||"","Wortschatz-Erweiterung",pos||"Nomen",
