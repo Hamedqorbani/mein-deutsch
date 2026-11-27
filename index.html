@@ -3201,17 +3201,18 @@ function lessonForWord(w){
  return 'واژگان تکمیلی A1 · بدون تطبیق قطعی با درس';
 }
 let currentPage='home',previousPage='home';function page(p){if(!p||!$('page-'+p))return;if(p!==currentPage){previousPage=currentPage;currentPage=p;}document.querySelectorAll('.page').forEach(x=>x.classList.add('hidden'));$('page-'+p).classList.remove('hidden');document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x.dataset.page===p));$('topBackBtn')?.classList.toggle('hidden',p==='home');setMainMenu(false);if(p==='cards')renderCard();if(p==='dictionary')searchDict()}
-function counts(){let allA1=uniqueCards(words.filter(w=>w[6]==='A1'));const knownEl=$('knownCount'),totalEl=$('totalCount'),streakEl=$('streakCount');if(knownEl)knownEl.textContent=fa(allA1.filter(w=>known.has(w[0])).length);if(totalEl)totalEl.textContent=fa(allA1.length);if(streakEl)streakEl.textContent=fa(Number(localStorage.getItem('md_sessions')||0))}
+function isA1Word(w){return !!w&&(isA1Word(w)||/^Lektion\s+(?:[1-9]|1[0-2])$/.test(String(w[10]||'')));}
+function counts(){let allA1=uniqueCards(words.filter(w=>isA1Word(w)));const knownEl=$('knownCount'),totalEl=$('totalCount'),streakEl=$('streakCount');if(knownEl)knownEl.textContent=fa(allA1.filter(w=>known.has(w[0])).length);if(totalEl)totalEl.textContent=fa(allA1.length);if(streakEl)streakEl.textContent=fa(Number(localStorage.getItem('md_sessions')||0))}
 function setupCardCategories(){
  let select=$('categoryFilter'),current=select.value;
- let cats=[...new Set(words.filter(w=>w[6]==='A1').map(w=>w[5]).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'fa'));
+ let cats=[...new Set(words.filter(w=>isA1Word(w)).map(w=>w[5]).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'fa'));
  select.innerHTML='<option value="all">همه دسته‌ها</option>'+cats.map(c=>'<option value="'+esc(c)+'">'+esc(c)+'</option>').join('');
  select.value=cats.includes(current)?current:'all';
 }
 function selectedWords(){
  let lev=$('levelFilter').value,cat=$('categoryFilter').value,q=normalizeWord($('cardSearch')?.value||'');
  if(lev!=='A1')return [];
- return words.filter(w=>w[6]==='A1'&&(cat==='all'||w[5]===cat)&&(!q||searchMatches(w,q)));
+ return words.filter(w=>isA1Word(w)&&(cat==='all'||w[5]===cat)&&(!q||searchMatches(w,q)));
 }
 function renderCard(){filtered=selectedWords();if(!filtered.length){$('cardArticle').textContent='';$('cardWord').textContent='این سطح به‌زودی فعال می‌شود';$('cardPron').textContent='فعلاً محتوای سطح A1 در دسترس است.';$('cardMeaningLabel').classList.add('hidden');$('cardMeaning').classList.add('hidden');$('cardExample').classList.add('hidden');$('cardExampleMeaning').classList.add('hidden');$('cardCounter').textContent='به‌زودی';return}idx=Math.min(idx,filtered.length-1);let w=filtered[idx];const germanMode=lang==='de';$('cardArticle').textContent=w[4]==='—'?'':(w[4]==='جمع'?'die':w[4]);$('cardArticle').className='article '+({der:'der',die:'die',das:'das','جمع':'plural'}[w[4]]||'');$('cardWord').textContent=w[0];$('cardLessonTag').textContent=lessonForWord(w)+' · Starten wir! A1';$('cardPron').textContent='تلفظ تقریبی: '+w[3];$('cardMeaningLabel').textContent=germanMode?'Beispielsatz (Deutsch)':'معنی';$('cardMeaning').textContent=lang==='fa'?w[1]:germanMode?w[7]:w[2];$('cardExample').textContent=w[7];$('cardExampleMeaning').textContent=w[8];$('cardMeaningLabel').classList.add('hidden');['cardMeaning','cardExample','cardExampleMeaning'].forEach(id=>$(id).classList.add('hidden'));$('revealCard').textContent='نمایش معنی';$('cardCounter').textContent=fa(idx+1)+' / '+fa(filtered.length)}
 function reveal(){if(lang==='de'){['cardMeaningLabel','cardMeaning'].forEach(id=>$(id).classList.toggle('hidden'))}else{['cardMeaning','cardExample','cardExampleMeaning'].forEach(id=>$(id).classList.toggle('hidden'))}$('revealCard').textContent=$('cardMeaning').classList.contains('hidden')?'نمایش معنی':'پنهان کردن معنی'}
@@ -3334,9 +3335,9 @@ function searchDict(){
  if(!n){$('dictResults').innerHTML='<div class="empty">برای دیدن معنی و مثال‌ها، یک واژه را جستجو کن.</div>';return}
  const article=n.match(/^(der|die|das)\s+/),bare=n.replace(/^(der|die|das)\s+/,'');
  const germanKey=w=>normalizeWord(w[0]).replace(/^(der|die|das)\s+/,'');
- const exact=words.filter(w=>w[6]==='A1'&&((germanKey(w)===bare&&(!article||w[4]===article[1]))||[w[1],w[2]].some(v=>normalizeWord(v)===n)));
+ const exact=words.filter(w=>isA1Word(w)&&((germanKey(w)===bare&&(!article||w[4]===article[1]))||[w[1],w[2]].some(v=>normalizeWord(v)===n)));
  if(exact.length){$('dictResults').innerHTML='<div class="grid2">'+exact.slice(0,10).map(dictEntry).join('')+'</div>';return}
- const suggestions=words.filter(w=>w[6]==='A1'&&(
+ const suggestions=words.filter(w=>isA1Word(w)&&(
   germanKey(w).startsWith(bare)||
   [w[1],w[2]].some(v=>{const m=normalizeWord(v);return m.startsWith(n)||(n.length>=3&&m.includes(n))})
  )).slice(0,8);
@@ -3791,7 +3792,7 @@ function renderGlobalSuggestions(){
  if(!globalInput||!globalSuggestions)return;
  const q=globalInput.value.trim();
  if(!q){globalSuggestions.classList.add('hidden');globalSuggestions.innerHTML='';return;}
- const matches=words.filter(w=>w[6]==='A1'&&searchMatches(w,q)).slice(0,8);
+ const matches=words.filter(w=>isA1Word(w)&&searchMatches(w,q)).slice(0,8);
  globalSuggestions._matches=matches;
  globalSuggestions.innerHTML=matches.length?matches.map((w,i)=>'<button type="button" class="global-suggestion" role="option" data-global-index="'+i+'"><strong>'+esc(w[0])+'</strong><small>'+esc(w[1])+'</small></button>').join(''):'<div class="global-suggestion"><small>پیشنهادی پیدا نشد؛ برای جستجوی کامل Enter بزن.</small></div>';
  globalSuggestions.classList.remove('hidden');
@@ -4114,7 +4115,7 @@ const pairItems=[['ei','صدای «آی»','mein'],['ie','ای کشیده','Lieb
 $('alphabetLetters').innerHTML=alphabetItems.map(x=>'<div class="letter-tile"><b>'+esc(x[0])+'</b><small>'+esc(x[1])+'</small><button class="btn small" type="button" data-letter-say="'+esc(x[0]==='ß'?'Eszett':x[0])+'">🔊 نام حرف</button><small dir="ltr">'+esc(x[2])+'</small><button class="btn small" type="button" data-pair-say="'+esc(x[2])+'">شنیدن مثال</button></div>').join('');
 $('letterPairs').innerHTML=pairItems.map(x=>'<div class="pair-tile"><div class="row"><b>'+esc(x[0])+'</b><button class="btn small" type="button" data-pair-say="'+esc(x[2])+'">🔊 شنیدن</button></div><p>'+esc(x[1])+'</p><small dir="ltr">'+esc(x[2])+'</small></div>').join('');
 // Build the thematic vocabulary from the complete A1 bank, not a small hand-picked sample.
-const topicWords=words.filter(w=>w[6]==='A1').map(w=>({w:w[0],m:w[1],en:w[2],pron:w[3],article:w[4],t:w[5]||'سایر',example:w[7]||w[0],exampleFa:w[8]||''}));
+const topicWords=words.filter(w=>isA1Word(w)).map(w=>({w:w[0],m:w[1],en:w[2],pron:w[3],article:w[4],t:w[5]||'سایر',example:w[7]||w[0],exampleFa:w[8]||''}));
 let activeTopic='همه';
 const topicCategories=['همه',...new Set(topicWords.map(x=>x.t).filter(Boolean).sort((a,b)=>a.localeCompare(b,'fa')))];
 $('topicFilters').innerHTML=topicCategories.map((t,i)=>'<button class="chip'+(i===0?' active':'')+'" type="button" data-topic="'+esc(t)+'">'+esc(t)+'</button>').join('');
