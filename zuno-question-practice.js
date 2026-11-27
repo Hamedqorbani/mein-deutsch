@@ -161,45 +161,4 @@
   $('zqpSpeakQuestion').addEventListener('click', () => { if (filtered[current]) speak(filtered[current].q); });
   $('zqpSpeakAnswer').addEventListener('click', () => { if (filtered[current]) speak(filtered[current].a); });
 
-  function globalMatches(query) {
-    return bank.map(item => ({item,points:score(item,query)})).filter(x => x.points > 0).sort((a,b) => b.points - a.points).slice(0,6).map(x => x.item);
-  }
-  const globalInput = $('globalWordSearch');
-  const suggestions = $('globalSearchSuggestions');
-  function renderGlobalQuestionSuggestions() {
-    if (!globalInput || !suggestions) return;
-    const q = globalInput.value.trim();
-    if (!q) return;
-    const matches = globalMatches(q);
-    if (!matches.length) return;
-    suggestions.innerHTML = matches.map(item => '<button type="button" class="global-suggestion" role="option" data-zqp-id="' + esc(item.id) + '"><strong dir="ltr">' + esc(item.q) + '</strong><small>' + esc(item.qt) + ' · ' + esc(item.c) + '</small></button>').join('');
-    suggestions.classList.remove('hidden');
-  }
-  globalInput && globalInput.addEventListener('input', renderGlobalQuestionSuggestions);
-  suggestions && suggestions.addEventListener('click', event => {
-    const button = event.target.closest('[data-zqp-id]');
-    if (button) selectItem(button.dataset.zqpId);
-  });
-  globalInput && globalInput.addEventListener('keydown', event => {
-    if (event.key !== 'Enter') return;
-    const matches = globalMatches(globalInput.value);
-    if (matches.length) {
-      event.preventDefault(); event.stopImmediatePropagation();
-      selectItem(matches[0].id);
-    }
-  }, true);
-  const globalButton = $('globalSearchButton');
-  globalButton && globalButton.addEventListener('click', event => {
-    const matches = globalMatches(globalInput.value);
-    if (!matches.length) return;
-    event.preventDefault(); event.stopImmediatePropagation();
-    selectItem(matches[0].id);
-  }, true);
-  const globalForm = $('globalSearchForm');
-  globalForm && globalForm.addEventListener('submit', event => {
-    const matches = globalMatches(globalInput.value);
-    if (!matches.length) return;
-    event.preventDefault(); event.stopImmediatePropagation();
-    selectItem(matches[0].id);
-  }, true);
 })();
