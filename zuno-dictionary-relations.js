@@ -7,7 +7,8 @@ const relations=Object.create(null);
 const add=(kind,a,fa,b,fb)=>[[a,fa,b,fb],[b,fb,a,fa]].forEach(([word,meaning,related,relatedMeaning])=>{
  const key=word.toLocaleLowerCase('de-DE');
  if(!relations[key])relations[key]={synonyms:[],antonyms:[]};
- relations[key][kind].push({word:related,fa:relatedMeaning});
+ const relatedKey=related.toLocaleLowerCase('de-DE');
+ if(!relations[key][kind].some(item=>item.word.toLocaleLowerCase('de-DE')===relatedKey))relations[key][kind].push({word:related,fa:relatedMeaning});
 });
 const syn=(a,fa,b,fb)=>add('synonyms',a,fa,b,fb),ant=(a,fa,b,fb)=>add('antonyms',a,fa,b,fb);
 [
@@ -111,7 +112,7 @@ const syn=(a,fa,b,fb)=>add('synonyms',a,fa,b,fb),ant=(a,fa,b,fb)=>add('antonyms'
 ].forEach(x=>ant(...x));
 
 const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const norm=s=>String(s||'').toLocaleLowerCase('de-DE').replace(/^(der|die|das)\\s+/,'').trim();
+const norm=s=>String(s||'').toLocaleLowerCase('de-DE').replace(/^(der|die|das)\s+/,'').trim();
 function currentLanguage(){
  const value=document.body&&document.body.dataset&&document.body.dataset.uiLanguage;
  return value==='de'||value==='en'?value:'fa';
