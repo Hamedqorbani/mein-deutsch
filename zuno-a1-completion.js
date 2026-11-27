@@ -52,7 +52,13 @@
     ['anrufen','تلفن زدن','جداشدنی + تغییر مصوت',['rufe an','rufst an','ruft an','rufen an','ruft an','rufen an'],'Ich rufe dich an.','من به تو تلفن می‌زنم.'],
     ['fernsehen','تلویزیون تماشا کردن','جداشدنی + تغییر مصوت',['sehe fern','siehst fern','sieht fern','sehen fern','seht fern','sehen fern'],'Sie sieht am Abend fern.','او عصر تلویزیون تماشا می‌کند.'],
     ['aufräumen','مرتب کردن','جداشدنی',['räume auf','räumst auf','räumt auf','räumen auf','räumt auf','räumen auf'],'Ich räume mein Zimmer auf.','من اتاقم را مرتب می‌کنم.'],
-    ['mitkommen','همراه آمدن','جداشدنی + تغییر مصوت',['komme mit','kommst mit','kommt mit','kommen mit','kommt mit','kommen mit'],'Kommst du mit?','با ما می‌آیی؟']
+    ['mitkommen','همراه آمدن','جداشدنی + تغییر مصوت',['komme mit','kommst mit','kommt mit','kommen mit','kommt mit','kommen mit'],'Kommst du mit?','با ما می‌آیی؟'],
+    ['aufmachen','باز کردن','جداشدنی',['mache auf','machst auf','macht auf','machen auf','macht auf','machen auf'],'Du machst die Tür auf.','تو در را باز می‌کنی.'],
+    ['einschlafen','به خواب رفتن','جداشدنی + تغییر مصوت',['schlafe ein','schläfst ein','schläft ein','schlafen ein','schlaft ein','schlafen ein'],'Das Kind schläft schnell ein.','بچه سریع به خواب می‌رود.'],
+    ['zumachen','بستن','جداشدنی',['mache zu','machst zu','macht zu','machen zu','macht zu','machen zu'],'Ich mache das Fenster zu.','من پنجره را می‌بندم.'],
+    ['anfangen','شروع کردن','جداشدنی + تغییر مصوت',['fange an','fängst an','fängt an','fangen an','fangt an','fangen an'],'Der Film fängt um acht Uhr an.','فیلم ساعت هشت شروع می‌شود.'],
+    ['ausmachen','خاموش کردن','جداشدنی',['mache aus','machst aus','macht aus','machen aus','macht aus','machen aus'],'Sie macht den Computer aus.','او کامپیوتر را خاموش می‌کند.'],
+    ['abholen','دنبال کسی رفتن؛ تحویل گرفتن','جداشدنی',['hole ab','holst ab','holt ab','holen ab','holt ab','holen ab'],'Wir holen die Kinder ab.','ما دنبال بچه‌ها می‌رویم.']
   ];
 
   const grammar = [
