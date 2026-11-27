@@ -246,6 +246,12 @@ input,select,textarea{max-width:100%;min-width:0}
 #verbInputSuggestions .verb-suggest-meaning{font-size:12px;color:var(--muted,#718096)}
 #verbInputSuggestions .verb-suggest-level{font-size:11px;white-space:nowrap;color:var(--muted,#718096)}
 
+
+/* Search suggestion layout fix: compact, isolated German/Persian columns. */
+.global-suggestions .global-suggestion{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:8px 12px;min-width:0;width:100%;padding:8px 10px;font-size:14px!important;line-height:1.4;direction:ltr;text-align:initial;white-space:normal;overflow-wrap:anywhere;}
+.global-suggestions .global-suggestion strong{display:block;min-width:0;max-width:100%;font-size:14px!important;line-height:1.35;font-weight:700;text-align:left;direction:ltr;unicode-bidi:isolate;overflow-wrap:anywhere;}
+.global-suggestions .global-suggestion small{display:block;min-width:0;max-width:100%;font-size:12px!important;line-height:1.45;text-align:right;direction:rtl;unicode-bidi:plaintext;white-space:normal;overflow-wrap:anywhere;}
+@media(max-width:560px){.global-suggestions{max-height:48vh;padding:5px}.global-suggestions .global-suggestion{grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:6px;padding:8px;font-size:13px!important}.global-suggestions .global-suggestion strong{font-size:13px!important}.global-suggestions .global-suggestion small{font-size:11.5px!important}}
 </style>
 </head>
 <body>
