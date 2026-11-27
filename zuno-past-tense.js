@@ -201,6 +201,20 @@
     { q: 'A1 · درس تکمیلی ۴ · Präteritum فعل feiern برای du کدام است؟', options: ['feierte', 'feiertest', 'feierten'], answer: 1, why: 'برای du در Präteritum فعل ضعیف feiern، شکل feiertest می‌آید.', level: 'A1', lesson: 'درس تکمیلی ۴ · فعل ضعیف' }
   );
 
+  var PARTIZIP_LAB_QUESTIONS = [
+    { q: 'A1 · Partizip II فعل ضعیف machen کدام است؟', options: ['gemacht', 'gemachen', 'gemachte'], answer: 0, why: 'Duden شکل Partizip II فعل machen را gemacht ثبت می‌کند.', level: 'A1', lesson: 'درس تکمیلی ۴ · فعل ضعیف' },
+    { q: 'A1 · برای arbeiten کدام شکل درست است؟', options: ['gearbeitet', 'gearbeit', 'gearbeiten'], answer: 0, why: 'با ریشهٔ پایان‌یافته به t، شکل درست gearbeitet است.', level: 'A1', lesson: 'درس تکمیلی ۴ · پسوند -et' },
+    { q: 'A1 · Partizip II فعل قوی sprechen کدام است؟', options: ['gesprecht', 'gesprochen', 'gesprechen'], answer: 1, why: 'Duden شکل gesprochen را ثبت می‌کند؛ Präteritum آن sprach است.', level: 'A1', lesson: 'درس تکمیلی ۴ · فعل قوی' },
+    { q: 'A2 · Partizip II فعل مختلط denken کدام است؟', options: ['gedenkt', 'gedacht', 'gedenken'], answer: 1, why: 'denken فعل مختلط است: dachte – gedacht.', level: 'A2', lesson: 'درس تکمیلی ۴ · فعل مختلط' },
+    { q: 'A2 · Partizip II فعل جداشدنی و مختلط mitbringen کدام است؟', options: ['gemitbracht', 'mitgebracht', 'mitgebringen'], answer: 1, why: 'bringen → gebracht و با پیشوند جداشدنی mit، شکل mitgebracht ساخته می‌شود.', level: 'A2', lesson: 'درس تکمیلی ۴ · جداشدنی و مختلط' },
+    { q: 'A2 · Partizip II فعل جدانشدنی besuchen کدام است؟', options: ['gebesucht', 'besucht', 'besuchen'], answer: 1, why: 'پیشوند be- جدانشدنی است؛ ge اضافه نمی‌شود.', level: 'A2', lesson: 'درس تکمیلی ۵ · پیشوند جدانشدنی' },
+    { q: 'A1 · Partizip II فعل telefonieren کدام است؟', options: ['getelefoniert', 'telefoniert', 'telefonieren'], answer: 1, why: 'فعل پایان‌یافته به -ieren در این الگو ge نمی‌گیرد.', level: 'A1', lesson: 'درس تکمیلی ۴ · فعل -ieren' },
+    { q: 'A2 · Partizip II فعل verstehen کدام است؟', options: ['geverstanden', 'verstanden', 'vergestanden'], answer: 1, why: 'پیشوند ver- جدانشدنی است؛ شکل ثبت‌شده verstanden است.', level: 'A2', lesson: 'درس تکمیلی ۵ · پیشوند جدانشدنی' },
+    { q: 'A2 · در معنی «ترجمه کردن»، Partizip II فعل übersetzen کدام است؟', options: ['übergesetzt', 'übersetzt', 'geübersetzt'], answer: 1, why: 'در معنی ترجمه کردن، شکل ثبت‌شده übersetzt است.', level: 'A2', lesson: 'درس تکمیلی ۵ · معنی و تکیه' },
+    { q: 'A2 · در معنی «قایقران مسافران را عبور داد»، شکل درست کدام است؟', options: ['Der Fährmann hat uns übergesetzt.', 'Der Fährmann hat uns übersetzt.', 'Der Fährmann hat uns geübergesetzt.'], answer: 0, why: 'در معنی عبور دادن از ساحل، فعل جداشدنی است: übergesetzt.', level: 'A2', lesson: 'درس تکمیلی ۵ · فعل جداشدنی' },
+    { q: 'A2 · Präteritum فعل bringen برای du کدام است؟', options: ['bringtest', 'brachtest', 'gebracht'], answer: 1, why: 'Duden شکل brachtest را ثبت می‌کند؛ فعل مختلط است.', level: 'A2', lesson: 'درس تکمیلی ۴ · Präteritum فعل مختلط' },
+    { q: 'A2 · جمله را کامل کن: Ich habe gestern nicht kommen ___.', options: ['gekonnt', 'können', 'kann'], answer: 1, why: 'با مصدر دیگر، فعل مُدال در Perfekt معمولاً به صورت مصدر می‌آید: kommen können.', level: 'A2', lesson: 'درس تکمیلی ۲ · Ersatzinfinitiv' }
+  ];
   var SENTENCE_RULES = [
     { id: 'zptSentence', accepted: ['Ich habe gestern einen Film gesehen.', 'Gestern habe ich einen Film gesehen.'], expected: 'Ich habe gestern einen Film gesehen.', level: 'A1–A2', lesson: 'درس تکمیلی ۵ · جمله‌سازی ترکیبی' },
     { id: 'zptSentence2', accepted: ['Wir haben am Abend ferngesehen.', 'Am Abend haben wir ferngesehen.'], expected: 'Wir haben am Abend ferngesehen.', level: 'A1–A2', lesson: 'درس تکمیلی ۵ · جمله‌سازی ترکیبی' },
@@ -228,6 +242,12 @@
     { id: 'zptSentence21', accepted: ['Ich habe dir gestern eine Geschichte erzählt.', 'Gestern habe ich dir eine Geschichte erzählt.'], expected: 'Ich habe dir gestern eine Geschichte erzählt.', level: 'A1', lesson: 'درس تکمیلی ۴ · روایت ساده' },
     { id: 'zptSentence22', accepted: ['Wir sind im Sommer nach Berlin gereist.', 'Im Sommer sind wir nach Berlin gereist.'], expected: 'Wir sind im Sommer nach Berlin gereist.', level: 'A1', lesson: 'درس تکمیلی ۴ · فعل حرکتی با sein' },
     { id: 'zptSentence23', accepted: ['Ich habe gestern mit meiner Mutter telefoniert.', 'Gestern habe ich mit meiner Mutter telefoniert.'], expected: 'Ich habe gestern mit meiner Mutter telefoniert.', level: 'A1', lesson: 'درس تکمیلی ۴ · فعل پایان‌یافته به -ieren' }
+  );
+
+  SENTENCE_RULES.push(
+    { id: 'zptSentence24', accepted: ['Wir haben Getränke mitgebracht.'], expected: 'Wir haben Getränke mitgebracht.', level: 'A2', lesson: 'درس تکمیلی ۴ · فعل جداشدنی و مختلط' },
+    { id: 'zptSentence25', accepted: ['Ich habe den Satz nicht verstanden.'], expected: 'Ich habe den Satz nicht verstanden.', level: 'A2', lesson: 'درس تکمیلی ۵ · پیشوند جدانشدنی' },
+    { id: 'zptSentence26', accepted: ['Ich habe heute bis 17 Uhr gearbeitet.'], expected: 'Ich habe heute bis 17 Uhr gearbeitet.', level: 'A1', lesson: 'درس تکمیلی ۴ · فعل ضعیف و پسوند -et' }
   );
 
   function escapeHtml(value) {
@@ -439,6 +459,7 @@
       '<button type="button" class="zpt-tab" data-zpt-tab="auxiliary" aria-selected="false">انتخاب haben / sein</button>',
       '<button type="button" class="zpt-tab" data-zpt-tab="praeteritum" aria-selected="false">Präteritum</button>',
       '<button type="button" class="zpt-tab" data-zpt-tab="partizip" aria-selected="false">Partizip II</button>',
+      '<button type="button" class="zpt-tab" data-zpt-tab="partizip-lab" aria-selected="false">کارگاه Partizip II</button>',
       '<button type="button" class="zpt-tab" data-zpt-tab="practice" aria-selected="false">تمرین</button>',
       '</div>',
       '<div class="zpt-pane" data-zpt-pane="overview">',
@@ -533,6 +554,27 @@
       '<p dir="ltr">Ich habe Softwaretechnik studiert. = من مهندسی نرم‌افزار خوانده‌ام.</p>',
       '<div class="zpt-sources"><a href="https://grammis.ids-mannheim.de/kontrastive-grammatik/3769" target="_blank" rel="noopener noreferrer">IDS grammis · ساخت Partizip II</a><a href="https://www.duden.de/konjugation/oeffnen" target="_blank" rel="noopener noreferrer">Duden · öffnen</a><a href="https://www.duden.de/konjugation/uebersetzen_uebersetzt" target="_blank" rel="noopener noreferrer">Duden · übersetzen (ترجمه کردن)</a><a href="https://www.duden.de/konjugation/uebersetzen_uebergesetzt" target="_blank" rel="noopener noreferrer">Duden · über|setzen (عبور دادن)</a></div>',
       '</div>',
+      '<div class="zpt-pane" data-zpt-pane="partizip-lab" hidden>',
+      '<span class="lesson-tag">A1 · درس تکمیلی ۴ | A2 · درس تکمیلی ۴–۵ · کارگاه ساخت Partizip II</span>',
+      '<p>در این کارگاه، شکل سوم فعل را از روی نوع فعل و پیشوند تشخیص بده. برای فعل‌های قوی و مختلط، شکل ثبت‌شده را حفظ کن؛ از روی یک قاعدهٔ ساده آن را حدس نزن.</p>',
+      '<div class="grid2">',
+      '<div class="zpt-callout"><b>۱) فعل ضعیف</b><span class="lesson-tag">A1 · تکمیلی ۴</span><p>الگوی رایج: ge- + ریشه + -t</p><p dir="ltr">machen → gemacht</p><small>فعل کمکی در این مثال: haben</small></div>',
+      '<div class="zpt-callout"><b>۲) ریشهٔ پایان‌یافته به -t / -d</b><span class="lesson-tag">A1 · تکمیلی ۴</span><p>برای تلفظ روان معمولاً -et می‌آید.</p><p dir="ltr">arbeiten → gearbeitet</p><small>Präteritum: ich arbeitete</small></div>',
+      '<div class="zpt-callout"><b>۳) فعل قوی</b><span class="lesson-tag">A1–A2 · تکمیلی ۴</span><p>واکهٔ ریشه ممکن است تغییر کند و پایان معمولاً -en است.</p><p dir="ltr">sprechen → gesprochen</p><small>Präteritum: ich sprach</small></div>',
+      '<div class="zpt-callout"><b>۴) فعل مختلط</b><span class="lesson-tag">A2 · تکمیلی ۴</span><p>ریشه تغییر می‌کند، اما پایان -t می‌آید.</p><p dir="ltr">denken → gedacht · bringen → gebracht</p><small>Präteritum: ich dachte · ich brachte</small></div>',
+      '<div class="zpt-callout"><b>۵) فعل جداشدنی</b><span class="lesson-tag">A2 · تکمیلی ۴</span><p>در الگوی معمول، ge میان پیشوند و ریشه قرار می‌گیرد.</p><p dir="ltr">mitbringen → mitgebracht · aufstehen → aufgestanden</p><small>Präteritum: ich brachte mit · ich stand auf</small></div>',
+      '<div class="zpt-callout"><b>۶) پیشوند جدانشدنی</b><span class="lesson-tag">A2 · تکمیلی ۵</span><p>پیشوندهایی مانند be- و ver- معمولاً ge نمی‌گیرند.</p><p dir="ltr">besuchen → besucht · verstehen → verstanden</p><small>Präteritum: ich besuchte · ich verstand</small></div>',
+      '<div class="zpt-callout"><b>۷) فعل پایان‌یافته به -ieren</b><span class="lesson-tag">A1 · تکمیلی ۴</span><p>در این گروه ge- نمی‌آید.</p><p dir="ltr">telefonieren → telefoniert</p><small>Präteritum: ich telefonierte</small></div>',
+      '<div class="zpt-callout"><b>۸) پیشوند وابسته به معنی و تکیه</b><span class="lesson-tag">A2 · تکمیلی ۵</span><p dir="ltr">übersetzen (ترجمه کردن) → übersetzt</p><p dir="ltr">über|setzen (عبور دادن) → übergesetzt</p><small>معنی و تکیه را هم بررسی کن؛ نوشتار به‌تنهایی کافی نیست.</small></div>',
+      '</div>',
+      '<div class="zpt-callout"><b>استثنای فعل مُدال با مصدر دیگر</b><span class="lesson-tag">A2 · تکمیلی ۲</span><p>اگر فعل مُدال همراه مصدر دیگری بیاید، در Perfekt معمولاً Ersatzinfinitiv می‌آید؛ به‌جای Partizip II فعل مُدال، مصدر آن را می‌آوریم.</p><p dir="ltr">Ich habe gestern nicht kommen können.</p><small>دیروز نتوانستم بیایم.</small></div>',
+      '<h4>تمرین تشخیص الگوها · ۱۲ سؤال</h4>',
+      '<div id="zptPartizipLabQuestions">' + PARTIZIP_LAB_QUESTIONS.map(function (item, index) {
+        return '<div class="zpt-question"><label for="zptPartizipAnswer' + index + '">' + escapeHtml(item.q) + '</label><small class="lesson-tag">' + escapeHtml(item.level + ' · ' + item.lesson) + '</small><select id="zptPartizipAnswer' + index + '" aria-describedby="zptPartizipFeedback' + index + '"><option value="">انتخاب پاسخ</option>' + item.options.map(function (option, optionIndex) { return '<option value="' + optionIndex + '">' + escapeHtml(option) + '</option>'; }).join('') + '</select><small id="zptPartizipFeedback' + index + '" class="zpt-live-feedback" aria-live="polite"></small></div>';
+      }).join('') + '</div>',
+      '<button type="button" class="btn" id="zptPartizipReset">پاک کردن پاسخ‌های این کارگاه</button>',
+      '<div class="zpt-sources"><a href="https://grammis.ids-mannheim.de/progr%40mm/5210" target="_blank" rel="noopener noreferrer">IDS grammis · قواعد ساخت Partizip II</a><a href="https://www.duden.de/konjugation/arbeiten" target="_blank" rel="noopener noreferrer">Duden · arbeiten</a><a href="https://www.duden.de/konjugation/sprechen" target="_blank" rel="noopener noreferrer">Duden · sprechen</a><a href="https://www.duden.de/konjugation/mitbringen" target="_blank" rel="noopener noreferrer">Duden · mitbringen</a><a href="https://www.duden.de/konjugation/besuchen" target="_blank" rel="noopener noreferrer">Duden · besuchen</a><a href="https://www.duden.de/konjugation/telefonieren" target="_blank" rel="noopener noreferrer">Duden · telefonieren</a><a href="https://www.duden.de/konjugation/verstehen" target="_blank" rel="noopener noreferrer">Duden · verstehen</a></div>',
+      '</div>',
       '<div class="zpt-pane" data-zpt-pane="practice" hidden>',
       '<span class="lesson-tag">A1–A2 · درس تکمیلی ۵ · تشخیص و جمله‌سازی</span>',
       '<p class="muted tiny">' + QUESTIONS.length + ' سؤال و ' + SENTENCE_RULES.length + ' تمرین جمله‌سازی را پاسخ بده.</p>',
@@ -561,6 +603,9 @@
       '<div class="zpt-question"><label for="zptSentence21">جمله‌سازی ۲۱ · A1: با فعل erzählen جمله بساز.</label><p dir="ltr">Ich / dir / gestern / eine Geschichte / erzählt / habe</p><small>معنی: من دیروز برای تو داستانی تعریف کردم.</small><input id="zptSentence21" dir="ltr" autocomplete="off" placeholder="Ich habe dir gestern ... erzählt."></div>',
       '<div class="zpt-question"><label for="zptSentence22">جمله‌سازی ۲۲ · A1: با reisen و sein جمله بساز.</label><p dir="ltr">Wir / im Sommer / nach Berlin / gereist / sind</p><small>معنی: ما در تابستان به برلین سفر کردیم.</small><input id="zptSentence22" dir="ltr" autocomplete="off" placeholder="Wir sind im Sommer ... gereist."></div>',
       '<div class="zpt-question"><label for="zptSentence23">جمله‌سازی ۲۳ · A1: با telefonieren جمله بساز.</label><p dir="ltr">Ich / gestern / mit meiner Mutter / telefoniert / habe</p><small>معنی: من دیروز با مادرم تلفنی صحبت کردم.</small><input id="zptSentence23" dir="ltr" autocomplete="off" placeholder="Ich habe gestern ... telefoniert."></div>',
+      '<div class="zpt-question"><label for="zptSentence24">جمله‌سازی ۲۴ · A2: نوشیدنی‌ها را همراه آوردیم.</label><p dir="ltr">Wir / haben / Getränke / mitgebracht</p><small>معنی: ما نوشیدنی‌ها را همراه آوردیم.</small><input id="zptSentence24" dir="ltr" autocomplete="off" placeholder="Wir haben ... mitgebracht."></div>',
+      '<div class="zpt-question"><label for="zptSentence25">جمله‌سازی ۲۵ · A2: جمله را نفی کن؛ «من جمله را نفهمیدم».</label><p dir="ltr">Ich / habe / den Satz / nicht / verstanden</p><small>معنی: من جمله را نفهمیدم.</small><input id="zptSentence25" dir="ltr" autocomplete="off" placeholder="Ich habe den Satz nicht ..."></div>',
+      '<div class="zpt-question"><label for="zptSentence26">جمله‌سازی ۲۶ · A1: بگو امروز تا ساعت ۱۷ کار کردم.</label><p dir="ltr">Ich / habe / heute / bis 17 Uhr / gearbeitet</p><small>معنی: من امروز تا ساعت ۱۷ کار کردم.</small><input id="zptSentence26" dir="ltr" autocomplete="off" placeholder="Ich habe heute ... gearbeitet."></div>',
       '<div class="row" style="margin-top:10px"><button type="button" class="btn primary" id="zptCheck">بررسی پاسخ‌ها</button><button type="button" class="btn" id="zptReset">شروع دوباره</button></div>',
       '<div id="zptPracticeFeedback" class="zpt-feedback" aria-live="polite">پاسخ‌ها را انتخاب کن و بررسی را بزن.</div>',
       '</div>',
@@ -579,6 +624,27 @@
     QUESTIONS.forEach(function (_, index) {
       var select = document.getElementById('zptAnswer' + index);
       if (select) select.addEventListener('change', function () { updateQuestionFeedback(index, false); });
+    });
+    PARTIZIP_LAB_QUESTIONS.forEach(function (item, index) {
+      var select = document.getElementById('zptPartizipAnswer' + index);
+      var feedback = document.getElementById('zptPartizipFeedback' + index);
+      if (!select || !feedback) return;
+      select.addEventListener('change', function () {
+        if (select.value === '') { feedback.textContent = ''; select.style.borderColor = ''; return; }
+        var correct = Number(select.value) === item.answer;
+        feedback.textContent = (correct ? 'درست. ' : 'نادرست. ') + item.why;
+        feedback.style.color = correct ? 'var(--accent)' : 'var(--danger)';
+        select.style.borderColor = correct ? 'var(--accent)' : 'var(--danger)';
+      });
+    });
+    var partizipReset = document.getElementById('zptPartizipReset');
+    if (partizipReset) partizipReset.addEventListener('click', function () {
+      PARTIZIP_LAB_QUESTIONS.forEach(function (_, index) {
+        var select = document.getElementById('zptPartizipAnswer' + index);
+        var feedback = document.getElementById('zptPartizipFeedback' + index);
+        if (select) { select.value = ''; select.style.borderColor = ''; }
+        if (feedback) feedback.textContent = '';
+      });
     });
     SENTENCE_RULES.forEach(function (rule) {
       var field = document.getElementById(rule.id);
@@ -619,7 +685,7 @@
   }
 
   if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { PRONOUNS: PRONOUNS, AUXILIARIES: AUXILIARIES, VERBS: VERBS, QUESTIONS: QUESTIONS, SENTENCE_RULES: SENTENCE_RULES, evaluateChoice: evaluateChoice, evaluateSentence: evaluateSentence, getQuestionMetadata: getQuestionMetadata };
+    module.exports = { PRONOUNS: PRONOUNS, AUXILIARIES: AUXILIARIES, VERBS: VERBS, QUESTIONS: QUESTIONS, PARTIZIP_LAB_QUESTIONS: PARTIZIP_LAB_QUESTIONS, SENTENCE_RULES: SENTENCE_RULES, evaluateChoice: evaluateChoice, evaluateSentence: evaluateSentence, getQuestionMetadata: getQuestionMetadata };
   }
 
   if (typeof document !== 'undefined') {
