@@ -111,18 +111,50 @@ const syn=(a,fa,b,fb)=>add('synonyms',a,fa,b,fb),ant=(a,fa,b,fb)=>add('antonyms'
 ].forEach(x=>ant(...x));
 
 const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const norm=s=>String(s||'').toLocaleLowerCase('de-DE').replace(/^(der|die|das)\s+/,'').trim();
+const norm=s=>String(s||'').toLocaleLowerCase('de-DE').replace(/^(der|die|das)\\s+/,'').trim();
+function currentLanguage(){
+ const value=document.body&&document.body.dataset&&document.body.dataset.uiLanguage;
+ return value==='de'||value==='en'?value:'fa';
+}
+function englishMeaning(word){
+ const entries=window.__zunoWordsForRelations||[];
+ const target=norm(word);
+ for(const entry of entries){
+  if(entry&&norm(entry[0])===target&&entry[2]&&/[A-Za-z]/.test(String(entry[2])))return String(entry[2]);
+ }
+ return '';
+}
 function render(node){
  const index=Number(node.dataset.dictRelations),entry=window.__zunoWordsForRelations&&window.__zunoWordsForRelations[index],word=entry?entry[0]:'';
  const data=relations[norm(word)]||{synonyms:[],antonyms:[]};
- const list=items=>items.length?'<div class="zuno-relation-items">'+items.map(x=>'<span class="zuno-relation-chip"><b dir="ltr">'+esc(x.word)+'</b><small>'+esc(x.fa)+'</small></span>').join('')+'</div>':'<div class="zuno-relation-empty">مورد رایج و دقیقی برای این واژه ثبت نشده است.</div>';
- node.innerHTML='<div class="zuno-rel-block"><b>مترادف‌ها · Synonyme</b>'+list(data.synonyms)+'</div><div class="zuno-rel-block"><b>متضادها · Antonyme</b>'+list(data.antonyms)+'</div>';
+ const language=currentLanguage();
+ const labels=language==='de'
+  ?{synonyms:'Synonyme',antonyms:'Antonyme',empty:'Keine passenden Einträge für dieses Wort gespeichert.'}
+  :language==='en'
+   ?{synonyms:'Synonyms',antonyms:'Antonyms',empty:'No common, reliable entries are available for this word.'}
+   :{synonyms:'مترادف‌ها',antonyms:'متضادها',empty:'مورد رایج و دقیقی برای این واژه ثبت نشده است.'};
+ const list=items=>items.length
+  ?'<div class="zuno-relation-items">'+items.map(x=>{
+    const meaning=language==='fa'?x.fa:language==='en'?englishMeaning(x.word):'';
+    const small=meaning?'<small dir="'+(language==='fa'?'rtl':'ltr')+'">'+esc(meaning)+'</small>':'';
+    return '<span class="zuno-relation-chip"><b dir="ltr">'+esc(x.word)+'</b>'+small+'</span>';
+   }).join('')+'</div>'
+  :'<div class="zuno-relation-empty">'+esc(labels.empty)+'</div>';
+ node.innerHTML='<div class="zuno-rel-block"><b>'+labels.synonyms+'</b>'+list(data.synonyms)+'</div><div class="zuno-rel-block"><b>'+labels.antonyms+'</b>'+list(data.antonyms)+'</div>';
+ node.dataset.relationsLanguage=language;
+ node.dataset.relationsRendered='1';
 }
 function init(){
  const root=document.getElementById('dictResults');if(!root)return;
  try{window.__zunoWordsForRelations=words;}catch(_){}
- const refresh=()=>root.querySelectorAll('[data-dict-relations]').forEach(node=>{if(node.dataset.relationsRendered==='1')return;render(node);node.dataset.relationsRendered='1';});
- refresh();new MutationObserver(refresh).observe(root,{childList:true,subtree:true});
+ const refresh=(force=false)=>root.querySelectorAll('[data-dict-relations]').forEach(node=>{
+  if(force||node.dataset.relationsLanguage!==currentLanguage())render(node);
+ });
+ refresh();
+ new MutationObserver(()=>refresh()).observe(root,{childList:true,subtree:true});
+ new MutationObserver(records=>{
+  if(records.some(record=>record.attributeName==='data-ui-language'))refresh(true);
+ }).observe(document.body,{attributes:true,attributeFilter:['data-ui-language']});
 }
 const style=document.createElement('style');
 style.textContent='.dict-relations{margin:10px 0 8px;padding:10px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.zuno-rel-block+.zuno-rel-block{margin-top:10px}.zuno-rel-block>b{display:block;font-size:13px;margin-bottom:6px}.zuno-relation-items{display:flex;flex-wrap:wrap;gap:6px}.zuno-relation-chip{display:inline-flex;flex-direction:column;gap:1px;padding:5px 9px;border:1px solid var(--line);border-radius:9px;background:var(--panel2);max-width:100%}.zuno-relation-chip b{font-size:13px}.zuno-relation-chip small{font-size:11px;color:var(--muted)}.zuno-relation-empty{font-size:12px;color:var(--muted);padding:4px 0}';
