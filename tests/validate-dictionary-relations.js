@@ -40,9 +40,9 @@ vm.runInNewContext(source, { window, document, MutationObserver: MockMutationObs
 
 assert.match(node.innerHTML, /Synonyms/, 'English UI must show an English synonyms label');
 assert.match(node.innerHTML, /Antonyms/, 'English UI must show an English antonyms label');
-assert.match(node.innerHTML, /<small dir="ltr">start<\\/small>/, 'English UI should use an available English vocabulary gloss');
+assert.match(node.innerHTML, /<small dir="ltr">start<\/small>/, 'English UI should use an available English vocabulary gloss');
 assert.doesNotMatch(node.innerHTML, /آغاز کردن|مترادف‌ها|متضادها/, 'English UI must not leak Persian relation labels or glosses');
-const duplicateSynonymCount = (node.innerHTML.match(/<b dir="ltr">anfangen<\\/b>/g) || []).length;
+const duplicateSynonymCount = (node.innerHTML.match(/<b dir="ltr">anfangen<\/b>/g) || []).length;
 assert.equal(duplicateSynonymCount, 1, 'Repeated synonym pairs must render only once');
 
 const languageObserver = observers.find(observer => observer.target === body);
