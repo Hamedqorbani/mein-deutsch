@@ -9,12 +9,12 @@ const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 const dataSource = fs.readFileSync(path.join(root, 'zuno-starten-wir-data.js'), 'utf8');
 
 const helperStart = html.indexOf('function isA1Word(w){');
-const helperEnd = html.indexOf('\\nfunction counts', helperStart);
+const helperEnd = html.indexOf('\nfunction counts', helperStart);
 assert.ok(helperStart >= 0 && helperEnd > helperStart, 'A1 vocabulary filter helper must exist');
 
 const context = {};
 vm.runInNewContext(
-  html.slice(helperStart, helperEnd) + '\\n globalThis.__isA1Word = isA1Word;',
+  html.slice(helperStart, helperEnd) + '\n globalThis.__isA1Word = isA1Word;',
   context
 );
 const isA1Word = context.__isA1Word;
@@ -34,7 +34,7 @@ const sample = (level, lesson) => {
 };
 
 assert.equal(isA1Word(sample('A1', '')), true, 'Explicit A1 level must be included');
-assert.equal(isA1Word(sample('a1', '')), true, 'A1 level matching must ignore case and surrounding whitespace');
+assert.equal(isA1Word(sample(' a1 ', '')), true, 'A1 level matching must ignore case and surrounding whitespace');
 assert.equal(isA1Word(sample('A2', 'Lektion 3')), true, 'A1 lesson tag must take precedence over a misclassified level field');
 assert.equal(isA1Word(sample('', ' Lektion   2 ')), true, 'Lesson tags must tolerate surrounding and repeated whitespace');
 assert.equal(isA1Word(sample('', 'lektion 12')), true, 'Lesson tags must be case-insensitive');
@@ -48,7 +48,7 @@ const lessonCounts = {};
 let taggedCount = 0;
 for (const word of words) {
   const source = String(word[10] || '').trim();
-  const match = source.match(/^Lektion\\s+(1[0-2]|[1-9])$/i);
+  const match = source.match(/^Lektion\s+(1[0-2]|[1-9])$/i);
   if (!match) continue;
   taggedCount += 1;
   lessonCounts[Number(match[1])] = (lessonCounts[Number(match[1])] || 0) + 1;
