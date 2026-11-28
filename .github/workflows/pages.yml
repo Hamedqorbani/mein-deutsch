@@ -30,6 +30,10 @@ jobs:
         run: node tests/validate-localization.js
       - name: Validate source-based Starten wir lesson labels
         run: node tests/validate-lesson-labels.js
+      - name: Validate dictionary relation localization
+        run: node tests/validate-dictionary-relations.js
+      - name: Validate A1 vocabulary lesson filtering
+        run: node tests/validate-a1-vocabulary-filter.js
       - name: Setup Pages
         uses: actions/configure-pages@v6
         with:
