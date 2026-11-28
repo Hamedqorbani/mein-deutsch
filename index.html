@@ -3201,7 +3201,7 @@ function lessonForWord(w){
  return 'واژگان تکمیلی A1 · بدون تطبیق قطعی با درس';
 }
 let currentPage='home',previousPage='home';function page(p){if(!p||!$('page-'+p))return;if(p!==currentPage){previousPage=currentPage;currentPage=p;}document.querySelectorAll('.page').forEach(x=>x.classList.add('hidden'));$('page-'+p).classList.remove('hidden');document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x.dataset.page===p));$('topBackBtn')?.classList.toggle('hidden',p==='home');setMainMenu(false);if(p==='cards')renderCard();if(p==='dictionary')searchDict()}
-function isA1Word(w){return !!w&&(w[6]==='A1'||/^Lektion (?:[1-9]|1[0-2])$/.test(String(w[10]||'')));}
+function isA1Word(w){if(!Array.isArray(w))return false;const level=String(w[6]||'').trim().toUpperCase();const lesson=String(w[10]||'').trim();return level==='A1'||/^Lektion\s+(?:[1-9]|1[0-2])$/i.test(lesson);}
 function counts(){let allA1=uniqueCards(words.filter(w=>isA1Word(w)));const knownEl=$('knownCount'),totalEl=$('totalCount'),streakEl=$('streakCount');if(knownEl)knownEl.textContent=fa(allA1.filter(w=>known.has(w[0])).length);if(totalEl)totalEl.textContent=fa(allA1.length);if(streakEl)streakEl.textContent=fa(Number(localStorage.getItem('md_sessions')||0))}
 function setupCardCategories(){
  let select=$('categoryFilter'),current=select.value;
