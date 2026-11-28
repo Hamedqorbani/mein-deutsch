@@ -1,5 +1,5 @@
 /* Zuno past-tense learning module
- * Checked: 2026-11-26. The displayed forms are a deliberately selected A1/A2 starter set.
+ * Checked: 2026-11-28. The displayed forms are a deliberately selected A1/A2 starter set.
  */
 (function () {
   'use strict';
@@ -201,6 +201,18 @@
     { q: 'A1 · درس تکمیلی ۴ · Präteritum فعل feiern برای du کدام است؟', options: ['feierte', 'feiertest', 'feierten'], answer: 1, why: 'برای du در Präteritum فعل ضعیف feiern، شکل feiertest می‌آید.', level: 'A1', lesson: 'درس تکمیلی ۴ · فعل ضعیف' }
   );
 
+  QUESTIONS.push(
+    { q: 'A1 · درس تکمیلی ۶ · در گفت‌وگوی روزمره برای بیشتر فعل‌ها کدام زمان رایج‌تر است؟', options: ['Präteritum', 'Perfekt', 'Futur I'], answer: 1, why: 'در گفتار روزمره، Perfekt برای بیشتر فعل‌ها گرایش رایج است؛ البته این یک قاعدهٔ مطلق نیست.', level: 'A1', lesson: 'درس تکمیلی ۶ · انتخاب زمان' },
+    { q: 'A1 · درس تکمیلی ۶ · برای گفتن «دیروز خسته بودم» کدام جمله طبیعی‌تر است؟', options: ['Ich bin müde gewesen.', 'Ich war müde.', 'Ich habe müde.'], answer: 1, why: 'sein در گفتار روزمره اغلب با Präteritum می‌آید: war.', level: 'A1', lesson: 'درس تکمیلی ۶ · Präteritum فعل sein' },
+    { q: 'A1 · درس تکمیلی ۶ · برای گفتن «ما وقت نداشتیم» کدام شکل در گفتار معمول‌تر است؟', options: ['Wir hatten keine Zeit.', 'Wir haben keine Zeit gehabt.', 'Wir sind keine Zeit.'], answer: 0, why: 'haben در گفتار روزمره اغلب به صورت Präteritum یعنی hatte/hatten می‌آید.', level: 'A1', lesson: 'درس تکمیلی ۶ · Präteritum فعل haben' },
+    { q: 'A1 · درس تکمیلی ۶ · برای گفتن «مجبور بودم کار کنم» کدام جمله معمول‌تر است؟', options: ['Ich habe arbeiten gemusst.', 'Ich musste arbeiten.', 'Ich war arbeiten.'], answer: 1, why: 'برای فعل‌های مُدال، Präteritum مانند musste در گفتار بسیار رایج است؛ ساخت Perfekt نیز ممکن است.', level: 'A1', lesson: 'درس تکمیلی ۶ · Präteritum فعل مُدال' },
+    { q: 'A1 · درس تکمیلی ۶ · آیا قید gestern به‌تنهایی انتخاب Perfekt یا Präteritum را تعیین می‌کند؟', options: ['بله، فقط Perfekt', 'بله، فقط Präteritum', 'خیر، هر دو ممکن‌اند'], answer: 2, why: 'قید زمان فقط زمان رخداد را مشخص می‌کند؛ انتخاب زمان دستوری به بافت و سبک جمله هم وابسته است.', level: 'A1', lesson: 'درس تکمیلی ۶ · قیدهای زمان' },
+    { q: 'A1 · درس تکمیلی ۶ · دربارهٔ دو جملهٔ «Gestern lernte ich Deutsch» و «Gestern habe ich Deutsch gelernt» کدام درست است؟', options: ['فقط جملهٔ اول درست است.', 'هر دو درست‌اند، اما سبک کاربردشان فرق دارد.', 'هیچ‌کدام درست نیست.'], answer: 1, why: 'هر دو گذشته را بیان می‌کنند؛ Perfekt در گفت‌وگوی روزمره معمول‌تر و Präteritum در روایت نوشتاری رایج‌تر است.', level: 'A1', lesson: 'درس تکمیلی ۶ · مقایسهٔ دو زمان' },
+    { q: 'A2 · درس تکمیلی ۶ · در روایت نوشتاری کدام زمان معمولاً بیشتر دیده می‌شود؟', options: ['Perfekt', 'Präteritum', 'Präsens'], answer: 1, why: 'در روایت‌ها و بسیاری از متن‌های نوشتاری، Präteritum گرایش رایج است؛ این تفاوت مطلق نیست.', level: 'A2', lesson: 'درس تکمیلی ۶ · زبان نوشتاری' },
+    { q: 'A1 · درس تکمیلی ۶ · کدام جمله در زمان Perfekt است؟', options: ['Gestern hörte ich Musik.', 'Gestern habe ich Musik gehört.', 'Gestern höre ich Musik.'], answer: 1, why: 'Perfekt از haben/sein صرف‌شده و Partizip II ساخته می‌شود: habe gehört.', level: 'A1', lesson: 'درس تکمیلی ۶ · تشخیص Perfekt' },
+    { q: 'A1 · درس تکمیلی ۶ · کدام روایت برای گفت‌وگوی روزمره طبیعی است؟', options: ['Gestern war ich zu Hause. Am Abend habe ich gekocht.', 'Gestern gewesen ich zu Hause.', 'Gestern hatte gekocht ich.'], answer: 0, why: 'ترکیب war برای sein و habe gekocht برای فعل دیگر در روایت روزمره طبیعی است.', level: 'A1', lesson: 'درس تکمیلی ۶ · روایت کوتاه' },
+    { q: 'A2 · درس تکمیلی ۶ · آیا کاربرد Perfekt و Präteritum در همهٔ مناطق آلمانی‌زبان دقیقاً یکسان است؟', options: ['بله، هیچ تفاوت منطقه‌ای وجود ندارد.', 'خیر، تفاوت‌های منطقه‌ای هم وجود دارد.', 'فقط در نوشتار تفاوت دارند.'], answer: 1, why: 'IDS grammis تفاوت‌های منطقه‌ای را توضیح می‌دهد؛ در برخی مناطق جنوبی Perfekt در گفتار گسترده‌تر است.', level: 'A2', lesson: 'درس تکمیلی ۶ · تفاوت منطقه‌ای' }
+  );
   var PARTIZIP_LAB_QUESTIONS = [
     { q: 'A1 · Partizip II فعل ضعیف machen کدام است؟', options: ['gemacht', 'gemachen', 'gemachte'], answer: 0, why: 'Duden شکل Partizip II فعل machen را gemacht ثبت می‌کند.', level: 'A1', lesson: 'درس تکمیلی ۴ · فعل ضعیف' },
     { q: 'A1 · برای arbeiten کدام شکل درست است؟', options: ['gearbeitet', 'gearbeit', 'gearbeiten'], answer: 0, why: 'با ریشهٔ پایان‌یافته به t، شکل درست gearbeitet است.', level: 'A1', lesson: 'درس تکمیلی ۴ · پسوند -et' },
@@ -250,6 +262,12 @@
     { id: 'zptSentence26', accepted: ['Ich habe heute bis 17 Uhr gearbeitet.'], expected: 'Ich habe heute bis 17 Uhr gearbeitet.', level: 'A1', lesson: 'درس تکمیلی ۴ · فعل ضعیف و پسوند -et' }
   );
 
+  SENTENCE_RULES.push(
+    { id: 'zptSentence27', accepted: ['Gestern war ich zu Hause.', 'Ich war gestern zu Hause.'], expected: 'Gestern war ich zu Hause.', level: 'A1', lesson: 'درس تکمیلی ۶ · Präteritum فعل sein' },
+    { id: 'zptSentence28', accepted: ['Wir hatten am Montag keine Zeit.', 'Am Montag hatten wir keine Zeit.'], expected: 'Wir hatten am Montag keine Zeit.', level: 'A1', lesson: 'درس تکمیلی ۶ · Präteritum فعل haben' },
+    { id: 'zptSentence29', accepted: ['Ich musste gestern arbeiten.', 'Gestern musste ich arbeiten.'], expected: 'Ich musste gestern arbeiten.', level: 'A1', lesson: 'درس تکمیلی ۶ · Präteritum فعل مُدال' },
+    { id: 'zptSentence30', accepted: ['Am Abend habe ich Musik gehört.', 'Ich habe am Abend Musik gehört.'], expected: 'Am Abend habe ich Musik gehört.', level: 'A1', lesson: 'درس تکمیلی ۶ · Perfekt در روایت' }
+  );
   function escapeHtml(value) {
     return String(value == null ? '' : value).replace(/[&<>"']/g, function (ch) {
       return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch];
@@ -460,6 +478,7 @@
       '<button type="button" class="zpt-tab" data-zpt-tab="praeteritum" aria-selected="false">Präteritum</button>',
       '<button type="button" class="zpt-tab" data-zpt-tab="partizip" aria-selected="false">Partizip II</button>',
       '<button type="button" class="zpt-tab" data-zpt-tab="partizip-lab" aria-selected="false">کارگاه Partizip II</button>',
+      '<button type="button" class="zpt-tab" data-zpt-tab="tense-guide" aria-selected="false">انتخاب زمان</button>',
       '<button type="button" class="zpt-tab" data-zpt-tab="practice" aria-selected="false">تمرین</button>',
       '</div>',
       '<div class="zpt-pane" data-zpt-pane="overview">',
@@ -471,6 +490,21 @@
       '<p class="muted tiny">این تفاوت یک گرایش کاربردی است، نه قانون قطعی. انتخاب زمان به بافت، نوع متن و گاهی منطقه زبانی بستگی دارد.</p>',
       '<div class="zpt-callout"><b>نمونه با یک معنی:</b><p dir="ltr">Gestern lernte ich Deutsch. <span class="muted">· Präteritum</span></p><p dir="ltr">Gestern habe ich Deutsch gelernt. <span class="muted">· Perfekt</span></p><small>هر دو درباره گذشته‌اند؛ جمله دوم برای گفت‌وگوی روزمره معمول‌تر است.</small></div>',
       '<p class="lesson-tag">A1 · واژه‌های زمان</p><p dir="ltr">gestern = دیروز · vorgestern = پریروز · letzte Woche = هفته گذشته · früher = قبلاً</p>',
+      '</div>',
+      '<div class="zpt-pane" data-zpt-pane="tense-guide" hidden>',
+      '<span class="lesson-tag">A1 · درس تکمیلی ۶ · انتخاب زمان در موقعیت</span>',
+      '<p>هر دو زمان برای صحبت دربارهٔ گذشته به‌کار می‌روند. تفاوت اصلی معمولاً در سبک و بافت جمله است؛ نه اینکه یکی فقط برای دیروز و دیگری فقط برای گذشتهٔ دور باشد.</p>',
+      makeTable(['موقعیت', 'گرایش رایج', 'نمونه آلمانی', 'معنی فارسی', 'سطح / درس'], [
+        ['گفت‌وگوی روزمره · بیشتر فعل‌ها', 'Perfekt', 'Ich habe gestern gelernt.', 'دیروز درس خواندم.', 'A1 · درس تکمیلی ۲'],
+        ['sein در گفت‌وگو', 'Präteritum', 'Ich war müde.', 'من خسته بودم.', 'A1 · درس تکمیلی ۳'],
+        ['haben در گفت‌وگو', 'Präteritum', 'Wir hatten keine Zeit.', 'ما وقت نداشتیم.', 'A1 · درس تکمیلی ۳'],
+        ['فعل مُدال در گفت‌وگو', 'اغلب Präteritum', 'Ich musste arbeiten.', 'من مجبور بودم کار کنم.', 'A1 · درس تکمیلی ۳'],
+        ['روایت نوشتاری', 'اغلب Präteritum', 'Am Abend las ich ein Buch.', 'عصر کتابی خواندم.', 'A2 · درس تکمیلی ۶']
+      ]),
+      '<div class="zpt-callout"><b>قید زمان، زمان دستوری را به‌تنهایی تعیین نمی‌کند</b><p>واژه‌هایی مثل <b dir="ltr">gestern</b>، <b dir="ltr">letzte Woche</b> و <b dir="ltr">am Montag</b> می‌توانند با هر دو زمان بیایند.</p><p dir="ltr">Gestern lernte ich Deutsch.</p><p dir="ltr">Gestern habe ich Deutsch gelernt.</p><small>هر دو جمله دربارهٔ گذشته‌اند؛ جملهٔ دوم در گفت‌وگوی روزمره معمول‌تر است.</small></div>',
+      '<div class="zpt-callout"><b>روایت کوتاه · A1</b><p dir="ltr">Gestern war ich zu Hause. Ich hatte Zeit. Am Abend habe ich Musik gehört.</p><small>دیروز خانه بودم. وقت داشتم. عصر موسیقی گوش دادم.</small><p>در یک روایت طبیعی ممکن است برای <b dir="ltr">sein / haben</b> از Präteritum و برای فعل‌های دیگر از Perfekt استفاده شود.</p></div>',
+      '<p class="muted tiny">این‌ها گرایش‌اند، نه قانون قطعی. کاربرد با منطقه و نوع متن فرق می‌کند؛ در بخش‌هایی از جنوب آلمانی‌زبان، Perfekt در گفتار دامنهٔ بیشتری دارد.</p>',
+      '<div class="zpt-sources"><a href="https://grammis.ids-mannheim.de/kontrastive-grammatik/4180" target="_blank" rel="noopener noreferrer">IDS grammis · کاربرد Präteritum و Perfekt</a><a href="https://www.duden.de/sprachwissen/sprachratgeber/Perfektbildung-mit-haben-oder-sein" target="_blank" rel="noopener noreferrer">Duden · ساخت Perfekt با haben یا sein</a><a href="https://www.goethe.de/ins/de/de/prf/grm.html" target="_blank" rel="noopener noreferrer">Goethe-Institut · دستور زبان</a></div>',
       '</div>',
       '<div class="zpt-pane" data-zpt-pane="perfekt" hidden>',
       '<span class="lesson-tag">A1 · درس تکمیلی ۲ · ساخت Perfekt</span>',
@@ -606,6 +640,10 @@
       '<div class="zpt-question"><label for="zptSentence24">جمله‌سازی ۲۴ · A2: نوشیدنی‌ها را همراه آوردیم.</label><p dir="ltr">Wir / haben / Getränke / mitgebracht</p><small>معنی: ما نوشیدنی‌ها را همراه آوردیم.</small><input id="zptSentence24" dir="ltr" autocomplete="off" placeholder="Wir haben ... mitgebracht."></div>',
       '<div class="zpt-question"><label for="zptSentence25">جمله‌سازی ۲۵ · A2: جمله را نفی کن؛ «من جمله را نفهمیدم».</label><p dir="ltr">Ich / habe / den Satz / nicht / verstanden</p><small>معنی: من جمله را نفهمیدم.</small><input id="zptSentence25" dir="ltr" autocomplete="off" placeholder="Ich habe den Satz nicht ..."></div>',
       '<div class="zpt-question"><label for="zptSentence26">جمله‌سازی ۲۶ · A1: بگو امروز تا ساعت ۱۷ کار کردم.</label><p dir="ltr">Ich / habe / heute / bis 17 Uhr / gearbeitet</p><small>معنی: من امروز تا ساعت ۱۷ کار کردم.</small><input id="zptSentence26" dir="ltr" autocomplete="off" placeholder="Ich habe heute ... gearbeitet."></div>',
+      '<div class="zpt-question"><label for="zptSentence27">جمله‌سازی ۲۷ · A1: با Präteritum فعل sein بگو دیروز خانه بودم.</label><p dir="ltr">Gestern / war / ich / zu Hause</p><small>معنی: دیروز خانه بودم.</small><input id="zptSentence27" dir="ltr" autocomplete="off" placeholder="Gestern war ich ..."></div>',
+      '<div class="zpt-question"><label for="zptSentence28">جمله‌سازی ۲۸ · A1: با Präteritum فعل haben بگو دوشنبه وقت نداشتیم.</label><p dir="ltr">Wir / hatten / am Montag / keine Zeit</p><small>معنی: ما دوشنبه وقت نداشتیم.</small><input id="zptSentence28" dir="ltr" autocomplete="off" placeholder="Wir hatten am Montag ..."></div>',
+      '<div class="zpt-question"><label for="zptSentence29">جمله‌سازی ۲۹ · A1: با Präteritum فعل müssen بگو دیروز مجبور بودم کار کنم.</label><p dir="ltr">Ich / musste / gestern / arbeiten</p><small>معنی: من دیروز مجبور بودم کار کنم.</small><input id="zptSentence29" dir="ltr" autocomplete="off" placeholder="Ich musste gestern ..."></div>',
+      '<div class="zpt-question"><label for="zptSentence30">جمله‌سازی ۳۰ · A1: با Perfekt بگو عصر موسیقی گوش دادم.</label><p dir="ltr">Am Abend / habe / ich / Musik / gehört</p><small>معنی: من عصر موسیقی گوش دادم.</small><input id="zptSentence30" dir="ltr" autocomplete="off" placeholder="Am Abend habe ich ..."></div>',
       '<div class="row" style="margin-top:10px"><button type="button" class="btn primary" id="zptCheck">بررسی پاسخ‌ها</button><button type="button" class="btn" id="zptReset">شروع دوباره</button></div>',
       '<div id="zptPracticeFeedback" class="zpt-feedback" aria-live="polite">پاسخ‌ها را انتخاب کن و بررسی را بزن.</div>',
       '</div>',

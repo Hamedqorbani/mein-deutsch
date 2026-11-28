@@ -7,8 +7,8 @@ const root = path.resolve(__dirname, '..');
 const { PRONOUNS, AUXILIARIES, VERBS, QUESTIONS, SENTENCE_RULES, evaluateChoice, evaluateSentence, getQuestionMetadata } = require(path.join(root, 'zuno-past-tense.js'));
 assert.equal(PRONOUNS.length, 6);
 assert.equal(VERBS.length, 60);
-assert.equal(QUESTIONS.length, 78);
-assert.equal(SENTENCE_RULES.length, 26);
+assert.equal(QUESTIONS.length, 88);
+assert.equal(SENTENCE_RULES.length, 30);
 assert.equal(evaluateChoice('', 0), null);
 assert.equal(evaluateChoice('0', 0), true);
 assert.equal(evaluateChoice('1', 0), false);
@@ -89,6 +89,13 @@ for (const item of VERBS) for (const usage of item.auxCases || []) {
 }
 const pastSourceForAux = fs.readFileSync(path.join(root, 'zuno-past-tense.js'), 'utf8');
 assert.ok(pastSourceForAux.includes('data-zpt-tab="auxiliary"'));
+assert.ok(pastSourceForAux.includes('data-zpt-tab="tense-guide"'));
+assert.ok(pastSourceForAux.includes('data-zpt-pane="tense-guide"'));
+assert.ok(pastSourceForAux.includes('grammis.ids-mannheim.de/kontrastive-grammatik/4180'));
+assert.ok(pastSourceForAux.includes('قید زمان، زمان دستوری را به‌تنهایی تعیین نمی‌کند'));
+for (const id of ['zptSentence27','zptSentence28','zptSentence29','zptSentence30']) assert.ok(pastSourceForAux.includes(id));
+assert.ok(QUESTIONS.some(item => item.q.includes('gestern به‌تنهایی') && item.answer === 2));
+assert.ok(QUESTIONS.some(item => item.q.includes('در روایت نوشتاری') && item.answer === 1));
 assert.ok(!pastSourceForAux.includes("perfect += ' / '"), 'Primary Perfekt table must not show context-dependent auxiliaries as interchangeable');
 for (const id of ['zptSentence6','zptSentence7','zptSentence8','zptSentence9','zptSentence10','zptSentence11','zptSentence12','zptSentence13','zptSentence14','zptSentence15','zptSentence16']) assert.ok(pastSourceForAux.includes(id));
 const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
@@ -104,7 +111,7 @@ for (const file of ['zuno-past-tense.js','enhancements.js','zuno-a1-completion.j
   new vm.Script(fs.readFileSync(path.join(root, file), 'utf8'), { filename: file });
 }
 const pastSource = fs.readFileSync(path.join(root, 'zuno-past-tense.js'), 'utf8');
-for (let number = 3; number <= 26; number += 1) assert.ok(pastSource.includes('zptSentence' + number), 'Missing sentence builder zptSentence' + number);
+for (let number = 3; number <= 30; number += 1) assert.ok(pastSource.includes('zptSentence' + number), 'Missing sentence builder zptSentence' + number);
 for (const slug of ['erzaehlen','tanzen','reisen','telefonieren','antworten','feiern']) assert.ok(pastSource.includes('https://www.duden.de/konjugation/' + slug));
 assert.ok(pastSource.includes("addEventListener('input'"));
 assert.ok(pastSource.includes("addEventListener('change'"));
